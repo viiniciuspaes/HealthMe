@@ -1,4 +1,4 @@
-package mpoo.useInit;
+package mpoo.gui;
 
 import org.junit.Test;
 

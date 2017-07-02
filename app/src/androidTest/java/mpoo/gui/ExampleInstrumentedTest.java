@@ -1,4 +1,4 @@
-package mpoo.useInit;
+package mpoo.gui;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -4,14 +4,14 @@
     android:layout_height="match_parent"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    android:background="">
+    android:background="@color/colorPrimaryDark">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background=""
+        android:background="@color/colorPrimaryDark"
         android:weightSum="1"
         >
 
@@ -26,8 +26,8 @@
             android:layout_marginBottom="8dp"
             android:inputType="textEmailAddress"
             android:hint=""
-            android:textColor=""
-            android:textColorHint=""
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/colorPrimaryDark"
             />
 
         <EditText
@@ -40,8 +40,8 @@
             android:layout_marginBottom="8dp"
             android:inputType="textPassword"
             android:hint=""
-            android:textColor=""
-            android:textColorHint=""/>
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/colorPrimaryDark"/>
 
         <Button
             android:id="@+id/btn_login"
