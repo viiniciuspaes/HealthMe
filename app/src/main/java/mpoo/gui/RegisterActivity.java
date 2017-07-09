@@ -10,7 +10,7 @@ import android.widget.EditText;
 import dao.UserDao;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText et_user = (EditText) findViewById(R.id.editText_register_user);
+    EditText et_user = (EditText) findViewById(R.id.editText_register_login);
     EditText et_password = (EditText) findViewById(R.id.editText_register_password);
     private Resources resources;
 
