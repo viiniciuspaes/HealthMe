@@ -51,10 +51,4 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     }
-    public void clickUpdate(){
-
-    }
-    public void clickDelete(){
-
-    }
 }
