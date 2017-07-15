@@ -14,7 +14,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void register(){
-        Intent i = new Intent(LogInActivity.this,RegisterActivity.class);
+        Intent i = new Intent(LogInActivity.this,CadastroActivity.class);
         startActivity(i);
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mpoo.gui.RegisterActivity">
+    tools:context="mpoo.gui.CadastroActivity">
 
     <EditText
         android:id="@+id/editText3"

@@ -7,9 +7,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
-import dao.UserDao;
+import dao.UsuarioDao;
 
-public class RegisterActivity extends AppCompatActivity {
+public class CadastroActivity extends AppCompatActivity {
     EditText et_user = (EditText) findViewById(R.id.editText_register_login);
     EditText et_password = (EditText) findViewById(R.id.editText_register_password);
     private Resources resources;
@@ -17,7 +17,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_cadastro);
 
         initViews();
 
@@ -42,12 +42,12 @@ public class RegisterActivity extends AppCompatActivity {
         et_user.addTextChangedListener(textWatcher);
     }
     public void clickInsert(){
-        UserDao crud = new UserDao(getBaseContext());
+        UsuarioDao crud = new UsuarioDao(getBaseContext());
         String userString = et_user.getText().toString();
         String passwordString = et_password.getText().toString();
         String output;
 
-        //output = crud.insertRegister(userString,passwordString);
+        //output = crud.inserirRegistro(userString,passwordString);
 
 
     }

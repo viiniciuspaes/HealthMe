@@ -1,12 +1,12 @@
 package domain;
 
 
-public class User {
+public class Usuario {
     private String login;
     private String password;
     private int id;
 
-    public User(){
+    public Usuario(){
         this.login = null;
         this.password = null;
     }

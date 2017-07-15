@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mpoo.gui">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:nome="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,11 +13,11 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".LogInActivity">
+        <activity android:nome=".LogInActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:nome="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:nome="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <!--
@@ -29,7 +29,7 @@
              You can define the keys for the debug and release targets in src/debug/ and src/release/. 
         -->
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
+            android:nome="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
     </application>
