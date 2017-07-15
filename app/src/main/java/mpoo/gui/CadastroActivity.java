@@ -28,7 +28,7 @@ public class CadastroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
-        
+
         usuarioValidacao = new UsuarioValidacao(getApplicationContext());
 
         et_user = (EditText) findViewById(R.id.editText_register_login);
@@ -41,7 +41,7 @@ public class CadastroActivity extends AppCompatActivity {
         initViews();
 
     }
-    private void initViews() {
+    public void initViews() {
         resources = getResources();
         TextWatcher textWatcher = new TextWatcher() {
             @Override
@@ -64,7 +64,7 @@ public class CadastroActivity extends AppCompatActivity {
         et_nascimento.addTextChangedListener(textWatcher);
         et_plano.addTextChangedListener(textWatcher);
     }
-    private  void cadastrar(){
+    public void cadastrar(){
         if(validarCampos()){
                 Usuario usuario = new Usuario();
                 usuario.setLogin(et_user.getText().toString());
@@ -104,7 +104,7 @@ public class CadastroActivity extends AppCompatActivity {
     }
     return true;
 }
-    private boolean isCamposValidos(String nome, String login, String plano, String senha, String senhaConfirma, String nascimento) {
+    public boolean isCamposValidos(String nome, String login, String plano, String senha, String senhaConfirma, String nascimento) {
         if (TextUtils.isEmpty(nome)) {
             et_nome.requestFocus();
             et_nome.setError(resources.getString(R.string.error_campo_vazio));
