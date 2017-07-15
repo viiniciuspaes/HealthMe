@@ -1,4 +1,4 @@
-package domain;
+package dominio;
 
 
 import java.util.Date;

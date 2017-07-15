@@ -7,8 +7,21 @@
     tools:context="mpoo.gui.CadastroActivity">
 
     <EditText
-        android:id="@+id/editText3"
-        android:layout_width="match_parent"
+        android:id="@+id/editText_register_password2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.368" />
+
+    <EditText
+        android:id="@+id/editText_register_plano"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
@@ -20,8 +33,8 @@
         app:layout_constraintVertical_bias="0.826" />
 
     <EditText
-        android:id="@+id/editText2"
-        android:layout_width="match_parent"
+        android:id="@+id/editText_register_nascimento"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
@@ -33,8 +46,8 @@
         app:layout_constraintVertical_bias="0.658" />
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
+        android:id="@+id/editText_register_nome"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
@@ -51,11 +64,11 @@
         android:layout_height="wrap_content"
         android:text="Senha"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.275" />
+        app:layout_constraintVertical_bias="0.243" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -73,11 +86,11 @@
         android:layout_height="wrap_content"
         android:text="Nome"
         app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintVertical_bias="0.428"
-        android:layout_marginRight="331dp" />
+        android:layout_marginRight="331dp"
+        android:layout_marginEnd="331dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -105,33 +118,32 @@
         android:id="@+id/button_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cadastrar"
+        android:text="@string/btn_cadastrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.965"
-        android:onClick="clickRegister"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintVertical_bias="0.969"
+        android:onClick="cadastrar"
         android:background="@color/colorAccent"
         android:textColor="@color/colorPrimary"/>
 
     <EditText
         android:id="@+id/editText_register_password"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.094"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326"/>
+        app:layout_constraintVertical_bias="0.288"/>
 
     <EditText
         android:id="@+id/editText_register_login"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
@@ -149,7 +161,13 @@
         app:srcCompat="@android:drawable/ic_menu_camera"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="2dp"
-        android:onClick=""/>
+        android:onClick=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0073" />
 
 
 </android.support.constraint.ConstraintLayout>

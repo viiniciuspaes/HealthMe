@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="0dp"
             android:background="@color/colorAccent"
-            android:text="@string/emergency"
+            android:text="@string/emergencia"
             android:onClick=""/>
 
         <ImageView
@@ -40,7 +40,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="8dp"
             android:inputType="textEmailAddress"
-            android:hint="@string/hint_email"
+            android:hint="@string/campo_email"
             android:textColor="@color/colorPrimaryDark"
             android:textColorHint="@color/colorPrimaryDark"
             />
@@ -54,7 +54,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:inputType="textPassword"
-            android:hint="@string/hint_password"
+            android:hint="@string/campo_password"
             android:textColor="@color/colorPrimaryDark"
             android:textColorHint="@color/colorPrimaryDark"/>
 
@@ -79,6 +79,7 @@
             android:text="@string/text_not_member"
             android:onClick="register"/>
         <Button
+            android:id="@+id/btn_mago"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="botao do mago"

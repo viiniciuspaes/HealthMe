@@ -5,7 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import domain.Pessoa;
+import dominio.Pessoa;
 
 public class UsuarioDao {
     private SQLiteDatabase db;
