@@ -9,75 +9,77 @@
     tools:context="mpoo.gui.LogInActivity">
 
 
-        <Button
-            android:id="@+id/btn_emergency"
-            android:layout_width="113dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="0dp"
-            android:background="@color/colorAccent"
-            android:text="@string/emergencia"
-            android:onClick=""/>
+    <Button
+        android:id="@+id/btn_emergency"
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="0dp"
+        android:background="@color/colorAccent"
+        android:text="@string/emergencia"
+        android:onClick=""/>
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/marcador" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/marcador" />
 
 
-        <EditText
-            android:id="@+id/user_Email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="8dp"
-            android:inputType="textEmailAddress"
-            android:hint="@string/campo_email"
-            android:textColor="@color/colorPrimaryDark"
-            android:textColorHint="@color/colorPrimaryDark"
-            />
+    <EditText
+        android:id="@+id/user_Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
+        android:inputType="textEmailAddress"
+        android:hint="@string/campo_email"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
+        />
 
-        <EditText
-            android:id="@+id/user_Senha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:inputType="textPassword"
-            android:hint="@string/campo_password"
-            android:textColor="@color/colorPrimaryDark"
-            android:textColorHint="@color/colorPrimaryDark"/>
+    <EditText
+        android:id="@+id/user_Senha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:inputType="textPassword"
+        android:hint="@string/campo_password"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"/>
 
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="55dp"
-            android:background="@color/colorAccent"
-            android:onClick=""
-            android:text="@string/text_login"
-            />
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="55dp"
+        android:background="@color/colorAccent"
+        android:onClick=""
+        android:text="@string/text_login" />
 
-        <TextView
-            android:id="@+id/text_register_user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:text="@string/text_not_member"
-            android:onClick="register"/>
-        <Button
-            android:id="@+id/btn_mago"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="botao do mago"
-            android:background="@color/colorAccent"
+    <Button
+        android:id="@+id/btn_register_user"
+        android:layout_width="302dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/text_not_member"
+        android:background="@android:color/transparent"
+        android:onClick="startCadastroActivity"/>
+
+    <Button
+        android:id="@+id/btn_mago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="botao do mago"
+        android:background="@color/colorAccent"
             />
 
 
