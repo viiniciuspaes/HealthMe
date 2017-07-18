@@ -7,7 +7,7 @@
     tools:context="mpoo.gui.CadastroActivity">
 
     <EditText
-        android:id="@+id/editText_register_password2"
+        android:id="@+id/et_register_password2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.368" />
 
     <EditText
-        android:id="@+id/editText_register_plano"
+        android:id="@+id/et_register_plano"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.826" />
 
     <EditText
-        android:id="@+id/editText_register_nascimento"
+        android:id="@+id/et_register_nascimento"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.658" />
 
     <EditText
-        android:id="@+id/editText_register_nome"
+        android:id="@+id/et_register_nome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -115,7 +115,7 @@
         app:layout_constraintVertical_bias="0.748" />
 
     <Button
-        android:id="@+id/button_register"
+        android:id="@+id/btn_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_cadastrar"
@@ -129,7 +129,7 @@
         android:textColor="@color/colorPrimary"/>
 
     <EditText
-        android:id="@+id/editText_register_password"
+        android:id="@+id/et_register_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -142,7 +142,7 @@
         app:layout_constraintVertical_bias="0.288"/>
 
     <EditText
-        android:id="@+id/editText_register_login"
+        android:id="@+id/et_register_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
