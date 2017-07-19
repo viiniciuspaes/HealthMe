@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-/**
- * Created by LuizC on 19/07/2017.
- */
+import dao.SessaoDao;
+import negocio.SessaoUsuario;
+
 
 public class TelaInicialActivity extends AppCompatActivity {
+    private SessaoDao sessaoDao = new SessaoDao(getApplicationContext());
+    private SessaoUsuario sessao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

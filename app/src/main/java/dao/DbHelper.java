@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DbHelper extends SQLiteOpenHelper {
     protected static final String NOME_DB = "banco.db";
     protected static final int VERSAO = 1;
+    private SqlScripts scripts = new SqlScripts();
 
     // TABELA DOS USUARIOS
     protected static final String TABELA_USUARIO = "usuarios";
@@ -17,7 +18,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     // TABELA DAS PESSOAS
     protected static final String TABELA_PESSOA = "pessoas";
-    protected static final String ID_PESSOA ="_id_ppessoa";
+    protected static final String ID_PESSOA ="_id_pessoa";
     protected static final String NOME = "nome";
     protected static final String ENDERECO_CASA = "endereco_casa";
     protected static final String ENDERECO_TRABALHO = "endereco_trabalho";
@@ -26,14 +27,21 @@ public class DbHelper extends SQLiteOpenHelper {
     protected static final String CONTATO_EMERGENCIA3 = "econtato_emergencia3";
     protected static final String PLANO_SAUDE = "plano_saude";
     protected static final String NASCIMENTO = "nascimento";
+    protected static final String PESSOA_USER = "pessoa_user";
+
+    //TABELA SESSAO
+    protected static final String TABELA_SESSAO = "sessoes";
+    protected static final String ID_SESSAO = "_id_sessao";
+    protected static final String USER_SESSAO = "user_sessao";
 
     public DbHelper(Context context){
         super(context, NOME_DB,null, VERSAO);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(SqlScripts.getTabelaUsuario());
-        db.execSQL(SqlScripts.getTabelaPessoa());
+        db.execSQL(scripts.createTabelaUsuario());
+        db.execSQL(scripts.createTabelaPessoa());
+        db.execSQL(scripts.createTableSessao());
     }
 
     @Override

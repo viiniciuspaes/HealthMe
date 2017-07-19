@@ -4,7 +4,7 @@ package dao;
 import static dao.DbHelper.*;
 
 public class SqlScripts {
-    protected static String getTabelaUsuario(){
+    protected String createTabelaUsuario(){
 
         StringBuilder userBuilder = new StringBuilder();
         userBuilder.append("CREATE TABLE "+ TABELA_USUARIO +" ( ");
@@ -13,12 +13,13 @@ public class SqlScripts {
         userBuilder.append(PASSWORD+" text not null);");
         return userBuilder.toString();
     }
-    protected static String getTabelaPessoa(){
+    protected String createTabelaPessoa(){
 
         StringBuilder pessoaBuilder = new StringBuilder();
         pessoaBuilder.append("CREATE TABLE "+ TABELA_PESSOA +" ( ");
         pessoaBuilder.append(ID_PESSOA +" integer primary key autoincrement, ");
         pessoaBuilder.append(NOME +" text not null, ");
+        pessoaBuilder.append(PESSOA_USER +" text not null unique, ");
         pessoaBuilder.append(ENDERECO_CASA +" text, ");
         pessoaBuilder.append(ENDERECO_TRABALHO +" text, ");
         pessoaBuilder.append(CONTATO_EMERGENCIA1 +" text, ");
@@ -28,4 +29,19 @@ public class SqlScripts {
         pessoaBuilder.append(NASCIMENTO +" text);");
         return pessoaBuilder.toString();
     }
+    protected String createTableSessao(){
+
+        StringBuilder sesssaoBuilder = new StringBuilder();
+        sesssaoBuilder.append("CREATE TABLE "+ TABELA_SESSAO +" ( ");
+        sesssaoBuilder.append(ID_SESSAO +" integer primary key autoincrement, ");
+        sesssaoBuilder.append(USER_SESSAO +" text);");
+        return sesssaoBuilder.toString();
+    }
+    protected String cmdWhere(String tabela, String a, String b){
+        return "SELECT * FROM" + tabela + " WHERE " + a + "LIKE ? AND" + b + " LIKE ?";
+    }
+    protected String cmdWhere(String tabela, String a){
+        return "SELECT * FROM" + tabela + " WHERE " + a + "LIKE ?";
+    }
+
 }

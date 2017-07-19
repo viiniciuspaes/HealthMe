@@ -19,33 +19,24 @@ import infra.CriptografiaSenha;
 public class UsuarioValidacao {
     private Context context;
     private UsuarioDao usuarioDao;
-    private CriptografiaSenha criptografiaSenha = new CriptografiaSenha();
 
 
     public UsuarioValidacao(Context context) {
         this.context=context;
     }
 
+    public Usuario login(String email, String senha) throws Exception {
 
-    public void login(String email, String senha) throws Exception {
+        Usuario usuario = usuarioDao.buscarUsuario(email, senha);
 
-        String senhaCriptografada = criptografiaSenha.criptoSenha(senha);
-
-        Usuario usuario = usuarioDao.buscarUsuario(email, senhaCriptografada);
-
-        if(usuario==null){
-            throw  new Exception("Usuário e/ou senha inválidos");
-        }else{
-            //testando (não é assim)
-            throw new Exception("Logado");
-        }
-
+        return usuario;
     }
 
     public void validarCadastro(Pessoa pessoa)  {
-        //falta coisa p cacimba nesse metodo como por exemplo buscar se o nome de usuario nao existe
+        if (usuarioDao.buscarUsuario(pessoa.getUsuario().getLogin(),pessoa.getUsuario().getPassword()) == null){
             usuarioDao = new UsuarioDao(context);
             usuarioDao.inserirRegistro(pessoa);
+        }
         }
     public String mudarData(Date a){
         return String.valueOf(a);

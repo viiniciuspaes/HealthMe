@@ -4,9 +4,6 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-/**
- * Created by Joao on 18/07/2017.
- */
 
 public class CriptografiaSenha {
     public String criptoSenha(String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException {

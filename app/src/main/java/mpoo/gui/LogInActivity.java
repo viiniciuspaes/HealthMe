@@ -8,22 +8,23 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
+import dao.SessaoDao;
 import dominio.Pessoa;
 import dominio.Usuario;
+import infra.CriptografiaSenha;
+import negocio.SessaoUsuario;
 import negocio.UsuarioValidacao;
 
 
 public class LogInActivity extends AppCompatActivity {
     private EditText et_login;
     private EditText et_password;
-    private Button btn_cadastrar ;
-    private Button btn_logar;
 
     private Resources resources;
     private UsuarioValidacao usuarioValidacao;
+    private CriptografiaSenha cripto;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,25 +34,10 @@ public class LogInActivity extends AppCompatActivity {
 
         et_login = (EditText) findViewById(R.id.user_login);
         et_password = (EditText) findViewById(R.id.user_password);
-        btn_cadastrar = (Button) findViewById(R.id.btn_register_user);
-        btn_logar = (Button) findViewById(R.id.btn_login);
 
         initViews();
     }
 
-    public void onButtonClick(View v){
-        String usuarioEmail = et_login.getText().toString();
-        String usuarioPassword = et_password.getText().toString();
-
-        try{
-            usuarioValidacao.login(usuarioEmail, usuarioPassword);
-            Intent intent = new Intent(getApplicationContext(), CadastroActivity.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
     public void onResume(){
         super.onResume();
     }
@@ -80,41 +66,47 @@ public class LogInActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-
+    public void startMainActivity(){
+        startActivity(new Intent(this,TelaInicialActivity.class));
+        finish();
+    }
 
     public void logar(View v) throws Exception {
         boolean validar=validarCampos();
         if(validar){
-            String usuarioTeste = et_login.getText().toString();
-            String senhaTeste = et_password.getText().toString();
 
-            //falta arrumar validacao
+            String usuario = et_login.getText().toString();
+            String senha = et_password.getText().toString();
 
-            usuarioValidacao.login(usuarioTeste,senhaTeste);
-            Intent i = new Intent(LogInActivity.this,TelaInicialActivity.class);
-            startActivity(i);
+            cripto = new CriptografiaSenha();
+            String novaSenha = cripto.criptoSenha(senha);
 
-        }else {
-            //Toast.makeText(getApplicationContext(),"deu errado")
+            Usuario validado = usuarioValidacao.login(usuario,novaSenha);
+            if (validado ==  null){
+                //fazer toast
+            }else {
+                SessaoDao sessao = new SessaoDao(getApplicationContext());
+                sessao.inserirRegistro(validado);
+                startMainActivity();
+            }
+
+
         }
     }
-
 
     private boolean validarCampos(){
 
         String login = et_login.getText().toString().trim();
         String senha = et_password.getText().toString();
 
-
         if(isCamposValidos(login, senha)){
             return  true;
         }
-
         return false;
     }
 
     public boolean isCamposValidos(String login, String senha) {
-        boolean verifacor = false;
+        boolean verificador = false;
         if (TextUtils.isEmpty(login)) {
             et_login.requestFocus();
             et_login.setError(resources.getString(R.string.error_campo_vazio));
@@ -122,11 +114,8 @@ public class LogInActivity extends AppCompatActivity {
             et_password.requestFocus();
             et_password.setError(resources.getString(R.string.error_campo_vazio));
         } else {
-            verifacor = true;
+            verificador = true;
         }
-        return verifacor;
+        return verificador;
     }
-
-
-
 }

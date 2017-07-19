@@ -3,7 +3,7 @@
     <string name="campo_nome">Nome</string>
     <string name="campo_email">Login</string>
     <string name="campo_password">Password</string>
-    <string name="campo_confirmar_password">Confirm Password</string>
+    <string name="campo_confirmar_password">Password</string>
     <string name="text_login">Entrar</string>
     <string name="text_register">Registrar</string>
     <string name="error_menssagem_nome">Entre com nome completo</string>

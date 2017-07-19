@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import dominio.Pessoa;
 import dominio.Usuario;
+import infra.CriptografiaSenha;
 import negocio.UsuarioValidacao;
 
 public class CadastroActivity extends AppCompatActivity {
@@ -23,6 +24,7 @@ public class CadastroActivity extends AppCompatActivity {
 
     private Resources resources;
     private UsuarioValidacao usuarioValidacao;
+    private CriptografiaSenha cripto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
         usuarioValidacao = new UsuarioValidacao(getApplicationContext());
+
 
         et_user = (EditText) findViewById(R.id.et_register_login);
         et_password = (EditText) findViewById(R.id.et_register_password);
@@ -61,26 +64,22 @@ public class CadastroActivity extends AppCompatActivity {
         et_password2.addTextChangedListener(textWatcher);
 
     }
-    public void cadastrar(View v){
+    public void cadastrar(View v) throws Exception{
         boolean validar=validarCampos();
         if(validar){
+                cripto = new CriptografiaSenha();
+
                 Usuario usuario = new Usuario();
                 usuario.setLogin(et_user.getText().toString());
-                usuario.setPassword(et_password.getText().toString());
+                String novaSenha = cripto.criptoSenha(et_password.getText().toString());
+                usuario.setPassword(novaSenha);
 
                 Pessoa pessoa = new Pessoa();
                 pessoa.setNome(et_nome.getText().toString());
                 pessoa.setUsuario(usuario);
 
-                //falta pegar foto
-
-                //falta arrumar validacao
-
                 usuarioValidacao.validarCadastro(pessoa);
                 iniciarLoginActivity();
-
-        }else {
-            //Toast.makeText(getApplicationContext(),"deu errado")
         }
     }
     public void iniciarLoginActivity(){
@@ -108,7 +107,7 @@ public class CadastroActivity extends AppCompatActivity {
     return false;
 }
     public boolean isCamposValidos(String nome, String login, String senha, String senhaConfirma) {
-        boolean verifacor = false;
+        boolean verificador = false;
         if (TextUtils.isEmpty(nome)) {
             et_nome.requestFocus();
             et_nome.setError(resources.getString(R.string.error_campo_vazio));
@@ -123,9 +122,9 @@ public class CadastroActivity extends AppCompatActivity {
             et_password2.setError(resources.getString(R.string.error_campo_vazio));
         }
         else {
-            verifacor = true;
+            verificador = true;
         }
-        return verifacor;
+        return verificador;
     }
 
 

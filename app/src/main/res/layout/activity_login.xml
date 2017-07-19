@@ -11,9 +11,9 @@
 
     <Button
         android:id="@+id/btn_emergency"
-        android:layout_width="113dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="0dp"
+        android:layout_marginLeft="270dp"
         android:background="@color/colorAccent"
         android:text="@string/emergencia"
         android:onClick=""/>
@@ -66,21 +66,13 @@
 
     <Button
         android:id="@+id/btn_register_user"
-        android:layout_width="302dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="45dp"
         android:layout_marginTop="25dp"
         android:text="@string/text_not_member"
         android:background="@android:color/transparent"
         android:onClick="startCadastroActivity"/>
-
-    <Button
-        android:id="@+id/btn_mago"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="botao do mago"
-        android:background="@color/colorAccent"
-            />
 
 
 </LinearLayout>
