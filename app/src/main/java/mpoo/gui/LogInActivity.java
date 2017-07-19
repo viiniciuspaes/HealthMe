@@ -37,6 +37,20 @@ public class LogInActivity extends AppCompatActivity {
 
         initViews();
     }
+
+    public void onButtonClick(View v){
+        String usuarioEmail = et_login.getText().toString();
+        String usuarioPassword = et_password.getText().toString();
+
+        try{
+            usuarioValidacao.login(usuarioEmail, usuarioPassword);
+            Intent intent = new Intent(getApplicationContext(), CadastroActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
     public void onResume(){
         super.onResume();
     }

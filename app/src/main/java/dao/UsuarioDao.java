@@ -3,9 +3,11 @@ package dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import dominio.Pessoa;
+import dominio.Usuario;
 import negocio.UsuarioValidacao;
 
 public class UsuarioDao {
@@ -75,5 +77,33 @@ public class UsuarioDao {
 
         db.update(DbHelper.TABELA_PESSOA, valor, where, null);
         db.close();
+    }
+    public Usuario buscarUsuario(String email, String password) {
+        SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
+
+        String comando = "SELECT * FROM" + dataBaseHelper.TABELA_USUARIO +
+                " WHERE " + dataBaseHelper.USER + "LIKE ? AND" + dataBaseHelper.PASSWORD + " LIKE ?";
+
+        String[] parametros = {email, password};
+
+        Cursor cursor = db.rawQuery(comando, parametros);
+
+        Usuario usuario = null;
+
+        if (cursor.moveToNext()) {
+            usuario = criarUsuario(cursor);
+        }
+        cursor.close();
+        db.close();
+        return usuario;
+    }
+    private Usuario criarUsuario(Cursor cursor){
+        Usuario usuario = new Usuario();
+        usuario.setId(cursor.getShort(0));
+        usuario.setLogin(cursor.getString(1));
+        usuario.setPassword(cursor.getString(2));
+        return usuario;
+
+
     }
 }
