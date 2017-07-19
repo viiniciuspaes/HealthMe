@@ -20,8 +20,6 @@ public class CadastroActivity extends AppCompatActivity {
     private EditText et_password ;
     private EditText et_password2 ;
     private EditText et_nome ;
-    private EditText et_nascimento ;
-    private EditText et_plano ;
 
     private Resources resources;
     private UsuarioValidacao usuarioValidacao;
@@ -37,8 +35,6 @@ public class CadastroActivity extends AppCompatActivity {
         et_password = (EditText) findViewById(R.id.et_register_password);
         et_password2 = (EditText) findViewById(R.id.et_register_password2);
         et_nome = (EditText) findViewById(R.id.et_register_nome);
-        et_nascimento = (EditText) findViewById(R.id.et_register_nascimento);
-        et_plano = (EditText) findViewById(R.id.et_register_plano);
 
         initViews();
 
@@ -63,8 +59,7 @@ public class CadastroActivity extends AppCompatActivity {
         et_user.addTextChangedListener(textWatcher);
         et_nome.addTextChangedListener(textWatcher);
         et_password2.addTextChangedListener(textWatcher);
-        et_nascimento.addTextChangedListener(textWatcher);
-        et_plano.addTextChangedListener(textWatcher);
+
     }
     public void cadastrar(View v){
         boolean validar=validarCampos();
@@ -75,7 +70,6 @@ public class CadastroActivity extends AppCompatActivity {
 
                 Pessoa pessoa = new Pessoa();
                 pessoa.setNome(et_nome.getText().toString());
-                pessoa.setPlanoSaude(et_plano.getText().toString());
                 pessoa.setUsuario(usuario);
 
                 //falta pegar foto
@@ -96,13 +90,10 @@ public class CadastroActivity extends AppCompatActivity {
     private boolean validarCampos(){
         String nome = et_nome.getText().toString().trim();
         String login = et_user.getText().toString().trim();
-        String plano = et_plano.getText().toString().trim();
-        String senha = et_plano.getText().toString();
+        String senha = et_password.getText().toString();
         String senhaConfirma = et_password2.getText().toString();
-        String nascimento = et_nascimento.getText().toString();
 
-        if(isCamposValidos(nome, login, plano, senha, senhaConfirma,nascimento)
-                && isSenhasValidas(senha, senhaConfirma)){
+        if(isCamposValidos(nome, login, senha, senhaConfirma) && isSenhasValidas(senha, senhaConfirma)){
             return  true;
         }
 
@@ -116,7 +107,7 @@ public class CadastroActivity extends AppCompatActivity {
     et_password.requestFocus();
     return false;
 }
-    public boolean isCamposValidos(String nome, String login, String plano, String senha, String senhaConfirma, String nascimento) {
+    public boolean isCamposValidos(String nome, String login, String senha, String senhaConfirma) {
         boolean verifacor = false;
         if (TextUtils.isEmpty(nome)) {
             et_nome.requestFocus();
@@ -124,19 +115,14 @@ public class CadastroActivity extends AppCompatActivity {
         } else if (TextUtils.isEmpty(login)) {
             et_user.requestFocus(); // troca ordem
             et_user.setError(resources.getString(R.string.error_campo_vazio));
-        } else if (TextUtils.isEmpty(plano)) {
-            et_plano.requestFocus();
-            et_plano.setError(resources.getString(R.string.error_campo_vazio));
         } else if (TextUtils.isEmpty(senha)) {
             et_password.requestFocus();
             et_password.setError(resources.getString(R.string.error_campo_vazio));
         } else if (TextUtils.isEmpty(senhaConfirma)) {
             et_password2.requestFocus();
             et_password2.setError(resources.getString(R.string.error_campo_vazio));
-        }else if (TextUtils.isEmpty(nascimento)) {
-            et_nascimento.requestFocus();
-            et_nascimento.setError(resources.getString(R.string.error_campo_vazio));
-        }else {
+        }
+        else {
             verifacor = true;
         }
         return verifacor;

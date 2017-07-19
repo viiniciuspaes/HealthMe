@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import dominio.Pessoa;
+import dominio.Usuario;
 import negocio.UsuarioValidacao;
 
 
@@ -62,4 +64,40 @@ public class LogInActivity extends AppCompatActivity {
         Intent i = new Intent(LogInActivity.this,CadastroActivity.class);
         startActivity(i);
     }
+
+
+
+    public void logar(View v){
+        boolean validar=validarCampos();
+        if(validar){
+            Usuario usuario = new Usuario();
+            usuario.setLogin(et_login.getText().toString());
+            usuario.setPassword(et_password.getText().toString());
+
+            Pessoa pessoa = new Pessoa();
+            pessoa.setNome(et_login.getText().toString());
+            pessoa.setUsuario(usuario);
+
+            //falta arrumar validacao
+
+            usuarioValidacao.validarLogin(pessoa);
+
+        }else {
+            //Toast.makeText(getApplicationContext(),"deu errado")
+        }
+    }
+
+    private boolean validarCampos(){
+        String login = et_login.getText().toString().trim();
+        String senha = et_password.getText().toString();
+
+        if(isCamposValidos(login, senha){
+            return  true;
+        }
+
+        return false;
+    }
+
+
+
 }
