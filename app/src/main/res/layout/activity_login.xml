@@ -61,7 +61,7 @@
         android:layout_marginRight="24dp"
         android:layout_marginTop="55dp"
         android:background="@color/colorAccent"
-        android:onClick=""
+        android:onClick="logar"
         android:text="@string/text_login" />
 
     <Button

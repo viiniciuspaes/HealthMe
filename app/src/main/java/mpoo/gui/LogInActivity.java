@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -81,35 +82,49 @@ public class LogInActivity extends AppCompatActivity {
 
 
 
-    public void logar(View v){
+    public void logar(View v) throws Exception {
         boolean validar=validarCampos();
         if(validar){
-            Usuario usuario = new Usuario();
-            usuario.setLogin(et_login.getText().toString());
-            usuario.setPassword(et_password.getText().toString());
-
-            Pessoa pessoa = new Pessoa();
-            pessoa.setNome(et_login.getText().toString());
-            pessoa.setUsuario(usuario);
+            String usuarioTeste = et_login.getText().toString();
+            String senhaTeste = et_password.getText().toString();
 
             //falta arrumar validacao
 
-            usuarioValidacao.validarLogin(pessoa);
+            usuarioValidacao.login(usuarioTeste,senhaTeste);
+            Intent i = new Intent(LogInActivity.this,TelaInicialActivity.class);
+            startActivity(i);
 
         }else {
             //Toast.makeText(getApplicationContext(),"deu errado")
         }
     }
 
+
     private boolean validarCampos(){
+
         String login = et_login.getText().toString().trim();
         String senha = et_password.getText().toString();
 
-        if(isCamposValidos(login, senha){
+
+        if(isCamposValidos(login, senha)){
             return  true;
         }
 
         return false;
+    }
+
+    public boolean isCamposValidos(String login, String senha) {
+        boolean verifacor = false;
+        if (TextUtils.isEmpty(login)) {
+            et_login.requestFocus();
+            et_login.setError(resources.getString(R.string.error_campo_vazio));
+        } else if (TextUtils.isEmpty(senha)) {
+            et_password.requestFocus();
+            et_password.setError(resources.getString(R.string.error_campo_vazio));
+        } else {
+            verifacor = true;
+        }
+        return verifacor;
     }
 
 
