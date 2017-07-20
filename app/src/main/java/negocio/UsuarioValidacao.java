@@ -2,6 +2,7 @@ package negocio;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,6 +15,11 @@ import dao.UsuarioDao;
 import dominio.Pessoa;
 import dominio.Usuario;
 import infra.CriptografiaSenha;
+import mpoo.gui.CadastroActivity;
+import mpoo.gui.LogInActivity;
+import mpoo.gui.TelaInicialActivity;
+
+import static android.support.v4.content.ContextCompat.startActivity;
 
 
 public class UsuarioValidacao {
@@ -21,23 +27,33 @@ public class UsuarioValidacao {
     private UsuarioDao usuarioDao;
 
 
+
     public UsuarioValidacao(Context context) {
         this.context=context;
+
     }
 
     public Usuario login(String email, String senha) throws Exception {
 
         Usuario usuario = usuarioDao.buscarUsuario(email, senha);
 
+        if (usuario == null) {
+            throw new Exception("Usuário e/ou senha inválidos");
+        } else {
+
+
+
+        }
         return usuario;
     }
 
+
     public void validarCadastro(Pessoa pessoa)  {
-        if (usuarioDao.buscarUsuario(pessoa.getUsuario().getLogin(),pessoa.getUsuario().getPassword()) == null){
+        if (usuarioDao.buscarUsuario(pessoa.getUsuario().getLogin(),pessoa.getUsuario().getPassword())!=null){
             usuarioDao = new UsuarioDao(context);
             usuarioDao.inserirRegistro(pessoa);
         }
-        }
+    }
     public String mudarData(Date a){
         return String.valueOf(a);
     }

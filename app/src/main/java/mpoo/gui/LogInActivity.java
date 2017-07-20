@@ -2,6 +2,8 @@ package mpoo.gui;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -9,7 +11,9 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import dao.DbHelper;
 import dao.SessaoDao;
 import dominio.Pessoa;
 import dominio.Usuario;
@@ -25,6 +29,24 @@ public class LogInActivity extends AppCompatActivity {
     private Resources resources;
     private UsuarioValidacao usuarioValidacao;
     private CriptografiaSenha cripto;
+
+    private SQLiteDatabase conexao;
+
+    private DbHelper dadosDbHelper;
+
+    private void criarConexao(){
+        try{
+
+            dadosDbHelper = new DbHelper(this);
+
+            conexao = dadosDbHelper.getWritableDatabase();
+
+
+
+        }catch (SQLException ex){
+
+        }
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +103,7 @@ public class LogInActivity extends AppCompatActivity {
             cripto = new CriptografiaSenha();
             String novaSenha = cripto.criptoSenha(senha);
 
-            Usuario validado = usuarioValidacao.login(usuario,novaSenha);
+            Usuario validado = usuarioValidacao.login(usuario, senha);
             if (validado ==  null){
                 //fazer toast
             }else {
