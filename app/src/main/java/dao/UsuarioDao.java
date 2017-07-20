@@ -70,9 +70,9 @@ public class UsuarioDao {
         valor.put(DbHelper.PESSOA_USER, pessoa.getUsuario().getLogin());
         valor.put(DbHelper.ENDERECO_CASA, pessoa.getEnderecoCasa());
         valor.put(DbHelper.ENDERECO_TRABALHO, pessoa.getEnderecoTrabalho());
-        valor.put(DbHelper.CONTATO_EMERGENCIA1, pessoa.getContatoEmergencia()[0].getNome());
-        valor.put(DbHelper.CONTATO_EMERGENCIA2, pessoa.getContatoEmergencia()[1].getNome());
-        valor.put(DbHelper.CONTATO_EMERGENCIA3, pessoa.getContatoEmergencia()[2].getNome());
+        //valor.put(DbHelper.CONTATO_EMERGENCIA1, pessoa.getContatoEmergencia()[0].getNome());
+        //valor.put(DbHelper.CONTATO_EMERGENCIA2, pessoa.getContatoEmergencia()[1].getNome());
+        //valor.put(DbHelper.CONTATO_EMERGENCIA3, pessoa.getContatoEmergencia()[2].getNome());
         valor.put(DbHelper.PLANO_SAUDE, pessoa.getPlanoSaude());
         //valor.put(DbHelper.NASCIMENTO, validacao.mudarData(pessoa.getNascimento()) );
 
@@ -87,7 +87,7 @@ public class UsuarioDao {
         Cursor cursor = db.rawQuery(script.cmdWhere(dataBaseHelper.TABELA_USUARIO,dataBaseHelper.USER,dataBaseHelper.PASSWORD),
                 parametros);
 
-        Usuario usuario = null;
+        Usuario usuario = null ;
 
         if (cursor.moveToNext()) {
             usuario = criarUsuario(cursor);
@@ -135,7 +135,7 @@ public class UsuarioDao {
 
     private Usuario criarUsuario(Cursor cursor){
         Usuario usuario = new Usuario();
-        usuario.setId(cursor.getShort(0));
+        usuario.setId(cursor.getInt(0));
         usuario.setLogin(cursor.getString(1));
         usuario.setPassword(cursor.getString(2));
         return usuario;

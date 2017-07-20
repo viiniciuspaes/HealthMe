@@ -1,6 +1,8 @@
 package mpoo.gui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -96,16 +98,23 @@ public class LogInActivity extends AppCompatActivity {
 
             usuarioValidacao = new UsuarioValidacao(getApplicationContext());
 
-            String usuario = et_login.getText().toString();
-            String senha = et_password.getText().toString();
+            String usuario = et_login.getText().toString().trim();
+            String senha = et_password.getText().toString().trim();
 
             cripto = new CriptografiaSenha();
             String novaSenha = cripto.criptoSenha(senha);
 
+            SharedPreferences prefs = getSharedPreferences("user", Context.MODE_APPEND);
+
+
             Usuario validado = usuarioValidacao.login(usuario, novaSenha);
+
             if (validado ==  null){
-                //fazer toast
+                Toast.makeText(getApplicationContext(),"nao logou ", Toast.LENGTH_SHORT).show();
             }else {
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("username",validado.getLogin());
+                editor.apply();
                 startMainActivity();
             }
         }
