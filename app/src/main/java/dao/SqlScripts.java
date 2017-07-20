@@ -29,14 +29,6 @@ public class SqlScripts {
         pessoaBuilder.append(NASCIMENTO +" text);");
         return pessoaBuilder.toString();
     }
-    protected String createTableSessao(){
-
-        StringBuilder sesssaoBuilder = new StringBuilder();
-        sesssaoBuilder.append("CREATE TABLE "+ TABELA_SESSAO +" ( ");
-        sesssaoBuilder.append(ID_SESSAO +" integer primary key autoincrement, ");
-        sesssaoBuilder.append(USER_SESSAO +" text);");
-        return sesssaoBuilder.toString();
-    }
     protected String cmdWhere(String tabela, String a, String b){
         return "SELECT * FROM" + tabela + " WHERE " + a + "LIKE ? AND" + b + " LIKE ?";
     }

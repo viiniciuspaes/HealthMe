@@ -29,10 +29,6 @@ public class DbHelper extends SQLiteOpenHelper {
     protected static final String NASCIMENTO = "nascimento";
     protected static final String PESSOA_USER = "pessoa_user";
 
-    //TABELA SESSAO
-    protected static final String TABELA_SESSAO = "sessoes";
-    protected static final String ID_SESSAO = "_id_sessao";
-    protected static final String USER_SESSAO = "user_sessao";
 
     public DbHelper(Context context){
         super(context, NOME_DB,null, VERSAO);
@@ -41,7 +37,6 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(scripts.createTabelaUsuario());
         db.execSQL(scripts.createTabelaPessoa());
-        db.execSQL(scripts.createTableSessao());
     }
 
     @Override
