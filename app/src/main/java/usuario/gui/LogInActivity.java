@@ -12,7 +12,6 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import usuario.dao.DbHelper;
 import usuario.dominio.Usuario;
@@ -71,7 +70,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void startMainActivity(){
-        Intent i = new Intent(LogInActivity.this, MainActivity.class);
+        Intent i = new Intent(LogInActivity.this, TelaInicialActivity.class);
         startActivity(i);
         finish();
     }
@@ -95,7 +94,7 @@ public class LogInActivity extends AppCompatActivity {
 
             if (validado ==  null){
                 et_login.requestFocus();
-                et_login.setError(resources.getString(R.string.error_valid_email_password));
+                et_login.setError(resources.getString(R.string.error_valid_user_password));
             }else {
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putString("username",validado.getLogin());

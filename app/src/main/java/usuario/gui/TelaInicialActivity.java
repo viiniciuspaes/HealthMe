@@ -9,7 +9,7 @@ import android.widget.TextView;
 import usuario.negocio.SessaoUsuario;
 
 
-public class MainActivity extends AppCompatActivity {
+public class TelaInicialActivity extends AppCompatActivity {
     private SharedPreferences preferences;
     private SessaoUsuario sessao;
     private TextView boasVindas;

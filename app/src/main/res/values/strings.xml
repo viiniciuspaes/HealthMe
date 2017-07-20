@@ -1,21 +1,21 @@
 <resources>
     <string name="app_name">HealthMe</string>
     <string name="campo_nome">Nome</string>
-    <string name="campo_email">Login</string>
+    <string name="campo_usuario">Login</string>
     <string name="campo_password">Password</string>
     <string name="campo_confirmar_password">Password</string>
     <string name="text_login">Entrar</string>
     <string name="text_register">Registrar</string>
     <string name="error_menssagem_nome">Entre com nome completo</string>
-    <string name="error_menssagem_email">Entre com email valido</string>
+    <string name="error_mensagem_usuario">Entre com usuário valido</string>
     <string name="error_menssagem_nascimento">Entre com idade</string>
     <string name="error_menssageg_password">Entre com a senha </string>
     <string name="success_message">Registrado com sucesso</string>
     <string name="text_not_member">Nao possui conta? se registre aqui.</string>
     <string name="text_already_member">Ja e um membro? faça login.</string>
-    <string name="error_email_existe">Email já registrado.</string>
+    <string name="error_usuario_existe">Usuário já registrado.</string>
     <string name="error_password_match">Senhas nao conferem.</string>
-    <string name="error_valid_email_password">Email ou senha errados.</string>
+    <string name="error_valid_user_password">Usuário ou senha errados.</string>
     <string name="action_configuracoes">Configurações</string>
     <string name="text_hello">Ola,</string>
     <string name="title_activity_map">Map</string>
