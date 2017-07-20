@@ -1,4 +1,4 @@
-package mpoo.gui;
+package usuario.gui;
 
 import android.Manifest;
 import android.content.pm.PackageManager;

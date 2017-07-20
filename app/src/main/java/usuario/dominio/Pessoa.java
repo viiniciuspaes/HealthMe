@@ -1,4 +1,4 @@
-package dominio;
+package usuario.dominio;
 
 
 import java.util.Date;
@@ -85,7 +85,4 @@ public class Pessoa {
     public void setContatoEmergencia(ContatoEmergencia[] contatoEmergencia) {
         this.contatoEmergencia = contatoEmergencia;
     }
-
-
-
 }

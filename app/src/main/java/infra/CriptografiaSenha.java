@@ -4,7 +4,6 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-
 public class CriptografiaSenha {
     public String criptoSenha(String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
@@ -16,6 +15,5 @@ public class CriptografiaSenha {
         }
         String senhaCriptografada = hexString.toString();
         return senhaCriptografada;
-
     }
 }

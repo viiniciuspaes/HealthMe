@@ -1,4 +1,4 @@
-package dominio;
+package usuario.dominio;
 
 
 public class Usuario {
@@ -34,7 +34,4 @@ public class Usuario {
     public void setId(int id) {
         this.id = id;
     }
-
-
-
 }

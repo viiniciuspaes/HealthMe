@@ -1,4 +1,4 @@
-package mpoo.gui;
+package usuario.gui;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -9,12 +9,11 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import dominio.Pessoa;
-import dominio.Usuario;
+import usuario.dominio.Pessoa;
+import usuario.dominio.Usuario;
 import infra.CriptografiaSenha;
-import negocio.UsuarioValidacao;
+import usuario.negocio.UsuarioValidacao;
 
 public class CadastroActivity extends AppCompatActivity {
     private EditText et_user ;
@@ -33,14 +32,12 @@ public class CadastroActivity extends AppCompatActivity {
 
         usuarioValidacao = new UsuarioValidacao(getApplicationContext());
 
-
         et_user = (EditText) findViewById(R.id.et_register_login);
         et_password = (EditText) findViewById(R.id.et_register_password);
         et_password2 = (EditText) findViewById(R.id.et_register_password2);
         et_nome = (EditText) findViewById(R.id.et_register_nome);
 
         initViews();
-
     }
     public void initViews() {
         resources = getResources();
@@ -62,7 +59,6 @@ public class CadastroActivity extends AppCompatActivity {
         et_user.addTextChangedListener(textWatcher);
         et_nome.addTextChangedListener(textWatcher);
         et_password2.addTextChangedListener(textWatcher);
-
     }
     public void cadastrar(View v) throws Exception{
         boolean validar=validarCampos();
@@ -126,6 +122,4 @@ public class CadastroActivity extends AppCompatActivity {
         }
         return verificador;
     }
-
-
 }

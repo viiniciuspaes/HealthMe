@@ -1,4 +1,4 @@
-package dominio;
+package usuario.dominio;
 
 
 public class ContatoEmergencia {
@@ -24,6 +24,4 @@ public class ContatoEmergencia {
     public void setNumero(String numero) {
         this.numero = numero;
     }
-
-
 }

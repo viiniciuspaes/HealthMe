@@ -1,11 +1,11 @@
-package negocio;
+package usuario.negocio;
 
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import dao.UsuarioDao;
-import dominio.Pessoa;
+import usuario.dao.UsuarioDao;
+import usuario.dominio.Pessoa;
 
 public class SessaoUsuario {
 
@@ -30,7 +30,5 @@ public class SessaoUsuario {
         String usuario = preferences.getString("username","");
 
         setUsuarioLogado(dao.buscarPessoa(usuario));
-
     }
-
 }

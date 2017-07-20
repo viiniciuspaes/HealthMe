@@ -1,7 +1,7 @@
-package dao;
+package usuario.dao;
 
 
-import static dao.DbHelper.*;
+import static usuario.dao.DbHelper.*;
 
 public class SqlScripts {
     protected String createTabelaUsuario(){
@@ -35,5 +35,4 @@ public class SqlScripts {
     protected String cmdWhere(String tabela, String a){
         return "SELECT * FROM " + tabela + " WHERE " + a + " LIKE ?";
     }
-
 }
