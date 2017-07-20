@@ -33,8 +33,8 @@ public class UsuarioValidacao {
 
     }
 
-    public Usuario login(String email, String senha) throws Exception {
-
+    public Usuario login(String email, String senha){
+        usuarioDao = new UsuarioDao(context);
         Usuario usuario = usuarioDao.buscarUsuario(email, senha);
 
         return usuario;

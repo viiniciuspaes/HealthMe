@@ -102,14 +102,12 @@ public class LogInActivity extends AppCompatActivity {
             cripto = new CriptografiaSenha();
             String novaSenha = cripto.criptoSenha(senha);
 
-            Usuario validado = usuarioValidacao.login(usuario, senha);
+            Usuario validado = usuarioValidacao.login(usuario, novaSenha);
             if (validado ==  null){
                 //fazer toast
             }else {
                 startMainActivity();
             }
-
-
         }
     }
 
