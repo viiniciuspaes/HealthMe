@@ -28,8 +28,10 @@ public class UsuarioValidacao {
 
     public void validarCadastro(Pessoa pessoa)  {
         usuarioDao = new UsuarioDao(context);
-        if (usuarioDao.buscarUsuario(pessoa.getUsuario().getLogin(),pessoa.getUsuario().getPassword())==null){
+        if (usuarioDao.buscarUsuario(pessoa.getUsuario().getLogin())==null){
             usuarioDao.inserirRegistro(pessoa);
+        }else{
+            Toast.makeText(context,"Usuário já cadastrado",Toast.LENGTH_LONG).show();
         }
     }
     public String mudarData(Date a){

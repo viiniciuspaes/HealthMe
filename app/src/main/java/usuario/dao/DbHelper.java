@@ -25,7 +25,7 @@ public class DbHelper extends SQLiteOpenHelper {
     protected static final String ENDERECO_TRABALHO = "endereco_trabalho";
     protected static final String CONTATO_EMERGENCIA1 = "contato_emergencia1";
     protected static final String CONTATO_EMERGENCIA2 = "contato_emergencia2";
-    protected static final String CONTATO_EMERGENCIA3 = "econtato_emergencia3";
+    protected static final String CONTATO_EMERGENCIA3 = "contato_emergencia3";
     protected static final String PLANO_SAUDE = "plano_saude";
     protected static final String NASCIMENTO = "nascimento";
 

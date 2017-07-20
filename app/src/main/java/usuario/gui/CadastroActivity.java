@@ -10,6 +10,9 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import usuario.dominio.Pessoa;
 import usuario.dominio.Usuario;
 import infra.CriptografiaSenha;
@@ -76,6 +79,8 @@ public class CadastroActivity extends AppCompatActivity {
 
                 usuarioValidacao.validarCadastro(pessoa);
                 iniciarLoginActivity();
+
+
         }
     }
     public void iniciarLoginActivity(){
@@ -88,7 +93,8 @@ public class CadastroActivity extends AppCompatActivity {
         String senha = et_password.getText().toString();
         String senhaConfirma = et_password2.getText().toString();
 
-        if(isCamposValidos(nome, login, senha, senhaConfirma) && isSenhasValidas(senha, senhaConfirma)){
+        if(isCamposValidos(nome, login, senha, senhaConfirma) && isSenhasValidas(senha, senhaConfirma) &&
+                validarLoginESenha(login,senha)){
             return  true;
         }
 
@@ -121,5 +127,48 @@ public class CadastroActivity extends AppCompatActivity {
             verificador = true;
         }
         return verificador;
+    }
+    public boolean validarLoginESenha(String login,String senha){
+        boolean verificador = false;
+        if(hasSpacePassword(login) == false){
+            et_user.requestFocus();
+            et_user.setError("Espaço em branco encontrado");
+        }else if(hasNoNumbersPassword(login) == false){
+            et_user.requestFocus();
+            et_user.setError("Caracter especial encontrado");
+        }else if(hasSpacePassword(senha) == false){
+            et_password.requestFocus();
+            et_password.setError("Espaço em branco encontrado");
+        }else if(hasNoNumbersPassword(senha) == false){
+            et_password.requestFocus();
+            et_password.setError("Caracter especial encontrado");
+        }
+        else{
+            verificador = true;
+        }
+        return  verificador;
+    }
+    public boolean hasSpacePassword(String campo){
+        String senha = campo;
+        Pattern p= Pattern.compile("\\S+");
+        Matcher m = p.matcher(senha);
+        System.out.println(m.matches());
+        return m.matches();
+    }
+
+    public boolean hasNoNumbersPassword(String campo){
+        String senha = campo;
+        Pattern p = Pattern.compile("^[A-Za-z0-9]+$");
+        Matcher m = p.matcher(senha);
+        System.out.print(m.matches()+"\n");
+        return m.matches();
+    }
+
+    public boolean hasNumbersLettersPassword(String campo){
+        String senha = campo;
+        Pattern p = Pattern.compile("^(?=.+[a-z])(?=.+[0-9]).+$");
+        Matcher m = p.matcher(senha);
+        System.out.print(m.matches()+"\n");
+        return m.matches();
     }
 }

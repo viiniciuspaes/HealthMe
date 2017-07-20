@@ -77,10 +77,10 @@ public class UsuarioDao {
         db.update(DbHelper.TABELA_PESSOA, valor, where, null);
         db.close();
     }
-    public Usuario buscarUsuario(String email, String password) {
+    public Usuario buscarUsuario(String user, String password) {
         SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
 
-        String[] parametros = {email, password};
+        String[] parametros = {user, password};
 
         Cursor cursor = db.rawQuery(script.cmdWhere(dataBaseHelper.TABELA_USUARIO,dataBaseHelper.USER,dataBaseHelper.PASSWORD),
                 parametros);
@@ -94,10 +94,10 @@ public class UsuarioDao {
         db.close();
         return usuario;
     }
-    public Usuario buscarUsuario(String email) {
+    public Usuario buscarUsuario(String user) {
         SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
 
-        String[] parametros = {email};
+        String[] parametros = {user};
 
         Cursor cursor = db.rawQuery(script.cmdWhere(dataBaseHelper.TABELA_USUARIO,dataBaseHelper.USER),
                 parametros);

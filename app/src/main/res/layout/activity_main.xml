@@ -11,10 +11,7 @@
         android:id="@+id/boasVindas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bem Vindo, "
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-         />
-
-
+        android:text="Bem Vindo(a), "
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
 </LinearLayout>
