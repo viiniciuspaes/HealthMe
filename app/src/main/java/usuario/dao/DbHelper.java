@@ -1,4 +1,4 @@
-package dao;
+package usuario.dao;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

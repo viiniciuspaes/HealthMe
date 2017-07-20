@@ -1,4 +1,4 @@
-package mpoo.gui;
+package usuario.gui;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

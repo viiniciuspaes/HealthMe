@@ -1,4 +1,4 @@
-package mpoo.gui;
+package usuario.gui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import negocio.SessaoUsuario;
+import usuario.negocio.SessaoUsuario;
 
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package dominio;
+package usuario.dominio;
 
 
 import com.google.android.gms.maps.model.LatLng;

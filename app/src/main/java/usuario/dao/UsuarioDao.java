@@ -1,4 +1,4 @@
-package dao;
+package usuario.dao;
 
 
 import android.content.ContentValues;
@@ -6,10 +6,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import dominio.ContatoEmergencia;
-import dominio.Pessoa;
-import dominio.Usuario;
-import negocio.UsuarioValidacao;
+import usuario.dominio.ContatoEmergencia;
+import usuario.dominio.Pessoa;
+import usuario.dominio.Usuario;
+import usuario.negocio.UsuarioValidacao;
 
 public class UsuarioDao {
     private SQLiteDatabase db;

@@ -1,4 +1,4 @@
-package mpoo.gui;
+package usuario.gui;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -9,12 +9,11 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import dominio.Pessoa;
-import dominio.Usuario;
+import usuario.dominio.Pessoa;
+import usuario.dominio.Usuario;
 import infra.CriptografiaSenha;
-import negocio.UsuarioValidacao;
+import usuario.negocio.UsuarioValidacao;
 
 public class CadastroActivity extends AppCompatActivity {
     private EditText et_user ;

@@ -1,4 +1,4 @@
-package negocio;
+package usuario.negocio;
 
 
 import android.content.Context;
@@ -6,9 +6,9 @@ import android.widget.Toast;
 
 import java.util.Date;
 
-import dao.UsuarioDao;
-import dominio.Pessoa;
-import dominio.Usuario;
+import usuario.dao.UsuarioDao;
+import usuario.dominio.Pessoa;
+import usuario.dominio.Usuario;
 
 
 public class UsuarioValidacao {

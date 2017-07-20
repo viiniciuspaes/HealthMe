@@ -1,7 +1,7 @@
-package dao;
+package usuario.dao;
 
 
-import static dao.DbHelper.*;
+import static usuario.dao.DbHelper.*;
 
 public class SqlScripts {
     protected String createTabelaUsuario(){
