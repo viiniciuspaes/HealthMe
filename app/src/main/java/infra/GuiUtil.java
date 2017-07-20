@@ -20,6 +20,4 @@ public final class GuiUtil {
     public void toastShort(Context context, String texto){
         Toast.makeText(context, texto, Toast.LENGTH_SHORT).show();
     }
-
-
 }

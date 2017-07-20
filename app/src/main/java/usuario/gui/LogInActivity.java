@@ -29,14 +29,11 @@ public class LogInActivity extends AppCompatActivity {
     private CriptografiaSenha cripto;
 
     private SQLiteDatabase conexao;
-
     private DbHelper dadosDbHelper;
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
         et_login = (EditText) findViewById(R.id.user_login);
         et_password = (EditText) findViewById(R.id.user_password);
@@ -97,9 +94,9 @@ public class LogInActivity extends AppCompatActivity {
             Usuario validado = usuarioValidacao.login(usuario, novaSenha);
 
             if (validado ==  null){
-                Toast.makeText(getApplicationContext(),"nao logou ", Toast.LENGTH_SHORT).show();
+                et_login.requestFocus();
+                et_login.setError(resources.getString(R.string.error_valid_email_password));
             }else {
-                Toast.makeText(getApplicationContext(),"logou ", Toast.LENGTH_SHORT).show();
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putString("username",validado.getLogin());
                 editor.apply();

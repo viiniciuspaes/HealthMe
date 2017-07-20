@@ -19,7 +19,6 @@ public class UsuarioDao {
     private SqlScripts script;
     private ContatoEmergencia ctEmergencia;
 
-
     public UsuarioDao(Context context){
         this.context = context;
         dataBaseHelper = new DbHelper(context);
@@ -48,13 +47,11 @@ public class UsuarioDao {
 
         db.insert(DbHelper.TABELA_PESSOA,null, valor);
         db.close();
-
     }
     public void atualizarRegistro(Pessoa pessoa){
         ContentValues valor;
         String where;
         validacao =  new UsuarioValidacao(this.context);
-
 
         db = dataBaseHelper.getWritableDatabase();
         where = DbHelper.ID_USUARIO + "=" + pessoa.getId();
@@ -119,10 +116,8 @@ public class UsuarioDao {
 
         String[] parametros = {nome};
 
-
         Cursor cursor = db.rawQuery(script.cmdWhere(dataBaseHelper.TABELA_PESSOA,dataBaseHelper.PESSOA_USER),
                 parametros);
-
 
         Pessoa pessoa = null;
 
@@ -133,7 +128,6 @@ public class UsuarioDao {
         db.close();
         return pessoa;
     }
-
     private Usuario criarUsuario(Cursor cursor){
         Usuario usuario = new Usuario();
         usuario.setId(cursor.getInt(0));
@@ -141,7 +135,6 @@ public class UsuarioDao {
         usuario.setPassword(cursor.getString(2));
         return usuario;
     }
-
     private Pessoa criarPessoa(Cursor cursor){
 
         Pessoa pessoa = new Pessoa();

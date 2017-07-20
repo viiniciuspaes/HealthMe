@@ -85,7 +85,4 @@ public class Pessoa {
     public void setContatoEmergencia(ContatoEmergencia[] contatoEmergencia) {
         this.contatoEmergencia = contatoEmergencia;
     }
-
-
-
 }

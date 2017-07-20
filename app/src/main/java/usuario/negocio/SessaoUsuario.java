@@ -30,7 +30,5 @@ public class SessaoUsuario {
         String usuario = preferences.getString("username","");
 
         setUsuarioLogado(dao.buscarPessoa(usuario));
-
     }
-
 }

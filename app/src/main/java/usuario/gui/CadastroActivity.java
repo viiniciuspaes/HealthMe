@@ -32,14 +32,12 @@ public class CadastroActivity extends AppCompatActivity {
 
         usuarioValidacao = new UsuarioValidacao(getApplicationContext());
 
-
         et_user = (EditText) findViewById(R.id.et_register_login);
         et_password = (EditText) findViewById(R.id.et_register_password);
         et_password2 = (EditText) findViewById(R.id.et_register_password2);
         et_nome = (EditText) findViewById(R.id.et_register_nome);
 
         initViews();
-
     }
     public void initViews() {
         resources = getResources();
@@ -61,7 +59,6 @@ public class CadastroActivity extends AppCompatActivity {
         et_user.addTextChangedListener(textWatcher);
         et_nome.addTextChangedListener(textWatcher);
         et_password2.addTextChangedListener(textWatcher);
-
     }
     public void cadastrar(View v) throws Exception{
         boolean validar=validarCampos();
@@ -125,6 +122,4 @@ public class CadastroActivity extends AppCompatActivity {
         }
         return verificador;
     }
-
-
 }

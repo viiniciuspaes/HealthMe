@@ -29,8 +29,6 @@ public class DbHelper extends SQLiteOpenHelper {
     protected static final String PLANO_SAUDE = "plano_saude";
     protected static final String NASCIMENTO = "nascimento";
 
-
-
     public DbHelper(Context context){
         super(context, NOME_DB,null, VERSAO);
     }
@@ -47,6 +45,4 @@ public class DbHelper extends SQLiteOpenHelper {
 
         onCreate(db);
     }
-
-
 }

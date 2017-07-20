@@ -16,7 +16,6 @@ public class PlanoSaude {
         this.centrosSaude = centrosSaude;
     }
 
-
     public String getNome() {
         return nome;
     }
@@ -24,6 +23,4 @@ public class PlanoSaude {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-
 }

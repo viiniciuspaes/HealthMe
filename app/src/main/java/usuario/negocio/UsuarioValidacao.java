@@ -15,11 +15,8 @@ public class UsuarioValidacao {
     private Context context;
     private UsuarioDao usuarioDao;
 
-
-
     public UsuarioValidacao(Context context) {
         this.context=context;
-
     }
 
     public Usuario login(String email, String senha){
@@ -29,12 +26,10 @@ public class UsuarioValidacao {
         return usuario;
     }
 
-
     public void validarCadastro(Pessoa pessoa)  {
         usuarioDao = new UsuarioDao(context);
         if (usuarioDao.buscarUsuario(pessoa.getUsuario().getLogin(),pessoa.getUsuario().getPassword())==null){
             usuarioDao.inserirRegistro(pessoa);
-            Toast.makeText(context,"funcionou",Toast.LENGTH_LONG).show();
         }
     }
     public String mudarData(Date a){
