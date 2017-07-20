@@ -81,8 +81,8 @@ public class LogInActivity extends AppCompatActivity {
 
             usuarioValidacao = new UsuarioValidacao(getApplicationContext());
 
-            String usuario = et_login.getText().toString().trim();
-            String senha = et_password.getText().toString().trim();
+            String usuario = et_login.getText().toString();
+            String senha = et_password.getText().toString();
 
             cripto = new CriptografiaSenha();
             String novaSenha = cripto.criptoSenha(senha);
