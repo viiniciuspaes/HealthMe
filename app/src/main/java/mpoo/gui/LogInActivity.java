@@ -34,19 +34,6 @@ public class LogInActivity extends AppCompatActivity {
 
     private DbHelper dadosDbHelper;
 
-    private void criarConexao(){
-        try{
-
-            dadosDbHelper = new DbHelper(this);
-
-            conexao = dadosDbHelper.getWritableDatabase();
-
-
-
-        }catch (SQLException ex){
-
-        }
-    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,10 +72,12 @@ public class LogInActivity extends AppCompatActivity {
     public void startCadastroActivity(View v){
         Intent i = new Intent(LogInActivity.this,CadastroActivity.class);
         startActivity(i);
+        finish();
     }
 
     public void startMainActivity(){
-        startActivity(new Intent(LogInActivity.this,TelaInicialActivity.class));
+        Intent i = new Intent(LogInActivity.this, MainActivity.class);
+        startActivity(i);
         finish();
     }
 

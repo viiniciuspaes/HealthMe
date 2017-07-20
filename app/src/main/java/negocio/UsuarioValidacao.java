@@ -2,24 +2,13 @@ package negocio;
 
 
 import android.content.Context;
-import android.content.Intent;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import dao.UsuarioDao;
 import dominio.Pessoa;
 import dominio.Usuario;
-import infra.CriptografiaSenha;
-import mpoo.gui.CadastroActivity;
-import mpoo.gui.LogInActivity;
-import mpoo.gui.TelaInicialActivity;
-
-import static android.support.v4.content.ContextCompat.startActivity;
 
 
 public class UsuarioValidacao {
