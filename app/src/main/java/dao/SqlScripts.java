@@ -22,18 +22,18 @@ public class SqlScripts {
         pessoaBuilder.append(PESSOA_USER +" text not null unique, ");
         pessoaBuilder.append(ENDERECO_CASA +" text, ");
         pessoaBuilder.append(ENDERECO_TRABALHO +" text, ");
-        pessoaBuilder.append(CONTATO_EMERGENCIA1 +" text, ");
-        pessoaBuilder.append(CONTATO_EMERGENCIA2 +" text, ");
-        pessoaBuilder.append(CONTATO_EMERGENCIA3 +" text, ");
-        pessoaBuilder.append(PLANO_SAUDE +" text, ");
-        pessoaBuilder.append(NASCIMENTO +" text);");
+        //pessoaBuilder.append(CONTATO_EMERGENCIA1 +" text, ");
+        //pessoaBuilder.append(CONTATO_EMERGENCIA2 +" text, ");
+        //pessoaBuilder.append(CONTATO_EMERGENCIA3 +" text, ");
+        pessoaBuilder.append(PLANO_SAUDE +" text);");
+        //pessoaBuilder.append(NASCIMENTO +" text);");
         return pessoaBuilder.toString();
     }
     protected String cmdWhere(String tabela, String a, String b){
-        return "SELECT * FROM " + tabela + " WHERE " + a + "=? AND " + b + "=?";
+        return "SELECT * FROM " + tabela + " WHERE " + a + " LIKE ? AND " + b + " LIKE ?";
     }
     protected String cmdWhere(String tabela, String a){
-        return "SELECT * FROM " + tabela + " WHERE " + a + "=?";
+        return "SELECT * FROM " + tabela + " WHERE " + a + " LIKE ?";
     }
 
 }

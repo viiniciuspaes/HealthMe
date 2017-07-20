@@ -20,6 +20,7 @@ public class DbHelper extends SQLiteOpenHelper {
     protected static final String TABELA_PESSOA = "pessoas";
     protected static final String ID_PESSOA ="_id_pessoa";
     protected static final String NOME = "nome";
+    protected static final String PESSOA_USER = "pessoa_user";
     protected static final String ENDERECO_CASA = "endereco_casa";
     protected static final String ENDERECO_TRABALHO = "endereco_trabalho";
     protected static final String CONTATO_EMERGENCIA1 = "contato_emergencia1";
@@ -27,7 +28,7 @@ public class DbHelper extends SQLiteOpenHelper {
     protected static final String CONTATO_EMERGENCIA3 = "econtato_emergencia3";
     protected static final String PLANO_SAUDE = "plano_saude";
     protected static final String NASCIMENTO = "nascimento";
-    protected static final String PESSOA_USER = "pessoa_user";
+
 
 
     public DbHelper(Context context){

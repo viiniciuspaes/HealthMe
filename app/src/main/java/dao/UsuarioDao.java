@@ -30,13 +30,14 @@ public class UsuarioDao {
         db = dataBaseHelper.getWritableDatabase();
 
         valor = new ContentValues();
-        valor.put(DbHelper.USER, pessoa.getUsuario().toString());
+        valor.put(DbHelper.USER, pessoa.getUsuario().getLogin());
         valor.put(DbHelper.PASSWORD, pessoa.getUsuario().getPassword());
 
         db.insert(DbHelper.TABELA_USUARIO, null, valor);
 
         valor = new ContentValues();
         valor.put(DbHelper.NOME, pessoa.getNome());
+        valor.put(DbHelper.PESSOA_USER, pessoa.getUsuario().getLogin());
         valor.put(DbHelper.ENDERECO_CASA, pessoa.getEnderecoCasa());
         valor.put(DbHelper.ENDERECO_TRABALHO, pessoa.getEnderecoTrabalho());
         //valor.put(DbHelper.CONTATO_EMERGENCIA1, pessoa.getContatoEmergencia()[0].getNome());
@@ -142,19 +143,13 @@ public class UsuarioDao {
     }
 
     private Pessoa criarPessoa(Cursor cursor){
-        ctEmergencia = new ContatoEmergencia();
-        ContatoEmergencia[] lista = new ContatoEmergencia[3];
 
         Pessoa pessoa = new Pessoa();
         pessoa.setId(cursor.getShort(0));
+        pessoa.setNome(cursor.getString(1));
         pessoa.setEnderecoCasa(cursor.getString(2));
         pessoa.setEnderecoTrabalho(cursor.getString(3));
-        for(int x=0; x<3;x++){
-            ctEmergencia.setNome(cursor.getString(x+4+x));
-            lista[x]=ctEmergencia;
-        }
-        pessoa.setContatoEmergencia(lista);
-        pessoa.setPlanoSaude(cursor.getString(7));
+        pessoa.setPlanoSaude(cursor.getString(4));
         return pessoa;
     }
 }

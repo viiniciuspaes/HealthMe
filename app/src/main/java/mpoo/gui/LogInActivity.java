@@ -88,7 +88,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void startMainActivity(){
-        startActivity(new Intent(this,TelaInicialActivity.class));
+        startActivity(new Intent(LogInActivity.this,TelaInicialActivity.class));
         finish();
     }
 
@@ -112,6 +112,7 @@ public class LogInActivity extends AppCompatActivity {
             if (validado ==  null){
                 Toast.makeText(getApplicationContext(),"nao logou ", Toast.LENGTH_SHORT).show();
             }else {
+                Toast.makeText(getApplicationContext(),"logou ", Toast.LENGTH_SHORT).show();
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putString("username",validado.getLogin());
                 editor.apply();

@@ -19,6 +19,9 @@ public class TelaInicialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_ok);
 
+
+    }
+    public void nada(){
         sessao.iniciarSessao(getApplicationContext());
     }
 
