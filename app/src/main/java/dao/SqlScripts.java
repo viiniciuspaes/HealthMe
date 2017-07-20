@@ -30,10 +30,10 @@ public class SqlScripts {
         return pessoaBuilder.toString();
     }
     protected String cmdWhere(String tabela, String a, String b){
-        return "SELECT * FROM" + tabela + " WHERE " + a + "LIKE ? AND" + b + " LIKE ?";
+        return "SELECT * FROM " + tabela + " WHERE " + a + " LIKE ? AND " + b + " LIKE ?";
     }
     protected String cmdWhere(String tabela, String a){
-        return "SELECT * FROM" + tabela + " WHERE " + a + "LIKE ?";
+        return "SELECT * FROM " + tabela + " WHERE " + a + " LIKE ?";
     }
 
 }

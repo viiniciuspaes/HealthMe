@@ -37,20 +37,13 @@ public class UsuarioValidacao {
 
         Usuario usuario = usuarioDao.buscarUsuario(email, senha);
 
-        if (usuario == null) {
-            throw new Exception("Usuário e/ou senha inválidos");
-        } else {
-
-
-
-        }
         return usuario;
     }
 
 
     public void validarCadastro(Pessoa pessoa)  {
+        usuarioDao = new UsuarioDao(context);
         if (usuarioDao.buscarUsuario(pessoa.getUsuario().getLogin(),pessoa.getUsuario().getPassword())!=null){
-            usuarioDao = new UsuarioDao(context);
             usuarioDao.inserirRegistro(pessoa);
         }
     }

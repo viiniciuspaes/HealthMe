@@ -14,11 +14,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import dao.DbHelper;
-import dao.SessaoDao;
 import dominio.Pessoa;
 import dominio.Usuario;
 import infra.CriptografiaSenha;
-import negocio.SessaoUsuario;
 import negocio.UsuarioValidacao;
 
 
@@ -52,7 +50,6 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        usuarioValidacao = new UsuarioValidacao(getApplicationContext());
 
         et_login = (EditText) findViewById(R.id.user_login);
         et_password = (EditText) findViewById(R.id.user_password);
@@ -97,6 +94,8 @@ public class LogInActivity extends AppCompatActivity {
         boolean validar=validarCampos();
         if(validar){
 
+            usuarioValidacao = new UsuarioValidacao(getApplicationContext());
+
             String usuario = et_login.getText().toString();
             String senha = et_password.getText().toString();
 
@@ -107,8 +106,6 @@ public class LogInActivity extends AppCompatActivity {
             if (validado ==  null){
                 //fazer toast
             }else {
-                SessaoDao sessao = new SessaoDao(getApplicationContext());
-                sessao.inserirRegistro(validado);
                 startMainActivity();
             }
 

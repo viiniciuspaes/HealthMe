@@ -39,11 +39,11 @@ public class UsuarioDao {
         valor.put(DbHelper.NOME, pessoa.getNome());
         valor.put(DbHelper.ENDERECO_CASA, pessoa.getEnderecoCasa());
         valor.put(DbHelper.ENDERECO_TRABALHO, pessoa.getEnderecoTrabalho());
-        valor.put(DbHelper.CONTATO_EMERGENCIA1, pessoa.getContatoEmergencia()[0].getNome());
-        valor.put(DbHelper.CONTATO_EMERGENCIA2, pessoa.getContatoEmergencia()[1].getNome());
-        valor.put(DbHelper.CONTATO_EMERGENCIA3, pessoa.getContatoEmergencia()[2].getNome());
+        //valor.put(DbHelper.CONTATO_EMERGENCIA1, pessoa.getContatoEmergencia()[0].getNome());
+        //valor.put(DbHelper.CONTATO_EMERGENCIA2, pessoa.getContatoEmergencia()[1].getNome());
+        //valor.put(DbHelper.CONTATO_EMERGENCIA3, pessoa.getContatoEmergencia()[2].getNome());
         valor.put(DbHelper.PLANO_SAUDE, pessoa.getPlanoSaude());
-        valor.put(DbHelper.NASCIMENTO, validacao.mudarData(pessoa.getNascimento()) );
+        //valor.put(DbHelper.NASCIMENTO, validacao.mudarData(pessoa.getNascimento()) );
 
         db.insert(DbHelper.TABELA_PESSOA,null, valor);
         db.close();
@@ -74,7 +74,7 @@ public class UsuarioDao {
         valor.put(DbHelper.CONTATO_EMERGENCIA2, pessoa.getContatoEmergencia()[1].getNome());
         valor.put(DbHelper.CONTATO_EMERGENCIA3, pessoa.getContatoEmergencia()[2].getNome());
         valor.put(DbHelper.PLANO_SAUDE, pessoa.getPlanoSaude());
-        valor.put(DbHelper.NASCIMENTO, validacao.mudarData(pessoa.getNascimento()) );
+        //valor.put(DbHelper.NASCIMENTO, validacao.mudarData(pessoa.getNascimento()) );
 
         db.update(DbHelper.TABELA_PESSOA, valor, where, null);
         db.close();
