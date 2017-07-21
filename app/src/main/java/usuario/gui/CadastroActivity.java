@@ -12,7 +12,6 @@ import android.widget.EditText;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.io.*;
 
 import usuario.dominio.Pessoa;
 import usuario.dominio.Usuario;
@@ -105,7 +104,7 @@ public class CadastroActivity extends AppCompatActivity {
     if (campo_senha.equals(campo_senha_repetida)) {
         return true;
     }
-    et_password.setError(resources.getString(R.string.error_password_match));
+    et_password.setError(resources.getString(R.string.erro_senha_comparar));
     et_password.requestFocus();
     return false;
 }

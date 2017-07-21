@@ -93,7 +93,7 @@ public class LogInActivity extends AppCompatActivity {
 
             if (validado ==  null){
                 et_login.requestFocus();
-                et_login.setError(resources.getString(R.string.error_valid_user_password));
+                et_login.setError(resources.getString(R.string.erro_valido_usuario_senha));
             }else {
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putString("username",validado.getLogin());

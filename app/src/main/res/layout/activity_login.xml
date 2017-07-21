@@ -48,7 +48,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:inputType="textPassword"
-        android:hint="@string/campo_password"
+        android:hint="@string/campo_senha"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"/>
 
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="45dp"
         android:layout_marginTop="25dp"
-        android:text="@string/text_not_member"
+        android:text="@string/texto_no_membro"
         android:background="@android:color/transparent"
         android:onClick="startCadastroActivity"/>
 
