@@ -34,7 +34,7 @@ public class UsuarioValidacao {
             Toast.makeText(context,"Usuário já cadastrado",Toast.LENGTH_LONG).show();
         }
     }
-    public String mudarData(Date a){
-        return String.valueOf(a);
-    }
+   // public String mudarData(Date a){
+    //    return String.valueOf(a);
+    //}
 }

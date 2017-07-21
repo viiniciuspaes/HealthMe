@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.io.*;
 
 import usuario.dominio.Pessoa;
 import usuario.dominio.Usuario;
@@ -130,45 +131,52 @@ public class CadastroActivity extends AppCompatActivity {
     }
     public boolean validarLoginESenha(String login,String senha){
         boolean verificador = false;
-        if(hasSpacePassword(login) == false){
+        if(verEspacosBrancos(login) == false){
             et_user.requestFocus();
-            et_user.setError("Espaço em branco encontrado");
-        }else if(hasNoNumbersPassword(login) == false){
+            et_user.setError("Não deve espaço em branco.");
+        }else if(verAlfanumerico(login) == false){
             et_user.requestFocus();
-            et_user.setError("Caracter especial encontrado");
-        }else if(hasSpacePassword(senha) == false){
+            et_user.setError("Só pode haver letra e número.");
+        }else if(verEspacosBrancos(senha) == false){
             et_password.requestFocus();
-            et_password.setError("Espaço em branco encontrado");
-        }else if(hasNoNumbersPassword(senha) == false){
+            et_password.setError("Não deve haver espaço em branco.");
+        }else if(verAlfanumerico(senha) == false){
             et_password.requestFocus();
-            et_password.setError("Caracter especial encontrado");
-        }
-        else{
+            et_password.setError("Só pode haver letra e número.");
+        }else if(verificarTamanho(login) == false) {
+            et_user.requestFocus();
+            et_user.setError("Login inválido, verificar tamanho.");
+        }else if(verificarTamanho(senha) == false){
+            et_password.requestFocus();
+            et_password.setError("Senha inválida, verificar tamanho.");
+        }else {
             verificador = true;
         }
         return  verificador;
     }
-    public boolean hasSpacePassword(String campo){
-        String senha = campo;
+    public boolean verEspacosBrancos(String campo){
+        String texto = campo;
         Pattern p= Pattern.compile("\\S+");
-        Matcher m = p.matcher(senha);
+        Matcher m = p.matcher(texto);
         System.out.println(m.matches());
         return m.matches();
     }
 
-    public boolean hasNoNumbersPassword(String campo){
-        String senha = campo;
+    public boolean verAlfanumerico(String campo){
+        String texto = campo;
         Pattern p = Pattern.compile("^[A-Za-z0-9]+$");
-        Matcher m = p.matcher(senha);
+        Matcher m = p.matcher(texto);
         System.out.print(m.matches()+"\n");
         return m.matches();
     }
 
-    public boolean hasNumbersLettersPassword(String campo){
-        String senha = campo;
-        Pattern p = Pattern.compile("^(?=.+[a-z])(?=.+[0-9]).+$");
-        Matcher m = p.matcher(senha);
-        System.out.print(m.matches()+"\n");
-        return m.matches();
+    public boolean verificarTamanho(String campo) {
+        String texto = campo;
+        if (texto.length() > 8 || texto.length() < 4) {
+            return false;
+        } else {
+            return true;
+        }
     }
+
 }

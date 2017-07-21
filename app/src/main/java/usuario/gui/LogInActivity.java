@@ -66,7 +66,6 @@ public class LogInActivity extends AppCompatActivity {
     public void startCadastroActivity(View v){
         Intent i = new Intent(LogInActivity.this,CadastroActivity.class);
         startActivity(i);
-        finish();
     }
 
     public void startMainActivity(){
