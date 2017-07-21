@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -13,7 +12,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 
-import usuario.dao.DbHelper;
 import usuario.dominio.Usuario;
 import infra.CriptografiaSenha;
 import usuario.negocio.UsuarioValidacao;
@@ -26,9 +24,6 @@ public class LogInActivity extends AppCompatActivity {
     private Resources resources;
     private UsuarioValidacao usuarioValidacao;
     private CriptografiaSenha cripto;
-
-    private SQLiteDatabase conexao;
-    private DbHelper dadosDbHelper;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +38,9 @@ public class LogInActivity extends AppCompatActivity {
     public void onResume(){
         super.onResume();
     }
-    public void initViews() {
-        resources = getResources();
-        TextWatcher textWatcher = new TextWatcher() {
+        public void initViews() {
+            resources = getResources();
+            TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -61,7 +56,7 @@ public class LogInActivity extends AppCompatActivity {
 
         et_password.addTextChangedListener(textWatcher);
         et_login.addTextChangedListener(textWatcher);
-    }
+        }
 
     public void startCadastroActivity(View v){
         Intent i = new Intent(LogInActivity.this,CadastroActivity.class);
@@ -105,7 +100,7 @@ public class LogInActivity extends AppCompatActivity {
 
     private boolean validarCampos(){
 
-        String login = et_login.getText().toString().trim();
+        String login = et_login.getText().toString();
         String senha = et_password.getText().toString();
 
         if(isCamposValidos(login, senha)){

@@ -88,8 +88,8 @@ public class CadastroActivity extends AppCompatActivity {
         finish();
     }
     private boolean validarCampos(){
-        String nome = et_nome.getText().toString().trim();
-        String login = et_user.getText().toString().trim();
+        String nome = et_nome.getText().toString();
+        String login = et_user.getText().toString();
         String senha = et_password.getText().toString();
         String senhaConfirma = et_password2.getText().toString();
 
@@ -101,13 +101,15 @@ public class CadastroActivity extends AppCompatActivity {
         return false;
     }
     public boolean isSenhasValidas(String campo_senha, String campo_senha_repetida) {
-    if (campo_senha.equals(campo_senha_repetida)) {
+        if (campo_senha.equals(campo_senha_repetida)) {
         return true;
-    }
-    et_password.setError(resources.getString(R.string.erro_senha_comparar));
-    et_password.requestFocus();
-    return false;
+    }else{
+            et_password.requestFocus();
+            et_password.setError(resources.getString(R.string.erro_senha_comparar));
+            return false;
+        }
 }
+
     public boolean isCamposValidos(String nome, String login, String senha, String senhaConfirma) {
         boolean verificador = false;
         if (TextUtils.isEmpty(nome)) {
@@ -157,7 +159,6 @@ public class CadastroActivity extends AppCompatActivity {
         String texto = campo;
         Pattern p= Pattern.compile("\\S+");
         Matcher m = p.matcher(texto);
-        System.out.println(m.matches());
         return m.matches();
     }
 
@@ -165,7 +166,6 @@ public class CadastroActivity extends AppCompatActivity {
         String texto = campo;
         Pattern p = Pattern.compile("^[A-Za-z0-9]+$");
         Matcher m = p.matcher(texto);
-        System.out.print(m.matches()+"\n");
         return m.matches();
     }
 
