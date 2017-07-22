@@ -29,6 +29,17 @@ public class SqlScripts {
         //pessoaBuilder.append(NASCIMENTO +" text);");
         return pessoaBuilder.toString();
     }
+    protected String createTabelaEvento(){
+        StringBuilder eventoBuilder = new StringBuilder();
+        eventoBuilder.append("CREATE TABLE "+ TABELA_EVENTO +" ( ");
+        eventoBuilder.append(ID_EVENTO +" integer primary key autoincrement, ");
+        eventoBuilder.append(EVENTO_NOME +" text not null unique, ");
+        eventoBuilder.append(USUARIO_EVENTO +" text not null unique, ");
+        eventoBuilder.append(DESCRICAO +" text, ");
+        eventoBuilder.append(DATA_INICIO +" text, ");
+        eventoBuilder.append(DATA_FIM +" text);");
+        return eventoBuilder.toString();
+    }
     protected String cmdWhere(String tabela, String a, String b){
         return "SELECT * FROM " + tabela + " WHERE " + a + " LIKE ? AND " + b + " LIKE ?";
     }
