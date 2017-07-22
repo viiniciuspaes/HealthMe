@@ -132,22 +132,22 @@ public class CadastroActivity extends AppCompatActivity {
     }
     public boolean validarLoginESenha(String login,String senha){
         boolean verificador = false;
-        if(verEspacosBrancos(login) == false){
+        if(!verEspacosBrancos(login)){
             et_user.requestFocus();
             et_user.setError("Não deve espaço em branco.");
-        }else if(verAlfanumerico(login) == false){
+        }else if(!verAlfanumerico(login)){
             et_user.requestFocus();
             et_user.setError("Só pode haver letra e número.");
-        }else if(verEspacosBrancos(senha) == false){
+        }else if(!verEspacosBrancos(senha)){
             et_password.requestFocus();
             et_password.setError("Não deve haver espaço em branco.");
-        }else if(verAlfanumerico(senha) == false){
+        }else if(!verAlfanumerico(senha)){
             et_password.requestFocus();
             et_password.setError("Só pode haver letra e número.");
-        }else if(verificarTamanho(login) == false) {
+        }else if(!verificarTamanho(login)) {
             et_user.requestFocus();
             et_user.setError("Login inválido, verificar tamanho.");
-        }else if(verificarTamanho(senha) == false){
+        }else if(!verificarTamanho(senha)){
             et_password.requestFocus();
             et_password.setError("Senha inválida, verificar tamanho.");
         }else {
