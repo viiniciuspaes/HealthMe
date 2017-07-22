@@ -64,7 +64,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void startMainActivity(){
-        Intent i = new Intent(LogInActivity.this, TelaInicialActivity.class);
+        Intent i = new Intent(LogInActivity.this, TelaInicialNavActivity.class);
         startActivity(i);
         finish();
     }

@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".CadastroActivity" />
         <activity android:name=".MapActivity" />
-        <activity android:name=".TelaInicialActivity"/>
+        <activity android:name=".TelaInicialActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -35,7 +35,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-
+        <activity
+            android:name=".TelaInicialNavActivity"
+            android:label="@string/title_activity_tela_inicial_nav"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
