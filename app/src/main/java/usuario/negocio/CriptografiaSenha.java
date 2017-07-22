@@ -1,4 +1,4 @@
-package infra;
+package usuario.negocio;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;

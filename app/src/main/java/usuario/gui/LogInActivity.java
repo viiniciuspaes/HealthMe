@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import usuario.dominio.Usuario;
-import infra.CriptografiaSenha;
+import usuario.negocio.CriptografiaSenha;
 import usuario.negocio.UsuarioValidacao;
 
 

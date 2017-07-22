@@ -10,12 +10,10 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import usuario.dominio.Pessoa;
 import usuario.dominio.Usuario;
-import infra.CriptografiaSenha;
+import usuario.negocio.CriptografiaSenha;
 import usuario.negocio.UsuarioValidacao;
 
 public class CadastroActivity extends AppCompatActivity {
@@ -42,6 +40,7 @@ public class CadastroActivity extends AppCompatActivity {
 
         initViews();
     }
+
     public void initViews() {
         resources = getResources();
         TextWatcher textWatcher = new TextWatcher() {
@@ -63,6 +62,7 @@ public class CadastroActivity extends AppCompatActivity {
         et_nome.addTextChangedListener(textWatcher);
         et_password2.addTextChangedListener(textWatcher);
     }
+
     public void cadastrar(View v) throws Exception{
         boolean validar=validarCampos();
         if(validar){
@@ -83,10 +83,12 @@ public class CadastroActivity extends AppCompatActivity {
 
         }
     }
+
     public void iniciarLoginActivity(){
         startActivity(new Intent(this,LogInActivity.class));
         finish();
     }
+
     private boolean validarCampos(){
         String nome = et_nome.getText().toString();
         String login = et_user.getText().toString();
@@ -100,6 +102,7 @@ public class CadastroActivity extends AppCompatActivity {
 
         return false;
     }
+
     public boolean isSenhasValidas(String campo_senha, String campo_senha_repetida) {
         if (campo_senha.equals(campo_senha_repetida)) {
         return true;
@@ -132,22 +135,22 @@ public class CadastroActivity extends AppCompatActivity {
     }
     public boolean validarLoginESenha(String login,String senha){
         boolean verificador = false;
-        if(!verEspacosBrancos(login)){
+        if(!usuarioValidacao.verEspacosBrancos(login)){
             et_user.requestFocus();
-            et_user.setError("Não deve espaço em branco.");
-        }else if(!verAlfanumerico(login)){
+            et_user.setError("Não deve conter espaço em branco.");
+        }else if(!usuarioValidacao.verAlfanumerico(login)){
             et_user.requestFocus();
-            et_user.setError("Só pode haver letra e número.");
-        }else if(!verEspacosBrancos(senha)){
+            et_user.setError("Só pode conter letras e números.");
+        }else if(!usuarioValidacao.verificarTamanho(login)){
             et_password.requestFocus();
-            et_password.setError("Não deve haver espaço em branco.");
-        }else if(!verAlfanumerico(senha)){
+            et_password.setError("Login inválido, verificar tamanho.");
+        }else if(!usuarioValidacao.verEspacosBrancos(senha)){
             et_password.requestFocus();
-            et_password.setError("Só pode haver letra e número.");
-        }else if(!verificarTamanho(login)) {
+            et_password.setError("Não deve conter espaço em branco.");
+        }else if(!usuarioValidacao.verAlfanumerico(senha)) {
             et_user.requestFocus();
-            et_user.setError("Login inválido, verificar tamanho.");
-        }else if(!verificarTamanho(senha)){
+            et_user.setError("Só pode conter letras e números.");
+        }else if(!usuarioValidacao.verificarTamanho(senha)){
             et_password.requestFocus();
             et_password.setError("Senha inválida, verificar tamanho.");
         }else {
@@ -155,27 +158,4 @@ public class CadastroActivity extends AppCompatActivity {
         }
         return  verificador;
     }
-    public boolean verEspacosBrancos(String campo){
-        String texto = campo;
-        Pattern p= Pattern.compile("\\S+");
-        Matcher m = p.matcher(texto);
-        return m.matches();
-    }
-
-    public boolean verAlfanumerico(String campo){
-        String texto = campo;
-        Pattern p = Pattern.compile("^[A-Za-z0-9]+$");
-        Matcher m = p.matcher(texto);
-        return m.matches();
-    }
-
-    public boolean verificarTamanho(String campo) {
-        String texto = campo;
-        if (texto.length() > 8 || texto.length() < 4) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
 }
