@@ -1,8 +1,6 @@
 package usuario.gui;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -95,7 +93,7 @@ public class LogInActivity extends AppCompatActivity {
                 et_login.requestFocus();
                 et_login.setError(resources.getString(R.string.erro_valido_usuario_senha));
             }else {
-                sessao.iniciarSessao(usuario);
+                sessao.logarUsuario(usuario);
                 startMainActivity();
             }
         }

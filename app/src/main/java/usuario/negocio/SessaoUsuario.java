@@ -11,7 +11,6 @@ import usuario.gui.LogInActivity;
 
 public class SessaoUsuario {
     private Pessoa usuarioLogado;
-    private UsuarioDao userdao;
     private SharedPreferences preferences;
     private Context context;
     private SharedPreferences.Editor editor;
@@ -26,10 +25,27 @@ public class SessaoUsuario {
         editor = preferences.edit();
     }
 
-    public void iniciarSessao(String nome) {
+    public void iniciarSessao(Context context){
+        UsuarioDao dao = new UsuarioDao(context);
+        String usuario = getNome();
+
+        setUsuarioLogado(dao.buscarPessoa(usuario));
+    }
+
+    public void logarUsuario(String nome) {
         editor.putBoolean(USUARIO_LOGADO, true);
         editor.putString(NOME_USUARIO, nome);
         editor.apply();
+    }
+
+    public void encerrarSessao() {
+        editor.clear();
+        editor.apply();
+
+        //Intent intent = new Intent(context, LogInActivity.class);
+        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //context.startActivity(intent);
     }
 
     public boolean verificarLogin() {
@@ -44,22 +60,17 @@ public class SessaoUsuario {
         return false;
     }
 
+    public Pessoa getUsuarioLogado() {
+        return usuarioLogado;
+    }
+
+    public void setUsuarioLogado(Pessoa usuarioLogado) {
+        this.usuarioLogado = usuarioLogado;
+    }
     public String getNome() {
         return preferences.getString(NOME_USUARIO, null);
     }
-
     private boolean vericarSesssao() {
         return preferences.getBoolean(USUARIO_LOGADO, false);
     }
-
-    public void encerrarSessao() {
-        editor.clear();
-        editor.apply();
-
-        Intent intent = new Intent(context, LogInActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
-    }
-
 }
