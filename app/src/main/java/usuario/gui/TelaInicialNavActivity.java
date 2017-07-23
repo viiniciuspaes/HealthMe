@@ -1,6 +1,7 @@
 package usuario.gui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -99,11 +100,15 @@ public class TelaInicialNavActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_perfil) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_calendario) {
+            Intent intent = new Intent(TelaInicialNavActivity.this, CalendarioActivity.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_mapa) {
+            Intent intent = new Intent(TelaInicialNavActivity.this, MapActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_manage) {
 
