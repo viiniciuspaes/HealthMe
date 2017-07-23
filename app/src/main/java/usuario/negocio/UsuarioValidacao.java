@@ -35,6 +35,7 @@ public class UsuarioValidacao {
 
         if (usuarioDao.buscarUsuario(pessoa.getUsuario().getLogin())==null){
             usuarioDao.inserirRegistro(pessoa);
+            Toast.makeText(context, "Cadastro realizado", Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(context,"Usuário já cadastrado",Toast.LENGTH_LONG).show();
         }
