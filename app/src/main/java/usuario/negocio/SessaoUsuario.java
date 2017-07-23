@@ -5,10 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import usuario.dao.UsuarioDao;
+import usuario.dominio.Pessoa;
 import usuario.gui.LogInActivity;
 
 public class SessaoUsuario {
-
+    private Pessoa usuarioLogado;
+    private UsuarioDao userdao;
     private SharedPreferences preferences;
     private Context context;
     private SharedPreferences.Editor editor;
