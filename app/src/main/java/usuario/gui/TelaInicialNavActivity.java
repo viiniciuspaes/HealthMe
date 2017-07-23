@@ -21,7 +21,6 @@ import usuario.negocio.SessaoUsuario;
 
 public class TelaInicialNavActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private SharedPreferences preferences;
     private SessaoUsuario sessao;
     private TextView boasVindas;
 
@@ -51,15 +50,6 @@ public class TelaInicialNavActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
-
-    public void bemVindo(){
-        preferences = getSharedPreferences("user", Context.MODE_APPEND);
-        sessao = new SessaoUsuario(preferences);
-        sessao.iniciarSessao(getApplicationContext());
-        boasVindas = (TextView)findViewById(R.id.boasVindas);
-        String bemvindo = boasVindas.getText().toString() +  sessao.getUsuarioLogado().getNome();
-        boasVindas.setText(bemvindo);
     }
 
     @Override
