@@ -22,10 +22,14 @@ public class TelaInicialActivity extends AppCompatActivity {
     }
     public void bemVindo(){
         preferences = getSharedPreferences("user", Context.MODE_APPEND);
-        sessao = new SessaoUsuario(preferences);
-        sessao.iniciarSessao(getApplicationContext());
+        sessao = new SessaoUsuario(getApplicationContext());
+
+        if (sessao.verificarLogin()){
+            finish();
+        }
+
         boasVindas = (TextView)findViewById(R.id.boasVindas);
-        String bemvindo = boasVindas.getText().toString() +  sessao.getUsuarioLogado().getNome();
+        String bemvindo = boasVindas.getText().toString() +  sessao.getNome();
         boasVindas.setText(bemvindo);
     }
 }

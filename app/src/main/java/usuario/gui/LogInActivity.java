@@ -14,17 +14,20 @@ import android.widget.EditText;
 
 import usuario.dominio.Usuario;
 import usuario.negocio.CriptografiaSenha;
+import usuario.negocio.SessaoUsuario;
 import usuario.negocio.UsuarioValidacao;
 
 
 public class LogInActivity extends AppCompatActivity {
     private EditText et_login;
     private EditText et_password;
+    private SessaoUsuario sessao;
 
     private Resources resources;
     private UsuarioValidacao usuarioValidacao;
     private CriptografiaSenha cripto;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -35,6 +38,7 @@ public class LogInActivity extends AppCompatActivity {
         initViews();
     }
 
+    @Override
     public void onResume(){
         super.onResume();
     }
@@ -65,6 +69,8 @@ public class LogInActivity extends AppCompatActivity {
 
     public void startMainActivity(){
         Intent i = new Intent(LogInActivity.this, TelaInicialNavActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
         finish();
     }
@@ -81,8 +87,7 @@ public class LogInActivity extends AppCompatActivity {
             cripto = new CriptografiaSenha();
             String novaSenha = cripto.criptoSenha(senha);
 
-            SharedPreferences prefs = getSharedPreferences("user", Context.MODE_APPEND);
-
+            sessao = new SessaoUsuario(getApplicationContext());
 
             Usuario validado = usuarioValidacao.login(usuario, novaSenha);
 
@@ -90,9 +95,7 @@ public class LogInActivity extends AppCompatActivity {
                 et_login.requestFocus();
                 et_login.setError(resources.getString(R.string.erro_valido_usuario_senha));
             }else {
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("username",validado.getLogin());
-                editor.apply();
+                sessao.iniciarSessao(usuario);
                 startMainActivity();
             }
         }
