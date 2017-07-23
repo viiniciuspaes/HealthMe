@@ -40,7 +40,9 @@
             android:label="@string/title_activity_tela_inicial_nav"
             android:theme="@style/AppTheme" />
         <activity android:name=".CalendarioActivity" />
-        <activity android:name=".PopActivity"></activity>
+        <activity android:name=".PopActivity"
+            android:theme="@style/AppTheme.CustomTheme"
+            ></activity>
     </application>
 
 </manifest>
