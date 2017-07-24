@@ -40,9 +40,18 @@
             android:label="@string/title_activity_tela_inicial_nav"
             android:theme="@style/AppTheme" />
         <activity android:name=".CalendarioActivity" />
-        <activity android:name=".PopActivity"
-            android:theme="@style/AppTheme.CustomTheme"
-            ></activity>
+        <activity
+            android:name=".PopCalendarioActivity"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".PopPerfilActivity"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".PerfilActivity" />
+        <activity
+            android:name=".PopContatoEmergenciaActivity"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".PopEnderecoPerfilActivity"
+            android:theme="@style/AppTheme.CustomTheme"></activity>
     </application>
 
 </manifest>

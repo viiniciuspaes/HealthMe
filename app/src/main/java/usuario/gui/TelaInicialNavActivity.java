@@ -91,7 +91,8 @@ public class TelaInicialNavActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_perfil) {
-            // Handle the camera action
+            Intent intent=new Intent(TelaInicialNavActivity.this, PerfilActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_calendario) {
             Intent intent = new Intent(TelaInicialNavActivity.this, CalendarioActivity.class);
             startActivity(intent);

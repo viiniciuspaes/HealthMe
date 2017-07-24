@@ -24,7 +24,7 @@ public class CalendarioActivity extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
                 String data= i + "/" + i1 + "/" + i2;
                 //Log.d(TAG, "onSelectedDayChange: date: " + data);
-                startActivity(new Intent(CalendarioActivity.this, PopActivity.class));
+                startActivity(new Intent(CalendarioActivity.this, PopCalendarioActivity.class));
             }
         });
     }

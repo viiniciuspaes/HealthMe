@@ -6,7 +6,7 @@ import android.util.DisplayMetrics;
 import android.widget.EditText;
 
 
-public class PopActivity extends AppCompatActivity {
+public class PopCalendarioActivity extends AppCompatActivity {
     private EditText et_addEvento;
 
     @Override
@@ -22,6 +22,6 @@ public class PopActivity extends AppCompatActivity {
         int largura=medidas.widthPixels;
         int altura=medidas.heightPixels;
 
-        getWindow().setLayout((int)(largura * 0.6),(int)(altura * 0.4));
+        getWindow().setLayout((int)(largura * 0.8),(int)(altura * 0.4));
     }
 }
