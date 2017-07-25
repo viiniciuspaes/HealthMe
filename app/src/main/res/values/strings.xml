@@ -23,7 +23,7 @@
     <string name="btn_cadastrar">Cadastrar</string>
     <string name="btn_logar">Log In</string>
     <string name="error_campo_vazio">Campo Vazio</string>
-    <string name="title_activity_tela_inicial_nav">TelaInicialNavActivity</string>
+    <string name="title_activity_tela_inicial_nav">HealthMe</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

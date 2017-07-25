@@ -21,6 +21,7 @@ import usuario.negocio.SessaoUsuario;
 
 public class TelaInicialNavActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private SharedPreferences preferences;
     private SessaoUsuario sessao;
     private TextView boasVindas;
 
@@ -30,8 +31,7 @@ public class TelaInicialNavActivity extends AppCompatActivity
         setContentView(R.layout.activity_tela_inicial_nav);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //Ajustar o Bem-vindo
-        //bemVindo();
+        bemVindo();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +50,18 @@ public class TelaInicialNavActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+    public void bemVindo(){
+        preferences = getSharedPreferences("user", Context.MODE_APPEND);
+        sessao = new SessaoUsuario(getApplicationContext());
+
+        if (sessao.verificarLogin()){
+            finish();
+        }
+
+        boasVindas = (TextView)findViewById(R.id.boasVindas);
+        String bemvindo = boasVindas.getText().toString() +  sessao.getNome() + ".";
+        boasVindas.setText(bemvindo);
     }
 
     @Override
