@@ -46,6 +46,10 @@ public class PerfilActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(PerfilActivity.this, PopPerfilActivity.class));
+                Intent intent = getIntent();
+                Bundle bundle= intent.getExtras();
+                String valor = bundle.getString("valor");
+                tv_nome.setText(valor);
             }
         });
 

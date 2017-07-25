@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class PopPerfilActivity extends AppCompatActivity {
@@ -32,5 +34,15 @@ public class PopPerfilActivity extends AppCompatActivity {
         int altura=medidas.heightPixels;
 
         getWindow().setLayout((int)(largura * 0.7),(int)(altura * 0.2));
+    }
+    public void salvar(){
+      EditText et_texto = (EditText) findViewById(R.id.et_novoTexto);
+        Toast.makeText(getApplicationContext(),et_texto.getText().toString(),Toast.LENGTH_LONG).show();
+        Bundle bundle = new Bundle();
+        Intent intent = new Intent(this, PerfilActivity.class);
+        bundle.putString("valor",et_texto.getText().toString() );
+        intent.putExtras(bundle);
+        startActivity(intent);
+        finish();
     }
 }

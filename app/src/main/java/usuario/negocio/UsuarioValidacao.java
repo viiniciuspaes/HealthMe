@@ -4,6 +4,8 @@ package usuario.negocio;
 import android.content.Context;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -62,7 +64,11 @@ public class UsuarioValidacao {
             return true;
         }
     }
-   // public String mudarData(Date a){
-    //    return String.valueOf(a);
-    //}
+    public String mudarData(Date a){
+        return String.valueOf(a);
+    }
+    public Date mudarData(String a) throws ParseException{
+        Date data=new SimpleDateFormat("yyyy/MM/dd").parse(a);
+        return data;
+    }
 }
