@@ -31,6 +31,6 @@ public class PopPerfilActivity extends AppCompatActivity {
         int largura=medidas.widthPixels;
         int altura=medidas.heightPixels;
 
-        getWindow().setLayout((int)(largura * 0.7),(int)(altura * 0.1));
+        getWindow().setLayout((int)(largura * 0.7),(int)(altura * 0.2));
     }
 }

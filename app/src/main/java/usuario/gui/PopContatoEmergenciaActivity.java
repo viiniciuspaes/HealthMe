@@ -24,6 +24,6 @@ public class PopContatoEmergenciaActivity extends AppCompatActivity {
         int largura=medidas.widthPixels;
         int altura=medidas.heightPixels;
 
-        getWindow().setLayout((int)(largura * 0.6),(int)(altura * 0.2));
+        getWindow().setLayout((int)(largura * 0.6),(int)(altura * 0.5));
     }
 }

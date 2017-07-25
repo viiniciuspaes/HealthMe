@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="usuario.gui.PopCalendarioActivity"
-    android:background="@color/colorAccent">
+    android:background="@color/colorPrimary">
 
     <EditText
         android:id="@+id/et_addEvento"
