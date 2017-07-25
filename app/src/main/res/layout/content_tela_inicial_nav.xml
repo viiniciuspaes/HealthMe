@@ -9,4 +9,12 @@
     tools:context="usuario.gui.TelaInicialNavActivity"
     tools:showIn="@layout/app_bar_tela_inicial_nav">
 
+    <TextView
+        android:id="@+id/boasVindas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Bem-vindo(a), "
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large.Inverse" />
+
 </android.support.constraint.ConstraintLayout>
