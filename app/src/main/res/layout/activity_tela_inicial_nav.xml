@@ -22,4 +22,12 @@
         app:headerLayout="@layout/nav_header_tela_inicial_nav"
         app:menu="@menu/activity_tela_inicial_nav_drawer" />
 
+    <TextView
+        android:id="@+id/boasVindas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Bem-vindo(a), "
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large.Inverse" />
+
 </android.support.v4.widget.DrawerLayout>
