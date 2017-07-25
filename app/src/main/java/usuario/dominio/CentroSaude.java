@@ -5,7 +5,9 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class CentroSaude {
 
-    private String edereco;
+    private String nome;
+    private String telefone;
+    private String endereco;
     private LatLng localizacao;
 
     public LatLng getLocalizacao() {
@@ -16,11 +18,27 @@ public class CentroSaude {
         this.localizacao = localizacao;
     }
 
-    public String getEdereco() {
-        return edereco;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setEdereco(String edereco) {
-        this.edereco = edereco;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 }

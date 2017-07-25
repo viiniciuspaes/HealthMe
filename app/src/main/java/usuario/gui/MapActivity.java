@@ -12,6 +12,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,16 +22,20 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.List;
+
+import usuario.dominio.CentroSaude;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final String TAG = "teste";
     private boolean local = true;
     private GoogleMap mMap;
+    private Marker marker;
 
     LocationManager locationManager;
 
@@ -136,7 +142,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
+/*
         try {
             boolean success = googleMap.setMapStyle(
                     MapStyleOptions.loadRawResourceStyle(this, R.raw.mapaestilo));
@@ -146,11 +152,40 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         } catch (Resources.NotFoundException e) {
             Log.e(TAG, "Estilo não encontrado. Error: ", e);
         }
-
+*/
         mMap = googleMap;
         mMap.setMinZoomPreference(13.0f);
+        bancoLugares();
+
+        if(mMap != null){
+            mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+                @Override
+                public View getInfoWindow(Marker marker) {
+                    return null;
+                }
+
+                @Override
+                public View getInfoContents(Marker marker) {
+                    View v = getLayoutInflater().inflate(R.layout.infowindow_map,null);
+
+                    TextView titulo = v.findViewById(R.id.tituloId);
+                    TextView infos = v.findViewById(R.id.endereçoId);
+                    //Button rota = (Button) v.findViewById(R.id.rotaId);
+                    //View imagem = v.findViewById(R.id.imagemId);
+
+                    titulo.setText(marker.getTitle());
+                    infos.setText(marker.getSnippet());
+                    return v;
+                }
+            });
+        }
+
+
         mMap.setMyLocationEnabled(true);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -161,15 +196,50 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             return;
         }
 
-        LatLng marcoZero = new LatLng(-8.063171, -34.871143);
-        LatLng teste = new LatLng(-8.061, -34.8707);
+//EVENTOS
 
+        /*
         mMap.addMarker(new MarkerOptions().position(teste).title("Marcador teste")
+                .snippet("BRASIL KRAI")
                 .icon(BitmapDescriptorFactory.fromResource(R.raw.marcador2)));
+
 
         mMap.addMarker(new MarkerOptions().position(marcoZero).title("Marcador no Marco Zero")
                 .icon(BitmapDescriptorFactory.fromResource(R.raw.marcador2)));
 
+        mMap.setOnMapClickListener(GoogleMap.OnMapClickListener); */
+    }
+
+
+
+    public void bancoLugares(){
+
+        LatLng marcoZeroC = new LatLng(-8.063171, -34.871143);
+        LatLng testeC = new LatLng(-8.061, -34.8707);
+        CentroSaude marcoZero = new CentroSaude();
+        marcoZero.setLocalizacao(marcoZeroC);
+        marcoZero.setNome("Marco Zero");
+        marcoZero.setEndereco("Ponto de partida do Recife");
+        marcoZero.setTelefone("(81)3456-3563");
+        CentroSaude teste = new CentroSaude();
+        teste.setLocalizacao(testeC);
+        teste.setNome("VRAU");
+        teste.setEndereco("Ponto de partida do INFERNO");
+        teste.setTelefone("(81)4673-3563");
+
+        customizadoAddMarker(marcoZero);
+        customizadoAddMarker(teste);
+
+    }
+
+    public void customizadoAddMarker(CentroSaude lugar){
+        MarkerOptions options = new MarkerOptions();
+
+        options.position(lugar.getLocalizacao()).title(lugar.getNome())
+                .snippet(lugar.getEndereco()+"\n"+lugar.getTelefone())
+                .icon(BitmapDescriptorFactory.fromResource(R.raw.marcador2));
+
+        this.marker = this.mMap.addMarker(options);
     }
 
     public boolean isLocal() {

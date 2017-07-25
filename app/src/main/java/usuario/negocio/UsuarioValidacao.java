@@ -17,7 +17,7 @@ public class UsuarioValidacao {
     private Context context;
     private UsuarioDao usuarioDao;
     private Pattern p1 = Pattern.compile("\\S+");
-    private Pattern p2 = Pattern.compile("^[a-z0-9]+$");
+    private Pattern p2 = Pattern.compile("^[A-Za-z0-9]+$");
     private Matcher m;
 
     public UsuarioValidacao(Context context) {

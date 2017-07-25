@@ -7,9 +7,9 @@ public class Evento {
     private int id;
     private Usuario usuario;
     private String nome;
-    private  String descricao;
+    private String descricao;
     private Date inicio;
-    private  Date fim;
+    private Date fim;
 
     public Evento(){
         this.nome = null;

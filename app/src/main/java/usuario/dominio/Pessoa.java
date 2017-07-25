@@ -7,9 +7,9 @@ public class Pessoa {
     private int id;
     private Usuario usuario;
     private String nome;
-    private  String enderecoCasa;
-    private  String enderecoTrabalho;
-    private  String planoSaude;
+    private String enderecoCasa;
+    private String enderecoTrabalho;
+    private String planoSaude;
     private Date nascimento;
     private  ContatoEmergencia[] contatoEmergencia;
 
