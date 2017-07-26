@@ -111,6 +111,7 @@ public class UsuarioDao {
         db.close();
         return usuario;
     }
+
     public Pessoa buscarPessoa(String nome) {
         SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
 
@@ -145,4 +146,10 @@ public class UsuarioDao {
         pessoa.setPlanoSaude(cursor.getString(4));
         return pessoa;
     }
+    public boolean removerPessoa(int id){
+        SQLiteDatabase db = dataBaseHelper.getWritableDatabase();
+        return db.delete(dataBaseHelper.TABELA_PESSOA, "_id_pessoa = ?", new String[]{Integer.toString(id)}) > 0;
+
+    }
+
 }
