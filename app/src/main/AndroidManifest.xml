@@ -52,11 +52,7 @@
             android:name=".PopPerfilActivity"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity android:name=".PerfilActivity" />
-        <activity
-            android:name=".PopContatoEmergenciaActivity"
-            android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".PopEnderecoPerfilActivity"
-            android:theme="@style/AppTheme.CustomTheme"></activity>
+        <activity android:name=".EditarPerfilActivity"></activity>
     </application>
 
 </manifest>

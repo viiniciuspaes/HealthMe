@@ -1,6 +1,7 @@
 package usuario.gui;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,12 +17,8 @@ public class PerfilActivity extends AppCompatActivity {
     private TextView tv_contatoEmergencia2;
     private TextView tv_contatoEmergencia3;
 
-    private ImageButton ibtn_editarNome;
-    private ImageButton ibtn_editarEndereco;
-    private ImageButton ibtn_editarPlanoSaude;
-    private ImageButton ibtn_editarContatoEmergencia1;
-    private ImageButton ibtn_editarContatoEmergencia2;
-    private ImageButton ibtn_editarContatoEmergencia3;
+    private ImageButton ibtn_editarPerfil;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,58 +32,16 @@ public class PerfilActivity extends AppCompatActivity {
         tv_contatoEmergencia2=(TextView)findViewById(R.id.tv_contatoEmergencia2);
         tv_contatoEmergencia3=(TextView)findViewById(R.id.tv_contatoEmergencia3);
 
-        ibtn_editarNome=(ImageButton)findViewById(R.id.ibtn_editarNome);
-        ibtn_editarEndereco=(ImageButton)findViewById(R.id.ibtn_editarEndereco);
-        ibtn_editarPlanoSaude=(ImageButton)findViewById(R.id.ibtn_editarPlanoSaude);
-        ibtn_editarContatoEmergencia1=(ImageButton)findViewById(R.id.ibtn_editarContatoEmergencia1);
-        ibtn_editarContatoEmergencia2=(ImageButton)findViewById(R.id.ibtn_editarContatoEmergencia2);
-        ibtn_editarContatoEmergencia3=(ImageButton)findViewById(R.id.ibtn_editarContatoEmergencia3);
+        ibtn_editarPerfil=(ImageButton)findViewById(R.id.ibtn_editarPerfil);
 
-        ibtn_editarNome.setOnClickListener(new View.OnClickListener() {
+        ibtn_editarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PerfilActivity.this, PopPerfilActivity.class));
-                Intent intent = getIntent();
-                Bundle bundle= intent.getExtras();
-                String valor = bundle.getString("valor");
-                tv_nome.setText(valor);
+                startActivity(new Intent(PerfilActivity.this, EditarPerfilActivity.class));
             }
         });
 
-        ibtn_editarEndereco.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(PerfilActivity.this, PopEnderecoPerfilActivity.class));
-            }
-        });
 
-        ibtn_editarPlanoSaude.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(PerfilActivity.this, PopPerfilActivity.class));
-            }
-        });
-
-        ibtn_editarContatoEmergencia1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(PerfilActivity.this, PopContatoEmergenciaActivity.class));
-            }
-        });
-
-        ibtn_editarContatoEmergencia2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(PerfilActivity.this, PopContatoEmergenciaActivity.class));
-            }
-        });
-
-        ibtn_editarContatoEmergencia3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(PerfilActivity.this, PopContatoEmergenciaActivity.class));
-            }
-        });
 
     }
 }
