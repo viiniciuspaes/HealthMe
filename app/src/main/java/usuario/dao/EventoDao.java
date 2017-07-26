@@ -76,7 +76,6 @@ public class EventoDao {
         evento.setNome(cursor.getString(1));
         evento.setDescricao(cursor.getString(3));
         //evento.setDate(cursor.getString(4));
-        //evento.setFim(cursor.getString(5));
         return evento;
     }
 }

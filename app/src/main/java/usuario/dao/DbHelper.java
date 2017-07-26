@@ -23,9 +23,6 @@ public class DbHelper extends SQLiteOpenHelper {
     protected static final String PESSOA_USER = "pessoa_usuario";
     protected static final String ENDERECO_CASA = "endereco_casa";
     protected static final String ENDERECO_TRABALHO = "endereco_trabalho";
-    protected static final String CONTATO_EMERGENCIA1 = "contato_emergencia1";
-    protected static final String CONTATO_EMERGENCIA2 = "contato_emergencia2";
-    protected static final String CONTATO_EMERGENCIA3 = "contato_emergencia3";
     protected static final String PLANO_SAUDE = "plano_saude";
     protected static final String NASCIMENTO = "nascimento";
 
@@ -37,7 +34,11 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String DESCRICAO = "descricao";
     public static final String DATA = "data";
 
-
+    //TABELA CONTATOS
+    public static final String TABELA_CONTATO = "tabela_contato";
+    protected static final String ID_CONTATO = "contato_emergencia1";
+    protected static final String CONTATO_NOME = "contato_nome";
+    protected static final String CONTATO_TELEFONE = "contato_telefone";
 
     public DbHelper(Context context){
         super(context, NOME_DB,null, VERSAO);
@@ -47,6 +48,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(scripts.createTabelaUsuario());
         db.execSQL(scripts.createTabelaPessoa());
         db.execSQL(scripts.createTabelaEvento());
+        db.execSQL(scripts.createTabelaContato());
     }
 
     @Override
@@ -54,6 +56,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABELA_USUARIO);
         db.execSQL("DROP TABLE IF EXISTS "+ TABELA_PESSOA);
         db.execSQL("DROP TABLE IF EXISTS "+ TABELA_EVENTO);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABELA_CONTATO);
 
         onCreate(db);
     }

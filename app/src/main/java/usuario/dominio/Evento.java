@@ -8,14 +8,14 @@ public class Evento {
     private Usuario usuario;
     private String nome;
     private String descricao;
-    private Date date;
+    private Date data;
 
 
     public Evento(){
         this.nome = null;
         this.usuario = null;
         this.descricao = null;
-        this.date = null;
+        this.data = null;
     }
 
     public int getId() {
@@ -51,10 +51,10 @@ public class Evento {
     }
 
     public Date getDate() {
-        return date;
+        return data;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(Date data) {
+        this.data = data;
     }
 }
