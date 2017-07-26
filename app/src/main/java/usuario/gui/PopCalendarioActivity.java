@@ -5,13 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import java.text.ParseException;
 
 import usuario.dao.EventoDao;
 import usuario.dominio.Evento;
+import usuario.negocio.SessaoUsuario;
 import usuario.negocio.UsuarioValidacao;
 
 
@@ -21,17 +21,22 @@ public class PopCalendarioActivity extends AppCompatActivity {
     private EditText et_inicio;
     private EditText et_fim;
     private Evento evento;
+    private UsuarioValidacao validacao;
+    private EventoDao dao;
+    private SessaoUsuario sessao;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pop);
+        setContentView(R.layout.activity_pop_calendario);
 
         et_nome=(EditText)findViewById(R.id.et_nome_evento);
         et_descricao=(EditText)findViewById(R.id.et_descricao_evento);
         et_inicio=(EditText)findViewById(R.id.et_inicio_evento);
         et_fim=(EditText)findViewById(R.id.et_final_evento);
+
+
 
         DisplayMetrics medidas= new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(medidas);
@@ -39,15 +44,18 @@ public class PopCalendarioActivity extends AppCompatActivity {
         int largura=medidas.widthPixels;
         int altura=medidas.heightPixels;
 
-        getWindow().setLayout((int)(largura * 0.8),(int)(altura * 0.4));
+        getWindow().setLayout((int)(largura * 0.8),(int)(altura * 0.6));
     }
-    public void criarEvento(View view) throws ParseException{
+    public void criarEvento(View view) throws ParseException {
         evento = new Evento();
-        UsuarioValidacao validacao = new UsuarioValidacao(getApplicationContext());
-        EventoDao dao = new EventoDao(getApplicationContext());
+        validacao = new UsuarioValidacao(getApplicationContext());
+        dao = new EventoDao(getApplicationContext());
+        sessao = new SessaoUsuario(getApplicationContext());
+        sessao.iniciarSessao();
 
         evento.setNome(et_nome.getText().toString());
         evento.setDescricao(et_descricao.getText().toString());
+        evento.setUsuario(sessao.getUsuarioLogado());
         evento.setInicio(validacao.mudarData(et_inicio.getText().toString()));
         evento.setFim(validacao.mudarData(et_fim.getText().toString()));
 

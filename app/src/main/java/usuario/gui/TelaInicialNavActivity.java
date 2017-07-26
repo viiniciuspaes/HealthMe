@@ -47,9 +47,7 @@ public class TelaInicialNavActivity extends AppCompatActivity
         preferences = getSharedPreferences("user", Context.MODE_APPEND);
         sessao = new SessaoUsuario(getApplicationContext());
 
-        if (sessao.verificarLogin()){
-            finish();
-        }
+        sessao.iniciarSessao();
 
         boasVindas = (TextView)findViewById(R.id.boasVindas);
         String bemvindo = boasVindas.getText().toString() +  sessao.getNome() + ".";

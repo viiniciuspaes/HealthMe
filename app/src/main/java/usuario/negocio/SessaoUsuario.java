@@ -7,10 +7,15 @@ import android.content.SharedPreferences;
 
 import usuario.dao.UsuarioDao;
 import usuario.dominio.Pessoa;
+import usuario.dominio.Usuario;
 import usuario.gui.LogInActivity;
 
 public class SessaoUsuario {
-    private Pessoa usuarioLogado;
+    private Pessoa pessoaLogada;
+
+
+
+    private Usuario usuarioLogado;
     private SharedPreferences preferences;
     private Context context;
     private SharedPreferences.Editor editor;
@@ -25,11 +30,12 @@ public class SessaoUsuario {
         editor = preferences.edit();
     }
 
-    public void iniciarSessao(Context context){
-        UsuarioDao dao = new UsuarioDao(context);
+    public void iniciarSessao(){
+        UsuarioDao dao = new UsuarioDao(this.context);
         String usuario = getNome();
 
-        setUsuarioLogado(dao.buscarPessoa(usuario));
+        setPessoaLogada(dao.buscarPessoa(usuario));
+        setUsuarioLogado(dao.buscarUsuario(usuario));
     }
 
     public void logarUsuario(String nome) {
@@ -60,15 +66,21 @@ public class SessaoUsuario {
         return false;
     }
 
-    public Pessoa getUsuarioLogado() {
-        return usuarioLogado;
+    public Pessoa getPessoaLogada() {
+        return pessoaLogada;
     }
 
-    public void setUsuarioLogado(Pessoa usuarioLogado) {
-        this.usuarioLogado = usuarioLogado;
+    public void setPessoaLogada(Pessoa pessoaLogada) {
+        this.pessoaLogada = pessoaLogada;
     }
     public String getNome() {
         return preferences.getString(NOME_USUARIO, null);
+    }
+    public Usuario getUsuarioLogado() {
+        return usuarioLogado;
+    }
+    public void setUsuarioLogado(Usuario usuarioLogado) {
+        this.usuarioLogado = usuarioLogado;
     }
     private boolean vericarSesssao() {
         return preferences.getBoolean(USUARIO_LOGADO, false);
