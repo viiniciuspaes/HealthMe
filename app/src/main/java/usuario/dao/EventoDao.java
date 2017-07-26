@@ -31,8 +31,8 @@ public class EventoDao {
         valor.put(DbHelper.EVENTO_NOME, evento.getNome());
         valor.put(DbHelper.USUARIO_EVENTO, evento.getUsuario().getLogin());
         valor.put(DbHelper.DESCRICAO, evento.getDescricao());
-        valor.put(DbHelper.DATA_INICIO, validacao.mudarData(evento.getInicio()));
-        valor.put(DbHelper.DATA_FIM, validacao.mudarData(evento.getFim()));
+        valor.put(DbHelper.DATA, validacao.mudarData(evento.getDate()));
+
 
         db.insert(DbHelper.TABELA_EVENTO, null, valor);
         db.close();
@@ -47,8 +47,8 @@ public class EventoDao {
         valor.put(DbHelper.EVENTO_NOME, evento.getNome());
         valor.put(DbHelper.USUARIO_EVENTO, evento.getUsuario().getLogin());
         valor.put(DbHelper.DESCRICAO, evento.getDescricao());
-        valor.put(DbHelper.DATA_INICIO, validacao.mudarData(evento.getInicio()));
-        valor.put(DbHelper.DATA_FIM, validacao.mudarData(evento.getFim()));
+        valor.put(DbHelper.DATA, validacao.mudarData(evento.getDate()));
+
 
         db.update(DbHelper.TABELA_EVENTO, valor, where, null);
         db.close();
@@ -75,7 +75,7 @@ public class EventoDao {
         evento.setId(cursor.getInt(0));
         evento.setNome(cursor.getString(1));
         evento.setDescricao(cursor.getString(3));
-        //evento.getInicio(cursor.getString(4));
+        //evento.setDate(cursor.getString(4));
         //evento.setFim(cursor.getString(5));
         return evento;
     }

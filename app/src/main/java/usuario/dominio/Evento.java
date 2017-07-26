@@ -8,15 +8,14 @@ public class Evento {
     private Usuario usuario;
     private String nome;
     private String descricao;
-    private Date inicio;
-    private Date fim;
+    private Date date;
+
 
     public Evento(){
         this.nome = null;
         this.usuario = null;
         this.descricao = null;
-        this.inicio = null;
-        this.fim = null;
+        this.date = null;
     }
 
     public int getId() {
@@ -51,21 +50,11 @@ public class Evento {
         this.descricao = descricao;
     }
 
-    public Date getInicio() {
-        return inicio;
+    public Date getDate() {
+        return date;
     }
 
-    public void setInicio(Date inicio) {
-        this.inicio = inicio;
+    public void setDate(Date date) {
+        this.date = date;
     }
-
-    public Date getFim() {
-        return fim;
-    }
-
-    public void setFim(Date fim) {
-        this.fim = fim;
-    }
-
-
 }

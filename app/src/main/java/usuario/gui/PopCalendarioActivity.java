@@ -19,7 +19,6 @@ public class PopCalendarioActivity extends AppCompatActivity {
     private EditText et_nome;
     private EditText et_descricao;
     private EditText et_inicio;
-    private EditText et_fim;
     private Evento evento;
     private UsuarioValidacao validacao;
     private EventoDao dao;
@@ -33,8 +32,7 @@ public class PopCalendarioActivity extends AppCompatActivity {
 
         et_nome=(EditText)findViewById(R.id.et_nome_evento);
         et_descricao=(EditText)findViewById(R.id.et_descricao_evento);
-        et_inicio=(EditText)findViewById(R.id.et_inicio_evento);
-        et_fim=(EditText)findViewById(R.id.et_final_evento);
+        et_inicio=(EditText)findViewById(R.id.et_data_evento);
 
 
 
@@ -56,8 +54,8 @@ public class PopCalendarioActivity extends AppCompatActivity {
         evento.setNome(et_nome.getText().toString());
         evento.setDescricao(et_descricao.getText().toString());
         evento.setUsuario(sessao.getUsuarioLogado());
-        evento.setInicio(validacao.mudarData(et_inicio.getText().toString()));
-        evento.setFim(validacao.mudarData(et_fim.getText().toString()));
+        evento.setDate(validacao.mudarData(et_inicio.getText().toString()));
+
 
         dao.inserirregistro(evento);
         startActivity(new Intent(this, CalendarioActivity.class));

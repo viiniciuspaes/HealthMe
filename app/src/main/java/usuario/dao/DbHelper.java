@@ -35,8 +35,8 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String EVENTO_NOME = "evento_nome";
     public static final String USUARIO_EVENTO = "evento_usuario";
     public static final String DESCRICAO = "descricao";
-    public static final String DATA_INICIO = "data_inicio";
-    public static final String DATA_FIM = "data_fim";
+    public static final String DATA = "data";
+
 
 
     public DbHelper(Context context){

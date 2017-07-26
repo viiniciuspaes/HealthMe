@@ -34,10 +34,9 @@ public class SqlScripts {
         eventoBuilder.append("CREATE TABLE "+ TABELA_EVENTO +" ( ");
         eventoBuilder.append(ID_EVENTO +" integer primary key autoincrement, ");
         eventoBuilder.append(EVENTO_NOME +" text not null unique, ");
-        eventoBuilder.append(USUARIO_EVENTO +" text not null unique, ");
+        eventoBuilder.append(USUARIO_EVENTO +" text not null, ");
         eventoBuilder.append(DESCRICAO +" text, ");
-        eventoBuilder.append(DATA_INICIO +" text, ");
-        eventoBuilder.append(DATA_FIM +" text);");
+        eventoBuilder.append(DATA +" text); ");
         return eventoBuilder.toString();
     }
     protected String cmdWhere(String tabela, String a, String b){

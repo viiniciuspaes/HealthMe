@@ -27,23 +27,15 @@
         android:layout_marginRight="24dp"
         android:layout_marginTop="20dp" />
     <EditText
-        android:id="@+id/et_inicio_evento"
+        android:id="@+id/et_data_evento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Inicio"
+        android:hint="yyyy/MM/dd"
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
         android:layout_marginTop="20dp" />
-    <EditText
-        android:id="@+id/et_final_evento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="final"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="20dp" />
+
     <Button
         android:id="@+id/btn_confirmar"
         android:layout_width="wrap_content"
