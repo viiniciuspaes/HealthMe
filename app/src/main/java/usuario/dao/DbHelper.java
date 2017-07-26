@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DbHelper extends SQLiteOpenHelper {
     protected static final String NOME_DB = "banco.db";
-    protected static final int VERSAO = 2;
+    protected static final int VERSAO = 3;
     private SqlScripts scripts = new SqlScripts();
 
     // TABELA DOS USUARIOS
@@ -39,6 +39,7 @@ public class DbHelper extends SQLiteOpenHelper {
     protected static final String ID_CONTATO = "contato_emergencia1";
     protected static final String CONTATO_NOME = "contato_nome";
     protected static final String CONTATO_TELEFONE = "contato_telefone";
+    protected static final String USUARIO_CONTATO = "contato_usuario";
 
     public DbHelper(Context context){
         super(context, NOME_DB,null, VERSAO);

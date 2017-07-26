@@ -41,8 +41,9 @@ public class SqlScripts {
         StringBuilder contatoBuilder = new StringBuilder();
         contatoBuilder.append("CREATE TABLE "+ TABELA_CONTATO +" ( ");
         contatoBuilder.append(ID_CONTATO +" integer primary key autoincrement, ");
-        contatoBuilder.append(CONTATO_NOME +" text not null, ");
-        contatoBuilder.append(CONTATO_TELEFONE +"text not null unique); ");
+        contatoBuilder.append(USUARIO_CONTATO + " text not null unique, ");
+        contatoBuilder.append(CONTATO_NOME +" text, ");
+        contatoBuilder.append(CONTATO_TELEFONE +"text); ");
         return contatoBuilder.toString();
     }
     protected String cmdWhere(String tabela, String a, String b){
