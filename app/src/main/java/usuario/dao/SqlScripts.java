@@ -52,4 +52,7 @@ public class SqlScripts {
     protected String cmdWhere(String tabela, String a){
         return "SELECT * FROM " + tabela + " WHERE " + a + " LIKE ?";
     }
+    protected String cmdWhereValues(String tabela, String valor1, String valor2){
+        return "SELECT * FROM" + tabela +" WHERE " + valor1 + " LIKE " + valor2;
+    }
 }

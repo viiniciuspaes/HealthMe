@@ -84,10 +84,10 @@ public class ContatoDao {
         return contatoEmergencia;
     }
 
-    public void buscarDados(){
+    public void buscarDados(String user){
         try {
-            db = db.openOrCreateDatabase(dataBaseHelper.TABELA_CONTATO, Context.MODE_PRIVATE, null);
-            cursor = db.rawQuery("SELECT * FROM TABELA_CONTATO", null);
+            db = dataBaseHelper.getReadableDatabase();
+            cursor = db.rawQuery("SELECT * FROM" + DbHelper.TABELA_CONTATO +" WHERE " + DbHelper.USUARIO_CONTATO + " LIKE " + user , null);
         } catch (Exception e) {
 
         }
