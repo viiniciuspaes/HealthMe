@@ -9,6 +9,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import usuario.dao.ContatoDao;
+import usuario.dominio.ContatoEmergencia;
+import usuario.negocio.SessaoUsuario;
+
 
 public class PerfilActivity extends AppCompatActivity {
     private TextView tv_nome;
@@ -17,8 +21,12 @@ public class PerfilActivity extends AppCompatActivity {
     private TextView tv_contatoEmergencia1;
     private TextView tv_contatoEmergencia2;
     private TextView tv_contatoEmergencia3;
+    private TextView tv_telefoneContatoEmergencia1;
 
     private Button btn_deletar;
+    private ContatoEmergencia contatoExistente;
+    private ContatoDao daoContato;
+    private SessaoUsuario sessaoUsuario;
 
 
     @Override
@@ -32,8 +40,11 @@ public class PerfilActivity extends AppCompatActivity {
         tv_contatoEmergencia1=(TextView)findViewById(R.id.tv_contatoEmergencia1);
         tv_contatoEmergencia2=(TextView)findViewById(R.id.tv_contatoEmergencia2);
         tv_contatoEmergencia3=(TextView)findViewById(R.id.tv_contatoEmergencia3);
+        tv_telefoneContatoEmergencia1 = (TextView)findViewById(R.id.tv_telefoneContatoEmergencia1);
 
         btn_deletar=(Button)findViewById(R.id.btn_deletarPerfil);
+
+        sessaoUsuario.iniciarSessao();
 
         btn_deletar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +52,14 @@ public class PerfilActivity extends AppCompatActivity {
 
             }
         });
+        sessaoUsuario.iniciarSessao();
+        tv_nome.setText(sessaoUsuario.getPessoaLogada().getNome());
+        tv_planoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
+        contatoExistente = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
+        if(!(contatoExistente==null)){
+            tv_contatoEmergencia1.setText(contatoExistente.getNome());
+            tv_telefoneContatoEmergencia1.setText(contatoExistente.getNumero());
+        }
 
     }
 }
