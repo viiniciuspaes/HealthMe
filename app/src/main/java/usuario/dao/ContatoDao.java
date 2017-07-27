@@ -5,7 +5,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import usuario.dominio.ContatoEmergencia;
-import usuario.dominio.Pessoa;
+import usuario.dominio.Evento;
+
 import usuario.negocio.UsuarioValidacao;
 
 
@@ -34,6 +35,19 @@ public class ContatoDao {
 
 
         db.insert(DbHelper.TABELA_CONTATO, null, valor);
+        db.close();
+    }
+    public void atualizarRegistro(ContatoEmergencia contatoEmergencia){
+        ContentValues valor;
+        String where = DbHelper.ID_CONTATO + "=" + contatoEmergencia.getId();
+        db = dataBaseHelper.getWritableDatabase();
+
+
+        valor = new ContentValues();
+        valor.put(DbHelper.CONTATO_NOME, contatoEmergencia.getNome());
+        valor.put(DbHelper.CONTATO_TELEFONE, contatoEmergencia.getNumero());
+        
+        db.update(DbHelper.TABELA_CONTATO, valor, where, null);
         db.close();
     }
 }

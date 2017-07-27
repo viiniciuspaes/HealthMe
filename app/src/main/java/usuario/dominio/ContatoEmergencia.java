@@ -4,10 +4,17 @@ package usuario.dominio;
 public class ContatoEmergencia {
     private String nome;
     private String numero;
-
-
-
     private Usuario usuario;
+    private int id;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public ContatoEmergencia(){
         this.nome =null;
