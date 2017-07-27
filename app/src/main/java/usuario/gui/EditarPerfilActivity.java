@@ -1,7 +1,10 @@
 package usuario.gui;
 
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -19,6 +22,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
     private EditText et_editarNomeContatoEmergencia3;
     private EditText et_editarTelefoneContatoEmergencia3;
     private Button btn_confirmar;
+    private Resources resources;
 
 
     @Override
@@ -37,5 +41,37 @@ public class EditarPerfilActivity extends AppCompatActivity {
         et_editarNomeContatoEmergencia3=(EditText)findViewById(R.id.et_editarNomeContatoEmergencia3);
         et_editarTelefoneContatoEmergencia3=(EditText)findViewById(R.id.et_editarTelefoneContatoEmergencia3);
         btn_confirmar=(Button)findViewById(R.id.btn_confirmar);
+
+        initViews();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+    }
+    public void initViews() {
+        resources = getResources();
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        };
+
+        et_editarNome.addTextChangedListener(textWatcher);
+        et_editarPlanoSaude.addTextChangedListener(textWatcher);
+        et_editarNomeContatoEmergencia1.addTextChangedListener(textWatcher);
+        et_editarTelefoneContatoEmergencia1.addTextChangedListener(textWatcher);
+        et_editarNomeContatoEmergencia2.addTextChangedListener(textWatcher);
+        et_editarTelefoneContatoEmergencia2.addTextChangedListener(textWatcher);
+        et_editarNomeContatoEmergencia3.addTextChangedListener(textWatcher);
+        et_editarTelefoneContatoEmergencia3.addTextChangedListener(textWatcher);
     }
 }
