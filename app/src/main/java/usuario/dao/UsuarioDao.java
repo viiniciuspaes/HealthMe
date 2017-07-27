@@ -54,15 +54,10 @@ public class UsuarioDao {
         where = DbHelper.ID_USUARIO + "=" + pessoa.getId();
 
         valor = new ContentValues();
-        valor.put(DbHelper.USER, pessoa.getUsuario().getLogin());
-        valor.put(DbHelper.PASSWORD, pessoa.getUsuario().getPassword());
-
-        db.update(DbHelper.TABELA_USUARIO, valor, where, null);
 
         where = DbHelper.ID_PESSOA + "=" + pessoa.getId();
         valor = new ContentValues();
         valor.put(DbHelper.NOME, pessoa.getNome());
-        valor.put(DbHelper.PESSOA_USER, pessoa.getUsuario().getLogin());
         valor.put(DbHelper.ENDERECO_CASA, pessoa.getEnderecoCasa());
         valor.put(DbHelper.ENDERECO_TRABALHO, pessoa.getEnderecoTrabalho());
         valor.put(DbHelper.PLANO_SAUDE, pessoa.getPlanoSaude());
