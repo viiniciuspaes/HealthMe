@@ -142,14 +142,14 @@ public class CadastroActivity extends AppCompatActivity {
             et_user.requestFocus();
             et_user.setError("Só pode conter letras e números.");
         }else if(!usuarioValidacao.verificarTamanho(login)){
-            et_password.requestFocus();
-            et_password.setError("Login inválido, verificar tamanho.");
+            et_user.requestFocus();
+            et_user.setError("Login inválido, verificar tamanho.");
         }else if(!usuarioValidacao.verEspacosBrancos(senha)){
             et_password.requestFocus();
             et_password.setError("Não deve conter espaço em branco.");
         }else if(!usuarioValidacao.verAlfanumerico(senha)) {
-            et_user.requestFocus();
-            et_user.setError("Só pode conter letras e números.");
+            et_password.requestFocus();
+            et_password.setError("Só pode conter letras e números.");
         }else if(!usuarioValidacao.verificarTamanho(senha)){
             et_password.requestFocus();
             et_password.setError("Senha inválida, verificar tamanho.");
