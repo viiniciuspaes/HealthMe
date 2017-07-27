@@ -21,6 +21,7 @@ import usuario.negocio.SessaoUsuario;
 
 public class TelaInicialNavActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
     private SharedPreferences preferences;
     private SessaoUsuario sessao;
     private TextView boasVindas;
@@ -40,7 +41,6 @@ public class TelaInicialNavActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        //Bug do bemVindo em análise!
         bemVindo();
     }
     public void bemVindo(){
@@ -66,19 +66,16 @@ public class TelaInicialNavActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.tela_inicial_nav, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -89,7 +86,7 @@ public class TelaInicialNavActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         if (id == R.id.nav_perfil) {

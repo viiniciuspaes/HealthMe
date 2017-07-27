@@ -78,9 +78,4 @@ public class EditarPerfilActivity extends AppCompatActivity {
         et_editarNomeContatoEmergencia3.addTextChangedListener(textWatcher);
         et_editarTelefoneContatoEmergencia3.addTextChangedListener(textWatcher);
     }
-    public void editar(View v) throws Exception{
-        
-
-
-    }
 }
