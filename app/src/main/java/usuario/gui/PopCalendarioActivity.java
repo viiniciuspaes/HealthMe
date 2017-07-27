@@ -42,7 +42,7 @@ public class PopCalendarioActivity extends AppCompatActivity {
         int largura=medidas.widthPixels;
         int altura=medidas.heightPixels;
 
-        getWindow().setLayout((int)(largura * 0.8),(int)(altura * 0.6));
+        getWindow().setLayout((int)(largura * 0.8),(int)(altura * 0.5));
     }
     public void criarEvento(View view) throws ParseException {
         evento = new Evento();

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class PerfilActivity extends AppCompatActivity {
     private TextView tv_nome;
-    private TextView tv_endereco;
+    //private TextView tv_endereco;
     private TextView tv_planoSaude;
     private TextView tv_contatoEmergencia1;
     private TextView tv_contatoEmergencia2;
@@ -26,7 +26,7 @@ public class PerfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_perfil);
 
         tv_nome=(TextView)findViewById(R.id.tv_nome);
-        tv_endereco=(TextView)findViewById(R.id.tv_endereco);
+        //tv_endereco=(TextView)findViewById(R.id.tv_endereco);
         tv_planoSaude=(TextView)findViewById(R.id.tv_planoSaude);
         tv_contatoEmergencia1=(TextView)findViewById(R.id.tv_contatoEmergencia1);
         tv_contatoEmergencia2=(TextView)findViewById(R.id.tv_contatoEmergencia2);
