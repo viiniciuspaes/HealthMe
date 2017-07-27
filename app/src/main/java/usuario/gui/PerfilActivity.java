@@ -5,6 +5,7 @@ import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -17,7 +18,7 @@ public class PerfilActivity extends AppCompatActivity {
     private TextView tv_contatoEmergencia2;
     private TextView tv_contatoEmergencia3;
 
-    private ImageButton ibtn_editarPerfil;
+    private Button btn_deletar;
 
 
     @Override
@@ -32,16 +33,14 @@ public class PerfilActivity extends AppCompatActivity {
         tv_contatoEmergencia2=(TextView)findViewById(R.id.tv_contatoEmergencia2);
         tv_contatoEmergencia3=(TextView)findViewById(R.id.tv_contatoEmergencia3);
 
-        ibtn_editarPerfil=(ImageButton)findViewById(R.id.ibtn_editarPerfil);
+        btn_deletar=(Button)findViewById(R.id.btn_deletarPerfil);
 
-        ibtn_editarPerfil.setOnClickListener(new View.OnClickListener() {
+        btn_deletar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PerfilActivity.this, EditarPerfilActivity.class));
+
             }
         });
-
-
 
     }
 }
