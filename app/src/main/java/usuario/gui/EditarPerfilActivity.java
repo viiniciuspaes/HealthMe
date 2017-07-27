@@ -70,9 +70,8 @@ public class EditarPerfilActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onResume(){
-        super.onResume();
-    }
+    public void onResume(){super.onResume();}
+
     public void initViews() {
         resources = getResources();
         TextWatcher textWatcher = new TextWatcher() {

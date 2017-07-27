@@ -87,7 +87,7 @@ public class ContatoDao {
     public void buscarDados(String user){
         try {
             db = dataBaseHelper.getReadableDatabase();
-            cursor = db.rawQuery("SELECT * FROM" + DbHelper.TABELA_CONTATO +" WHERE " + DbHelper.USUARIO_CONTATO + " LIKE " + user , null);
+            cursor = db.rawQuery("SELECT * FROM " + DbHelper.TABELA_CONTATO + " WHERE " + DbHelper.USUARIO_CONTATO + " LIKE " + user , null);
         } catch (Exception e) {
 
         }

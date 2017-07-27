@@ -45,6 +45,7 @@ public class PerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
+
         //Testes do listview, calma aí!
 
 
@@ -65,15 +66,6 @@ public class PerfilActivity extends AppCompatActivity {
         btn_deletar=(Button)findViewById(R.id.btn_deletarPerfil);
 
         sessaoUsuario = new SessaoUsuario(getApplicationContext());
-        sessaoUsuario.iniciarSessao();
-
-        btn_deletar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-        sessaoUsuario = new SessaoUsuario(getApplicationContext());
         daoContato = new ContatoDao(getApplicationContext());
         sessaoUsuario.iniciarSessao();
         tv_nome.setText(sessaoUsuario.getPessoaLogada().getNome());
@@ -82,23 +74,24 @@ public class PerfilActivity extends AppCompatActivity {
         daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
         criarLista();
     }
+
+    @Override
+    public void onResume(){super.onResume();}
+
     public void criarLista(){
         listViewContatos = (ListView) findViewById(R.id.listaDeContatos);
 
-        String[] from = {"nome","telefone"};
-        int[] to = {R.id.txvContatoNome,R.id.txvContatoNumero};
+        String[] from = {"contato_nome","contato_telefone","contato_usuario"};
+        int[] to = {R.id.txvContatoNome,R.id.txvContatoNumero,R.id.txvContatoUsuario};
 
-        adpter = new SimpleCursorAdapter(getApplicationContext(), R.layout.modelo_listview_contatos, cursor, from, to, 0);
+        adpter = new SimpleCursorAdapter(getApplicationContext(), R.layout.modelo_listview_contatos, cursor, from, to);
 
         //listViewContatos.setOnItemClickListener(this);
 
         listViewContatos.setAdapter(adpter);
-
-
-
-
     }
+
     public void editar(View view){
-        startActivity(new Intent(this,EditarPerfilActivity.class ));
+        startActivity(new Intent(this,EditarPerfilActivity.class));
     }
 }
