@@ -135,9 +135,9 @@ public class UsuarioDao {
         Pessoa pessoa = new Pessoa();
         pessoa.setId(cursor.getShort(0));
         pessoa.setNome(cursor.getString(1));
-        pessoa.setEnderecoCasa(cursor.getString(2));
-        pessoa.setEnderecoTrabalho(cursor.getString(3));
-        pessoa.setPlanoSaude(cursor.getString(4));
+        //pessoa.setEnderecoCasa(cursor.getString(3));
+        //pessoa.setEnderecoTrabalho(cursor.getString(4));
+        pessoa.setPlanoSaude(cursor.getString(5));
         return pessoa;
     }
     public boolean removerPessoa(int id){

@@ -2,10 +2,10 @@ package usuario.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import usuario.dominio.ContatoEmergencia;
-import usuario.dominio.Evento;
 
 import usuario.negocio.UsuarioValidacao;
 
@@ -24,6 +24,7 @@ public class ContatoDao {
         dataBaseHelper = new DbHelper(context);
         script = new SqlScripts();
     }
+
     public void inserirRegistro(ContatoEmergencia contatoEmergencia){
         ContentValues valor;
         db = dataBaseHelper.getWritableDatabase();
@@ -37,6 +38,7 @@ public class ContatoDao {
         db.insert(DbHelper.TABELA_CONTATO, null, valor);
         db.close();
     }
+
     public void atualizarRegistro(ContatoEmergencia contatoEmergencia){
         ContentValues valor;
         String where = DbHelper.ID_CONTATO + "=" + contatoEmergencia.getId();
@@ -46,8 +48,33 @@ public class ContatoDao {
         valor = new ContentValues();
         valor.put(DbHelper.CONTATO_NOME, contatoEmergencia.getNome());
         valor.put(DbHelper.CONTATO_TELEFONE, contatoEmergencia.getNumero());
-        
+
         db.update(DbHelper.TABELA_CONTATO, valor, where, null);
         db.close();
+    }
+
+    public ContatoEmergencia buscarContato(String usuario) {
+        db = dataBaseHelper.getReadableDatabase();
+
+        String[] parametros = {usuario};
+
+        Cursor cursor = db.rawQuery(script.cmdWhere(dataBaseHelper.TABELA_CONTATO,dataBaseHelper.USUARIO_CONTATO),
+                parametros);
+        ContatoEmergencia contato = null;
+
+        if (cursor.moveToNext()) {
+            contato = criarContato(cursor);
+        }
+        cursor.close();
+        db.close();
+        return contato;
+}
+
+    public ContatoEmergencia criarContato(Cursor cursor){
+        ContatoEmergencia contatoEmergencia = new ContatoEmergencia();
+        contatoEmergencia.setId(cursor.getInt(0));
+        contatoEmergencia.setNome(cursor.getString(2));
+        contatoEmergencia.setNumero(cursor.getString(3));
+        return contatoEmergencia;
     }
 }
