@@ -147,5 +147,4 @@ public class UsuarioDao {
         db.delete(dataBaseHelper.TABELA_PESSOA,where,null);
         db.close();
     }
-
 }
