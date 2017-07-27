@@ -10,8 +10,7 @@ import android.widget.CalendarView;
 public class CalendarioActivity extends AppCompatActivity {
     //private static final String TAG = "calendarActivity";
     private CalendarView calendario;
-
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,9 +21,13 @@ public class CalendarioActivity extends AppCompatActivity {
         calendario.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                String data= i + "/" + i1 + "/" + i2;
+                String data = i2 + "/" + i1 + "/" + i;
                 //Log.d(TAG, "onSelectedDayChange: date: " + data);
-                startActivity(new Intent(CalendarioActivity.this, PopCalendarioActivity.class));
+                //startActivity(new Intent(CalendarioActivity.this, PopCalendarioActivity.class));
+
+                Intent intentCalendario = new Intent(CalendarioActivity.this, PopCalendarioActivity.class);
+                intentCalendario.putExtra("data",data);
+                startActivity(intentCalendario);
             }
         });
     }

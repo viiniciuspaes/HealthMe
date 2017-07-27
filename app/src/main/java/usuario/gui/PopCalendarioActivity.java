@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.text.ParseException;
 
@@ -18,12 +19,11 @@ import usuario.negocio.UsuarioValidacao;
 public class PopCalendarioActivity extends AppCompatActivity {
     private EditText et_nome;
     private EditText et_descricao;
-    private EditText et_inicio;
+    private TextView et_inicio;
     private Evento evento;
     private UsuarioValidacao validacao;
     private EventoDao dao;
     private SessaoUsuario sessao;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +32,7 @@ public class PopCalendarioActivity extends AppCompatActivity {
 
         et_nome=(EditText)findViewById(R.id.et_nome_evento);
         et_descricao=(EditText)findViewById(R.id.et_descricao_evento);
-        et_inicio=(EditText)findViewById(R.id.et_data_evento);
-
-
+        et_inicio=(TextView)findViewById(R.id.et_data_evento);
 
         DisplayMetrics medidas= new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(medidas);
@@ -42,8 +40,13 @@ public class PopCalendarioActivity extends AppCompatActivity {
         int largura=medidas.widthPixels;
         int altura=medidas.heightPixels;
 
-        getWindow().setLayout((int)(largura * 0.8),(int)(altura * 0.5));
+        getWindow().setLayout((int)(largura * 0.8),(int)(altura * 0.6));
+
+        Intent intentCalendario = getIntent();
+        String data = intentCalendario.getStringExtra("data");
+        et_inicio.setText(data);
     }
+
     public void criarEvento(View view) throws ParseException {
         evento = new Evento();
         validacao = new UsuarioValidacao(getApplicationContext());
@@ -54,8 +57,9 @@ public class PopCalendarioActivity extends AppCompatActivity {
         evento.setNome(et_nome.getText().toString());
         evento.setDescricao(et_descricao.getText().toString());
         evento.setUsuario(sessao.getUsuarioLogado());
-        evento.setDate(validacao.mudarData(et_inicio.getText().toString()));
-
+        String[] s = et_inicio.getText().toString().split("/");
+        String dataInvertida = s[2]+"/"+s[1]+"/"+s[0];
+        evento.setDate(validacao.mudarData(dataInvertida));
 
         dao.inserirregistro(evento);
         startActivity(new Intent(this, CalendarioActivity.class));
