@@ -5,9 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import java.util.regex.Pattern;
 
 
 public class EditarPerfilActivity extends AppCompatActivity {
@@ -23,6 +26,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
     private EditText et_editarTelefoneContatoEmergencia3;
     private Button btn_confirmar;
     private Resources resources;
+
 
 
     @Override
@@ -73,5 +77,10 @@ public class EditarPerfilActivity extends AppCompatActivity {
         et_editarTelefoneContatoEmergencia2.addTextChangedListener(textWatcher);
         et_editarNomeContatoEmergencia3.addTextChangedListener(textWatcher);
         et_editarTelefoneContatoEmergencia3.addTextChangedListener(textWatcher);
+    }
+    public void editar(View v) throws Exception{
+        
+
+
     }
 }
