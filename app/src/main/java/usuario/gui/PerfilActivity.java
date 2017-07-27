@@ -97,7 +97,7 @@ public class PerfilActivity extends AppCompatActivity {
         String[] from = {"nome","telefone"};
         int[] to = {R.id.txvContatoNome,R.id.txvContatoNumero};
 
-        adpter = new SimpleCursorAdapter(getApplicationContext(), R.layout.modelo_listview_contatos, cursor, from, to);
+        adpter = new SimpleCursorAdapter(getApplicationContext(), R.layout.modelo_listview_contatos, cursor, from, to, 0);
 
         //listViewContatos.setOnItemClickListener(this);
 
