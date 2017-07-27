@@ -1,5 +1,6 @@
 package usuario.gui;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -55,14 +56,16 @@ public class EditarPerfilActivity extends AppCompatActivity {
         btn_confirmar=(Button)findViewById(R.id.btn_confirmar);
 
         initViews();
+        sessaoUsuario = new SessaoUsuario(getApplicationContext());
+        daoContato = new ContatoDao(getApplicationContext());
 
         sessaoUsuario.iniciarSessao();
-        et_editarNome.setHint(sessaoUsuario.getPessoaLogada().getNome());
-        et_editarPlanoSaude.setHint(sessaoUsuario.getPessoaLogada().getPlanoSaude());
+        et_editarNome.setText(sessaoUsuario.getPessoaLogada().getNome());
+        et_editarPlanoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
         contatoExistente = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
         if(!(contatoExistente==null)){
-            et_editarNomeContatoEmergencia1.setHint(contatoExistente.getNome());
-            et_editarTelefoneContatoEmergencia1.setHint(contatoExistente.getNumero());
+            et_editarNomeContatoEmergencia1.setText(contatoExistente.getNome());
+            et_editarTelefoneContatoEmergencia1.setText(contatoExistente.getNumero());
         }
     }
 
@@ -113,10 +116,13 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 contato = new ContatoEmergencia();
                 contato.setNome(et_editarNomeContatoEmergencia1.getText().toString());
                 contato.setNumero(et_editarTelefoneContatoEmergencia1.getText().toString());
+                contato.setUsuario(sessaoUsuario.getUsuarioLogado());
                 daoContato.inserirRegistro(contato);
             }
             daoUser.atualizarRegistro(pessoa);
         }
+        startActivity(new Intent(this, PerfilActivity.class));
+        finish();
 
 
 

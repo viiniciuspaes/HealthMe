@@ -44,6 +44,7 @@ public class PerfilActivity extends AppCompatActivity {
 
         btn_deletar=(Button)findViewById(R.id.btn_deletarPerfil);
 
+        sessaoUsuario = new SessaoUsuario(getApplicationContext());
         sessaoUsuario.iniciarSessao();
 
         btn_deletar.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +53,8 @@ public class PerfilActivity extends AppCompatActivity {
 
             }
         });
+        sessaoUsuario = new SessaoUsuario(getApplicationContext());
+        daoContato = new ContatoDao(getApplicationContext());
         sessaoUsuario.iniciarSessao();
         tv_nome.setText(sessaoUsuario.getPessoaLogada().getNome());
         tv_planoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
@@ -61,5 +64,8 @@ public class PerfilActivity extends AppCompatActivity {
             tv_telefoneContatoEmergencia1.setText(contatoExistente.getNumero());
         }
 
+    }
+    public void editar(View view){
+        startActivity(new Intent(this,EditarPerfilActivity.class ));
     }
 }
