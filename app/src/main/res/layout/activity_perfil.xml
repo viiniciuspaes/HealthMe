@@ -7,6 +7,23 @@
     tools:context="usuario.gui.PerfilActivity"
     android:background="@color/colorPrimary">
 
+    <Button
+        android:id="@+id/btn_deletarPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorAccent"
+        android:onClick="criarEvento"
+        android:text="Deletar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
     <TextView
         android:id="@+id/tv_telefoneContatoEmergencia2"
         android:layout_width="wrap_content"
@@ -17,11 +34,11 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintHorizontal_bias="0.905"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.726"
+        app:layout_constraintVertical_bias="0.694"
         tools:text="telefone" />
 
     <TextView
@@ -34,11 +51,11 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintHorizontal_bias="0.905"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.861"
+        app:layout_constraintVertical_bias="0.829"
         tools:text="telefone" />
 
     <TextView
@@ -47,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="199dp"
+        android:layout_marginTop="187dp"
         android:text="@string/campo_nome"
         app:layout_constraintHorizontal_bias="0.132"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -67,14 +84,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.473"
+        app:layout_constraintVertical_bias="0.451"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
         android:id="@+id/tv_contatoEmergencia1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="51dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:text="Contato de emergência"
@@ -97,7 +114,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.726" />
+        app:layout_constraintVertical_bias="0.694" />
 
     <TextView
         android:id="@+id/tv_contatoEmergencia3"
@@ -113,7 +130,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.966" />
+        app:layout_constraintVertical_bias="0.932" />
 
     <ImageButton
         android:id="@+id/ibtn_editarPerfil"
@@ -131,14 +148,6 @@
         app:layout_constraintVertical_bias="0.044"
         app:srcCompat="@drawable/ic_menu_manage"
         tools:layout_editor_absoluteX="305dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@android:drawable/ic_delete"
-        tools:layout_editor_absoluteX="306dp"
-        tools:layout_editor_absoluteY="106dp" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -158,10 +167,11 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintHorizontal_bias="0.905"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.599"
+        app:layout_constraintVertical_bias="0.567"
         tools:text="telefone" />
+
 </android.support.constraint.ConstraintLayout>
