@@ -5,9 +5,21 @@ public class ContatoEmergencia {
     private String nome;
     private String numero;
 
+
+
+    private Usuario usuario;
+
     public ContatoEmergencia(){
         this.nome =null;
         this.numero =null;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     public String getNome() {
         return nome;
