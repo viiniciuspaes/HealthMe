@@ -85,15 +85,29 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         app:srcCompat="@mipmap/marcador"
-        tools:layout_editor_absoluteX="127dp"
-        tools:layout_editor_absoluteY="31dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_deletarPerfil"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintVertical_bias="0.055"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <ListView
         android:id="@+id/listaDeContatos"
         android:layout_width="336dp"
         android:layout_height="194dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="301dp">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintVertical_bias="0.815">
 
     </ListView>
 

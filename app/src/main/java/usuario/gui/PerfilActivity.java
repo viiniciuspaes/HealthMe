@@ -47,8 +47,6 @@ public class PerfilActivity extends AppCompatActivity {
 
         //Testes do listview, calma aí!
 
-        //daoContato.buscarContato();
-        criarLista();
 
         /*
         List<ContatoEmergencia> cursos = todosOsContatos();
@@ -63,10 +61,6 @@ public class PerfilActivity extends AppCompatActivity {
         tv_nome=(TextView)findViewById(R.id.tv_nome);
         //tv_endereco=(TextView)findViewById(R.id.tv_endereco);
         tv_planoSaude=(TextView)findViewById(R.id.tv_planoSaude);
-        //tv_contatoEmergencia1=(TextView)findViewById(R.id.tv_contatoEmergencia1);
-        //tv_contatoEmergencia2=(TextView)findViewById(R.id.tv_contatoEmergencia2);
-        //tv_contatoEmergencia3=(TextView)findViewById(R.id.tv_contatoEmergencia3);
-        //tv_telefoneContatoEmergencia1 = (TextView)findViewById(R.id.tv_telefoneContatoEmergencia1);
 
         btn_deletar=(Button)findViewById(R.id.btn_deletarPerfil);
 
@@ -85,11 +79,8 @@ public class PerfilActivity extends AppCompatActivity {
         tv_nome.setText(sessaoUsuario.getPessoaLogada().getNome());
         tv_planoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
         contatoExistente = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
-        if(!(contatoExistente==null)){
-            tv_contatoEmergencia1.setText(contatoExistente.getNome());
-            tv_telefoneContatoEmergencia1.setText(contatoExistente.getNumero());
-        }
-
+        daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
+        criarLista();
     }
     public void criarLista(){
         listViewContatos = (ListView) findViewById(R.id.listaDeContatos);

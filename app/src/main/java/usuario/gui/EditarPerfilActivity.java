@@ -108,7 +108,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
             daoContato = new ContatoDao(getApplicationContext());
             ContatoEmergencia contato;
             if (!(daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin())== null)){
-              contato = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
+                contato = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
                 contato.setNome(et_editarNomeContatoEmergencia1.getText().toString());
                 contato.setNumero(et_editarTelefoneContatoEmergencia1.getText().toString());
                 daoContato.atualizarRegistro(contato);
