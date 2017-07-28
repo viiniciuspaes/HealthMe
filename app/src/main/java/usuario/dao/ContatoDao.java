@@ -18,10 +18,8 @@ import usuario.negocio.UsuarioValidacao;
 public class ContatoDao {
     private SQLiteDatabase db;
     private DbHelper dataBaseHelper;
-    private UsuarioValidacao validacao;
     private Context context;
     private SqlScripts script;
-    private ContatoEmergencia ctEmergencia;
     Cursor cursor;
     SimpleCursorAdapter adpter;
     ListView listViewContatos;
@@ -97,13 +95,4 @@ public class ContatoDao {
         return cursor;
     }
 
-    public Cursor buscarDados2(){
-        db = dataBaseHelper.getWritableDatabase();
-        String[] todasAsColunas = new String[]{DbHelper.ID_CONTATO, DbHelper.CONTATO_NOME,DbHelper.CONTATO_TELEFONE,DbHelper.USUARIO_CONTATO};
-        Cursor c = db.query(DbHelper.TABELA_CONTATO, todasAsColunas,null,null,null,null,null);
-        if (c!=null){
-            c.moveToFirst();
-        }
-        return c;
-    }
 }

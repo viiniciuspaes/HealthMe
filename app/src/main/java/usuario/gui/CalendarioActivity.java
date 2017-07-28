@@ -8,7 +8,6 @@ import android.widget.CalendarView;
 
 
 public class CalendarioActivity extends AppCompatActivity {
-    //private static final String TAG = "calendarActivity";
     private CalendarView calendario;
     
     @Override
@@ -22,8 +21,6 @@ public class CalendarioActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
                 String data = i2 + "/" + i1 + "/" + i;
-                //Log.d(TAG, "onSelectedDayChange: date: " + data);
-                //startActivity(new Intent(CalendarioActivity.this, PopCalendarioActivity.class));
 
                 Intent intentCalendario = new Intent(CalendarioActivity.this, PopCalendarioActivity.class);
                 intentCalendario.putExtra("data",data);

@@ -64,9 +64,7 @@ public class UsuarioValidacao {
             return true;
         }
     }
-    public String mudarData(Date a){
-        return String.valueOf(a);
-    }
+
     public Date mudarData(String a) throws ParseException{
         Date data=new SimpleDateFormat("yyyy/MM/dd").parse(a);
         return data;

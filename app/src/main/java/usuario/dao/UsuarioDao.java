@@ -17,7 +17,6 @@ public class UsuarioDao {
     private UsuarioValidacao validacao;
     private Context context;
     private SqlScripts script;
-    private ContatoEmergencia ctEmergencia;
 
     public UsuarioDao(Context context){
         this.context = context;
@@ -51,10 +50,6 @@ public class UsuarioDao {
         validacao =  new UsuarioValidacao(this.context);
 
         db = dataBaseHelper.getWritableDatabase();
-        where = DbHelper.ID_USUARIO + "=" + pessoa.getId();
-
-        valor = new ContentValues();
-
         where = DbHelper.ID_PESSOA + "=" + pessoa.getId();
         valor = new ContentValues();
         valor.put(DbHelper.NOME, pessoa.getNome());

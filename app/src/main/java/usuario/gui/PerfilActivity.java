@@ -26,7 +26,6 @@ public class PerfilActivity extends AppCompatActivity {
 
     private TextView tv_nome;
     private TextView tv_planoSaude;
-    private Button btn_deletar;
     private ContatoEmergencia contatoExistente;
     private ContatoDao daoContato;
     private SessaoUsuario sessaoUsuario;
@@ -42,8 +41,6 @@ public class PerfilActivity extends AppCompatActivity {
 
         tv_nome=(TextView)findViewById(R.id.tv_nome);
         tv_planoSaude=(TextView)findViewById(R.id.tv_planoSaude);
-
-        //btn_deletar=(Button)findViewById(R.id.btn_deletarPerfil);
 
         sessaoUsuario = new SessaoUsuario(getApplicationContext());
         daoContato = new ContatoDao(getApplicationContext());

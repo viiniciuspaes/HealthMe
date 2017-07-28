@@ -20,8 +20,6 @@ import usuario.negocio.SessaoUsuario;
 
 public class EditarPerfilActivity extends AppCompatActivity {
     private EditText et_editarNome;
-    //private EditText et_editarRua;
-    //private EditText et_editarNumero;
     private EditText et_editarPlanoSaude;
     private EditText et_editarNomeContatoEmergencia1;
     private EditText et_editarTelefoneContatoEmergencia1;
@@ -44,8 +42,6 @@ public class EditarPerfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_editar_perfil);
 
         et_editarNome=(EditText)findViewById(R.id.et_editarNome);
-        //et_editarRua=(EditText)findViewById(R.id.et_editarRua);
-        //et_editarNumero=(EditText)findViewById(R.id.et_editarNumero);
         et_editarPlanoSaude=(EditText)findViewById(R.id.et_editarPlanoSaude);
         et_editarNomeContatoEmergencia1=(EditText)findViewById(R.id.et_editarNomeContatoEmergencia1);
         et_editarTelefoneContatoEmergencia1=(EditText)findViewById(R.id.et_editarTelefoneContatoEmergencia1);
