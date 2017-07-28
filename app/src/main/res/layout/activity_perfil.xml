@@ -7,26 +7,6 @@
     tools:context="usuario.gui.PerfilActivity"
     android:background="@color/colorPrimary">
 
-    <Button
-        android:id="@+id/btn_deletarPerfil"
-        android:layout_width="182dp"
-        android:layout_height="31dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorAccent"
-        android:onClick="criarEvento"
-        android:text="Deletar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        tools:layout_editor_absoluteY="528dp" />
-
     <TextView
         android:id="@+id/tv_nome"
         android:layout_width="wrap_content"
