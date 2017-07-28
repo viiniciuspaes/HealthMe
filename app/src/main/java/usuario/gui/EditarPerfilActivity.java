@@ -103,8 +103,9 @@ public class EditarPerfilActivity extends AppCompatActivity {
         pessoa.setNome(et_editarNome.getText().toString());
         pessoa.setPlanoSaude(et_editarPlanoSaude.getText().toString());
 
+        daoContato = new ContatoDao(getApplicationContext());
+
         if (!TextUtils.isEmpty(et_editarNomeContatoEmergencia1.getText().toString())){
-            daoContato = new ContatoDao(getApplicationContext());
             ContatoEmergencia contato;
             if (!(daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin())== null)){
                 contato = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
@@ -118,12 +119,39 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 contato.setUsuario(sessaoUsuario.getUsuarioLogado());
                 daoContato.inserirRegistro(contato);
             }
-            daoUser.atualizarRegistro(pessoa);
+            if (!TextUtils.isEmpty(et_editarNomeContatoEmergencia2.getText().toString())){
+                ContatoEmergencia contato2;
+                if (!(daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin())== null)){
+                    contato2 = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
+                    contato2.setNome(et_editarNomeContatoEmergencia2.getText().toString());
+                    contato2.setNumero(et_editarTelefoneContatoEmergencia2.getText().toString());
+                    daoContato.atualizarRegistro(contato2);
+                }else {
+                    contato2 = new ContatoEmergencia();
+                    contato2.setNome(et_editarNomeContatoEmergencia2.getText().toString());
+                    contato2.setNumero(et_editarTelefoneContatoEmergencia2.getText().toString());
+                    contato2.setUsuario(sessaoUsuario.getUsuarioLogado());
+                    daoContato.inserirRegistro(contato2);
+                }
+                if (!TextUtils.isEmpty(et_editarNomeContatoEmergencia3.getText().toString())){
+                    ContatoEmergencia contato3;
+                    if (!(daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin())== null)){
+                        contato3 = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
+                        contato3.setNome(et_editarNomeContatoEmergencia3.getText().toString());
+                        contato3.setNumero(et_editarTelefoneContatoEmergencia3.getText().toString());
+                        daoContato.atualizarRegistro(contato3);
+                    }else {
+                        contato3 = new ContatoEmergencia();
+                        contato3.setNome(et_editarNomeContatoEmergencia3.getText().toString());
+                        contato3.setNumero(et_editarTelefoneContatoEmergencia3.getText().toString());
+                        contato3.setUsuario(sessaoUsuario.getUsuarioLogado());
+                        daoContato.inserirRegistro(contato3);
+            }
         }
+    }
+}
+        daoUser.atualizarRegistro(pessoa);
         startActivity(new Intent(this, PerfilActivity.class));
         finish();
-
-
-
     }
 }
