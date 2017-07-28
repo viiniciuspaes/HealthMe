@@ -74,7 +74,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     try {
                         List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
                         String string = addressList.get(0).getLocality();
-                        if(isLocal() == true){
+                        if(isLocal()){
                             mMap.moveCamera( CameraUpdateFactory.newLatLngZoom(latLng , 17.0f) );
                             setLocal(false);
                         }
@@ -110,7 +110,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     try {
                         List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
                         String string = addressList.get(0).getLocality();
-                        if(isLocal() == true){
+                        if(isLocal()){
                             mMap.moveCamera( CameraUpdateFactory.newLatLngZoom(latLng , 17.0f) );
                             setLocal(false);
                         }
@@ -221,15 +221,14 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         marcoZero.setNome("Marco Zero");
         marcoZero.setEndereco("Ponto de partida do Recife");
         marcoZero.setTelefone("(81)3456-3563");
-        CentroSaude teste = new CentroSaude();
-        teste.setLocalizacao(testeC);
-        teste.setNome("VRAU");
-        teste.setEndereco("Ponto de partida do INFERNO");
-        teste.setTelefone("(81)4673-3563");
+        CentroSaude teste2 = new CentroSaude();
+        teste2.setLocalizacao(testeC);
+        teste2.setNome("Marker2");
+        teste2.setEndereco("Ponto para teste");
+        teste2.setTelefone("(81)4673-3563");
 
         customizadoAddMarker(marcoZero);
-        customizadoAddMarker(teste);
-
+        customizadoAddMarker(teste2);
     }
 
     public void customizadoAddMarker(CentroSaude lugar){
