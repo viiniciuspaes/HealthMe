@@ -4,6 +4,13 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/txvContatoEmergencial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <TextView
         android:id="@+id/txvContatoUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

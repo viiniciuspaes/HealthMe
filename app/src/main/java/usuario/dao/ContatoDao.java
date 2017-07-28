@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import usuario.dominio.ContatoEmergencia;
 
+import usuario.gui.R;
 import usuario.negocio.UsuarioValidacao;
 
 
@@ -84,12 +85,26 @@ public class ContatoDao {
         return contatoEmergencia;
     }
 
-    public void buscarDados(String user){
-        try {
-            db = dataBaseHelper.getReadableDatabase();
-            cursor = db.rawQuery("SELECT * FROM " + DbHelper.TABELA_CONTATO + " WHERE " + DbHelper.USUARIO_CONTATO + " LIKE " + user , null);
-        } catch (Exception e) {
+    public Cursor buscarDados(){
 
+        db = dataBaseHelper.getWritableDatabase();
+        cursor = db.rawQuery("SELECT * FROM " + DbHelper.TABELA_CONTATO, null);
+
+        if(cursor!=null){
+            cursor.moveToFirst();
         }
+
+        return cursor;
+
+
+    }
+    public Cursor buscarDados2(){
+        db = dataBaseHelper.getWritableDatabase();
+        String[] todasAsColunas = new String[]{DbHelper.ID_CONTATO, DbHelper.CONTATO_NOME,DbHelper.CONTATO_TELEFONE,DbHelper.USUARIO_CONTATO};
+        Cursor c = db.query(DbHelper.TABELA_CONTATO, todasAsColunas,null,null,null,null,null);
+        if (c!=null){
+            c.moveToFirst();
+        }
+        return c;
     }
 }

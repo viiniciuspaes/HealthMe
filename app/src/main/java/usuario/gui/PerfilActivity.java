@@ -2,6 +2,7 @@ package usuario.gui;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import usuario.dao.ContatoDao;
+import usuario.dao.DbHelper;
 import usuario.dominio.ContatoEmergencia;
 import usuario.negocio.SessaoUsuario;
 
@@ -63,7 +65,9 @@ public class PerfilActivity extends AppCompatActivity {
         //tv_endereco=(TextView)findViewById(R.id.tv_endereco);
         tv_planoSaude=(TextView)findViewById(R.id.tv_planoSaude);
 
-        btn_deletar=(Button)findViewById(R.id.btn_deletarPerfil);
+        //btn_deletar=(Button)findViewById(R.id.btn_deletarPerfil);
+
+
 
         sessaoUsuario = new SessaoUsuario(getApplicationContext());
         daoContato = new ContatoDao(getApplicationContext());
@@ -71,18 +75,26 @@ public class PerfilActivity extends AppCompatActivity {
         tv_nome.setText(sessaoUsuario.getPessoaLogada().getNome());
         tv_planoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
         contatoExistente = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
-        daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
-        criarLista();
+        Cursor c = daoContato.buscarDados();
+        String[] from = new String[]{"contato_emergencial","contato_nome","contato_telefone","contato_usuario"};
+        int[] to = new int[]{R.id.txvContatoEmergencial,R.id.txvContatoNome,R.id.txvContatoNumero,R.id.txvContatoUsuario};
+       // adpter = new SimpleCursorAdapter(getApplicationContext(), R.layout.modelo_listview_contatos, c, from, to);
+        //adpter.notifyDataSetChanged();
+        //listViewContatos = (ListView) findViewById(R.id.listaDeContatos);
+        //listViewContatos.setAdapter(adpter);
+        //criarLista();
+
     }
 
-    @Override
-    public void onResume(){super.onResume();}
+    //@Override
+    //public void onResume(){super.onResume();}
 
     public void criarLista(){
+
         listViewContatos = (ListView) findViewById(R.id.listaDeContatos);
 
-        String[] from = {"contato_nome","contato_telefone","contato_usuario"};
-        int[] to = {R.id.txvContatoNome,R.id.txvContatoNumero,R.id.txvContatoUsuario};
+        String[] from = {"contato_emergencial","contato_nome","contato_telefone","contato_usuario"};
+        int[] to = {R.id.txvContatoEmergencial,R.id.txvContatoNome,R.id.txvContatoNumero,R.id.txvContatoUsuario};
 
         adpter = new SimpleCursorAdapter(getApplicationContext(), R.layout.modelo_listview_contatos, cursor, from, to);
 
