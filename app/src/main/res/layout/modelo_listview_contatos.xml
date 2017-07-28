@@ -7,15 +7,15 @@
         android:id="@+id/txvContatoEmergencial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <TextView
         android:id="@+id/txvContatoUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <TextView
         android:id="@+id/txvContatoNome"
@@ -28,7 +28,7 @@
         android:id="@+id/txvContatoNumero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
 
 </LinearLayout>

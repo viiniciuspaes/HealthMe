@@ -23,20 +23,13 @@ import usuario.negocio.SessaoUsuario;
 
 
 public class PerfilActivity extends AppCompatActivity {
-    private TextView tv_nome;
-    //private TextView tv_endereco;
-    private TextView tv_planoSaude;
-    private TextView tv_contatoEmergencia1;
-    private TextView tv_contatoEmergencia2;
-    private TextView tv_contatoEmergencia3;
-    private TextView tv_telefoneContatoEmergencia1;
 
+    private TextView tv_nome;
+    private TextView tv_planoSaude;
     private Button btn_deletar;
     private ContatoEmergencia contatoExistente;
     private ContatoDao daoContato;
     private SessaoUsuario sessaoUsuario;
-
-
 
     ListView listViewContatos;
     Cursor  cursor;
@@ -47,27 +40,10 @@ public class PerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
-
-        //Testes do listview, calma aí!
-
-
-        /*
-        List<ContatoEmergencia> cursos = todosOsContatos();
-
-        ListView listaDeContatos = (ListView) findViewById(R.id.listaDeContatos);
-
-        ArrayAdapter<ContatoEmergencia> adapter = new ArrayAdapter<ContatoEmergencia>(this,
-                android.R.layout.simple_list_item_1, cursos);
-
-        listaDeContatos.setAdapter(adapter);
-        */
         tv_nome=(TextView)findViewById(R.id.tv_nome);
-        //tv_endereco=(TextView)findViewById(R.id.tv_endereco);
         tv_planoSaude=(TextView)findViewById(R.id.tv_planoSaude);
 
         //btn_deletar=(Button)findViewById(R.id.btn_deletarPerfil);
-
-
 
         sessaoUsuario = new SessaoUsuario(getApplicationContext());
         daoContato = new ContatoDao(getApplicationContext());
@@ -77,17 +53,15 @@ public class PerfilActivity extends AppCompatActivity {
         contatoExistente = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
         Cursor c = daoContato.buscarDados();
         String[] from = new String[]{"_id","contato_usuario","contato_nome","contato_telefone"};
-        int[] to = new int[]{R.id.txvContatoEmergencial,R.id.txvContatoNome,R.id.txvContatoNumero,R.id.txvContatoUsuario};
-        adpter = new SimpleCursorAdapter(getApplicationContext(), R.layout.modelo_listview_contatos, c, from, to);
+        int[] to = new int[]{R.id.txvContatoEmergencial,R.id.txvContatoUsuario,R.id.txvContatoNome,R.id.txvContatoNumero,};
+        adpter = new SimpleCursorAdapter(getApplicationContext(), R.layout.modelo_listview_contatos, c, from, to,0);
         adpter.notifyDataSetChanged();
         listViewContatos = (ListView) findViewById(R.id.listaDeContatos);
         listViewContatos.setAdapter(adpter);
-        //criarLista();
-
     }
 
-    //@Override
-    //public void onResume(){super.onResume();}
+    @Override
+    public void onResume(){super.onResume();}
 
     public void criarLista(){
 

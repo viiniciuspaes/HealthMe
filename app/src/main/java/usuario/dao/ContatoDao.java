@@ -95,9 +95,8 @@ public class ContatoDao {
         }
 
         return cursor;
-
-
     }
+
     public Cursor buscarDados2(){
         db = dataBaseHelper.getWritableDatabase();
         String[] todasAsColunas = new String[]{DbHelper.ID_CONTATO, DbHelper.CONTATO_NOME,DbHelper.CONTATO_TELEFONE,DbHelper.USUARIO_CONTATO};
