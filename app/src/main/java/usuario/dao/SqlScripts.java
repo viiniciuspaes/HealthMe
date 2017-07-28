@@ -40,7 +40,8 @@ public class SqlScripts {
     protected String createTabelaContato(){
         StringBuilder contatoBuilder = new StringBuilder();
         contatoBuilder.append("CREATE TABLE "+ TABELA_CONTATO +" ( ");
-        contatoBuilder.append(ID_CONTATO +" integer primary key autoincrement, ");
+        contatoBuilder.append(ID+" integer primary key autoincrement, ");
+        contatoBuilder.append(ID_CONTATO +" integer, ");
         contatoBuilder.append(USUARIO_CONTATO + " text not null unique, ");
         contatoBuilder.append(CONTATO_NOME +" text, ");
         contatoBuilder.append(CONTATO_TELEFONE +" text);");

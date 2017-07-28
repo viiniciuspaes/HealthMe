@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DbHelper extends SQLiteOpenHelper {
     protected static final String NOME_DB = "banco.db";
-    protected static final int VERSAO = 3;
+    protected static final int VERSAO = 4;
     private SqlScripts scripts = new SqlScripts();
 
     // TABELA DOS USUARIOS
@@ -27,16 +27,17 @@ public class DbHelper extends SQLiteOpenHelper {
     protected static final String NASCIMENTO = "nascimento";
 
     //TABELA DOS EVENTOS
-    public static final String TABELA_EVENTO = "tabela_evento";
-    public static final String ID_EVENTO = "_id_evento";
-    public static final String EVENTO_NOME = "evento_nome";
-    public static final String USUARIO_EVENTO = "evento_usuario";
-    public static final String DESCRICAO = "descricao";
-    public static final String DATA = "data";
+    protected static final String TABELA_EVENTO = "tabela_evento";
+    protected static final String ID_EVENTO = "_id_evento";
+    protected static final String EVENTO_NOME = "evento_nome";
+    protected static final String USUARIO_EVENTO = "evento_usuario";
+    protected static final String DESCRICAO = "descricao";
+    protected static final String DATA = "data";
 
     //TABELA CONTATOS
-    public static final String TABELA_CONTATO = "tabela_contato";
-    protected static final String ID_CONTATO = "contato_emergencia1";
+    protected static final String TABELA_CONTATO = "tabela_contato";
+    protected static final String ID = "_id";
+    protected static final String ID_CONTATO = "_id_contato";
     protected static final String CONTATO_NOME = "contato_nome";
     protected static final String CONTATO_TELEFONE = "contato_telefone";
     protected static final String USUARIO_CONTATO = "contato_usuario";

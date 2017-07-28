@@ -76,12 +76,12 @@ public class PerfilActivity extends AppCompatActivity {
         tv_planoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
         contatoExistente = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
         Cursor c = daoContato.buscarDados();
-        String[] from = new String[]{"contato_emergencial","contato_nome","contato_telefone","contato_usuario"};
+        String[] from = new String[]{"_id","contato_usuario","contato_nome","contato_telefone"};
         int[] to = new int[]{R.id.txvContatoEmergencial,R.id.txvContatoNome,R.id.txvContatoNumero,R.id.txvContatoUsuario};
-       // adpter = new SimpleCursorAdapter(getApplicationContext(), R.layout.modelo_listview_contatos, c, from, to);
-        //adpter.notifyDataSetChanged();
-        //listViewContatos = (ListView) findViewById(R.id.listaDeContatos);
-        //listViewContatos.setAdapter(adpter);
+        adpter = new SimpleCursorAdapter(getApplicationContext(), R.layout.modelo_listview_contatos, c, from, to);
+        adpter.notifyDataSetChanged();
+        listViewContatos = (ListView) findViewById(R.id.listaDeContatos);
+        listViewContatos.setAdapter(adpter);
         //criarLista();
 
     }
