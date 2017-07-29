@@ -100,24 +100,24 @@ public class EditarPerfilActivity extends AppCompatActivity {
         pessoa.setPlanoSaude(et_editarPlanoSaude.getText().toString());
 
         daoContato = new ContatoDao(getApplicationContext());
-        ContatoEmergencia contato = new ContatoEmergencia();
 
-        adicionarContato(et_editarNomeContatoEmergencia1,et_editarTelefoneContatoEmergencia1,contato,daoContato);
-        adicionarContato(et_editarNomeContatoEmergencia2,et_editarTelefoneContatoEmergencia2,contato,daoContato);
-        adicionarContato(et_editarNomeContatoEmergencia3,et_editarTelefoneContatoEmergencia3,contato,daoContato);
+        adicionarContato(et_editarNomeContatoEmergencia1,et_editarTelefoneContatoEmergencia1,daoContato);
+        adicionarContato(et_editarNomeContatoEmergencia2,et_editarTelefoneContatoEmergencia2,daoContato);
+        adicionarContato(et_editarNomeContatoEmergencia3,et_editarTelefoneContatoEmergencia3,daoContato);
         daoUser.atualizarRegistro(pessoa);
         startActivity(new Intent(this, PerfilActivity.class));
         finish();
     }
-    public void adicionarContato(EditText etNome, EditText etTelefone, ContatoEmergencia contatoEmergencia, ContatoDao daoContato){
+    public void adicionarContato(EditText etNome, EditText etTelefone, ContatoDao daoContato){
         if (!TextUtils.isEmpty(etNome.getText().toString())) {
-            if (!(daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin()) == null)) {
-                contatoEmergencia = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
+            ContatoEmergencia contato = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
+            if (!(contato == null)) {
+                ContatoEmergencia contatoEmergencia = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
                 contatoEmergencia.setNome(etNome.getText().toString());
                 contatoEmergencia.setNumero(etTelefone.getText().toString());
                 daoContato.atualizarRegistro(contatoEmergencia);
             } else {
-                contatoEmergencia = new ContatoEmergencia();
+                ContatoEmergencia contatoEmergencia = new ContatoEmergencia();
                 contatoEmergencia.setNome(etNome.getText().toString());
                 contatoEmergencia.setNumero(etTelefone.getText().toString());
                 contatoEmergencia.setUsuario(sessaoUsuario.getUsuarioLogado());

@@ -76,7 +76,7 @@ public class PerfilActivity extends AppCompatActivity {
             tv_nome.setText(sessaoUsuario.getPessoaLogada().getNome());
             tv_planoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
         }
-        
+
         Cursor c = daoContato.buscarDados();
         String[] from = new String[]{"_id","contato_usuario","contato_nome","contato_telefone"};
         int[] to = new int[]{R.id.txvContatoEmergencial,R.id.txvContatoUsuario,R.id.txvContatoNome,R.id.txvContatoNumero,};
