@@ -112,16 +112,15 @@ public class EditarPerfilActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(etNome.getText().toString())) {
             ContatoEmergencia contato = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
             if (!(contato == null)) {
-                ContatoEmergencia contatoEmergencia = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
-                contatoEmergencia.setNome(etNome.getText().toString());
-                contatoEmergencia.setNumero(etTelefone.getText().toString());
-                daoContato.atualizarRegistro(contatoEmergencia);
+                contato.setNome(etNome.getText().toString());
+                contato.setNumero(etTelefone.getText().toString());
+                daoContato.atualizarRegistro(contato);
             } else {
-                ContatoEmergencia contatoEmergencia = new ContatoEmergencia();
-                contatoEmergencia.setNome(etNome.getText().toString());
-                contatoEmergencia.setNumero(etTelefone.getText().toString());
-                contatoEmergencia.setUsuario(sessaoUsuario.getUsuarioLogado());
-                daoContato.inserirRegistro(contatoEmergencia);
+                contato = new ContatoEmergencia();
+                contato.setNome(etNome.getText().toString());
+                contato.setNumero(etTelefone.getText().toString());
+                contato.setUsuario(sessaoUsuario.getUsuarioLogado());
+                daoContato.inserirRegistro(contato);
             }
         }
     }
