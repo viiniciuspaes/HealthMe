@@ -100,54 +100,29 @@ public class EditarPerfilActivity extends AppCompatActivity {
         pessoa.setPlanoSaude(et_editarPlanoSaude.getText().toString());
 
         daoContato = new ContatoDao(getApplicationContext());
+        ContatoEmergencia contato = new ContatoEmergencia();
 
-        if (!TextUtils.isEmpty(et_editarNomeContatoEmergencia1.getText().toString())){
-            ContatoEmergencia contato;
-            if (!(daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin())== null)){
-                contato = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
-                contato.setNome(et_editarNomeContatoEmergencia1.getText().toString());
-                contato.setNumero(et_editarTelefoneContatoEmergencia1.getText().toString());
-                daoContato.atualizarRegistro(contato);
-            }else {
-                contato = new ContatoEmergencia();
-                contato.setNome(et_editarNomeContatoEmergencia1.getText().toString());
-                contato.setNumero(et_editarTelefoneContatoEmergencia1.getText().toString());
-                contato.setUsuario(sessaoUsuario.getUsuarioLogado());
-                daoContato.inserirRegistro(contato);
-            }
-            if (!TextUtils.isEmpty(et_editarNomeContatoEmergencia2.getText().toString())){
-                ContatoEmergencia contato2;
-                if (!(daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin())== null)){
-                    contato2 = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
-                    contato2.setNome(et_editarNomeContatoEmergencia2.getText().toString());
-                    contato2.setNumero(et_editarTelefoneContatoEmergencia2.getText().toString());
-                    daoContato.atualizarRegistro(contato2);
-                }else {
-                    contato2 = new ContatoEmergencia();
-                    contato2.setNome(et_editarNomeContatoEmergencia2.getText().toString());
-                    contato2.setNumero(et_editarTelefoneContatoEmergencia2.getText().toString());
-                    contato2.setUsuario(sessaoUsuario.getUsuarioLogado());
-                    daoContato.inserirRegistro(contato2);
-                }
-                if (!TextUtils.isEmpty(et_editarNomeContatoEmergencia3.getText().toString())){
-                    ContatoEmergencia contato3;
-                    if (!(daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin())== null)){
-                        contato3 = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
-                        contato3.setNome(et_editarNomeContatoEmergencia3.getText().toString());
-                        contato3.setNumero(et_editarTelefoneContatoEmergencia3.getText().toString());
-                        daoContato.atualizarRegistro(contato3);
-                    }else {
-                        contato3 = new ContatoEmergencia();
-                        contato3.setNome(et_editarNomeContatoEmergencia3.getText().toString());
-                        contato3.setNumero(et_editarTelefoneContatoEmergencia3.getText().toString());
-                        contato3.setUsuario(sessaoUsuario.getUsuarioLogado());
-                        daoContato.inserirRegistro(contato3);
-            }
-        }
-    }
-}
+        adicionarContato(et_editarNomeContatoEmergencia1,et_editarTelefoneContatoEmergencia1,contato,daoContato);
+        adicionarContato(et_editarNomeContatoEmergencia2,et_editarTelefoneContatoEmergencia2,contato,daoContato);
+        adicionarContato(et_editarNomeContatoEmergencia3,et_editarTelefoneContatoEmergencia3,contato,daoContato);
         daoUser.atualizarRegistro(pessoa);
         startActivity(new Intent(this, PerfilActivity.class));
         finish();
+    }
+    public void adicionarContato(EditText etNome, EditText etTelefone, ContatoEmergencia contatoEmergencia, ContatoDao daoContato){
+        if (!TextUtils.isEmpty(etNome.getText().toString())) {
+            if (!(daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin()) == null)) {
+                contatoEmergencia = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
+                contatoEmergencia.setNome(etNome.getText().toString());
+                contatoEmergencia.setNumero(etTelefone.getText().toString());
+                daoContato.atualizarRegistro(contatoEmergencia);
+            } else {
+                contatoEmergencia = new ContatoEmergencia();
+                contatoEmergencia.setNome(etNome.getText().toString());
+                contatoEmergencia.setNumero(etTelefone.getText().toString());
+                contatoEmergencia.setUsuario(sessaoUsuario.getUsuarioLogado());
+                daoContato.inserirRegistro(contatoEmergencia);
+            }
+        }
     }
 }
