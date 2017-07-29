@@ -69,6 +69,7 @@ public class PerfilActivity extends AppCompatActivity {
 
     public void editar(View view){
         startActivity(new Intent(this,EditarPerfilActivity.class));
+        finish();
     }
     public void setTextos(){
         String pessoa= sessaoUsuario.getPessoaLogada().getNome();

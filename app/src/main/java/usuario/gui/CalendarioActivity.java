@@ -25,6 +25,7 @@ public class CalendarioActivity extends AppCompatActivity {
                 Intent intentCalendario = new Intent(CalendarioActivity.this, PopCalendarioActivity.class);
                 intentCalendario.putExtra("data",data);
                 startActivity(intentCalendario);
+                finish();
             }
         });
     }
