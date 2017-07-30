@@ -36,6 +36,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
     private ContatoDao daoContato;
     private SessaoUsuario sessaoUsuario;
     private List<ContatoEmergencia> contatoExistente;
+    private String[] contatosOriginais;
 
 
 
@@ -59,6 +60,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
         daoContato = new ContatoDao(getApplicationContext());
 
         sessaoUsuario.iniciarSessao();
+        contatosOriginais = new String[3];
         setview();
     }
 
@@ -98,9 +100,9 @@ public class EditarPerfilActivity extends AppCompatActivity {
 
         daoContato = new ContatoDao(getApplicationContext());
 
-        adicionarContato(et_editarNomeContatoEmergencia1,et_editarTelefoneContatoEmergencia1,daoContato);
-        adicionarContato(et_editarNomeContatoEmergencia2,et_editarTelefoneContatoEmergencia2,daoContato);
-        adicionarContato(et_editarNomeContatoEmergencia3,et_editarTelefoneContatoEmergencia3,daoContato);
+        adicionarContato(et_editarNomeContatoEmergencia1,et_editarTelefoneContatoEmergencia1,daoContato,contatosOriginais[0]);
+        adicionarContato(et_editarNomeContatoEmergencia2,et_editarTelefoneContatoEmergencia2,daoContato,contatosOriginais[1]);
+        adicionarContato(et_editarNomeContatoEmergencia3,et_editarTelefoneContatoEmergencia3,daoContato,contatosOriginais[2]);
         daoUser.atualizarRegistro(pessoa);
         startActivity(new Intent(this, PerfilActivity.class));
         finish();
@@ -113,12 +115,15 @@ public class EditarPerfilActivity extends AppCompatActivity {
         if(tamanho == 1){
             et_editarNomeContatoEmergencia1.setText(contatoExistente.get(0).getNome());
             et_editarTelefoneContatoEmergencia1.setText(contatoExistente.get(0).getNumero());
+            contatosOriginais[0] = et_editarNomeContatoEmergencia1.getText().toString();
         }
         if(tamanho == 2){
             et_editarNomeContatoEmergencia1.setText(contatoExistente.get(0).getNome());
             et_editarTelefoneContatoEmergencia1.setText(contatoExistente.get(0).getNumero());
             et_editarNomeContatoEmergencia2.setText(contatoExistente.get(1).getNome());
             et_editarTelefoneContatoEmergencia2.setText(contatoExistente.get(1).getNumero());
+            contatosOriginais[0] = et_editarNomeContatoEmergencia1.getText().toString();
+            contatosOriginais[1] = et_editarNomeContatoEmergencia2.getText().toString();
         }
         if(tamanho == 3){
             et_editarNomeContatoEmergencia1.setText(contatoExistente.get(0).getNome());
@@ -127,11 +132,14 @@ public class EditarPerfilActivity extends AppCompatActivity {
             et_editarTelefoneContatoEmergencia2.setText(contatoExistente.get(1).getNumero());
             et_editarNomeContatoEmergencia3.setText(contatoExistente.get(2).getNome());
             et_editarTelefoneContatoEmergencia3.setText(contatoExistente.get(2).getNumero());
+            contatosOriginais[0] = et_editarNomeContatoEmergencia1.getText().toString();
+            contatosOriginais[1] = et_editarNomeContatoEmergencia2.getText().toString();
+            contatosOriginais[2] = et_editarNomeContatoEmergencia3.getText().toString();
         }
     }
-    public void adicionarContato(EditText etNome, EditText etTelefone, ContatoDao daoContato){
+    public void adicionarContato(EditText etNome, EditText etTelefone, ContatoDao daoContato, String contatoOriginal){
         if (!TextUtils.isEmpty(etNome.getText().toString())) {
-            ContatoEmergencia contato = daoContato.buscarContato(etNome.getText().toString());
+            ContatoEmergencia contato = daoContato.buscarContato(contatoOriginal);
             if (!(contato == null)) {
                 contato.setUsuario(sessaoUsuario.getUsuarioLogado());
                 contato.setNome(etNome.getText().toString());
