@@ -50,7 +50,7 @@ public class UsuarioDao {
         validacao =  new UsuarioValidacao(this.context);
 
         db = dataBaseHelper.getWritableDatabase();
-        where = DbHelper.ID_PESSOA + "=" + pessoa.getId();
+        where = DbHelper.ID + "=" + pessoa.getId();
         valor = new ContentValues();
         valor.put(DbHelper.NOME, pessoa.getNome());
         valor.put(DbHelper.ENDERECO_CASA, pessoa.getEnderecoCasa());
@@ -125,19 +125,17 @@ public class UsuarioDao {
         Pessoa pessoa = new Pessoa();
         pessoa.setId(cursor.getShort(0));
         pessoa.setNome(cursor.getString(1));
-        //pessoa.setEnderecoCasa(cursor.getString(3));
-        //pessoa.setEnderecoTrabalho(cursor.getString(4));
         pessoa.setPlanoSaude(cursor.getString(5));
         return pessoa;
     }
     public boolean removerPessoa(int id){
         SQLiteDatabase db = dataBaseHelper.getWritableDatabase();
-        return db.delete(dataBaseHelper.TABELA_PESSOA, "_id_pessoa = ?", new String[]{Integer.toString(id)}) > 0;
+        return db.delete(dataBaseHelper.TABELA_PESSOA, "_id = ?", new String[]{Integer.toString(id)}) > 0;
 
     }
     public void deletarPessoa(int id){
 
-        String where = dataBaseHelper.ID_USUARIO + "=" + id;
+        String where = dataBaseHelper.ID + "=" + id;
         db = dataBaseHelper.getReadableDatabase();
         db.delete(dataBaseHelper.TABELA_PESSOA,where,null);
         db.close();

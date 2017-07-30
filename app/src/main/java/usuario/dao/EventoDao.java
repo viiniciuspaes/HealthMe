@@ -39,7 +39,7 @@ public class EventoDao {
     }
     public void atualizarRegistro(Evento evento){
         ContentValues valor;
-        String where = DbHelper.ID_EVENTO + "=" + evento.getId();
+        String where = DbHelper.ID + "=" + evento.getId();
         db = dataBaseHelper.getWritableDatabase();
         validacao = new EventoNegocio(this.context);
 

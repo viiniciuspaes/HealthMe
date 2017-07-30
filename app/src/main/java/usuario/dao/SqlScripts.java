@@ -8,7 +8,7 @@ public class SqlScripts {
 
         StringBuilder userBuilder = new StringBuilder();
         userBuilder.append("CREATE TABLE "+ TABELA_USUARIO +" ( ");
-        userBuilder.append(ID_USUARIO +" integer primary key autoincrement, ");
+        userBuilder.append(ID +" integer primary key autoincrement, ");
         userBuilder.append(USER+" text not null unique, ");
         userBuilder.append(PASSWORD+" text not null);");
         return userBuilder.toString();
@@ -17,7 +17,7 @@ public class SqlScripts {
 
         StringBuilder pessoaBuilder = new StringBuilder();
         pessoaBuilder.append("CREATE TABLE "+ TABELA_PESSOA +" ( ");
-        pessoaBuilder.append(ID_PESSOA +" integer primary key autoincrement, ");
+        pessoaBuilder.append(ID +" integer primary key autoincrement, ");
         pessoaBuilder.append(NOME +" text not null, ");
         pessoaBuilder.append(PESSOA_USER +" text not null unique, ");
         pessoaBuilder.append(ENDERECO_CASA +" text, ");
@@ -29,7 +29,7 @@ public class SqlScripts {
     protected String createTabelaEvento(){
         StringBuilder eventoBuilder = new StringBuilder();
         eventoBuilder.append("CREATE TABLE "+ TABELA_EVENTO +" ( ");
-        eventoBuilder.append(ID_EVENTO +" integer primary key autoincrement, ");
+        eventoBuilder.append(ID +" integer primary key autoincrement, ");
         eventoBuilder.append(EVENTO_NOME +" text not null unique, ");
         eventoBuilder.append(USUARIO_EVENTO +" text not null, ");
         eventoBuilder.append(DESCRICAO +" text, ");
