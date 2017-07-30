@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import usuario.dao.ContatoDao;
 import usuario.dao.UsuarioDao;
 import usuario.dominio.ContatoEmergencia;
@@ -32,7 +35,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
     private UsuarioDao daoUser;
     private ContatoDao daoContato;
     private SessaoUsuario sessaoUsuario;
-    private ContatoEmergencia contatoExistente;
+    private List<ContatoEmergencia> contatoExistente;
 
 
 
@@ -56,13 +59,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
         daoContato = new ContatoDao(getApplicationContext());
 
         sessaoUsuario.iniciarSessao();
-        et_editarNome.setText(sessaoUsuario.getPessoaLogada().getNome());
-        et_editarPlanoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
-        contatoExistente = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
-        if(!(contatoExistente==null)){
-            et_editarNomeContatoEmergencia1.setText(contatoExistente.getNome());
-            et_editarTelefoneContatoEmergencia1.setText(contatoExistente.getNumero());
-        }
+        setview();
     }
 
     @Override
@@ -108,10 +105,35 @@ public class EditarPerfilActivity extends AppCompatActivity {
         startActivity(new Intent(this, PerfilActivity.class));
         finish();
     }
+    public void setview(){
+        et_editarNome.setText(sessaoUsuario.getPessoaLogada().getNome());
+        et_editarPlanoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
+        contatoExistente = daoContato.buscarContatos(sessaoUsuario.getUsuarioLogado().getLogin());
+        int tamanho = contatoExistente.size();
+        if(tamanho == 1){
+            et_editarNomeContatoEmergencia1.setText(contatoExistente.get(0).getNome());
+            et_editarTelefoneContatoEmergencia1.setText(contatoExistente.get(0).getNumero());
+        }
+        if(tamanho == 2){
+            et_editarNomeContatoEmergencia1.setText(contatoExistente.get(0).getNome());
+            et_editarTelefoneContatoEmergencia1.setText(contatoExistente.get(0).getNumero());
+            et_editarNomeContatoEmergencia2.setText(contatoExistente.get(1).getNome());
+            et_editarTelefoneContatoEmergencia2.setText(contatoExistente.get(1).getNumero());
+        }
+        if(tamanho == 3){
+            et_editarNomeContatoEmergencia1.setText(contatoExistente.get(0).getNome());
+            et_editarTelefoneContatoEmergencia1.setText(contatoExistente.get(0).getNumero());
+            et_editarNomeContatoEmergencia2.setText(contatoExistente.get(1).getNome());
+            et_editarTelefoneContatoEmergencia2.setText(contatoExistente.get(1).getNumero());
+            et_editarNomeContatoEmergencia3.setText(contatoExistente.get(2).getNome());
+            et_editarTelefoneContatoEmergencia3.setText(contatoExistente.get(2).getNumero());
+        }
+    }
     public void adicionarContato(EditText etNome, EditText etTelefone, ContatoDao daoContato){
         if (!TextUtils.isEmpty(etNome.getText().toString())) {
-            ContatoEmergencia contato = daoContato.buscarContato(sessaoUsuario.getUsuarioLogado().getLogin());
+            ContatoEmergencia contato = daoContato.buscarContato(etNome.getText().toString());
             if (!(contato == null)) {
+                contato.setUsuario(sessaoUsuario.getUsuarioLogado());
                 contato.setNome(etNome.getText().toString());
                 contato.setNumero(etTelefone.getText().toString());
                 daoContato.atualizarRegistro(contato);

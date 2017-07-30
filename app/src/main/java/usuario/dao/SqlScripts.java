@@ -42,8 +42,8 @@ public class SqlScripts {
         contatoBuilder.append("CREATE TABLE "+ TABELA_CONTATO +" ( ");
         contatoBuilder.append(ID+" integer primary key autoincrement, ");
         contatoBuilder.append(ID_CONTATO +" integer, ");
-        contatoBuilder.append(USUARIO_CONTATO + " text not null unique, ");
-        contatoBuilder.append(CONTATO_NOME +" text, ");
+        contatoBuilder.append(USUARIO_CONTATO + " text, ");
+        contatoBuilder.append(CONTATO_NOME +" text not null unique, ");
         contatoBuilder.append(CONTATO_TELEFONE +" text);");
         return contatoBuilder.toString();
     }
@@ -53,7 +53,7 @@ public class SqlScripts {
     protected String cmdWhere(String tabela, String a){
         return "SELECT * FROM " + tabela + " WHERE " + a + " LIKE ?";
     }
-    protected String cmdWhereValues(String tabela, String valor1, String valor2){
-        return "SELECT * FROM" + tabela +" WHERE " + valor1 + " LIKE " + valor2;
+    protected String cmdWhereValues(String tabela, String coluna, String valor){
+        return "SELECT * FROM" + tabela +" WHERE " + coluna + " LIKE " + valor;
     }
 }

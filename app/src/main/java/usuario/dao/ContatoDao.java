@@ -8,6 +8,9 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import usuario.dominio.ContatoEmergencia;
 
 import usuario.gui.R;
@@ -51,6 +54,7 @@ public class ContatoDao {
 
 
         valor = new ContentValues();
+        valor.put(DbHelper.USUARIO_CONTATO, contatoEmergencia.getUsuario().getLogin());
         valor.put(DbHelper.CONTATO_NOME, contatoEmergencia.getNome());
         valor.put(DbHelper.CONTATO_TELEFONE, contatoEmergencia.getNumero());
 
@@ -58,12 +62,12 @@ public class ContatoDao {
         db.close();
     }
 
-    public ContatoEmergencia buscarContato(String usuario) {
+    public ContatoEmergencia buscarContato( String nome) {
         db = dataBaseHelper.getReadableDatabase();
 
-        String[] parametros = {usuario};
+        String[] parametros = { nome};
 
-        Cursor cursor = db.rawQuery(script.cmdWhere(dataBaseHelper.TABELA_CONTATO, dataBaseHelper.USUARIO_CONTATO),
+        Cursor cursor = db.rawQuery(script.cmdWhere(dataBaseHelper.TABELA_CONTATO, dataBaseHelper.CONTATO_NOME),
                 parametros);
         ContatoEmergencia contato = null;
 
@@ -74,12 +78,31 @@ public class ContatoDao {
         db.close();
         return contato;
     }
+    public List<ContatoEmergencia> buscarContatos(String usuario){
+        db = dataBaseHelper.getReadableDatabase();
+
+        String[] parametros = { usuario};
+
+        Cursor cursor = db.rawQuery(script.cmdWhere(dataBaseHelper.TABELA_CONTATO, dataBaseHelper.USUARIO_CONTATO),
+                parametros);
+        ContatoEmergencia contato = null;
+        List<ContatoEmergencia> contatos = new ArrayList<>();
+
+        while (cursor.moveToNext()) {
+            contato = criarContato(cursor);
+            contatos.add(contato);
+        }
+        cursor.close();
+        db.close();
+        return contatos;
+    }
+
 
     public ContatoEmergencia criarContato(Cursor cursor) {
         ContatoEmergencia contatoEmergencia = new ContatoEmergencia();
         contatoEmergencia.setId(cursor.getInt(0));
-        contatoEmergencia.setNome(cursor.getString(2));
-        contatoEmergencia.setNumero(cursor.getString(3));
+        contatoEmergencia.setNome(cursor.getString(3));
+        contatoEmergencia.setNumero(cursor.getString(4));
         return contatoEmergencia;
     }
 
