@@ -111,6 +111,9 @@ public class EditarPerfilActivity extends AppCompatActivity {
         et_editarNome.setText(sessaoUsuario.getPessoaLogada().getNome());
         et_editarPlanoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
         contatoExistente = daoContato.buscarContatos(sessaoUsuario.getUsuarioLogado().getLogin());
+        contatosOriginais[0] = "none";
+        contatosOriginais[1] = "none";
+        contatosOriginais[2] = "none";
         int tamanho = contatoExistente.size();
         if(tamanho == 1){
             et_editarNomeContatoEmergencia1.setText(contatoExistente.get(0).getNome());
