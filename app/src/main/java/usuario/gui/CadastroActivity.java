@@ -79,8 +79,6 @@ public class CadastroActivity extends AppCompatActivity {
 
                 usuarioValidacao.validarCadastro(pessoa);
                 iniciarLoginActivity();
-
-
         }
     }
 
@@ -99,7 +97,6 @@ public class CadastroActivity extends AppCompatActivity {
                 validarLoginESenha(login,senha)){
             return  true;
         }
-
         return false;
     }
 
@@ -137,22 +134,22 @@ public class CadastroActivity extends AppCompatActivity {
         boolean verificador = false;
         if(!usuarioValidacao.verEspacosBrancos(login)){
             et_user.requestFocus();
-            et_user.setError("Não deve conter espaço em branco.");
+            et_user.setError(resources.getString(R.string.erro_espaco_branco));
         }else if(!usuarioValidacao.verAlfanumerico(login)){
             et_user.requestFocus();
-            et_user.setError("Só pode conter letras e números.");
+            et_user.setError(resources.getString(R.string.erro_caracter_especial));
         }else if(!usuarioValidacao.verificarTamanho(login)){
             et_user.requestFocus();
-            et_user.setError("Login inválido, verificar tamanho.");
+            et_user.setError(resources.getString(R.string.erro_tamanho_login));
         }else if(!usuarioValidacao.verEspacosBrancos(senha)){
             et_password.requestFocus();
-            et_password.setError("Não deve conter espaço em branco.");
+            et_password.setError(resources.getString(R.string.erro_espaco_branco));
         }else if(!usuarioValidacao.verAlfanumerico(senha)) {
             et_password.requestFocus();
-            et_password.setError("Só pode conter letras e números.");
+            et_password.setError(resources.getString(R.string.erro_caracter_especial));
         }else if(!usuarioValidacao.verificarTamanho(senha)){
             et_password.requestFocus();
-            et_password.setError("Senha inválida, verificar tamanho.");
+            et_password.setError(resources.getString(R.string.erro_tamanho_senha));
         }else {
             verificador = true;
         }

@@ -81,7 +81,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                 }
 
                 @Override
@@ -196,7 +195,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         }
 
 //EVENTOS
-
         /*
         mMap.addMarker(new MarkerOptions().position(teste).title("Marcador teste")
                 .snippet("BRASIL KRAI")

@@ -47,7 +47,6 @@ public class PerfilActivity extends AppCompatActivity {
         sessaoUsuario.iniciarSessao();
 
         setTextos();
-
     }
 
     @Override

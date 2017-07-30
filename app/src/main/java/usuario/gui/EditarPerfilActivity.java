@@ -38,8 +38,6 @@ public class EditarPerfilActivity extends AppCompatActivity {
     private List<ContatoEmergencia> contatoExistente;
     private String[] contatosOriginais;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
