@@ -55,13 +55,14 @@ public class EditarPerfilActivity extends AppCompatActivity {
         et_editarTelefoneContatoEmergencia3=(EditText)findViewById(R.id.et_editarTelefoneContatoEmergencia3);
         btn_confirmar=(Button)findViewById(R.id.btn_confirmar);
 
-        initViews();
+
         sessaoUsuario = new SessaoUsuario(getApplicationContext());
         daoContato = new ContatoDao(getApplicationContext());
 
         sessaoUsuario.iniciarSessao();
         contatosOriginais = new String[3];
         setview();
+        initViews();
     }
 
     @Override

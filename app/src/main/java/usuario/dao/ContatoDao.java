@@ -49,7 +49,7 @@ public class ContatoDao {
 
     public void atualizarRegistro(ContatoEmergencia contatoEmergencia) {
         ContentValues valor;
-        String where = DbHelper.ID_CONTATO + "=" + contatoEmergencia.getId();
+        String where = DbHelper.ID + "=" + contatoEmergencia.getId();
         db = dataBaseHelper.getWritableDatabase();
 
 
@@ -101,15 +101,17 @@ public class ContatoDao {
     public ContatoEmergencia criarContato(Cursor cursor) {
         ContatoEmergencia contatoEmergencia = new ContatoEmergencia();
         contatoEmergencia.setId(cursor.getInt(0));
-        contatoEmergencia.setNome(cursor.getString(3));
-        contatoEmergencia.setNumero(cursor.getString(4));
+        contatoEmergencia.setNome(cursor.getString(2));
+        contatoEmergencia.setNumero(cursor.getString(3));
         return contatoEmergencia;
     }
 
-    public Cursor buscarDados(){
+    public Cursor buscarDados(String usuario){
 
         db = dataBaseHelper.getWritableDatabase();
-        cursor = db.rawQuery("SELECT * FROM " + DbHelper.TABELA_CONTATO, null);
+        String[] parametros = { usuario};
+
+        cursor = db.rawQuery("SELECT * FROM " + DbHelper.TABELA_CONTATO + " WHERE " + DbHelper.USUARIO_CONTATO +" Like ?",parametros);
 
         if(cursor!=null){
             cursor.moveToFirst();

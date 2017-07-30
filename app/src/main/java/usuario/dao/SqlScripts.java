@@ -41,7 +41,7 @@ public class SqlScripts {
         StringBuilder contatoBuilder = new StringBuilder();
         contatoBuilder.append("CREATE TABLE "+ TABELA_CONTATO +" ( ");
         contatoBuilder.append(ID+" integer primary key autoincrement, ");
-        contatoBuilder.append(ID_CONTATO +" integer, ");
+        //contatoBuilder.append(ID_CONTATO +" integer autoincrement, ");
         contatoBuilder.append(USUARIO_CONTATO + " text, ");
         contatoBuilder.append(CONTATO_NOME +" text not null unique, ");
         contatoBuilder.append(CONTATO_TELEFONE +" text);");
