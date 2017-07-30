@@ -6,10 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CalendarView;
 
+import usuario.dao.ContatoDao;
+import usuario.dao.EventoDao;
+import usuario.negocio.SessaoUsuario;
+
 
 public class CalendarioActivity extends AppCompatActivity {
     private CalendarView calendario;
-    
+    private EventoDao eventoDao;
+    private SessaoUsuario sessaoUsuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,5 +34,8 @@ public class CalendarioActivity extends AppCompatActivity {
                 finish();
             }
         });
+        sessaoUsuario = new SessaoUsuario(getApplicationContext());
+        eventoDao = new EventoDao(getApplicationContext());
+        sessaoUsuario.iniciarSessao();
     }
 }

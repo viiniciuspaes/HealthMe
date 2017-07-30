@@ -15,6 +15,7 @@ public class EventoDao {
     private SqlScripts script;
     private SQLiteDatabase db;
     private EventoNegocio validacao;
+    Cursor cursor;
 
     public EventoDao(Context context){
         this.context = context;
@@ -77,5 +78,18 @@ public class EventoDao {
         evento.setDescricao(cursor.getString(3));
         //evento.setDate(cursor.getString(4));
         return evento;
+    }
+    public Cursor buscarDados(String usuario){
+
+        db = dataBaseHelper.getWritableDatabase();
+        String[] parametros = { usuario};
+
+        cursor = db.rawQuery("SELECT * FROM " + DbHelper.TABELA_EVENTO + " WHERE " + DbHelper.USUARIO_EVENTO +" Like ?",parametros);
+
+        if(cursor!=null){
+            cursor.moveToFirst();
+        }
+
+        return cursor;
     }
 }
