@@ -62,7 +62,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-
+        
         if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, new LocationListener() {
                 @Override
@@ -180,7 +180,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             });
         }
 
-
         mMap.setMyLocationEnabled(true);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED &&
@@ -209,9 +208,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         mMap.setOnMapClickListener(GoogleMap.OnMapClickListener); */
     }
-
-
-
     public void bancoLugares(){
 
         LatLng marcoZeroC = new LatLng(-8.063171, -34.871143);

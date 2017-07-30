@@ -41,7 +41,17 @@ public class DbHelper extends SQLiteOpenHelper {
     protected static final String CONTATO_NOME = "contato_nome";
     protected static final String CONTATO_TELEFONE = "contato_telefone";
     protected static final String USUARIO_CONTATO = "contato_usuario";
-
+/*
+    // TABELA DOS CENTROS
+    protected static final String TABELA_CENTRO = "tabela_centro";
+    protected static final String ID_CENTRO ="_id_centro";
+    protected static final String CENTRO_NOME = "centro_nome";
+    protected static final String CENTRO_TELEFONE = "centro_telefone";
+    protected static final String CENTRO_ENDERECO = "cemtro_endereco";
+    protected static final String CENTRO_LATITUDE = "centro_latitude";
+    protected static final String CENTRO_LONGITUDE = "centro_longitude";
+    protected static final String PLANO_SAUDE = "plano_saude";
+*/
     public DbHelper(Context context){
         super(context, NOME_DB,null, VERSAO);
     }
@@ -51,6 +61,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(scripts.createTabelaPessoa());
         db.execSQL(scripts.createTabelaEvento());
         db.execSQL(scripts.createTabelaContato());
+        //db.execSQL(scripts.createTabelaMapa());
     }
 
     @Override
