@@ -6,15 +6,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import usuario.dominio.ContatoEmergencia;
 import usuario.dominio.Pessoa;
 import usuario.dominio.Usuario;
-import usuario.negocio.UsuarioValidacao;
+import usuario.negocio.UsuarioNegocio;
 
 public class UsuarioDao {
     private SQLiteDatabase db;
     private DbHelper dataBaseHelper;
-    private UsuarioValidacao validacao;
+    private UsuarioNegocio validacao;
     private Context context;
     private SqlScripts script;
 
@@ -47,7 +46,7 @@ public class UsuarioDao {
     public void atualizarRegistro(Pessoa pessoa){
         ContentValues valor;
         String where;
-        validacao =  new UsuarioValidacao(this.context);
+        validacao =  new UsuarioNegocio(this.context);
 
         db = dataBaseHelper.getWritableDatabase();
         where = DbHelper.ID + "=" + pessoa.getId();

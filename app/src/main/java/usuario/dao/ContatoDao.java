@@ -6,16 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import usuario.dominio.ContatoEmergencia;
-
-import usuario.gui.R;
-import usuario.negocio.UsuarioValidacao;
-
 
 
 public class ContatoDao {

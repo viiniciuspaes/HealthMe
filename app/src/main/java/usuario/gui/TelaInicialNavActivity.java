@@ -50,7 +50,7 @@ public class TelaInicialNavActivity extends AppCompatActivity
         sessao.iniciarSessao();
 
         boasVindas = (TextView)findViewById(R.id.boasVindas);
-        String bemvindo = boasVindas.getText().toString() +  sessao.getNome() + ".";
+        String bemvindo = boasVindas.getText().toString() +  sessao.getPessoaLogada().getNome() + ".";
         boasVindas.setText(bemvindo);
     }
 

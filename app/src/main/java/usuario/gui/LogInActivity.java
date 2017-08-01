@@ -13,7 +13,7 @@ import android.widget.EditText;
 import usuario.dominio.Usuario;
 import usuario.negocio.CriptografiaSenha;
 import usuario.negocio.SessaoUsuario;
-import usuario.negocio.UsuarioValidacao;
+import usuario.negocio.UsuarioNegocio;
 
 
 public class LogInActivity extends AppCompatActivity {
@@ -22,7 +22,7 @@ public class LogInActivity extends AppCompatActivity {
     private SessaoUsuario sessao;
 
     private Resources resources;
-    private UsuarioValidacao usuarioValidacao;
+    private UsuarioNegocio usuarioNegocio;
     private CriptografiaSenha cripto;
 
     @Override
@@ -77,7 +77,7 @@ public class LogInActivity extends AppCompatActivity {
         boolean validar=validarCampos();
         if(validar){
 
-            usuarioValidacao = new UsuarioValidacao(getApplicationContext());
+            usuarioNegocio = new UsuarioNegocio(getApplicationContext());
 
             String usuario = et_login.getText().toString();
             String senha = et_password.getText().toString();
@@ -87,7 +87,7 @@ public class LogInActivity extends AppCompatActivity {
 
             sessao = new SessaoUsuario(getApplicationContext());
 
-            Usuario validado = usuarioValidacao.login(usuario, novaSenha);
+            Usuario validado = usuarioNegocio.login(usuario, novaSenha);
 
             if (validado ==  null){
                 et_login.requestFocus();

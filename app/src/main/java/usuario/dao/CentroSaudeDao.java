@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import usuario.dominio.CentroSaude;
-import usuario.negocio.UsuarioValidacao;
+import usuario.negocio.UsuarioNegocio;
 
 public class CentroSaudeDao {
     private SQLiteDatabase db;

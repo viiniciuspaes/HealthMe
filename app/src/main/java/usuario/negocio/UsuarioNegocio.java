@@ -15,14 +15,14 @@ import usuario.dominio.Pessoa;
 import usuario.dominio.Usuario;
 
 
-public class UsuarioValidacao {
+public class UsuarioNegocio {
     private Context context;
     private UsuarioDao usuarioDao;
     private Pattern p1 = Pattern.compile("\\S+");
     private Pattern p2 = Pattern.compile("^[A-Za-z0-9]+$");
     private Matcher m;
 
-    public UsuarioValidacao(Context context) {
+    public UsuarioNegocio(Context context) {
         this.context=context;
     }
 
@@ -65,8 +65,5 @@ public class UsuarioValidacao {
         }
     }
 
-    public Date mudarData(String a) throws ParseException{
-        Date data=new SimpleDateFormat("yyyy/MM/dd").parse(a);
-        return data;
-    }
+
 }

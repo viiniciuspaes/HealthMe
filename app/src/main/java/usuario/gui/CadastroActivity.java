@@ -14,7 +14,7 @@ import android.widget.EditText;
 import usuario.dominio.Pessoa;
 import usuario.dominio.Usuario;
 import usuario.negocio.CriptografiaSenha;
-import usuario.negocio.UsuarioValidacao;
+import usuario.negocio.UsuarioNegocio;
 
 public class CadastroActivity extends AppCompatActivity {
     private EditText et_user ;
@@ -23,7 +23,7 @@ public class CadastroActivity extends AppCompatActivity {
     private EditText et_nome ;
 
     private Resources resources;
-    private UsuarioValidacao usuarioValidacao;
+    private UsuarioNegocio usuarioNegocio;
     private CriptografiaSenha cripto;
 
     @Override
@@ -31,7 +31,7 @@ public class CadastroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-        usuarioValidacao = new UsuarioValidacao(getApplicationContext());
+        usuarioNegocio = new UsuarioNegocio(getApplicationContext());
 
         et_user = (EditText) findViewById(R.id.et_register_login);
         et_password = (EditText) findViewById(R.id.et_register_password);
@@ -77,7 +77,7 @@ public class CadastroActivity extends AppCompatActivity {
                 pessoa.setNome(et_nome.getText().toString());
                 pessoa.setUsuario(usuario);
 
-                usuarioValidacao.validarCadastro(pessoa);
+                usuarioNegocio.validarCadastro(pessoa);
                 iniciarLoginActivity();
         }
     }
@@ -132,22 +132,22 @@ public class CadastroActivity extends AppCompatActivity {
     }
     public boolean validarLoginESenha(String login,String senha){
         boolean verificador = false;
-        if(!usuarioValidacao.verEspacosBrancos(login)){
+        if(!usuarioNegocio.verEspacosBrancos(login)){
             et_user.requestFocus();
             et_user.setError(resources.getString(R.string.erro_espaco_branco));
-        }else if(!usuarioValidacao.verAlfanumerico(login)){
+        }else if(!usuarioNegocio.verAlfanumerico(login)){
             et_user.requestFocus();
             et_user.setError(resources.getString(R.string.erro_caracter_especial));
-        }else if(!usuarioValidacao.verificarTamanho(login)){
+        }else if(!usuarioNegocio.verificarTamanho(login)){
             et_user.requestFocus();
             et_user.setError(resources.getString(R.string.erro_tamanho_login));
-        }else if(!usuarioValidacao.verEspacosBrancos(senha)){
+        }else if(!usuarioNegocio.verEspacosBrancos(senha)){
             et_password.requestFocus();
             et_password.setError(resources.getString(R.string.erro_espaco_branco));
-        }else if(!usuarioValidacao.verAlfanumerico(senha)) {
+        }else if(!usuarioNegocio.verAlfanumerico(senha)) {
             et_password.requestFocus();
             et_password.setError(resources.getString(R.string.erro_caracter_especial));
-        }else if(!usuarioValidacao.verificarTamanho(senha)){
+        }else if(!usuarioNegocio.verificarTamanho(senha)){
             et_password.requestFocus();
             et_password.setError(resources.getString(R.string.erro_tamanho_senha));
         }else {
