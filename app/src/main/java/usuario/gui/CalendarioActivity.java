@@ -13,16 +13,12 @@ import usuario.dao.ContatoDao;
 import usuario.dao.EventoDao;
 import usuario.negocio.SessaoUsuario;
 
-
 public class CalendarioActivity extends AppCompatActivity {
     private CalendarView calendario;
     private EventoDao daoEvento;
     private SessaoUsuario sessaoUsuario;
-    private ContatoDao daoContato;
-
-    ListView listViewContatos;
-    Cursor  cursor;
-    SimpleCursorAdapter adpter;
+    private ListView listViewContatos;
+    private SimpleCursorAdapter adpter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +44,6 @@ public class CalendarioActivity extends AppCompatActivity {
         setTextos();
     }
     public void setTextos(){
-
         Cursor c = daoEvento.buscarDados(sessaoUsuario.getUsuarioLogado().getLogin());
         String[] from = new String[]{"_id","evento_nome","evento_usuario","descricao","data"};
         int[] to = new int[]{R.id.txvEventoId,R.id.txvEventoNome,R.id.txvEventoUsuario,R.id.txvEventoDescricao,R.id.txvEventoData};

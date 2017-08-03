@@ -21,18 +21,14 @@ import usuario.dao.DbHelper;
 import usuario.dominio.ContatoEmergencia;
 import usuario.negocio.SessaoUsuario;
 
-
 public class PerfilActivity extends AppCompatActivity {
 
     private TextView tv_nome;
     private TextView tv_planoSaude;
-    private ContatoEmergencia contatoExistente;
     private ContatoDao daoContato;
     private SessaoUsuario sessaoUsuario;
-
-    ListView listViewContatos;
-    Cursor  cursor;
-    SimpleCursorAdapter adpter;
+    private ListView listViewContatos;
+    private SimpleCursorAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,41 +44,26 @@ public class PerfilActivity extends AppCompatActivity {
 
         setTextos();
     }
-
     @Override
     public void onResume(){super.onResume();}
-
-    public void criarLista(){
-
-        listViewContatos = (ListView) findViewById(R.id.listaDeContatos);
-
-        String[] from = {"contato_emergencial","contato_nome","contato_telefone","contato_usuario"};
-        int[] to = {R.id.txvContatoEmergencial,R.id.txvContatoNome,R.id.txvContatoNumero,R.id.txvContatoUsuario};
-
-        adpter = new SimpleCursorAdapter(getApplicationContext(), R.layout.modelo_listview_contatos, cursor, from, to);
-
-        //listViewContatos.setOnItemClickListener(this);
-
-        listViewContatos.setAdapter(adpter);
-    }
 
     public void editar(View view){
         startActivity(new Intent(this,EditarPerfilActivity.class));
         finish();
     }
+
     public void setTextos(){
         String pessoa= sessaoUsuario.getPessoaLogada().getNome();
         if (!(pessoa == null)){
             tv_nome.setText(sessaoUsuario.getPessoaLogada().getNome());
             tv_planoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
         }
-
         Cursor c = daoContato.buscarDados(sessaoUsuario.getUsuarioLogado().getLogin());
         String[] from = new String[]{"_id","contato_usuario","contato_nome","contato_telefone"};
         int[] to = new int[]{R.id.txvContatoEmergencial,R.id.txvContatoUsuario,R.id.txvContatoNome,R.id.txvContatoNumero,};
-        adpter = new SimpleCursorAdapter(getApplicationContext(), R.layout.modelo_listview_contatos, c, from, to,0);
-        adpter.notifyDataSetChanged();
+        adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.modelo_listview_contatos, c, from, to,0);
+        adapter.notifyDataSetChanged();
         listViewContatos = (ListView) findViewById(R.id.listaDeContatos);
-        listViewContatos.setAdapter(adpter);
+        listViewContatos.setAdapter(adapter);
     }
 }
