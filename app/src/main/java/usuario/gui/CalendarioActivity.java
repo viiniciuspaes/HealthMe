@@ -11,14 +11,14 @@ import android.widget.SimpleCursorAdapter;
 
 import usuario.dao.ContatoDao;
 import usuario.dao.EventoDao;
+import usuario.negocio.EventoNegocio;
 import usuario.negocio.SessaoUsuario;
 
 public class CalendarioActivity extends AppCompatActivity {
     private CalendarView calendario;
-    private EventoDao daoEvento;
     private SessaoUsuario sessaoUsuario;
     private ListView listViewContatos;
-    private SimpleCursorAdapter adpter;
+    private EventoNegocio eventoNegocio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,18 +38,9 @@ public class CalendarioActivity extends AppCompatActivity {
             }
         });
         sessaoUsuario = new SessaoUsuario(getApplicationContext());
-        daoEvento = new EventoDao(getApplicationContext());
         sessaoUsuario.iniciarSessao();
-
-        setTextos();
-    }
-    public void setTextos(){
-        Cursor c = daoEvento.buscarDados(sessaoUsuario.getUsuarioLogado().getLogin());
-        String[] from = new String[]{"_id","evento_nome","evento_usuario","descricao","data"};
-        int[] to = new int[]{R.id.txvEventoId,R.id.txvEventoNome,R.id.txvEventoUsuario,R.id.txvEventoDescricao,R.id.txvEventoData};
-        adpter = new SimpleCursorAdapter(getApplicationContext(), R.layout.modelo_listview_eventos, c, from, to,0);
-        adpter.notifyDataSetChanged();
         listViewContatos = (ListView) findViewById(R.id.listaDeContatos);
-        listViewContatos.setAdapter(adpter);
+        eventoNegocio = new EventoNegocio(getApplicationContext());
+        eventoNegocio.setTextos(listViewContatos,sessaoUsuario);
     }
 }

@@ -19,6 +19,7 @@ import java.util.List;
 import usuario.dao.ContatoDao;
 import usuario.dao.DbHelper;
 import usuario.dominio.ContatoEmergencia;
+import usuario.negocio.ContatoNegocio;
 import usuario.negocio.SessaoUsuario;
 
 public class PerfilActivity extends AppCompatActivity {
@@ -26,9 +27,9 @@ public class PerfilActivity extends AppCompatActivity {
     private TextView tv_nome;
     private TextView tv_planoSaude;
     private ContatoDao daoContato;
+    private ContatoNegocio contatoNegocio;
     private SessaoUsuario sessaoUsuario;
     private ListView listViewContatos;
-    private SimpleCursorAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,9 @@ public class PerfilActivity extends AppCompatActivity {
 
         sessaoUsuario = new SessaoUsuario(getApplicationContext());
         daoContato = new ContatoDao(getApplicationContext());
+        contatoNegocio = new ContatoNegocio(getApplicationContext());
         sessaoUsuario.iniciarSessao();
+        listViewContatos = (ListView) findViewById(R.id.listaDeContatos);
 
         setTextos();
     }
@@ -58,12 +61,6 @@ public class PerfilActivity extends AppCompatActivity {
             tv_nome.setText(sessaoUsuario.getPessoaLogada().getNome());
             tv_planoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
         }
-        Cursor c = daoContato.buscarDados(sessaoUsuario.getUsuarioLogado().getLogin());
-        String[] from = new String[]{"_id","contato_usuario","contato_nome","contato_telefone"};
-        int[] to = new int[]{R.id.txvContatoEmergencial,R.id.txvContatoUsuario,R.id.txvContatoNome,R.id.txvContatoNumero,};
-        adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.modelo_listview_contatos, c, from, to,0);
-        adapter.notifyDataSetChanged();
-        listViewContatos = (ListView) findViewById(R.id.listaDeContatos);
-        listViewContatos.setAdapter(adapter);
+        contatoNegocio.setTextos(listViewContatos,sessaoUsuario);
     }
 }
