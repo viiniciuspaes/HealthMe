@@ -6,6 +6,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.text.ParseException;
+
 import usuario.dominio.Evento;
 import usuario.negocio.EventoNegocio;
 
@@ -32,7 +34,7 @@ public class EventoDao {
         valor.put(DbHelper.EVENTO_NOME, evento.getNome());
         valor.put(DbHelper.USUARIO_EVENTO, evento.getUsuario().getLogin());
         valor.put(DbHelper.DESCRICAO, evento.getDescricao());
-        valor.put(DbHelper.DATA, validacao.mudarData(evento.getDate()));
+        valor.put(DbHelper.DATA, evento.getDate());
 
 
         db.insert(DbHelper.TABELA_EVENTO, null, valor);

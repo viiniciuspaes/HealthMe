@@ -27,11 +27,12 @@ public class EventoNegocio {
         this.context=context;
         daoEvento = new EventoDao(context);
     }
-     public String mudarData(Date a){
+    public String mudarData(Date a){
             return String.valueOf(a);
         }
-    public Date mudarData(String a) throws ParseException {
-        Date data=new SimpleDateFormat("yyyy/MM/dd").parse(a);
+    public String mudarData(String a){
+        String[] s = a.toString().split("/");
+        String data = s[2]+"/"+s[1]+"/"+s[0];
         return data;
     }
     public boolean verEspacosBrancos(String campo){

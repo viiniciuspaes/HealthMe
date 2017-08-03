@@ -8,7 +8,7 @@ public class Evento {
     private Usuario usuario;
     private String nome;
     private String descricao;
-    private Date data;
+    private String data;
 
 
     public Evento(){
@@ -50,11 +50,11 @@ public class Evento {
         this.descricao = descricao;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return data;
     }
 
-    public void setDate(Date data) {
+    public void setDate(String data) {
         this.data = data;
     }
 }
