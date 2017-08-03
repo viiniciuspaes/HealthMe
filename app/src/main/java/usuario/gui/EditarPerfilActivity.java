@@ -18,6 +18,7 @@ import usuario.dao.ContatoDao;
 import usuario.dao.UsuarioDao;
 import usuario.dominio.ContatoEmergencia;
 import usuario.dominio.Pessoa;
+import usuario.negocio.ContatoNegocio;
 import usuario.negocio.SessaoUsuario;
 
 
@@ -37,6 +38,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
     private SessaoUsuario sessaoUsuario;
     private List<ContatoEmergencia> contatoExistente;
     private String[] contatosOriginais;
+    private ContatoNegocio validacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,19 +143,33 @@ public class EditarPerfilActivity extends AppCompatActivity {
     }
     public void adicionarContato(EditText etNome, EditText etTelefone, ContatoDao daoContato, String contatoOriginal){
         if (!TextUtils.isEmpty(etNome.getText().toString())) {
-            ContatoEmergencia contato = daoContato.buscarContato(contatoOriginal);
-            if (!(contato == null)) {
-                contato.setUsuario(sessaoUsuario.getUsuarioLogado());
-                contato.setNome(etNome.getText().toString());
-                contato.setNumero(etTelefone.getText().toString());
-                daoContato.atualizarRegistro(contato);
-            } else {
-                contato = new ContatoEmergencia();
-                contato.setNome(etNome.getText().toString());
-                contato.setNumero(etTelefone.getText().toString());
-                contato.setUsuario(sessaoUsuario.getUsuarioLogado());
-                daoContato.inserirRegistro(contato);
+            Boolean validado = validarCampos(etNome);
+            if (validado) {
+                ContatoEmergencia contato = daoContato.buscarContato(contatoOriginal);
+                if (!(contato == null)) {
+                    contato.setUsuario(sessaoUsuario.getUsuarioLogado());
+                    contato.setNome(etNome.getText().toString());
+                    contato.setNumero(etTelefone.getText().toString());
+                    daoContato.atualizarRegistro(contato);
+                } else {
+                    contato = new ContatoEmergencia();
+                    contato.setNome(etNome.getText().toString());
+                    contato.setNumero(etTelefone.getText().toString());
+                    contato.setUsuario(sessaoUsuario.getUsuarioLogado());
+                    daoContato.inserirRegistro(contato);
+                }
             }
         }
+    }
+    public boolean validarCampos(EditText et_nome){
+        boolean verificador = false;
+        validacao = new ContatoNegocio(getApplicationContext());
+        if(!validacao.verAlfanumerico(et_nome.getText().toString())){
+            et_nome.requestFocus();
+            et_nome.setError(resources.getString(R.string.erro_caracter_especial));
+        }else {
+            verificador = true;
+        }
+        return  verificador;
     }
 }

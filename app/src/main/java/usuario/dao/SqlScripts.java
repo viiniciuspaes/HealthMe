@@ -47,20 +47,19 @@ public class SqlScripts {
         contatoBuilder.append(CONTATO_TELEFONE +" text);");
         return contatoBuilder.toString();
     }
-
- /*
+    
     protected String createTabelaMapa(){
         StringBuilder mapaBuilder = new StringBuilder();
         mapaBuilder.append("CREATE TABLE "+ TABELA_CENTRO +" ( ");
-        mapaBuilder.append(ID_CENTRO +" integer primary key autoincrement, ");
+        mapaBuilder.append(ID+" integer primary key autoincrement, ");
         mapaBuilder.append(CENTRO_NOME +" text not null unique, ");
         mapaBuilder.append(CENTRO_TELEFONE + " text, ");
         mapaBuilder.append(CENTRO_ENDERECO +" text not null, ");
-        mapaBuilder.append(CENTRO_LATLNG +" text);");
-        mapaBuilder.append(PLANO_SAUDE +" text);");
+        mapaBuilder.append(CENTRO_LATLNG +" text, ");
+        mapaBuilder.append(CENTRO_PLANO_SAUDE +" text);");
         return mapaBuilder.toString();
     }
-*/
+
 
     protected String cmdWhere(String tabela, String a, String b){
         return "SELECT * FROM " + tabela + " WHERE " + a + " LIKE ? AND " + b + " LIKE ?";

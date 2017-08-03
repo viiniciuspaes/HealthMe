@@ -30,7 +30,6 @@ public class EventoNegocio {
         m = p1.matcher(texto);
         return m.matches();
     }
-
     public boolean verAlfanumerico(String campo){
         String texto = campo;
         m = p2.matcher(texto);

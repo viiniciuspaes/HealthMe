@@ -35,8 +35,6 @@ public class UsuarioDao {
         valor = new ContentValues();
         valor.put(DbHelper.NOME, pessoa.getNome());
         valor.put(DbHelper.PESSOA_USER, pessoa.getUsuario().getLogin());
-        valor.put(DbHelper.ENDERECO_CASA, pessoa.getEnderecoCasa());
-        valor.put(DbHelper.ENDERECO_TRABALHO, pessoa.getEnderecoTrabalho());
         valor.put(DbHelper.PLANO_SAUDE, pessoa.getPlanoSaude());
         //valor.put(DbHelper.NASCIMENTO, validacao.mudarData(pessoa.getNascimento()) );
 
@@ -52,8 +50,6 @@ public class UsuarioDao {
         where = DbHelper.ID + "=" + pessoa.getId();
         valor = new ContentValues();
         valor.put(DbHelper.NOME, pessoa.getNome());
-        valor.put(DbHelper.ENDERECO_CASA, pessoa.getEnderecoCasa());
-        valor.put(DbHelper.ENDERECO_TRABALHO, pessoa.getEnderecoTrabalho());
         valor.put(DbHelper.PLANO_SAUDE, pessoa.getPlanoSaude());
         //valor.put(DbHelper.NASCIMENTO, validacao.mudarData(pessoa.getNascimento()) );
 
@@ -124,7 +120,7 @@ public class UsuarioDao {
         Pessoa pessoa = new Pessoa();
         pessoa.setId(cursor.getShort(0));
         pessoa.setNome(cursor.getString(1));
-        pessoa.setPlanoSaude(cursor.getString(5));
+        pessoa.setPlanoSaude(cursor.getString(3));
         return pessoa;
     }
     public boolean removerPessoa(int id){

@@ -9,6 +9,15 @@ public class CentroSaude {
     private String telefone;
     private String endereco;
     private LatLng localizacao;
+    private PlanoSaude planoSaude;
+
+    public PlanoSaude getPlanoSaude() {
+        return planoSaude;
+    }
+
+    public void setPlanoSaude(PlanoSaude planoSaude) {
+        this.planoSaude = planoSaude;
+    }
 
     public LatLng getLocalizacao() {
         return localizacao;
