@@ -120,7 +120,7 @@ public class UsuarioDao {
         Pessoa pessoa = new Pessoa();
         pessoa.setId(cursor.getShort(0));
         pessoa.setNome(cursor.getString(1));
-        pessoa.setPlanoSaude(cursor.getString(3));
+        pessoa.setPlanoSaude(cursor.getString(5));
         return pessoa;
     }
     public boolean removerPessoa(int id){

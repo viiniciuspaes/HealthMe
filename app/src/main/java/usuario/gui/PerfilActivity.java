@@ -26,7 +26,6 @@ public class PerfilActivity extends AppCompatActivity {
 
     private TextView tv_nome;
     private TextView tv_planoSaude;
-    private ContatoDao daoContato;
     private ContatoNegocio contatoNegocio;
     private SessaoUsuario sessaoUsuario;
     private ListView listViewContatos;
@@ -40,7 +39,6 @@ public class PerfilActivity extends AppCompatActivity {
         tv_planoSaude=(TextView)findViewById(R.id.tv_planoSaude);
 
         sessaoUsuario = new SessaoUsuario(getApplicationContext());
-        daoContato = new ContatoDao(getApplicationContext());
         contatoNegocio = new ContatoNegocio(getApplicationContext());
         sessaoUsuario.iniciarSessao();
         listViewContatos = (ListView) findViewById(R.id.listaDeContatos);
