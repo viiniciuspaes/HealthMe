@@ -31,7 +31,6 @@ public class EditarPerfilActivity extends AppCompatActivity {
     private EditText et_editarTelefoneContatoEmergencia2;
     private EditText et_editarNomeContatoEmergencia3;
     private EditText et_editarTelefoneContatoEmergencia3;
-    private Button btn_confirmar;
     private Resources resources;
     private UsuarioDao daoUser;
     private ContatoDao daoContato;
@@ -53,7 +52,6 @@ public class EditarPerfilActivity extends AppCompatActivity {
         et_editarTelefoneContatoEmergencia2=(EditText)findViewById(R.id.et_editarTelefoneContatoEmergencia2);
         et_editarNomeContatoEmergencia3=(EditText)findViewById(R.id.et_editarNomeContatoEmergencia3);
         et_editarTelefoneContatoEmergencia3=(EditText)findViewById(R.id.et_editarTelefoneContatoEmergencia3);
-        btn_confirmar=(Button)findViewById(R.id.btn_confirmar);
 
 
         sessaoUsuario = new SessaoUsuario(getApplicationContext());
