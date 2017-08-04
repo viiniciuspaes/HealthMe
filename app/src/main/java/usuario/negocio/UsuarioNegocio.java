@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import infra.GuiUtil;
 import usuario.dao.UsuarioDao;
 import usuario.dominio.Pessoa;
 import usuario.dominio.Usuario;
@@ -37,9 +38,11 @@ public class UsuarioNegocio {
 
         if (usuarioDao.buscarUsuario(pessoa.getUsuario().getLogin())==null){
             usuarioDao.inserirRegistro(pessoa);
-            Toast.makeText(context, "Cadastro realizado", Toast.LENGTH_LONG).show();
+            GuiUtil gui = new GuiUtil();
+            gui.toastShort(context,"Cadastro realizado");
         }else{
-            Toast.makeText(context,"Usuário já cadastrado",Toast.LENGTH_LONG).show();
+            GuiUtil gui = new GuiUtil();
+            gui.toastShort(context,"Usuário já cadastrado");
         }
 
     }
