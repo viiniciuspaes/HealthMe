@@ -30,7 +30,7 @@ public class CalendarioActivity extends AppCompatActivity {
         calendario.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                String data = i2 + "/" + i1 + "/" + i;
+                String data = i2 + "/" + (1+i1) + "/" + i;
 
                 Intent intentCalendario = new Intent(CalendarioActivity.this, PopCalendarioActivity.class);
                 intentCalendario.putExtra("data",data);
