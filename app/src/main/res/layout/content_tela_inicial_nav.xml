@@ -7,14 +7,18 @@
     android:background="#C59DE4"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="usuario.gui.TelaInicialNavActivity"
-    tools:showIn="@layout/app_bar_tela_inicial_nav">
+    tools:showIn="@layout/app_bar_tela_inicial_nav"
+    android:backgroundTint="@color/colorPrimary">
 
     <TextView
         android:id="@+id/boasVindas"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="368dp"
+        android:layout_height="495dp"
         android:gravity="center"
         android:text="Bem-vindo(a), "
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large.Inverse" />
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large.Inverse"
+        android:textColor="@android:color/black"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
 
 </android.support.constraint.ConstraintLayout>

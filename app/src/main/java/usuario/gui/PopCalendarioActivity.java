@@ -68,6 +68,11 @@ public class PopCalendarioActivity extends AppCompatActivity {
         }
     }
 
+    public void voltar(View view){
+        startActivity(new Intent(PopCalendarioActivity.this, CalendarioActivity.class));
+        finish();
+    }
+
     public boolean validarCampos(String nome){
         boolean verificador = false;
         if(!validacao.verEspacosBrancos(nome)){
