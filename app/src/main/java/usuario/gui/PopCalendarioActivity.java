@@ -38,14 +38,6 @@ public class PopCalendarioActivity extends AppCompatActivity {
         etInicio =(TextView)findViewById(R.id.et_data_evento);
         resources = getResources();
 
-        DisplayMetrics medidas= new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(medidas);
-
-        int largura=medidas.widthPixels;
-        int altura=medidas.heightPixels;
-
-        getWindow().setLayout((int)(largura * 0.8),(int)(altura * 0.6));
-
         Intent intentCalendario = getIntent();
         String data = intentCalendario.getStringExtra("data");
         etInicio.setText(data);

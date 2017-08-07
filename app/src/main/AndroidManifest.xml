@@ -44,11 +44,9 @@
             android:label="@string/title_activity_tela_inicial_nav"
             android:theme="@style/AppTheme" />
         <activity android:name=".CalendarioActivity" />
-        <activity
-            android:name=".PopCalendarioActivity"
-            android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".PopCalendarioActivity" />
         <activity android:name=".PerfilActivity" />
-        <activity android:name=".EditarPerfilActivity"></activity>
+        <activity android:name=".EditarPerfilActivity"/>
     </application>
 
 </manifest>
