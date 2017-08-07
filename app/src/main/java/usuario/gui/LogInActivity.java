@@ -25,8 +25,8 @@ import usuario.negocio.UsuarioNegocio;
 
 
 public class LogInActivity extends AppCompatActivity {
-    private EditText et_login;
-    private EditText et_password;
+    private EditText etLogin;
+    private EditText etPassword;
     private SessaoUsuario sessao;
 
     private Resources resources;
@@ -38,8 +38,8 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        et_login = (EditText) findViewById(R.id.user_login);
-        et_password = (EditText) findViewById(R.id.user_password);
+        etLogin = (EditText) findViewById(R.id.user_login);
+        etPassword = (EditText) findViewById(R.id.user_password);
 
         initViews();
 
@@ -66,9 +66,9 @@ public class LogInActivity extends AppCompatActivity {
             }
         };
 
-        et_password.addTextChangedListener(textWatcher);
-        et_login.addTextChangedListener(textWatcher);
-    }
+        etPassword.addTextChangedListener(textWatcher);
+        etLogin.addTextChangedListener(textWatcher);
+        }
 
     public void startCadastroActivity(View v) {
         Intent i = new Intent(LogInActivity.this,CadastroActivity.class);
@@ -111,8 +111,8 @@ public class LogInActivity extends AppCompatActivity {
 
             usuarioNegocio = new UsuarioNegocio(getApplicationContext());
 
-            String usuario = et_login.getText().toString();
-            String senha = et_password.getText().toString();
+            String usuario = etLogin.getText().toString();
+            String senha = etPassword.getText().toString();
 
             cripto = new CriptografiaSenha();
             String novaSenha = cripto.criptoSenha(senha);
@@ -122,8 +122,8 @@ public class LogInActivity extends AppCompatActivity {
             Usuario validado = usuarioNegocio.login(usuario, novaSenha);
 
             if (validado ==  null){
-                et_login.requestFocus();
-                et_login.setError(resources.getString(R.string.erro_valido_usuario_senha));
+                etLogin.requestFocus();
+                etLogin.setError(resources.getString(R.string.erro_valido_usuario_senha));
             }else {
                 sessao.logarUsuario(usuario);
                 startMainActivity();
@@ -133,8 +133,8 @@ public class LogInActivity extends AppCompatActivity {
 
     private boolean validarCampos(){
 
-        String login = et_login.getText().toString();
-        String senha = et_password.getText().toString();
+        String login = etLogin.getText().toString();
+        String senha = etPassword.getText().toString();
 
         if(isCamposValidos(login, senha)){
             return  true;
@@ -145,11 +145,11 @@ public class LogInActivity extends AppCompatActivity {
     public boolean isCamposValidos(String login, String senha) {
         boolean verificador = false;
         if (TextUtils.isEmpty(login)) {
-            et_login.requestFocus();
-            et_login.setError(resources.getString(R.string.error_campo_vazio));
+            etLogin.requestFocus();
+            etLogin.setError(resources.getString(R.string.error_campo_vazio));
         } else if (TextUtils.isEmpty(senha)) {
-            et_password.requestFocus();
-            et_password.setError(resources.getString(R.string.error_campo_vazio));
+            etPassword.requestFocus();
+            etPassword.setError(resources.getString(R.string.error_campo_vazio));
         } else {
             verificador = true;
         }

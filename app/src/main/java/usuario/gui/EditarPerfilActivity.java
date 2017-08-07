@@ -8,10 +8,8 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import usuario.dao.ContatoDao;
@@ -23,14 +21,14 @@ import usuario.negocio.SessaoUsuario;
 
 
 public class EditarPerfilActivity extends AppCompatActivity {
-    private EditText et_editarNome;
-    private EditText et_editarPlanoSaude;
-    private EditText et_editarNomeContatoEmergencia1;
-    private EditText et_editarTelefoneContatoEmergencia1;
-    private EditText et_editarNomeContatoEmergencia2;
-    private EditText et_editarTelefoneContatoEmergencia2;
-    private EditText et_editarNomeContatoEmergencia3;
-    private EditText et_editarTelefoneContatoEmergencia3;
+    private EditText etEditarNome;
+    private EditText etEditarPlanoSaude;
+    private EditText etEditarNomeContatoEmergencia1;
+    private EditText etEditarTelefoneContatoEmergencia1;
+    private EditText etEditarNomeContatoEmergencia2;
+    private EditText etEditarTelefoneContatoEmergencia2;
+    private EditText etEditarNomeContatoEmergencia3;
+    private EditText etEditarTelefoneContatoEmergencia3;
     private Resources resources;
     private UsuarioDao daoUser;
     private ContatoDao daoContato;
@@ -44,14 +42,14 @@ public class EditarPerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_perfil);
 
-        et_editarNome=(EditText)findViewById(R.id.et_editarNome);
-        et_editarPlanoSaude=(EditText)findViewById(R.id.et_editarPlanoSaude);
-        et_editarNomeContatoEmergencia1=(EditText)findViewById(R.id.et_editarNomeContatoEmergencia1);
-        et_editarTelefoneContatoEmergencia1=(EditText)findViewById(R.id.et_editarTelefoneContatoEmergencia1);
-        et_editarNomeContatoEmergencia2=(EditText)findViewById(R.id.et_editarNomeContatoEmergencia2);
-        et_editarTelefoneContatoEmergencia2=(EditText)findViewById(R.id.et_editarTelefoneContatoEmergencia2);
-        et_editarNomeContatoEmergencia3=(EditText)findViewById(R.id.et_editarNomeContatoEmergencia3);
-        et_editarTelefoneContatoEmergencia3=(EditText)findViewById(R.id.et_editarTelefoneContatoEmergencia3);
+        etEditarNome =(EditText)findViewById(R.id.et_editarNome);
+        etEditarPlanoSaude =(EditText)findViewById(R.id.et_editarPlanoSaude);
+        etEditarNomeContatoEmergencia1 =(EditText)findViewById(R.id.et_editarNomeContatoEmergencia1);
+        etEditarTelefoneContatoEmergencia1 =(EditText)findViewById(R.id.et_editarTelefoneContatoEmergencia1);
+        etEditarNomeContatoEmergencia2 =(EditText)findViewById(R.id.et_editarNomeContatoEmergencia2);
+        etEditarTelefoneContatoEmergencia2 =(EditText)findViewById(R.id.et_editarTelefoneContatoEmergencia2);
+        etEditarNomeContatoEmergencia3 =(EditText)findViewById(R.id.et_editarNomeContatoEmergencia3);
+        etEditarTelefoneContatoEmergencia3 =(EditText)findViewById(R.id.et_editarTelefoneContatoEmergencia3);
 
 
         sessaoUsuario = new SessaoUsuario(getApplicationContext());
@@ -82,61 +80,61 @@ public class EditarPerfilActivity extends AppCompatActivity {
             }
         };
 
-        et_editarNome.addTextChangedListener(textWatcher);
-        et_editarPlanoSaude.addTextChangedListener(textWatcher);
-        et_editarNomeContatoEmergencia1.addTextChangedListener(textWatcher);
-        et_editarTelefoneContatoEmergencia1.addTextChangedListener(textWatcher);
-        et_editarNomeContatoEmergencia2.addTextChangedListener(textWatcher);
-        et_editarTelefoneContatoEmergencia2.addTextChangedListener(textWatcher);
-        et_editarNomeContatoEmergencia3.addTextChangedListener(textWatcher);
-        et_editarTelefoneContatoEmergencia3.addTextChangedListener(textWatcher);
+        etEditarNome.addTextChangedListener(textWatcher);
+        etEditarPlanoSaude.addTextChangedListener(textWatcher);
+        etEditarNomeContatoEmergencia1.addTextChangedListener(textWatcher);
+        etEditarTelefoneContatoEmergencia1.addTextChangedListener(textWatcher);
+        etEditarNomeContatoEmergencia2.addTextChangedListener(textWatcher);
+        etEditarTelefoneContatoEmergencia2.addTextChangedListener(textWatcher);
+        etEditarNomeContatoEmergencia3.addTextChangedListener(textWatcher);
+        etEditarTelefoneContatoEmergencia3.addTextChangedListener(textWatcher);
     }
     public void editar(View v) throws Exception{
         daoUser = new UsuarioDao(getApplicationContext());
         Pessoa pessoa = sessaoUsuario.getPessoaLogada();
-        pessoa.setNome(et_editarNome.getText().toString());
-        pessoa.setPlanoSaude(et_editarPlanoSaude.getText().toString());
+        pessoa.setNome(etEditarNome.getText().toString());
+        pessoa.setPlanoSaude(etEditarPlanoSaude.getText().toString());
 
         daoContato = new ContatoDao(getApplicationContext());
 
-        adicionarContato(et_editarNomeContatoEmergencia1,et_editarTelefoneContatoEmergencia1,daoContato,contatosOriginais[0]);
-        adicionarContato(et_editarNomeContatoEmergencia2,et_editarTelefoneContatoEmergencia2,daoContato,contatosOriginais[1]);
-        adicionarContato(et_editarNomeContatoEmergencia3,et_editarTelefoneContatoEmergencia3,daoContato,contatosOriginais[2]);
+        adicionarContato(etEditarNomeContatoEmergencia1, etEditarTelefoneContatoEmergencia1,daoContato,contatosOriginais[0]);
+        adicionarContato(etEditarNomeContatoEmergencia2, etEditarTelefoneContatoEmergencia2,daoContato,contatosOriginais[1]);
+        adicionarContato(etEditarNomeContatoEmergencia3, etEditarTelefoneContatoEmergencia3,daoContato,contatosOriginais[2]);
         daoUser.atualizarRegistro(pessoa);
         startActivity(new Intent(this, PerfilActivity.class));
         finish();
     }
     public void setview(){
-        et_editarNome.setText(sessaoUsuario.getPessoaLogada().getNome());
-        et_editarPlanoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
+        etEditarNome.setText(sessaoUsuario.getPessoaLogada().getNome());
+        etEditarPlanoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
         contatoExistente = daoContato.buscarContatos(sessaoUsuario.getUsuarioLogado().getLogin());
         contatosOriginais[0] = "none";
         contatosOriginais[1] = "none";
         contatosOriginais[2] = "none";
         int tamanho = contatoExistente.size();
         if(tamanho == 1){
-            et_editarNomeContatoEmergencia1.setText(contatoExistente.get(0).getNome());
-            et_editarTelefoneContatoEmergencia1.setText(contatoExistente.get(0).getNumero());
-            contatosOriginais[0] = et_editarNomeContatoEmergencia1.getText().toString();
+            etEditarNomeContatoEmergencia1.setText(contatoExistente.get(0).getNome());
+            etEditarTelefoneContatoEmergencia1.setText(contatoExistente.get(0).getNumero());
+            contatosOriginais[0] = etEditarNomeContatoEmergencia1.getText().toString();
         }
         if(tamanho == 2){
-            et_editarNomeContatoEmergencia1.setText(contatoExistente.get(0).getNome());
-            et_editarTelefoneContatoEmergencia1.setText(contatoExistente.get(0).getNumero());
-            et_editarNomeContatoEmergencia2.setText(contatoExistente.get(1).getNome());
-            et_editarTelefoneContatoEmergencia2.setText(contatoExistente.get(1).getNumero());
-            contatosOriginais[0] = et_editarNomeContatoEmergencia1.getText().toString();
-            contatosOriginais[1] = et_editarNomeContatoEmergencia2.getText().toString();
+            etEditarNomeContatoEmergencia1.setText(contatoExistente.get(0).getNome());
+            etEditarTelefoneContatoEmergencia1.setText(contatoExistente.get(0).getNumero());
+            etEditarNomeContatoEmergencia2.setText(contatoExistente.get(1).getNome());
+            etEditarTelefoneContatoEmergencia2.setText(contatoExistente.get(1).getNumero());
+            contatosOriginais[0] = etEditarNomeContatoEmergencia1.getText().toString();
+            contatosOriginais[1] = etEditarNomeContatoEmergencia2.getText().toString();
         }
         if(tamanho == 3){
-            et_editarNomeContatoEmergencia1.setText(contatoExistente.get(0).getNome());
-            et_editarTelefoneContatoEmergencia1.setText(contatoExistente.get(0).getNumero());
-            et_editarNomeContatoEmergencia2.setText(contatoExistente.get(1).getNome());
-            et_editarTelefoneContatoEmergencia2.setText(contatoExistente.get(1).getNumero());
-            et_editarNomeContatoEmergencia3.setText(contatoExistente.get(2).getNome());
-            et_editarTelefoneContatoEmergencia3.setText(contatoExistente.get(2).getNumero());
-            contatosOriginais[0] = et_editarNomeContatoEmergencia1.getText().toString();
-            contatosOriginais[1] = et_editarNomeContatoEmergencia2.getText().toString();
-            contatosOriginais[2] = et_editarNomeContatoEmergencia3.getText().toString();
+            etEditarNomeContatoEmergencia1.setText(contatoExistente.get(0).getNome());
+            etEditarTelefoneContatoEmergencia1.setText(contatoExistente.get(0).getNumero());
+            etEditarNomeContatoEmergencia2.setText(contatoExistente.get(1).getNome());
+            etEditarTelefoneContatoEmergencia2.setText(contatoExistente.get(1).getNumero());
+            etEditarNomeContatoEmergencia3.setText(contatoExistente.get(2).getNome());
+            etEditarTelefoneContatoEmergencia3.setText(contatoExistente.get(2).getNumero());
+            contatosOriginais[0] = etEditarNomeContatoEmergencia1.getText().toString();
+            contatosOriginais[1] = etEditarNomeContatoEmergencia2.getText().toString();
+            contatosOriginais[2] = etEditarNomeContatoEmergencia3.getText().toString();
         }
     }
     public void adicionarContato(EditText etNome, EditText etTelefone, ContatoDao daoContato, String contatoOriginal){

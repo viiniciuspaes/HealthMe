@@ -1,31 +1,19 @@
 package usuario.gui;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-import java.util.List;
-
-import usuario.dao.ContatoDao;
-import usuario.dao.DbHelper;
-import usuario.dominio.ContatoEmergencia;
 import usuario.negocio.ContatoNegocio;
 import usuario.negocio.SessaoUsuario;
 
 public class PerfilActivity extends AppCompatActivity {
 
-    private TextView tv_nome;
-    private TextView tv_planoSaude;
+    private TextView tvNome;
+    private TextView tvPlanoSaude;
     private ContatoNegocio contatoNegocio;
     private SessaoUsuario sessaoUsuario;
     private ListView listViewContatos;
@@ -35,13 +23,13 @@ public class PerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
-        tv_nome=(TextView)findViewById(R.id.tv_nome);
-        tv_planoSaude=(TextView)findViewById(R.id.tv_planoSaude);
+        tvNome =(TextView)findViewById(R.id.tv_nome);
+        tvPlanoSaude =(TextView)findViewById(R.id.tv_planoSaude);
 
         sessaoUsuario = new SessaoUsuario(getApplicationContext());
         contatoNegocio = new ContatoNegocio(getApplicationContext());
         sessaoUsuario.iniciarSessao();
-        listViewContatos = (ListView) findViewById(R.id.listaDeContatos);
+        listViewContatos = (ListView) findViewById(R.id.listagem);
 
         setTextos();
     }
@@ -56,9 +44,9 @@ public class PerfilActivity extends AppCompatActivity {
     public void setTextos(){
         String pessoa= sessaoUsuario.getPessoaLogada().getNome();
         if (!(pessoa == null)){
-            tv_nome.setText(sessaoUsuario.getPessoaLogada().getNome());
-            tv_planoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
+            tvNome.setText(sessaoUsuario.getPessoaLogada().getNome());
+            tvPlanoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
         }
-        contatoNegocio.setTextos(listViewContatos,sessaoUsuario);
+        listViewContatos.setAdapter(contatoNegocio.construtorAdapter(sessaoUsuario));
     }
 }

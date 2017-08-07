@@ -19,9 +19,9 @@ import usuario.negocio.SessaoUsuario;
 
 
 public class PopCalendarioActivity extends AppCompatActivity {
-    private EditText et_nome;
-    private EditText et_descricao;
-    private TextView et_inicio;
+    private EditText etNome;
+    private EditText etDescricao;
+    private TextView etInicio;
     private Evento evento;
     private EventoNegocio validacao;
     private EventoDao dao;
@@ -33,22 +33,14 @@ public class PopCalendarioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop_calendario);
 
-        et_nome=(EditText)findViewById(R.id.et_nome_evento);
-        et_descricao=(EditText)findViewById(R.id.et_descricao_evento);
-        et_inicio=(TextView)findViewById(R.id.et_data_evento);
+        etNome =(EditText)findViewById(R.id.et_nome_evento);
+        etDescricao =(EditText)findViewById(R.id.et_descricao_evento);
+        etInicio =(TextView)findViewById(R.id.et_data_evento);
         resources = getResources();
-
-        DisplayMetrics medidas= new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(medidas);
-
-        int largura=medidas.widthPixels;
-        int altura=medidas.heightPixels;
-
-        getWindow().setLayout((int)(largura * 0.8),(int)(altura * 0.6));
 
         Intent intentCalendario = getIntent();
         String data = intentCalendario.getStringExtra("data");
-        et_inicio.setText(data);
+        etInicio.setText(data);
     }
 
     public void criarEvento(View view) throws ParseException {
@@ -58,12 +50,12 @@ public class PopCalendarioActivity extends AppCompatActivity {
         sessao = new SessaoUsuario(getApplicationContext());
         sessao.iniciarSessao();
 
-        Boolean valido = validarCampos(et_nome.getText().toString());
+        Boolean valido = validarCampos(etNome.getText().toString());
         if (valido){
-            evento.setNome(et_nome.getText().toString());
-            evento.setDescricao(et_descricao.getText().toString());
+            evento.setNome(etNome.getText().toString());
+            evento.setDescricao(etDescricao.getText().toString());
             evento.setUsuario(sessao.getUsuarioLogado());
-            String[] s = et_inicio.getText().toString().split("/");
+            String[] s = etInicio.getText().toString().split("/");
             String dataInvertida = s[2]+"/"+s[1]+"/"+s[0];
             evento.setDate(validacao.mudarData(dataInvertida));
 
@@ -76,14 +68,19 @@ public class PopCalendarioActivity extends AppCompatActivity {
         }
     }
 
+    public void voltar(View view){
+        startActivity(new Intent(PopCalendarioActivity.this, CalendarioActivity.class));
+        finish();
+    }
+
     public boolean validarCampos(String nome){
         boolean verificador = false;
         if(!validacao.verEspacosBrancos(nome)){
-            et_nome.requestFocus();
-            et_nome.setError(resources.getString(R.string.erro_espaco_branco));
+            etNome.requestFocus();
+            etNome.setError(resources.getString(R.string.erro_espaco_branco));
         }else if(!validacao.verAlfanumerico(nome)){
-            et_nome.requestFocus();
-            et_nome.setError(resources.getString(R.string.erro_caracter_especial));
+            etNome.requestFocus();
+            etNome.setError(resources.getString(R.string.erro_caracter_especial));
         }else {
             verificador = true;
         }

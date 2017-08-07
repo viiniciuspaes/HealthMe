@@ -10,6 +10,7 @@ import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -31,6 +32,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     private boolean local = true;
     private GoogleMap mMap;
+    private static final String TAG = "Erro no Mapa";
     private Marker marker;
 
     LocationManager locationManager;
@@ -66,7 +68,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                             setLocal(false);
                         }
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        Log.e(TAG,Log.getStackTraceString(e));
                     }
                 }
 
@@ -101,7 +103,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                             setLocal(false);
                         }
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        Log.e(TAG,Log.getStackTraceString(e));
                     }
                 }
 
