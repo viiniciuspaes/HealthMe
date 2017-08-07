@@ -79,7 +79,7 @@
         android:layout_marginEnd="8dp" />
 
     <ListView
-        android:id="@+id/listaDeContatos"
+        android:id="@+id/listagem"
         android:layout_width="359dp"
         android:layout_height="221dp"
         android:layout_marginBottom="8dp"

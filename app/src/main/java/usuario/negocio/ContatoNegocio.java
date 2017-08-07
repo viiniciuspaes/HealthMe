@@ -3,7 +3,6 @@ package usuario.negocio;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import java.util.regex.Matcher;
@@ -29,12 +28,12 @@ public class ContatoNegocio {
         m = p2.matcher(texto);
         return m.matches();
     }
-    public void setTextos(ListView listView, SessaoUsuario sessaoUsuario){
+    public SimpleCursorAdapter construtorAdapter(SessaoUsuario sessaoUsuario){
         Cursor c = daoContato.buscarDados(sessaoUsuario.getUsuarioLogado().getLogin());
         String[] from = new String[]{"_id","contato_usuario","contato_nome","contato_telefone"};
         int[] to = new int[]{R.id.txvContatoEmergencial,R.id.txvContatoUsuario,R.id.txvContatoNome,R.id.txvContatoNumero,};
         adapter = new SimpleCursorAdapter(this.context, R.layout.modelo_listview_contatos, c, from, to,0);
         adapter.notifyDataSetChanged();
-        listView.setAdapter(adapter);
+        return adapter;
     }
 }

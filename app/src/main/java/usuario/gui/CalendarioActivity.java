@@ -1,23 +1,19 @@
 package usuario.gui;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CalendarView;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 
-import usuario.dao.ContatoDao;
-import usuario.dao.EventoDao;
 import usuario.negocio.EventoNegocio;
 import usuario.negocio.SessaoUsuario;
 
 public class CalendarioActivity extends AppCompatActivity {
     private CalendarView calendario;
     private SessaoUsuario sessaoUsuario;
-    private ListView listViewContatos;
+    private ListView listViewEventos;
     private EventoNegocio eventoNegocio;
 
     @Override
@@ -39,8 +35,8 @@ public class CalendarioActivity extends AppCompatActivity {
         });
         sessaoUsuario = new SessaoUsuario(getApplicationContext());
         sessaoUsuario.iniciarSessao();
-        listViewContatos = (ListView) findViewById(R.id.listaDeContatos);
+        listViewEventos = (ListView) findViewById(R.id.listagem);
         eventoNegocio = new EventoNegocio(getApplicationContext());
-        eventoNegocio.setTextos(listViewContatos,sessaoUsuario);
+        listViewEventos.setAdapter(eventoNegocio.construtorAdapter(sessaoUsuario));
     }
 }

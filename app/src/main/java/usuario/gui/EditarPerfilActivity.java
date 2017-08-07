@@ -8,10 +8,8 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import usuario.dao.ContatoDao;
@@ -23,7 +21,7 @@ import usuario.negocio.SessaoUsuario;
 
 
 public class EditarPerfilActivity extends AppCompatActivity {
-    private EditText et_editarNome;
+    private EditText etEditarNome;
     private EditText et_editarPlanoSaude;
     private EditText et_editarNomeContatoEmergencia1;
     private EditText et_editarTelefoneContatoEmergencia1;
@@ -44,7 +42,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_perfil);
 
-        et_editarNome=(EditText)findViewById(R.id.et_editarNome);
+        etEditarNome =(EditText)findViewById(R.id.et_editarNome);
         et_editarPlanoSaude=(EditText)findViewById(R.id.et_editarPlanoSaude);
         et_editarNomeContatoEmergencia1=(EditText)findViewById(R.id.et_editarNomeContatoEmergencia1);
         et_editarTelefoneContatoEmergencia1=(EditText)findViewById(R.id.et_editarTelefoneContatoEmergencia1);
@@ -82,7 +80,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
             }
         };
 
-        et_editarNome.addTextChangedListener(textWatcher);
+        etEditarNome.addTextChangedListener(textWatcher);
         et_editarPlanoSaude.addTextChangedListener(textWatcher);
         et_editarNomeContatoEmergencia1.addTextChangedListener(textWatcher);
         et_editarTelefoneContatoEmergencia1.addTextChangedListener(textWatcher);
@@ -94,7 +92,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
     public void editar(View v) throws Exception{
         daoUser = new UsuarioDao(getApplicationContext());
         Pessoa pessoa = sessaoUsuario.getPessoaLogada();
-        pessoa.setNome(et_editarNome.getText().toString());
+        pessoa.setNome(etEditarNome.getText().toString());
         pessoa.setPlanoSaude(et_editarPlanoSaude.getText().toString());
 
         daoContato = new ContatoDao(getApplicationContext());
@@ -107,7 +105,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
         finish();
     }
     public void setview(){
-        et_editarNome.setText(sessaoUsuario.getPessoaLogada().getNome());
+        etEditarNome.setText(sessaoUsuario.getPessoaLogada().getNome());
         et_editarPlanoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
         contatoExistente = daoContato.buscarContatos(sessaoUsuario.getUsuarioLogado().getLogin());
         contatosOriginais[0] = "none";
