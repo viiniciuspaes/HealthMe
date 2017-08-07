@@ -61,7 +61,7 @@ public class UsuarioNegocio {
 
     public boolean verificarTamanho(String campo) {
         String texto = campo;
-        if (texto.length() > 8 || texto.length() < 4) {
+        if (texto.length() > 12 || texto.length() < 4) {
             return false;
         } else {
             return true;

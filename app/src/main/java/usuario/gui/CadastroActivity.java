@@ -17,10 +17,10 @@ import usuario.negocio.CriptografiaSenha;
 import usuario.negocio.UsuarioNegocio;
 
 public class CadastroActivity extends AppCompatActivity {
-    private EditText et_user ;
-    private EditText et_password ;
-    private EditText et_password2 ;
-    private EditText et_nome ;
+    private EditText etUser;
+    private EditText etPassword;
+    private EditText etPassword2;
+    private EditText etNome;
 
     private Resources resources;
     private UsuarioNegocio usuarioNegocio;
@@ -33,10 +33,10 @@ public class CadastroActivity extends AppCompatActivity {
 
         usuarioNegocio = new UsuarioNegocio(getApplicationContext());
 
-        et_user = (EditText) findViewById(R.id.et_register_login);
-        et_password = (EditText) findViewById(R.id.et_register_password);
-        et_password2 = (EditText) findViewById(R.id.et_register_password2);
-        et_nome = (EditText) findViewById(R.id.et_register_nome);
+        etUser = (EditText) findViewById(R.id.et_register_login);
+        etPassword = (EditText) findViewById(R.id.et_register_password);
+        etPassword2 = (EditText) findViewById(R.id.et_register_password2);
+        etNome = (EditText) findViewById(R.id.et_register_nome);
 
         initViews();
     }
@@ -57,10 +57,10 @@ public class CadastroActivity extends AppCompatActivity {
             }
         };
 
-        et_password.addTextChangedListener(textWatcher);
-        et_user.addTextChangedListener(textWatcher);
-        et_nome.addTextChangedListener(textWatcher);
-        et_password2.addTextChangedListener(textWatcher);
+        etPassword.addTextChangedListener(textWatcher);
+        etUser.addTextChangedListener(textWatcher);
+        etNome.addTextChangedListener(textWatcher);
+        etPassword2.addTextChangedListener(textWatcher);
     }
 
     public void cadastrar(View v) throws Exception{
@@ -69,12 +69,12 @@ public class CadastroActivity extends AppCompatActivity {
                 cripto = new CriptografiaSenha();
 
                 Usuario usuario = new Usuario();
-                usuario.setLogin(et_user.getText().toString());
-                String novaSenha = cripto.criptoSenha(et_password.getText().toString());
+                usuario.setLogin(etUser.getText().toString());
+                String novaSenha = cripto.criptoSenha(etPassword.getText().toString());
                 usuario.setPassword(novaSenha);
 
                 Pessoa pessoa = new Pessoa();
-                pessoa.setNome(et_nome.getText().toString());
+                pessoa.setNome(etNome.getText().toString());
                 pessoa.setUsuario(usuario);
 
                 usuarioNegocio.validarCadastro(pessoa);
@@ -88,13 +88,13 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     private boolean validarCampos(){
-        String nome = et_nome.getText().toString();
-        String login = et_user.getText().toString();
-        String senha = et_password.getText().toString();
-        String senhaConfirma = et_password2.getText().toString();
+        String nome = etNome.getText().toString();
+        String login = etUser.getText().toString();
+        String senha = etPassword.getText().toString();
+        String senhaConfirma = etPassword2.getText().toString();
 
         if(isCamposValidos(nome, login, senha, senhaConfirma) && isSenhasValidas(senha, senhaConfirma) &&
-                validarLoginESenha(login,senha)){
+                validarLoginSenha(login,senha)){
             return  true;
         }
         return false;
@@ -104,8 +104,8 @@ public class CadastroActivity extends AppCompatActivity {
         if (campo_senha.equals(campo_senha_repetida)) {
         return true;
     }else{
-            et_password.requestFocus();
-            et_password.setError(resources.getString(R.string.erro_senha_comparar));
+            etPassword.requestFocus();
+            etPassword.setError(resources.getString(R.string.erro_senha_comparar));
             return false;
         }
 }
@@ -113,43 +113,43 @@ public class CadastroActivity extends AppCompatActivity {
     public boolean isCamposValidos(String nome, String login, String senha, String senhaConfirma) {
         boolean verificador = false;
         if (TextUtils.isEmpty(nome)) {
-            et_nome.requestFocus();
-            et_nome.setError(resources.getString(R.string.error_campo_vazio));
+            etNome.requestFocus();
+            etNome.setError(resources.getString(R.string.error_campo_vazio));
         } else if (TextUtils.isEmpty(login)) {
-            et_user.requestFocus(); // troca ordem
-            et_user.setError(resources.getString(R.string.error_campo_vazio));
+            etUser.requestFocus(); // troca ordem
+            etUser.setError(resources.getString(R.string.error_campo_vazio));
         } else if (TextUtils.isEmpty(senha)) {
-            et_password.requestFocus();
-            et_password.setError(resources.getString(R.string.error_campo_vazio));
+            etPassword.requestFocus();
+            etPassword.setError(resources.getString(R.string.error_campo_vazio));
         } else if (TextUtils.isEmpty(senhaConfirma)) {
-            et_password2.requestFocus();
-            et_password2.setError(resources.getString(R.string.error_campo_vazio));
+            etPassword2.requestFocus();
+            etPassword2.setError(resources.getString(R.string.error_campo_vazio));
         }
         else {
             verificador = true;
         }
         return verificador;
     }
-    public boolean validarLoginESenha(String login,String senha){
+    public boolean validarLoginSenha(String login, String senha){
         boolean verificador = false;
         if(!usuarioNegocio.verEspacosBrancos(login)){
-            et_user.requestFocus();
-            et_user.setError(resources.getString(R.string.erro_espaco_branco));
+            etUser.requestFocus();
+            etUser.setError(resources.getString(R.string.erro_espaco_branco));
         }else if(!usuarioNegocio.verAlfanumerico(login)){
-            et_user.requestFocus();
-            et_user.setError(resources.getString(R.string.erro_caracter_especial));
+            etUser.requestFocus();
+            etUser.setError(resources.getString(R.string.erro_caracter_especial));
         }else if(!usuarioNegocio.verificarTamanho(login)){
-            et_user.requestFocus();
-            et_user.setError(resources.getString(R.string.erro_tamanho_login));
+            etUser.requestFocus();
+            etUser.setError(resources.getString(R.string.erro_tamanho_login));
         }else if(!usuarioNegocio.verEspacosBrancos(senha)){
-            et_password.requestFocus();
-            et_password.setError(resources.getString(R.string.erro_espaco_branco));
+            etPassword.requestFocus();
+            etPassword.setError(resources.getString(R.string.erro_espaco_branco));
         }else if(!usuarioNegocio.verAlfanumerico(senha)) {
-            et_password.requestFocus();
-            et_password.setError(resources.getString(R.string.erro_caracter_especial));
+            etPassword.requestFocus();
+            etPassword.setError(resources.getString(R.string.erro_caracter_especial));
         }else if(!usuarioNegocio.verificarTamanho(senha)){
-            et_password.requestFocus();
-            et_password.setError(resources.getString(R.string.erro_tamanho_senha));
+            etPassword.requestFocus();
+            etPassword.setError(resources.getString(R.string.erro_tamanho_senha));
         }else {
             verificador = true;
         }

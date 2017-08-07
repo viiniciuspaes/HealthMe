@@ -12,8 +12,8 @@ import usuario.negocio.SessaoUsuario;
 
 public class PerfilActivity extends AppCompatActivity {
 
-    private TextView tv_nome;
-    private TextView tv_planoSaude;
+    private TextView tvNome;
+    private TextView tvPlanoSaude;
     private ContatoNegocio contatoNegocio;
     private SessaoUsuario sessaoUsuario;
     private ListView listViewContatos;
@@ -23,8 +23,8 @@ public class PerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
-        tv_nome=(TextView)findViewById(R.id.tv_nome);
-        tv_planoSaude=(TextView)findViewById(R.id.tv_planoSaude);
+        tvNome =(TextView)findViewById(R.id.tv_nome);
+        tvPlanoSaude =(TextView)findViewById(R.id.tv_planoSaude);
 
         sessaoUsuario = new SessaoUsuario(getApplicationContext());
         contatoNegocio = new ContatoNegocio(getApplicationContext());
@@ -44,8 +44,8 @@ public class PerfilActivity extends AppCompatActivity {
     public void setTextos(){
         String pessoa= sessaoUsuario.getPessoaLogada().getNome();
         if (!(pessoa == null)){
-            tv_nome.setText(sessaoUsuario.getPessoaLogada().getNome());
-            tv_planoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
+            tvNome.setText(sessaoUsuario.getPessoaLogada().getNome());
+            tvPlanoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
         }
         listViewContatos.setAdapter(contatoNegocio.construtorAdapter(sessaoUsuario));
     }
