@@ -6,7 +6,8 @@
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:background="@color/colorPrimary"
-    tools:context="usuario.gui.LogInActivity">
+    tools:context="usuario.gui.LogInActivity"
+    android:weightSum="1">
 
 
    <!-- <Button
@@ -18,10 +19,25 @@
         android:text="@string/emergencia"
         android:onClick=""/> -->
 
-    <ImageView
+ <Button
+     android:id="@+id/btn_panico"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_gravity="center"
+     android:layout_marginLeft="24dp"
+     android:layout_marginRight="24dp"
+     android:layout_marginTop="10dp"
+     android:layout_marginBottom="15dp"
+     android:background="@color/colorPanic"
+     android:onClick="panico"
+     android:text="@string/btn_panico"
+     android:textStyle="bold"
+     android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"/>
+
+ <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="152dp"
         android:src="@mipmap/marcador" />
 
 
@@ -68,7 +84,7 @@
         android:id="@+id/btn_register_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="45dp"
+        android:layout_marginLeft="140dp"
         android:layout_marginTop="25dp"
         android:text="@string/texto_no_membro"
         android:background="@android:color/transparent"

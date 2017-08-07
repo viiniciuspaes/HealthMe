@@ -13,7 +13,7 @@
     <string name="error_menssagem_nascimento">Entre com idade</string>
     <string name="error_menssageg_senha">Entre com a senha </string>
     <string name="sucesso_messagem">Registrado com sucesso</string>
-    <string name="texto_no_membro">Não possui conta? Se registre aqui.</string>
+    <string name="texto_no_membro">Criar conta</string>
     <string name="texto_ja_membro">Já é um membro? faça login.</string>
     <string name="error_usuario_existe">Usuário já registrado.</string>
     <string name="erro_senha_comparar">Senhas não conferem.</string>
@@ -30,6 +30,7 @@
     <string name="btn_logar">Log In</string>
     <string name="error_campo_vazio">Campo Vazio</string>
     <string name="title_activity_tela_inicial_nav">HealthMe</string>
+    <string name="btn_panico">Pânico</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

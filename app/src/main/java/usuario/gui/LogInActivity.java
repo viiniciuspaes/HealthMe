@@ -1,14 +1,22 @@
 package usuario.gui;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import usuario.dominio.Usuario;
 import usuario.negocio.CriptografiaSenha;
@@ -34,15 +42,17 @@ public class LogInActivity extends AppCompatActivity {
         et_password = (EditText) findViewById(R.id.user_password);
 
         initViews();
+
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
     }
-        public void initViews() {
-            resources = getResources();
-            TextWatcher textWatcher = new TextWatcher() {
+
+    public void initViews() {
+        resources = getResources();
+        TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -58,11 +68,12 @@ public class LogInActivity extends AppCompatActivity {
 
         et_password.addTextChangedListener(textWatcher);
         et_login.addTextChangedListener(textWatcher);
-        }
+    }
 
-    public void startCadastroActivity(View v){
+    public void startCadastroActivity(View v) {
         Intent i = new Intent(LogInActivity.this,CadastroActivity.class);
         startActivity(i);
+
     }
 
     public void startMainActivity(){
@@ -71,6 +82,27 @@ public class LogInActivity extends AppCompatActivity {
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
         finish();
+    }
+
+    public void panico(View v)throws Exception{
+         /*
+        String posted_by = "5581996556828";
+        Uri u = Uri.parse("tel:" + posted_by);
+        Intent it = new Intent(Intent.ACTION_DIAL, u);
+
+        startActivity(it);
+
+        String no = "996556828";
+        Intent callintent = new Intent(Intent.ACTION_CALL);
+        callintent.setData(Uri.parse("tel:" +no));
+        startActivity(callintent);
+        */
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage("+5581988619746",null,"Oi",null,null);
+
+        if(isPermissionGranted()) {
+            call_action();
+        }
     }
 
     public void logar(View v) throws Exception {
@@ -122,5 +154,59 @@ public class LogInActivity extends AppCompatActivity {
             verificador = true;
         }
         return verificador;
+    }
+
+    public void call_action(){
+        String phnum = "996556828";
+        Intent callIntent = new Intent(Intent.ACTION_CALL).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //check wheather it is dual sim or not then
+
+        //if sim 1
+        callIntent.putExtra("com.android.phone.extra.slot",0);
+
+        //else if sim 2
+        //callIntent.putExtra("simSlot", 1);
+
+        callIntent.setData(Uri.parse("tel:" + phnum));
+        startActivity(callIntent);
+    }
+    public  boolean isPermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission.CALL_PHONE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v("TAG","Permission is granted");
+                return true;
+            } else {
+
+                Log.v("TAG","Permission is revoked");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+                return false;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+            Log.v("TAG","Permission is granted");
+            return true;
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+
+            case 1: {
+
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(getApplicationContext(), "Permission granted", Toast.LENGTH_SHORT).show();
+                    call_action();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Permission denied", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 }
