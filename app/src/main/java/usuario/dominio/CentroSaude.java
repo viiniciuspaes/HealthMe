@@ -10,6 +10,7 @@ public class CentroSaude {
     private String endereco;
     private LatLng localizacao;
     private PlanoSaude planoSaude;
+    private String especializacao;
 
     public PlanoSaude getPlanoSaude() {
         return planoSaude;
@@ -49,5 +50,13 @@ public class CentroSaude {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getEspecializacao() {
+        return especializacao;
+    }
+
+    public void setEspecializacao(String especializacao) {
+        this.especializacao = especializacao;
     }
 }
