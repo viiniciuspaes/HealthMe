@@ -1,9 +1,17 @@
 package usuario.dao;
 
 
+import android.content.Context;
+
+import com.google.android.gms.maps.model.LatLng;
+
+import usuario.dominio.CentroSaude;
+import usuario.dominio.PlanoSaude;
+
 import static usuario.dao.DbHelper.*;
 
 public class SqlScripts {
+    private CentroSaudeDao centroSaudeDao;
     protected String createTabelaUsuario(){
 
         StringBuilder userBuilder = new StringBuilder();
@@ -48,7 +56,7 @@ public class SqlScripts {
         return contatoBuilder.toString();
     }
     
-    protected String createTabelaMapa(){
+    protected String createTabelaCentro(){
         StringBuilder mapaBuilder = new StringBuilder();
         mapaBuilder.append("CREATE TABLE "+ TABELA_CENTRO +" ( ");
         mapaBuilder.append(ID+" integer primary key autoincrement, ");
@@ -69,5 +77,143 @@ public class SqlScripts {
     }
     protected String cmdWhereValues(String tabela, String coluna, String valor){
         return "SELECT * FROM" + tabela +" WHERE " + coluna + " LIKE " + valor;
+    }
+    public void bancoLugares(Context context){
+
+        centroSaudeDao = new CentroSaudeDao(context);
+
+        PlanoSaude unimed = new PlanoSaude();
+        unimed.setNome("UNIMED");
+        PlanoSaude sulAmerca = new PlanoSaude();
+        unimed.setNome("SULAMERICA");
+        PlanoSaude hapVida = new PlanoSaude();
+        unimed.setNome("HAPVIDA");
+
+        LatLng unimed3L = new LatLng(-8.0645592,-34.8939489);
+        CentroSaude unimed3 = new CentroSaude();
+        unimed3.setLocalizacao(unimed3L);
+        unimed3.setNome("Hospital Unimed Recife III");
+        unimed3.setEndereco("Rua Jose De Alencar, 770, Boa Vista");
+        unimed3.setTelefone("(81) 3320-7500");
+        unimed3.setEspecializacao("Geral");
+        unimed3.setPlanoSaude(unimed);
+
+        LatLng albertL = new LatLng(-8.0659779,-34.8976523);
+        CentroSaude albert = new CentroSaude();
+        albert.setLocalizacao(albertL);
+        albert.setNome("Hospital Albert Sabin");
+        albert.setEndereco("R. Sen. José Henrique, 141 - Ilha do Leite");
+        albert.setTelefone("(81)3131-7400");
+        albert.setEspecializacao("Cirurgia Geral, Clínica Médica");
+        albert.setPlanoSaude(unimed);
+        // Obs: PLANOS DO ALBERT: unimed,camed,sulamerica
+
+        LatLng memorialSaoJoseL= new LatLng(-8.0597126,-34.8974337);
+        CentroSaude memorialSaoJose = new CentroSaude();
+        memorialSaoJose.setLocalizacao(memorialSaoJoseL);
+        memorialSaoJose.setNome("Hospital Memorial São José");
+        memorialSaoJose.setEndereco("Avenida agamenom magalhaes, 2291, Boa vista");
+        memorialSaoJose.setTelefone("(81)3216-2222");
+        memorialSaoJose.setEspecializacao("Geral");
+        memorialSaoJose.setPlanoSaude(unimed);
+
+        LatLng hopeL = new LatLng(-8.0667061,-34.8963314);
+        CentroSaude hope = new CentroSaude();
+        hope.setLocalizacao(hopeL);
+        hope.setNome("HOPE - Hospital de Olhos do Recife");
+        hope.setEndereco("Rua francisco alves, 887, Ilha leite");
+        hope.setTelefone("(81)3302-2040");
+        hope.setEspecializacao("Oftalmologia");
+        hope.setPlanoSaude(unimed);
+
+        LatLng hoofL = new LatLng(-8.0401013,-34.9062553);
+        CentroSaude hoof = new CentroSaude();
+        hoof.setLocalizacao(hoofL);
+        hoof.setNome("Hospital de Ortopedia e Fratura");
+        hoof.setEndereco("Avenida rui barbosa, 1541, Graças");
+        hoof.setTelefone("(81)3092-9777");
+        hoof.setEspecializacao("ortopedia e traumatologia");
+        hoof.setPlanoSaude(unimed);
+
+        LatLng hoseL = new LatLng(-8.0670954,-34.8974943);
+        CentroSaude hose = new CentroSaude();
+        hose.setLocalizacao(hoseL);
+        hose.setNome("Hospital Esperança");
+        hose.setEndereco("Rua antonio gomes de freitas, 265, Ilha do leite");
+        hose.setTelefone("(81)3131-7878");
+        hose.setEspecializacao("cirurgia cardíaca pediátrica, cirurgia neurológica pediátrica");
+        hose.setPlanoSaude(unimed);
+
+        LatLng rhosL = new LatLng(-8.0670954,-34.8974943);
+        CentroSaude rhos = new CentroSaude();
+        rhos.setLocalizacao(rhosL);
+        rhos.setNome("Real Hospital Portugues");
+        rhos.setEndereco("Avenida portugal, 163, Paissandu");
+        rhos.setTelefone("(81)3416-1122");
+        rhos.setEspecializacao("Geral");
+        rhos.setPlanoSaude(unimed);
+
+        LatLng capsL = new LatLng(-8.0295025,-34.9238109);
+        CentroSaude caps = new CentroSaude();
+        caps.setLocalizacao(capsL);
+        caps.setNome("Centro de Atenção Psicosocial Casa Forte");
+        caps.setEndereco("Rua marechal rondon, 256, Casa forte");
+        caps.setTelefone("(81)3441-0433");
+        caps.setEspecializacao("Psiquiatria");
+        caps.setPlanoSaude(unimed);
+
+        LatLng jayL = new LatLng(-8.0511732,-34.9004814);
+        CentroSaude jay = new CentroSaude();
+        jay.setLocalizacao(jayL);
+        jay.setNome("Hospital Jayme da Fonte");
+        jay.setEndereco("Rua das pernambucanas, 103, Graças");
+        jay.setTelefone("(81)3416-0037");
+        jay.setEspecializacao("Cirugia geral,Clínica médica");
+        jay.setPlanoSaude(unimed);
+
+// PLANO sulamerica
+
+        LatLng stajL= new LatLng(-8.052643,-34.8984431);
+        CentroSaude staj = new CentroSaude();
+        staj.setLocalizacao(stajL);
+        staj.setNome("Hospital Santa Joana");
+        staj.setEndereco("Rua Joaquim Nabuco 200, Graças");
+        staj.setTelefone("(81)3216-6666");
+        staj.setEspecializacao("Geral");
+        staj.setPlanoSaude(sulAmerca);
+
+        LatLng avilaL = new LatLng(-8.0522372,-34.9090992);
+        CentroSaude avila = new CentroSaude();
+        avila.setLocalizacao(avilaL);
+        avila.setNome("Hospital de Avila");
+        avila.setEndereco("Av Visconde de Albuquerque 681, Madalena");
+        avila.setTelefone("(81)3117-5544");
+        avila.setEspecializacao("Geral");
+        avila.setPlanoSaude(sulAmerca);
+
+//Hapvida
+
+        LatLng hapesL= new LatLng(-8.0354903,-34.9162013);
+        CentroSaude hapes = new CentroSaude();
+        hapes.setLocalizacao(hapesL);
+        hapes.setNome("Hapvida Espinheiro");
+        hapes.setEndereco("R. José Luís da Silveira Barros, 134 - Espinheiro");
+        hapes.setTelefone("(81)4002-2870");
+        hapes.setEspecializacao("Dermatologia, Cardiologia e Ortopedia");
+        hapes.setPlanoSaude(hapVida);
+
+        centroSaudeDao.inserirCentro(albert);
+        centroSaudeDao.inserirCentro(avila);
+        centroSaudeDao.inserirCentro(caps);
+        centroSaudeDao.inserirCentro(hapes);
+        centroSaudeDao.inserirCentro(hoof);
+        centroSaudeDao.inserirCentro(hope);
+        centroSaudeDao.inserirCentro(hose);
+        centroSaudeDao.inserirCentro(jay);
+        centroSaudeDao.inserirCentro(memorialSaoJose);
+        centroSaudeDao.inserirCentro(rhos);
+        centroSaudeDao.inserirCentro(staj);
+        centroSaudeDao.inserirCentro(unimed3);
+
     }
 }
