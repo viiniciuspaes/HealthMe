@@ -8,7 +8,9 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ import usuario.negocio.SessaoUsuario;
 
 public class EditarPerfilActivity extends AppCompatActivity {
     private EditText etEditarNome;
+    private Spinner spPlanoSaude;
     private EditText etEditarPlanoSaude;
     private EditText etEditarNomeContatoEmergencia1;
     private EditText etEditarTelefoneContatoEmergencia1;
@@ -43,7 +46,12 @@ public class EditarPerfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_editar_perfil);
 
         etEditarNome =(EditText)findViewById(R.id.et_editarNome);
-        etEditarPlanoSaude =(EditText)findViewById(R.id.et_editarPlanoSaude);
+        spPlanoSaude = (Spinner) findViewById(R.id.spinnerId);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this,R.array.planos_de_saude, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spPlanoSaude.setAdapter(adapter);
+
+        //etEditarPlanoSaude =(EditText)findViewById(R.id.et_editarPlanoSaude);
         etEditarNomeContatoEmergencia1 =(EditText)findViewById(R.id.et_editarNomeContatoEmergencia1);
         etEditarTelefoneContatoEmergencia1 =(EditText)findViewById(R.id.et_editarTelefoneContatoEmergencia1);
         etEditarNomeContatoEmergencia2 =(EditText)findViewById(R.id.et_editarNomeContatoEmergencia2);
@@ -81,7 +89,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
         };
 
         etEditarNome.addTextChangedListener(textWatcher);
-        etEditarPlanoSaude.addTextChangedListener(textWatcher);
+        //etEditarPlanoSaude.addTextChangedListener(textWatcher);
         etEditarNomeContatoEmergencia1.addTextChangedListener(textWatcher);
         etEditarTelefoneContatoEmergencia1.addTextChangedListener(textWatcher);
         etEditarNomeContatoEmergencia2.addTextChangedListener(textWatcher);
@@ -93,8 +101,10 @@ public class EditarPerfilActivity extends AppCompatActivity {
         daoUser = new UsuarioDao(getApplicationContext());
         Pessoa pessoa = sessaoUsuario.getPessoaLogada();
         pessoa.setNome(etEditarNome.getText().toString());
-        pessoa.setPlanoSaude(etEditarPlanoSaude.getText().toString());
-
+        String x = spPlanoSaude.getSelectedItem().toString();
+        if (!(x.equals("Plano de Saúde"))) {
+            pessoa.setPlanoSaude(spPlanoSaude.getSelectedItem().toString());
+        }
         daoContato = new ContatoDao(getApplicationContext());
 
         adicionarContato(etEditarNomeContatoEmergencia1, etEditarTelefoneContatoEmergencia1,daoContato,contatosOriginais[0]);
@@ -106,7 +116,8 @@ public class EditarPerfilActivity extends AppCompatActivity {
     }
     public void setview(){
         etEditarNome.setText(sessaoUsuario.getPessoaLogada().getNome());
-        etEditarPlanoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
+        //spPlanoSaude.setSelection(sessaoUsuario.getPessoaLogada().getPlanoSaude().toString());
+        //etEditarPlanoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
         contatoExistente = daoContato.buscarContatos(sessaoUsuario.getUsuarioLogado().getLogin());
         contatosOriginais[0] = "none";
         contatosOriginais[1] = "none";

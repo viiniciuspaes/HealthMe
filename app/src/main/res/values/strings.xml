@@ -32,6 +32,13 @@
     <string name="title_activity_tela_inicial_nav">HealthMe</string>
     <string name="btn_panico">Pânico</string>
 
+    <string-array name="planos_de_saude">
+        <item>Plano de Saúde</item>
+        <item>Unimed</item>
+        <item>SulAmerica</item>
+        <item>Hapvida</item>
+    </string-array>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

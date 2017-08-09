@@ -202,7 +202,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         CentroSaude memorialSaoJose = new CentroSaude();
         memorialSaoJose.setLocalizacao(memorialSaoJoseL);
         memorialSaoJose.setNome("Hospital Memorial São José");
-        memorialSaoJose.setEndereco("Avenida agamenom magalhaes, 2291, boa vista");
+        memorialSaoJose.setEndereco("Avenida agamenom magalhaes, 2291, Boa vista");
         memorialSaoJose.setTelefone("(81)3216-2222");
         memorialSaoJose.setEspecializacao("Geral");
 
@@ -210,7 +210,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         CentroSaude hope = new CentroSaude();
         hope.setLocalizacao(hopeL);
         hope.setNome("HOPE - Hospital de Olhos do Recife");
-        hope.setEndereco("Rua francisco alves, 887, ilha leite");
+        hope.setEndereco("Rua francisco alves, 887, Ilha leite");
         hope.setTelefone("(81)3302-2040");
         hope.setEspecializacao("Oftalmologia");
 
@@ -218,7 +218,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         CentroSaude hoof = new CentroSaude();
         hoof.setLocalizacao(hoofL);
         hoof.setNome("Hospital de Ortopedia e Fratura");
-        hoof.setEndereco("Avenida rui barbosa, 1541, graças");
+        hoof.setEndereco("Avenida rui barbosa, 1541, Graças");
         hoof.setTelefone("(81)3092-9777");
         hoof.setEspecializacao("ortopedia e traumatologia");
 
@@ -226,7 +226,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         CentroSaude hose = new CentroSaude();
         hose.setLocalizacao(hoseL);
         hose.setNome("Hospital Esperança");
-        hose.setEndereco("Rua antonio gomes de freitas, 265, ilha do leite");
+        hose.setEndereco("Rua antonio gomes de freitas, 265, Ilha do leite");
         hose.setTelefone("(81)3131-7878");
         hose.setEspecializacao("cirurgia cardíaca pediátrica, cirurgia neurológica pediátrica");
 
@@ -234,7 +234,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         CentroSaude rhos = new CentroSaude();
         rhos.setLocalizacao(rhosL);
         rhos.setNome("Real Hospital Portugues");
-        rhos.setEndereco("Avenida portugal, 163, paissandu");
+        rhos.setEndereco("Avenida portugal, 163, Paissandu");
         rhos.setTelefone("(81)3416-1122");
         rhos.setEspecializacao("Geral");
 
@@ -242,17 +242,17 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         CentroSaude caps = new CentroSaude();
         caps.setLocalizacao(capsL);
         caps.setNome("Centro de Atenção Psicosocial Casa Forte");
-        caps.setEndereco("Rua marechal rondon, 256, casa forte");
+        caps.setEndereco("Rua marechal rondon, 256, Casa forte");
         caps.setTelefone("(81)3441-0433");
-        //ESPECIALIDADE(S): Psiquiatria.
+        caps.setEspecializacao("Psiquiatria");
 
-                LatLng jayL = new LatLng(-8.0511732,-34.9004814);
+        LatLng jayL = new LatLng(-8.0511732,-34.9004814);
         CentroSaude jay = new CentroSaude();
         jay.setLocalizacao(jayL);
         jay.setNome("Hospital Jayme da Fonte");
-        jay.setEndereco("Rua das pernambucanas, 103, graças");
+        jay.setEndereco("Rua das pernambucanas, 103, Graças");
         jay.setTelefone("(81)3416-0037");
-        //ESPECIALIDADE(S): cirurgia geral, clínica médica.
+        jay.setEspecializacao("Cirugia geral,Clínica médica");
 
 // PLANO sulamerica
 
@@ -262,7 +262,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         staj.setNome("Hospital Santa Joana");
         staj.setEndereco("Rua Joaquim Nabuco 200, Graças");
         staj.setTelefone("(81)3216-6666");
-        //ESPECIALIDADE(S): Geral.
+        staj.setEspecializacao("Geral");
 
         LatLng avilaL = new LatLng(-8.0522372,-34.9090992);
         CentroSaude avila = new CentroSaude();
@@ -270,17 +270,17 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         avila.setNome("Hospital de Avila");
         avila.setEndereco("Av Visconde de Albuquerque 681, Madalena");
         avila.setTelefone("(81)3117-5544");
-        //ESPECIALIDADE(S): Geral.
+        avila.setEspecializacao("Geral");
 
 //Hapvida
 
         LatLng hapesL= new LatLng(-8.0354903,-34.9162013);
         CentroSaude hapes = new CentroSaude();
-        avila.setLocalizacao(hapesL);
-        avila.setNome("Hapvida Espinheiro");
-        avila.setEndereco("R. José Luís da Silveira Barros, 134 - Espinheiro");
-        avila.setTelefone("(81)4002-2870");
-        //ESPECIALIDADE(S): dermatologia, cardiologia e ortopedia.
+        hapes.setLocalizacao(hapesL);
+        hapes.setNome("Hapvida Espinheiro");
+        hapes.setEndereco("R. José Luís da Silveira Barros, 134 - Espinheiro");
+        hapes.setTelefone("(81)4002-2870");
+        hapes.setEspecializacao("Dermatologia, Cardiologia e Ortopedia");
 
 
         customizadoAddMarker(marcoZero);
@@ -292,7 +292,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         customizadoAddMarker(rhos);
         customizadoAddMarker(jay);
         customizadoAddMarker(albert);
-
+        customizadoAddMarker(hapes);
+        customizadoAddMarker(avila);
+        customizadoAddMarker(memorialSaoJose);
+        customizadoAddMarker(caps);
     }
 
     public void customizadoAddMarker(CentroSaude lugar){
