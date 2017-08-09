@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import usuario.dominio.CentroSaude;
-import usuario.dominio.ContatoEmergencia;
 import usuario.dominio.PlanoSaude;
 
 public class CentroSaudeDao {
@@ -30,12 +29,16 @@ public class CentroSaudeDao {
     public void inserirCentro(CentroSaude centroSaude){
         ContentValues valor;
         db = dataBaseHelper.getWritableDatabase();
+        StringBuilder localizacao= new StringBuilder();
+        localizacao.append(centroSaude.getLocalizacao().latitude);
+        localizacao.append("/");
+        localizacao.append(centroSaude.getLocalizacao().longitude);
 
         valor = new ContentValues();
         valor.put(DbHelper.CENTRO_NOME, centroSaude.getNome());
         valor.put(DbHelper.CENTRO_ENDERECO, centroSaude.getEndereco());
         valor.put(DbHelper.CENTRO_TELEFONE, centroSaude.getTelefone());
-        valor.put(DbHelper.CENTRO_LATLNG, centroSaude.getLocalizacao().toString());
+        valor.put(DbHelper.CENTRO_LATLNG, localizacao.toString());
         valor.put(DbHelper.PLANO_SAUDE, centroSaude.getPlanoSaude().getNome());
 
         db.insert(DbHelper.TABELA_PESSOA,null, valor);
@@ -64,13 +67,17 @@ public class CentroSaudeDao {
     public CentroSaude criarCentro(Cursor cursor) {
         CentroSaude centro = new CentroSaude();
         PlanoSaude plano = new PlanoSaude();
-
         plano.setNome(cursor.getString(5));
+        String[] local = cursor.getString(4).split("/");
+        Double valor1 = Double.parseDouble(local[0]);
+        Double valor2 = Double.parseDouble(local[1]);
+        LatLng localizacao = new LatLng(valor1,valor2);
+
         centro.setId(cursor.getInt(0));
         centro.setNome(cursor.getString(1));
         centro.setTelefone(cursor.getString(2));
         centro.setEndereco(cursor.getString(3));
-        //centro.setLocalizacao();
+        centro.setLocalizacao(localizacao);
         centro.setPlanoSaude(plano);
         return centro;
     }
