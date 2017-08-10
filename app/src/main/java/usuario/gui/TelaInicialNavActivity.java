@@ -91,8 +91,9 @@ public class TelaInicialNavActivity extends AppCompatActivity
 
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_logout) {
+            sessao.encerrarSessao();
+            finish();
         }
 
         return super.onOptionsItemSelected(item);

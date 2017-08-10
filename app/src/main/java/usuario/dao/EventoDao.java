@@ -91,7 +91,7 @@ public class EventoDao {
         if(cursor!=null){
             cursor.moveToFirst();
         }
-
+        db.close();
         return cursor;
     }
 }

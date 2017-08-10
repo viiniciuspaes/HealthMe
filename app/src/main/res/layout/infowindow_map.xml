@@ -29,14 +29,6 @@
             android:text="TextView" />
 
 
-        <Button
-            android:id="@+id/rotaId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorwhite"
-            android:text="Rota"
-            android:textAppearance="@style/TextAppearance.AppCompat" />
-
     </LinearLayout>
 
 </LinearLayout>

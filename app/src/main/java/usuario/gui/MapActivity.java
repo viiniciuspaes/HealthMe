@@ -27,6 +27,8 @@ import java.io.IOException;
 import java.util.List;
 
 import usuario.dominio.CentroSaude;
+import usuario.negocio.CentroSaudeNegocio;
+import usuario.negocio.SessaoUsuario;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -34,6 +36,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private GoogleMap mMap;
     private static final String TAG = "Erro no Mapa";
     private Marker marker;
+    private SessaoUsuario sessao;
+    private CentroSaudeNegocio centroSaudeNegocio;
 
     LocationManager locationManager;
 
@@ -125,6 +129,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             });
 
         }
+        sessao = new SessaoUsuario(getApplicationContext());
+        sessao.iniciarSessao();
     }
 
     @Override
@@ -132,7 +138,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         mMap = googleMap;
         mMap.setMinZoomPreference(13.0f);
-        bancoLugares();
+        iniciarHospitais();
 
         if(mMap != null){
             mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
@@ -164,30 +170,19 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         }
 
     }
-    public void bancoLugares(){
+   public void iniciarHospitais(){
+      List<CentroSaude> centroSaudes = centroSaudeNegocio.getHospitais(getApplicationContext(),sessao.getPessoaLogada().getPlanoSaude());
+       for (CentroSaude x: centroSaudes){
+           customizadoAddMarker(x);
+       }
 
-        LatLng marcoZeroC = new LatLng(-8.063171, -34.871143);
-        LatLng vivenciaC = new LatLng(-8.0174982,-34.9452835);
-        CentroSaude marcoZero = new CentroSaude();
-        marcoZero.setLocalizacao(marcoZeroC);
-        marcoZero.setNome("Marco Zero");
-        marcoZero.setEndereco("Ponto de partida do Recife");
-        marcoZero.setTelefone("(81)3456-3563");
-        CentroSaude vivencia = new CentroSaude();
-        vivencia.setLocalizacao(vivenciaC);
-        vivencia.setNome("Espaço Vivência");
-        vivencia.setEndereco("Agronomia");
-        vivencia.setTelefone("(xx)xxxx-xxxx");
-
-        customizadoAddMarker(marcoZero);
-        customizadoAddMarker(vivencia);
-    }
+   }
 
     public void customizadoAddMarker(CentroSaude lugar){
         MarkerOptions options = new MarkerOptions();
 
         options.position(lugar.getLocalizacao()).title(lugar.getNome())
-                .snippet(lugar.getEndereco()+"\n"+lugar.getTelefone())
+                .snippet(lugar.getEndereco()+"\n"+lugar.getTelefone()+"\n"+lugar.getEspecializacao())
                 .icon(BitmapDescriptorFactory.fromResource(R.raw.marcador2));
 
         this.marker = this.mMap.addMarker(options);

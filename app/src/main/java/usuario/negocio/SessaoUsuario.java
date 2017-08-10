@@ -9,12 +9,10 @@ import usuario.dao.UsuarioDao;
 import usuario.dominio.Pessoa;
 import usuario.dominio.Usuario;
 import usuario.gui.LogInActivity;
+import usuario.gui.TelaInicialNavActivity;
 
 public class SessaoUsuario {
     private Pessoa pessoaLogada;
-
-
-
     private Usuario usuarioLogado;
     private SharedPreferences preferences;
     private Context context;
@@ -48,16 +46,26 @@ public class SessaoUsuario {
         editor.clear();
         editor.apply();
 
+        Intent intent = new Intent(context, LogInActivity.class);
+        intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+
     }
 
     public boolean verificarLogin() {
         if (!this.vericarSesssao()){
-            Intent intent = new Intent(context, LogInActivity.class);
+            Intent intent = new Intent(context, TelaInicialNavActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
 
             return true;
+        } else {
+            Intent intent = new Intent(context, LogInActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
         }
         return false;
     }
@@ -69,15 +77,19 @@ public class SessaoUsuario {
     public void setPessoaLogada(Pessoa pessoaLogada) {
         this.pessoaLogada = pessoaLogada;
     }
+
     public String getNome() {
         return preferences.getString(NOME_USUARIO, null);
     }
+
     public Usuario getUsuarioLogado() {
         return usuarioLogado;
     }
+
     public void setUsuarioLogado(Usuario usuarioLogado) {
         this.usuarioLogado = usuarioLogado;
     }
+
     private boolean vericarSesssao() {
         return preferences.getBoolean(USUARIO_LOGADO, false);
     }

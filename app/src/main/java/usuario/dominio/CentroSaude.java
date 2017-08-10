@@ -5,11 +5,21 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class CentroSaude {
 
+    private int id;
     private String nome;
     private String telefone;
     private String endereco;
     private LatLng localizacao;
     private PlanoSaude planoSaude;
+    private String especializacao;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public PlanoSaude getPlanoSaude() {
         return planoSaude;
@@ -49,5 +59,13 @@ public class CentroSaude {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getEspecializacao() {
+        return especializacao;
+    }
+
+    public void setEspecializacao(String especializacao) {
+        this.especializacao = especializacao;
     }
 }
