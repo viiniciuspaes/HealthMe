@@ -51,6 +51,7 @@ public class DbHelper extends SQLiteOpenHelper {
     protected static final String CENTRO_ENDERECO = "cemtro_endereco";
     protected static final String CENTRO_LATLNG = "centro_latlng";
     protected static final String CENTRO_PLANO_SAUDE = "centro_plano_saude";
+    protected static final String CENTRO_ESPECIALIZACAO = "centro_especializacao";
 
     public DbHelper(Context context){
         super(context, NOME_DB,null, VERSAO);

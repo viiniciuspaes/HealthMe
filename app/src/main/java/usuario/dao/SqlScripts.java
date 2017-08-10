@@ -65,6 +65,7 @@ public class SqlScripts {
         mapaBuilder.append(CENTRO_ENDERECO +" text not null, ");
         mapaBuilder.append(CENTRO_LATLNG +" text, ");
         mapaBuilder.append(CENTRO_PLANO_SAUDE +" text);");
+        mapaBuilder.append(CENTRO_ESPECIALIZACAO +" text);");
         return mapaBuilder.toString();
     }
 
@@ -218,11 +219,68 @@ public class SqlScripts {
     }
     public String povoar(){
 
-        String script = " INSERT INTO "+TABELA_CENTRO+" ("+CENTRO_NOME+","+CENTRO_TELEFONE+","+
-                CENTRO_ENDERECO+","+CENTRO_LATLNG+","+CENTRO_PLANO_SAUDE+
-                ") VALUES ('Hapvida_Espinheiro', '(81)40022870', 'R. Jose Luis da Silveira Barros. 134 - Espinheiro', '-8.0354903/-34.9162013', 'HAPVIDA')," +
-                " ('','','','','');";
+        //Faz um Array para jogar num for no on create para botar todos
 
-        return script;
+        String hapes = " INSERT INTO "+TABELA_CENTRO+" ("+CENTRO_NOME+","+CENTRO_TELEFONE+","+
+                CENTRO_ENDERECO+","+CENTRO_LATLNG+","+CENTRO_PLANO_SAUDE+","+CENTRO_ESPECIALIZACAO+
+                ") VALUES ('Hapvida_Espinheiro', '(81)40022870', 'R. Jose Luis da Silveira Barros. 134 - Espinheiro', '-8.0354903/-34.9162013', 'HAPVIDA', 'Dermatologia, Cardiologia e Ortopedia')," +
+                " ('','','','','','');";
+
+        String albert = " INSERT INTO "+TABELA_CENTRO+" ("+CENTRO_NOME+","+CENTRO_TELEFONE+","+
+                CENTRO_ENDERECO+","+CENTRO_LATLNG+","+CENTRO_PLANO_SAUDE+","+CENTRO_ESPECIALIZACAO+
+                ") VALUES ('Hospital Albert Sabin', '(81)3131-7400', 'R. Sen. José Henrique, 141 - Ilha do Leite', '-8.0659779/-34.8976523', 'UNIMED', 'Cirurgia Geral, Clínica Médica')," +
+                " ('','','','','','');";
+
+        String avila = " INSERT INTO "+TABELA_CENTRO+" ("+CENTRO_NOME+","+CENTRO_TELEFONE+","+
+                CENTRO_ENDERECO+","+CENTRO_LATLNG+","+CENTRO_PLANO_SAUDE+","+CENTRO_ESPECIALIZACAO+
+                ") VALUES ('Hospital de Avila', '(81)3117-5544', 'Av Visconde de Albuquerque 681, Madalena', '-8.0522372/-34.9090992', 'SULAMERICA', 'Geral')," +
+                " ('','','','','','');";
+
+        String caps = " INSERT INTO "+TABELA_CENTRO+" ("+CENTRO_NOME+","+CENTRO_TELEFONE+","+
+                CENTRO_ENDERECO+","+CENTRO_LATLNG+","+CENTRO_PLANO_SAUDE+","+CENTRO_ESPECIALIZACAO+
+                ") VALUES ('Centro de Atenção Psicosocial Casa Forte', '(81)3441-0433', 'Rua marechal rondon, 256, Casa forte', '-8.0295025/-34.9238109', 'UNIMED', 'Psiquiatria')," +
+                " ('','','','','','');";
+
+        String hoof = " INSERT INTO "+TABELA_CENTRO+" ("+CENTRO_NOME+","+CENTRO_TELEFONE+","+
+                CENTRO_ENDERECO+","+CENTRO_LATLNG+","+CENTRO_PLANO_SAUDE+","+CENTRO_ESPECIALIZACAO+
+                ") VALUES ('Hospital de Ortopedia e Fratura', '(81)3092-9777', 'Avenida rui barbosa, 1541, Graças', '-8.0401013/-34.9062553', 'UNIMED', 'Ortopedia e Traumatologia')," +
+                " ('','','','','','');";
+
+        String hope = " INSERT INTO "+TABELA_CENTRO+" ("+CENTRO_NOME+","+CENTRO_TELEFONE+","+
+                CENTRO_ENDERECO+","+CENTRO_LATLNG+","+CENTRO_PLANO_SAUDE+","+CENTRO_ESPECIALIZACAO+
+                ") VALUES ('HOPE - Hospital de Olhos do Recife', '(81)3302-2040', 'Rua francisco alves, 887, Ilha leite', '-8.0667061/-34.8963314', 'UNIMED', 'Oftalmologia')," +
+                " ('','','','','','');";
+
+        String hose = " INSERT INTO "+TABELA_CENTRO+" ("+CENTRO_NOME+","+CENTRO_TELEFONE+","+
+                CENTRO_ENDERECO+","+CENTRO_LATLNG+","+CENTRO_PLANO_SAUDE+","+CENTRO_ESPECIALIZACAO+
+                ") VALUES ('Hospital Esperança', '(81)3131-7878', 'Rua antonio gomes de freitas, 265, Ilha do leite', '-8.0670954/-34.8974943', 'UNIMED', 'Cirurgia cardíaca pediátrica, Cirurgia neurológica pediátrica')," +
+                " ('','','','','','');";
+
+        String jay = " INSERT INTO "+TABELA_CENTRO+" ("+CENTRO_NOME+","+CENTRO_TELEFONE+","+
+                CENTRO_ENDERECO+","+CENTRO_LATLNG+","+CENTRO_PLANO_SAUDE+","+CENTRO_ESPECIALIZACAO+
+                ") VALUES ('Hospital Jayme da Fonte', '(81)3416-0037', 'Rua das pernambucanas, 103, Graças', '-8.0511732/-34.9004814', 'UNIMED', 'Cirugia geral,Clínica médica')," +
+                " ('','','','','','');";
+
+        String memorialSaoJose = " INSERT INTO "+TABELA_CENTRO+" ("+CENTRO_NOME+","+CENTRO_TELEFONE+","+
+                CENTRO_ENDERECO+","+CENTRO_LATLNG+","+CENTRO_PLANO_SAUDE+","+CENTRO_ESPECIALIZACAO+
+                ") VALUES ('Hospital Memorial São José', '(81)3216-2222', 'Avenida agamenom magalhaes, 2291, Boa vista', '-8.0597126/-34.8974337', 'UNIMED', 'Geral')," +
+                " ('','','','','','');";
+
+        String rhos = " INSERT INTO "+TABELA_CENTRO+" ("+CENTRO_NOME+","+CENTRO_TELEFONE+","+
+                CENTRO_ENDERECO+","+CENTRO_LATLNG+","+CENTRO_PLANO_SAUDE+","+CENTRO_ESPECIALIZACAO+
+                ") VALUES ('Real Hospital Portugues', '(81)3416-1122', 'Avenida portugal, 163, Paissandu', '-8.0670954/-34.8974943', 'UNIMED', 'Geral')," +
+                " ('','','','','','');";
+
+        String staj = " INSERT INTO "+TABELA_CENTRO+" ("+CENTRO_NOME+","+CENTRO_TELEFONE+","+
+                CENTRO_ENDERECO+","+CENTRO_LATLNG+","+CENTRO_PLANO_SAUDE+","+CENTRO_ESPECIALIZACAO+
+                ") VALUES ('Hospital Santa Joana', '(81)3216-6666', 'Rua Joaquim Nabuco 200, Graças', '-8.052643/-34.8984431', 'SULAMERICA', 'Geral')," +
+                " ('','','','','','');";
+
+        String unimed3 = " INSERT INTO "+TABELA_CENTRO+" ("+CENTRO_NOME+","+CENTRO_TELEFONE+","+
+                CENTRO_ENDERECO+","+CENTRO_LATLNG+","+CENTRO_PLANO_SAUDE+","+CENTRO_ESPECIALIZACAO+
+                ") VALUES ('Hospital Unimed Recife III', '(81)3320-7500', 'Rua Jose De Alencar, 770, Boa Vista', '-8.0645592/-34.8939489', 'UNIMED', 'Geral')," +
+                " ('','','','','','');";
+        
+        return hapes;
     }
 }
