@@ -9,37 +9,11 @@
     tools:context="usuario.gui.LogInActivity"
     android:weightSum="1">
 
-
-   <!-- <Button
-        android:id="@+id/btn_emergency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="270dp"
-        android:background="@color/colorAccent"
-        android:text="@string/emergencia"
-        android:onClick=""/> -->
-
- <Button
-     android:id="@+id/btn_panico"
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:layout_gravity="center"
-     android:layout_marginLeft="24dp"
-     android:layout_marginRight="24dp"
-     android:layout_marginTop="10dp"
-     android:layout_marginBottom="15dp"
-     android:background="@color/colorPanic"
-     android:onClick="panico"
-     android:text="@string/btn_panico"
-     android:textStyle="bold"
-     android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"/>
-
- <ImageView
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="152dp"
         android:src="@mipmap/marcador" />
-
 
     <EditText
         android:id="@+id/user_login"
