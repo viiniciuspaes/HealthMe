@@ -59,7 +59,7 @@ public class SqlScripts {
     protected String createTabelaCentro(){
         StringBuilder mapaBuilder = new StringBuilder();
         mapaBuilder.append("CREATE TABLE "+ TABELA_CENTRO +" ( ");
-        mapaBuilder.append(ID+" integer primary key autoincrement, ");
+        //mapaBuilder.append(ID+" integer primary key autoincrement, ");
         mapaBuilder.append(CENTRO_NOME +" text not null unique, ");
         mapaBuilder.append(CENTRO_TELEFONE + " text, ");
         mapaBuilder.append(CENTRO_ENDERECO +" text not null, ");

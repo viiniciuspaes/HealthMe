@@ -29,7 +29,7 @@ public class CentroSaudeDao {
     public void inserirCentro(CentroSaude centroSaude){
         ContentValues valor;
         db = dataBaseHelper.getWritableDatabase();
-        StringBuilder localizacao= new StringBuilder();
+        StringBuilder localizacao = new StringBuilder();
         localizacao.append(centroSaude.getLocalizacao().latitude);
         localizacao.append("/");
         localizacao.append(centroSaude.getLocalizacao().longitude);
@@ -39,9 +39,9 @@ public class CentroSaudeDao {
         valor.put(DbHelper.CENTRO_ENDERECO, centroSaude.getEndereco());
         valor.put(DbHelper.CENTRO_TELEFONE, centroSaude.getTelefone());
         valor.put(DbHelper.CENTRO_LATLNG, localizacao.toString());
-        valor.put(DbHelper.PLANO_SAUDE, centroSaude.getPlanoSaude().getNome());
+        valor.put(DbHelper.CENTRO_PLANO_SAUDE, centroSaude.getPlanoSaude().getNome());
 
-        db.insert(DbHelper.TABELA_PESSOA,null, valor);
+        db.insert(DbHelper.TABELA_CENTRO,null, valor);
         db.close();
     }
     public List<CentroSaude> buscarCentros(String plano){
@@ -49,7 +49,7 @@ public class CentroSaudeDao {
 
         String[] parametros = { plano};
 
-        Cursor cursor = db.rawQuery(script.cmdWhere(dataBaseHelper.TABELA_CONTATO, dataBaseHelper.CENTRO_PLANO_SAUDE),
+        Cursor cursor = db.rawQuery(script.cmdWhere(dataBaseHelper.TABELA_CENTRO, dataBaseHelper.CENTRO_PLANO_SAUDE),
                 parametros);
         CentroSaude centro = null;
         List<CentroSaude> centros = new ArrayList<>();

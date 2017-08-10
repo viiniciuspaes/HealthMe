@@ -57,7 +57,7 @@ public class UsuarioDao {
         db.close();
     }
     public Usuario buscarUsuario(String user, String password) {
-        SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
+        db = dataBaseHelper.getReadableDatabase();
 
         String[] parametros = {user, password};
 
@@ -74,7 +74,7 @@ public class UsuarioDao {
         return usuario;
     }
     public Usuario buscarUsuario(String user) {
-        SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
+        db = dataBaseHelper.getReadableDatabase();
 
         String[] parametros = {user};
 
@@ -92,7 +92,7 @@ public class UsuarioDao {
     }
 
     public Pessoa buscarPessoa(String nome) {
-        SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
+        db = dataBaseHelper.getReadableDatabase();
 
         String[] parametros = {nome};
 
@@ -124,7 +124,7 @@ public class UsuarioDao {
         return pessoa;
     }
     public boolean removerPessoa(int id){
-        SQLiteDatabase db = dataBaseHelper.getWritableDatabase();
+        db = dataBaseHelper.getWritableDatabase();
         return db.delete(dataBaseHelper.TABELA_PESSOA, "_id = ?", new String[]{Integer.toString(id)}) > 0;
 
     }
