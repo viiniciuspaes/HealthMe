@@ -216,4 +216,13 @@ public class SqlScripts {
         centroSaudeDao.inserirCentro(unimed3);
 
     }
+    public String povoar(){
+
+        String script = " INSERT INTO "+TABELA_CENTRO+" ("+CENTRO_NOME+","+CENTRO_TELEFONE+","+
+                CENTRO_ENDERECO+","+CENTRO_LATLNG+","+CENTRO_PLANO_SAUDE+
+                ") VALUES ('Hapvida_Espinheiro', '(81)40022870', 'R. Jose Luis da Silveira Barros. 134 - Espinheiro', '-8.0354903/-34.9162013', 'HAPVIDA')," +
+                " ('','','','','');";
+
+        return script;
+    }
 }

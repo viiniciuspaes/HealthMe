@@ -64,8 +64,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(scripts.createTabelaEvento());
         db.execSQL(scripts.createTabelaContato());
         db.execSQL(scripts.createTabelaCentro());
-
-        scripts.bancoLugares(context);
+        db.execSQL(scripts.povoar());
     }
 
     @Override
@@ -74,6 +73,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABELA_PESSOA);
         db.execSQL("DROP TABLE IF EXISTS "+ TABELA_EVENTO);
         db.execSQL("DROP TABLE IF EXISTS "+ TABELA_CONTATO);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABELA_CENTRO);
 
         onCreate(db);
     }
