@@ -132,13 +132,8 @@ public class TelaInicialNavActivity extends AppCompatActivity
     public void call_action(){
         String phnum = "996556828";
         Intent callIntent = new Intent(Intent.ACTION_CALL).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //check wheather it is dual sim or not then
 
-        //if sim 1
         callIntent.putExtra("com.android.phone.extra.slot",0);
-
-        //else if sim 2
-        //callIntent.putExtra("simSlot", 1);
 
         callIntent.setData(Uri.parse("tel:" + phnum));
         startActivity(callIntent);
@@ -156,7 +151,7 @@ public class TelaInicialNavActivity extends AppCompatActivity
                 return false;
             }
         }
-        else { //permission is automatically granted on sdk<23 upon installation
+        else {
             Log.v("TAG","Permission is granted");
             return true;
         }
@@ -178,8 +173,6 @@ public class TelaInicialNavActivity extends AppCompatActivity
                 return;
             }
 
-            // other 'case' lines to check for other
-            // permissions this app might request
         }
     }
 }
