@@ -64,7 +64,7 @@ public class SqlScripts {
         mapaBuilder.append(CENTRO_TELEFONE + " text, ");
         mapaBuilder.append(CENTRO_ENDERECO +" text not null, ");
         mapaBuilder.append(CENTRO_LATLNG +" text, ");
-        mapaBuilder.append(CENTRO_PLANO_SAUDE +" text,");
+        mapaBuilder.append(CENTRO_PLANO_SAUDE +" text, ");
         mapaBuilder.append(CENTRO_ESPECIALIZACAO +" text);");
         return mapaBuilder.toString();
     }
@@ -95,7 +95,7 @@ public class SqlScripts {
                 " ('Centro de Atenção Psicosocial Casa Forte', '(81)3441-0433', 'Rua marechal rondon, 256, Casa forte', '-8.0295025/-34.9238109', 'UNIMED', 'Psiquiatria')," +
                 " ('Hospital de Avila', '(81)3117-5544', 'Av Visconde de Albuquerque 681, Madalena', '-8.0522372/-34.9090992', 'SULAMERICA', 'Geral')," +
                 " ('Hospital Albert Sabin', '(81)3131-7400', 'R. Sen. José Henrique, 141 - Ilha do Leite', '-8.0659779/-34.8976523', 'UNIMED', 'Cirurgia Geral, Clínica Médica')," +
-                " ('Hapvida_Espinheiro', '(81)40022870', 'R. Jose Luis da Silveira Barros. 134 - Espinheiro', '-8.0354903/-34.9162013', 'HAPVIDA', 'Dermatologia, Cardiologia e Ortopedia');";
+                " ('Hapvida Espinheiro', '(81)40022870', 'R. Jose Luis da Silveira Barros. 134 - Espinheiro', '-8.0354903/-34.9162013', 'HAPVIDA', 'Dermatologia, Cardiologia e Ortopedia');";
         
         return hospitais;
     }

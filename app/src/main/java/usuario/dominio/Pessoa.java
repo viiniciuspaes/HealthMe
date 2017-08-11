@@ -18,7 +18,7 @@ public class Pessoa {
         this.usuario = null;
         this.enderecoCasa = null;
         this.enderecoTrabalho = null;
-        this.planoSaude = null;
+        this.planoSaude = "";
         this.nascimento = null;
         this.contatoEmergencia = null;
     }
