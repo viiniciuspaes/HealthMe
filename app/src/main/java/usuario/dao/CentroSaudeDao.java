@@ -79,6 +79,7 @@ public class CentroSaudeDao {
         centro.setEndereco(cursor.getString(3));
         centro.setLocalizacao(localizacao);
         centro.setPlanoSaude(plano);
+        centro.setEspecializacao(cursor.getString(6));
         return centro;
     }
 }
