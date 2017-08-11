@@ -26,6 +26,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.List;
 
+import infra.GuiUtil;
 import usuario.dominio.CentroSaude;
 import usuario.negocio.CentroSaudeNegocio;
 import usuario.negocio.SessaoUsuario;
@@ -131,6 +132,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         }
         sessao = new SessaoUsuario(getApplicationContext());
         sessao.iniciarSessao();
+        centroSaudeNegocio = new CentroSaudeNegocio();
     }
 
     @Override
@@ -138,7 +140,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         mMap = googleMap;
         mMap.setMinZoomPreference(13.0f);
-        iniciarHospitais();
+
 
         if(mMap != null){
             mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
@@ -168,12 +170,15 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                         != PackageManager.PERMISSION_GRANTED) {
             return;
         }
+        iniciarHospitais();
 
     }
    public void iniciarHospitais(){
       List<CentroSaude> centroSaudes = centroSaudeNegocio.getHospitais(getApplicationContext(),sessao.getPessoaLogada().getPlanoSaude());
-       for (CentroSaude x: centroSaudes){
-           customizadoAddMarker(x);
+       for (int x = 0; x>centroSaudes.size(); x++){
+           GuiUtil gui = new GuiUtil();
+           gui.toastShort(getApplicationContext(),centroSaudes.get(x).getNome());
+           customizadoAddMarker(centroSaudes.get(x));
        }
 
    }

@@ -34,9 +34,9 @@
 
     <string-array name="planos_de_saude">
         <item>Plano de Saúde</item>
-        <item>Unimed</item>
-        <item>SulAmerica</item>
-        <item>Hapvida</item>
+        <item>UNIMED</item>
+        <item>SULAMERICA</item>
+        <item>HAPVIDA</item>
     </string-array>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
