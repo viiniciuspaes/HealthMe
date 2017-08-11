@@ -174,10 +174,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     }
    public void iniciarHospitais(){
-      List<CentroSaude> centroSaudes = centroSaudeNegocio.getHospitais(getApplicationContext(),sessao.getPessoaLogada().getPlanoSaude());
-       for (int x = 0; x>centroSaudes.size(); x++){
-           GuiUtil gui = new GuiUtil();
-           gui.toastShort(getApplicationContext(),centroSaudes.get(x).getNome());
+       List<CentroSaude> centroSaudes = centroSaudeNegocio.getHospitais(getApplicationContext(),sessao.getPessoaLogada().getPlanoSaude());
+       for (int x = 0; x<centroSaudes.size(); x++){
            customizadoAddMarker(centroSaudes.get(x));
        }
 

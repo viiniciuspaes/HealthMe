@@ -60,11 +60,11 @@ public class SqlScripts {
         StringBuilder mapaBuilder = new StringBuilder();
         mapaBuilder.append("CREATE TABLE "+ TABELA_CENTRO +" ( ");
         mapaBuilder.append(ID+" integer primary key autoincrement, ");
-        mapaBuilder.append(CENTRO_NOME +" text not null unique, ");
+        mapaBuilder.append(CENTRO_NOME +" text not null, ");
         mapaBuilder.append(CENTRO_TELEFONE + " text, ");
         mapaBuilder.append(CENTRO_ENDERECO +" text not null, ");
         mapaBuilder.append(CENTRO_LATLNG +" text, ");
-        mapaBuilder.append(CENTRO_PLANO_SAUDE +" text);");
+        mapaBuilder.append(CENTRO_PLANO_SAUDE +" text,");
         mapaBuilder.append(CENTRO_ESPECIALIZACAO +" text);");
         return mapaBuilder.toString();
     }
