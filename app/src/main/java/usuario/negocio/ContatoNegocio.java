@@ -6,14 +6,12 @@ import android.database.Cursor;
 import android.widget.SimpleCursorAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import usuario.dao.ContatoDao;
 import usuario.dominio.ContatoEmergencia;
 import usuario.gui.R;
-import usuario.gui.TelaInicialNavActivity;
 
 public class ContatoNegocio {
     private Context context;

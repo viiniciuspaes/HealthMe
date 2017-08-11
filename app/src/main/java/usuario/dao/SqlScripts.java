@@ -1,17 +1,8 @@
 package usuario.dao;
 
-
-import android.content.Context;
-
-import com.google.android.gms.maps.model.LatLng;
-
-import usuario.dominio.CentroSaude;
-import usuario.dominio.PlanoSaude;
-
 import static usuario.dao.DbHelper.*;
 
 public class SqlScripts {
-    private CentroSaudeDao centroSaudeDao;
     protected String createTabelaUsuario(){
 
         StringBuilder userBuilder = new StringBuilder();
@@ -31,7 +22,6 @@ public class SqlScripts {
         pessoaBuilder.append(ENDERECO_CASA +" text, ");
         pessoaBuilder.append(ENDERECO_TRABALHO +" text, ");
         pessoaBuilder.append(PLANO_SAUDE +" text);");
-        //pessoaBuilder.append(NASCIMENTO +" text);");
         return pessoaBuilder.toString();
     }
     protected String createTabelaEvento(){
@@ -49,7 +39,6 @@ public class SqlScripts {
         StringBuilder contatoBuilder = new StringBuilder();
         contatoBuilder.append("CREATE TABLE "+ TABELA_CONTATO +" ( ");
         contatoBuilder.append(ID+" integer primary key autoincrement, ");
-        //contatoBuilder.append(ID_CONTATO +" integer autoincrement, ");
         contatoBuilder.append(USUARIO_CONTATO + " text, ");
         contatoBuilder.append(CONTATO_NOME +" text not null unique, ");
         contatoBuilder.append(CONTATO_TELEFONE +" text);");

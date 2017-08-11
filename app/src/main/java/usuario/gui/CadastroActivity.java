@@ -116,7 +116,7 @@ public class CadastroActivity extends AppCompatActivity {
             etNome.requestFocus();
             etNome.setError(resources.getString(R.string.error_campo_vazio));
         } else if (TextUtils.isEmpty(login)) {
-            etUser.requestFocus(); // troca ordem
+            etUser.requestFocus();
             etUser.setError(resources.getString(R.string.error_campo_vazio));
         } else if (TextUtils.isEmpty(senha)) {
             etPassword.requestFocus();

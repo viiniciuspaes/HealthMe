@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,7 +17,7 @@ import usuario.negocio.EventoNegocio;
 import usuario.negocio.SessaoUsuario;
 
 
-public class PopCalendarioActivity extends AppCompatActivity {
+public class EventoCalendarioActivity extends AppCompatActivity {
     private EditText etNome;
     private EditText etDescricao;
     private TextView etInicio;
@@ -69,7 +68,7 @@ public class PopCalendarioActivity extends AppCompatActivity {
     }
 
     public void voltar(View view){
-        startActivity(new Intent(PopCalendarioActivity.this, CalendarioActivity.class));
+        startActivity(new Intent(EventoCalendarioActivity.this, CalendarioActivity.class));
         finish();
     }
 

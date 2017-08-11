@@ -25,7 +25,6 @@ import usuario.negocio.SessaoUsuario;
 public class EditarPerfilActivity extends AppCompatActivity {
     private EditText etEditarNome;
     private Spinner spPlanoSaude;
-    private EditText etEditarPlanoSaude;
     private EditText etEditarNomeContatoEmergencia1;
     private EditText etEditarTelefoneContatoEmergencia1;
     private EditText etEditarNomeContatoEmergencia2;
@@ -51,7 +50,6 @@ public class EditarPerfilActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spPlanoSaude.setAdapter(adapter);
 
-        //etEditarPlanoSaude =(EditText)findViewById(R.id.et_editarPlanoSaude);
         etEditarNomeContatoEmergencia1 =(EditText)findViewById(R.id.et_editarNomeContatoEmergencia1);
         etEditarTelefoneContatoEmergencia1 =(EditText)findViewById(R.id.et_editarTelefoneContatoEmergencia1);
         etEditarNomeContatoEmergencia2 =(EditText)findViewById(R.id.et_editarNomeContatoEmergencia2);
@@ -89,7 +87,6 @@ public class EditarPerfilActivity extends AppCompatActivity {
         };
 
         etEditarNome.addTextChangedListener(textWatcher);
-        //etEditarPlanoSaude.addTextChangedListener(textWatcher);
         etEditarNomeContatoEmergencia1.addTextChangedListener(textWatcher);
         etEditarTelefoneContatoEmergencia1.addTextChangedListener(textWatcher);
         etEditarNomeContatoEmergencia2.addTextChangedListener(textWatcher);
@@ -116,8 +113,6 @@ public class EditarPerfilActivity extends AppCompatActivity {
     }
     public void setview(){
         etEditarNome.setText(sessaoUsuario.getPessoaLogada().getNome());
-        //spPlanoSaude.setSelection(sessaoUsuario.getPessoaLogada().getPlanoSaude().toString());
-        //etEditarPlanoSaude.setText(sessaoUsuario.getPessoaLogada().getPlanoSaude());
         contatoExistente = daoContato.buscarContatos(sessaoUsuario.getUsuarioLogado().getLogin());
         contatosOriginais[0] = "none";
         contatosOriginais[1] = "none";

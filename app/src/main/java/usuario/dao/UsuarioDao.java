@@ -36,7 +36,6 @@ public class UsuarioDao {
         valor.put(DbHelper.NOME, pessoa.getNome());
         valor.put(DbHelper.PESSOA_USER, pessoa.getUsuario().getLogin());
         valor.put(DbHelper.PLANO_SAUDE, pessoa.getPlanoSaude());
-        //valor.put(DbHelper.NASCIMENTO, validacao.mudarData(pessoa.getNascimento()) );
 
         db.insert(DbHelper.TABELA_PESSOA,null, valor);
         db.close();
@@ -51,7 +50,6 @@ public class UsuarioDao {
         valor = new ContentValues();
         valor.put(DbHelper.NOME, pessoa.getNome());
         valor.put(DbHelper.PLANO_SAUDE, pessoa.getPlanoSaude());
-        //valor.put(DbHelper.NASCIMENTO, validacao.mudarData(pessoa.getNascimento()) );
 
         db.update(DbHelper.TABELA_PESSOA, valor, where, null);
         db.close();

@@ -28,7 +28,7 @@ public class CalendarioActivity extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
                 String data = i2 + "/" + (1+i1) + "/" + i;
 
-                Intent intentCalendario = new Intent(CalendarioActivity.this, PopCalendarioActivity.class);
+                Intent intentCalendario = new Intent(CalendarioActivity.this, EventoCalendarioActivity.class);
                 intentCalendario.putExtra("data",data);
                 startActivity(intentCalendario);
                 finish();

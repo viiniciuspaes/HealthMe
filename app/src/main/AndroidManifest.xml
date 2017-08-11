@@ -50,7 +50,7 @@
             android:label="@string/title_activity_tela_inicial_nav"
             android:theme="@style/AppTheme" />
         <activity android:name=".CalendarioActivity" />
-        <activity android:name=".PopCalendarioActivity" />
+        <activity android:name=".EventoCalendarioActivity" />
         <activity android:name=".PerfilActivity" />
         <activity android:name=".EditarPerfilActivity"/>
     </application>
