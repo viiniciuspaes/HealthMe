@@ -31,6 +31,7 @@
     <string name="error_campo_vazio">Campo Vazio</string>
     <string name="title_activity_tela_inicial_nav">HealthMe</string>
     <string name="btn_panico">Pânico</string>
+    <string name="btn_finalizar">Finalizar</string>
 
     <string-array name="planos_de_saude">
         <item>Plano de Saúde</item>

@@ -109,6 +109,9 @@ public class TelaInicialNavActivity extends AppCompatActivity
         } else if (id == R.id.nav_mapa) {
             Intent intent = new Intent(TelaInicialNavActivity.this, MapActivity.class);
             startActivity(intent);
+        } else if (id == R.id.nav_manage){
+            Intent intent = new Intent(TelaInicialNavActivity.this, PerguntasActivity.class);
+            startActivity(intent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

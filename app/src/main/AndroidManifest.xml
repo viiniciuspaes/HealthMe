@@ -3,14 +3,12 @@
     package="usuario.gui">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.CALL_PHONE" ></uses-permission>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"></uses-permission>
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
         android:allowBackup="true"
@@ -26,10 +24,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LogInActivity" android:label="@string/app_name">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-        </intent-filter>
+        <activity
+            android:name=".LogInActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
         <activity android:name=".CadastroActivity" />
         <activity android:name=".MapActivity" />
@@ -52,7 +52,8 @@
         <activity android:name=".CalendarioActivity" />
         <activity android:name=".EventoCalendarioActivity" />
         <activity android:name=".PerfilActivity" />
-        <activity android:name=".EditarPerfilActivity"/>
+        <activity android:name=".EditarPerfilActivity" />
+        <activity android:name=".PerguntasActivity"></activity>
     </application>
 
 </manifest>

@@ -30,7 +30,7 @@ public class EventoCalendarioActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pop_calendario);
+        setContentView(R.layout.activity_evento_calendario);
 
         etNome =(EditText)findViewById(R.id.et_nome_evento);
         etDescricao =(EditText)findViewById(R.id.et_descricao_evento);
