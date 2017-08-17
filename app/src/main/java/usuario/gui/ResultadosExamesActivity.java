@@ -1,6 +1,5 @@
 package usuario.gui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,8 +12,12 @@ import java.util.ArrayList;
 import usuario.negocio.MinhaRedeBayesiana;
 
 public class ResultadosExamesActivity extends AppCompatActivity {
-    private  ArrayAdapter<String> arrayRespostas;
+
     private MinhaRedeBayesiana redeBayesiana;
+    private ArrayList<String> arrayRespostas;
+    private ArrayList<ArrayList<String>> resultados;
+    private ArrayList<String> dados;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,29 +27,30 @@ public class ResultadosExamesActivity extends AppCompatActivity {
 
 
         ListView lista = (ListView) findViewById(R.id.lvResultados);
+        //resultados.add(probabilidade());
+        //resultados.add(probabilidade());
 
-        //ArrayList<String> resultados = probabilidade();
-
-       // ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, resultados);
-       // lista.setAdapter(arrayAdapter);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, probabilidade());
+        lista.setAdapter(arrayAdapter);
 
        // ArrayList<String> respostas = ResultadosExamesActivity.respostas;
 
+        //ArrayList<String> dados = new ArrayList<String>();
+
 
     }
+    public ArrayList<String> probabilidade(){
 
-   /* public ArrayList<String> probabilidade(){
+        ArrayList<String> dados = new ArrayList<>();
 
-        ArrayList<String> dados = new ArrayList<String>();
-
-        if(respostas.get(0) == "sim" && respostas.get(1) == "sim"){
+        if(arrayRespostas.get(0) == "sim" && arrayRespostas.get(1) == "sim"){
             dados.add("Cardiologia");
             dados.add(redeBayesiana.a_e_b());
 
 
         }
         return dados;
-    }*/
+    }
 
     public void voltarParaHome(View view) throws Exception{
        startActivity(new Intent(ResultadosExamesActivity.this, TelaInicialNavActivity.class));
