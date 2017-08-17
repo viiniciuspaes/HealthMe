@@ -193,7 +193,6 @@
             android:onClick="finalizar"
             android:text="@string/btn_finalizar"
             android:textAllCaps="false"
-            android:textIsSelectable="true"
             android:textSize="16sp" />
     </LinearLayout>
 </ScrollView>
