@@ -109,7 +109,7 @@ public class TelaInicialNavActivity extends AppCompatActivity
         } else if (id == R.id.nav_mapa) {
             Intent intent = new Intent(TelaInicialNavActivity.this, MapActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_manage){
+        } else if (id == R.id.nav_prevecao){
             Intent intent = new Intent(TelaInicialNavActivity.this, PerguntasActivity.class);
             startActivity(intent);
         }

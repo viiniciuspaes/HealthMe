@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import usuario.negocio.MinhaRedeBayesiana;
 
 public class ResultadosExamesActivity extends AppCompatActivity {
-
+    private  ArrayAdapter<String> arrayRespostas;
     private MinhaRedeBayesiana redeBayesiana;
 
     @Override
@@ -35,7 +35,20 @@ public class ResultadosExamesActivity extends AppCompatActivity {
 
     }
 
-   public void voltarParaHome(View view) throws Exception{
+   /* public ArrayList<String> probabilidade(){
+
+        ArrayList<String> dados = new ArrayList<String>();
+
+        if(respostas.get(0) == "sim" && respostas.get(1) == "sim"){
+            dados.add("Cardiologia");
+            dados.add(redeBayesiana.a_e_b());
+
+
+        }
+        return dados;
+    }*/
+
+    public void voltarParaHome(View view) throws Exception{
        startActivity(new Intent(ResultadosExamesActivity.this, TelaInicialNavActivity.class));
    }
 }
