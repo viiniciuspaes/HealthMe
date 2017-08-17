@@ -6,165 +6,182 @@ import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
+import java.util.ArrayList;
+
 public class PerguntasActivity extends AppCompatActivity {
-    private CheckBox cbPergunta1SIM;
-    private CheckBox cbPergunta1NAO;
+    private CheckBox cbPergunta1Sim;
+    private CheckBox cbPergunta1nao;
 
-    private CheckBox cbPergunta2SIM;
-    private CheckBox cbPergunta2NAO;
+    private CheckBox cbPergunta2Sim;
+    private CheckBox cbPergunta2Nao;
 
-    private CheckBox cbPergunta3SIM;
-    private CheckBox cbPergunta3NAO;
+    private CheckBox cbPergunta3Sim;
+    private CheckBox cbPergunta3Nao;
 
-    private CheckBox cbPergunta4SIM;
-    private CheckBox cbPergunta4NAO;
+    private CheckBox cbPergunta4Sim;
+    private CheckBox cbPergunta4Nao;
 
-    private CheckBox cbPergunta5SIM;
-    private CheckBox cbPergunta5NAO;
+    private CheckBox cbPergunta5Sim;
+    private CheckBox cbPergunta5Nao;
 
-    private CheckBox cbPergunta6SIM;
-    private CheckBox cbPergunta6NAO;
+    private CheckBox cbPergunta6Sim;
+    private CheckBox cbPergunta6Nao;
+
+    ArrayList<String> respotas = new ArrayList<String>(6);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perguntas);
 
-        cbPergunta1SIM = (CheckBox) findViewById(R.id.cb_SimPergunta1);
-        cbPergunta1NAO = (CheckBox) findViewById(R.id.cb_NaoPergunta1);
+        cbPergunta1Sim = (CheckBox) findViewById(R.id.cb_SimPergunta1);
+        cbPergunta1nao = (CheckBox) findViewById(R.id.cb_NaoPergunta1);
 
-        cbPergunta2SIM = (CheckBox) findViewById(R.id.cb_SimPergunta2);
-        cbPergunta2NAO = (CheckBox) findViewById(R.id.cb_NaoPergunta2);
+        cbPergunta2Sim = (CheckBox) findViewById(R.id.cb_SimPergunta2);
+        cbPergunta2Nao = (CheckBox) findViewById(R.id.cb_NaoPergunta2);
 
-        cbPergunta3SIM = (CheckBox) findViewById(R.id.cb_SimPergunta3);
-        cbPergunta3NAO = (CheckBox) findViewById(R.id.cb_NaoPergunta3);
+        cbPergunta3Sim = (CheckBox) findViewById(R.id.cb_SimPergunta3);
+        cbPergunta3Nao = (CheckBox) findViewById(R.id.cb_NaoPergunta3);
 
-        cbPergunta4SIM = (CheckBox) findViewById(R.id.cb_SimPergunta4);
-        cbPergunta4NAO = (CheckBox) findViewById(R.id.cb_NaoPergunta4);
+        cbPergunta4Sim = (CheckBox) findViewById(R.id.cb_SimPergunta4);
+        cbPergunta4Nao = (CheckBox) findViewById(R.id.cb_NaoPergunta4);
 
-        cbPergunta5SIM = (CheckBox) findViewById(R.id.cb_SimPergunta5);
-        cbPergunta5NAO = (CheckBox) findViewById(R.id.cb_NaoPergunta5);
+        cbPergunta5Sim = (CheckBox) findViewById(R.id.cb_SimPergunta5);
+        cbPergunta5Nao = (CheckBox) findViewById(R.id.cb_NaoPergunta5);
 
-        cbPergunta6SIM = (CheckBox) findViewById(R.id.cb_SimPergunta6);
-        cbPergunta6NAO = (CheckBox) findViewById(R.id.cb_NaoPergunta6);
+        cbPergunta6Sim = (CheckBox) findViewById(R.id.cb_SimPergunta6);
+        cbPergunta6Nao = (CheckBox) findViewById(R.id.cb_NaoPergunta6);
 
-        check1();
-        check2();
-        check3();
-        check4();
-        check5();
-        check6();
+        checkPergunta1();
+        checkPergunta2();
+        checkPergunta3();
+        checkPergunta4();
+        checkPergunta5();
+        checkPergunta6();
     }
-    public void check1(){
-        cbPergunta1SIM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    public void checkPergunta1(){
+        cbPergunta1Sim.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
                 if (isChecked){
-                    cbPergunta1NAO.setChecked(false);
+                    respotas.add(0,"sim");
+                    cbPergunta1nao.setChecked(false);
                 }
             }
         });
 
-        cbPergunta1NAO.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        cbPergunta1nao.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    cbPergunta1SIM.setChecked(false);
+                    respotas.add(0,"não");
+                    cbPergunta1Sim.setChecked(false);
                 }
             }
         });
 
     }
-    public void check2(){
-        cbPergunta2SIM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    public void checkPergunta2(){
+        cbPergunta2Sim.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
                 if (isChecked){
-                    cbPergunta2NAO.setChecked(false);
+                    respotas.add(1,"sim");
+                    cbPergunta2Nao.setChecked(false);
                 }
             }
         });
-        cbPergunta2NAO.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        cbPergunta2Nao.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    cbPergunta2SIM.setChecked(false);
-                }
-            }
-        });
-    }
-
-    public void check3(){
-        cbPergunta3SIM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-                if (isChecked){
-                    cbPergunta3NAO.setChecked(false);
-                }
-            }
-        });
-        cbPergunta3NAO.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    cbPergunta3SIM.setChecked(false);
+                    respotas.add(1,"nao");
+                    cbPergunta2Sim.setChecked(false);
                 }
             }
         });
     }
 
-    public void check4(){
-        cbPergunta4SIM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    public void checkPergunta3(){
+        cbPergunta3Sim.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
                 if (isChecked){
-                    cbPergunta4NAO.setChecked(false);
+                    respotas.add(2,"sim");
+                    cbPergunta3Nao.setChecked(false);
                 }
             }
         });
-        cbPergunta4NAO.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        cbPergunta3Nao.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    cbPergunta4SIM.setChecked(false);
+                    respotas.add(2,"nao");
+                    cbPergunta3Sim.setChecked(false);
                 }
             }
         });
     }
 
-    public void check5(){
-        cbPergunta5SIM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    public void checkPergunta4(){
+        cbPergunta4Sim.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
                 if (isChecked){
-                    cbPergunta5NAO.setChecked(false);
+                    respotas.add(3,"sim");
+                    cbPergunta4Nao.setChecked(false);
                 }
             }
         });
-        cbPergunta5NAO.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        cbPergunta4Nao.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    cbPergunta5SIM.setChecked(false);
+                    respotas.add(3,"nao");
+                    cbPergunta4Sim.setChecked(false);
                 }
             }
         });
     }
 
-    public void check6(){
-        cbPergunta6SIM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    public void checkPergunta5(){
+        cbPergunta5Sim.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
                 if (isChecked){
-                    cbPergunta6NAO.setChecked(false);
+                    respotas.add(4,"sim");
+                    cbPergunta5Nao.setChecked(false);
                 }
             }
         });
-        cbPergunta6NAO.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        cbPergunta5Nao.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    cbPergunta6SIM.setChecked(false);
+                    respotas.add(4,"nao");
+                    cbPergunta5Sim.setChecked(false);
+                }
+            }
+        });
+    }
+
+    public void checkPergunta6(){
+        cbPergunta6Sim.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+                if (isChecked){
+                    respotas.add(5,"sim");
+                    cbPergunta6Nao.setChecked(false);
+                }
+            }
+        });
+        cbPergunta6Nao.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    respotas.add(5,"nao");
+                    cbPergunta6Sim.setChecked(false);
                 }
             }
         });
@@ -172,5 +189,6 @@ public class PerguntasActivity extends AppCompatActivity {
 
     public void Finalizar(){
         startActivity(new Intent(PerguntasActivity.this, ResultadosExamesActivity.class));
+        respotas.clear();
     }
 }
