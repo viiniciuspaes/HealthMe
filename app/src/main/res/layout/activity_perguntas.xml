@@ -48,7 +48,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="15dp"
-            android:text="Pergunta 2 - Você sente náuseas, se sente tonto ou fraco ao caminhar?"
+            android:text="Pergunta 2 - Você sente náuseas, tontuas ou fraqueza ao caminhar?"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -185,13 +185,14 @@
             android:id="@+id/btn_finalizar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="20dp"
             android:background="@color/colorAccent"
+            android:onClick="Finalizar"
             android:text="@string/btn_finalizar"
             android:textAllCaps="false"
             android:textIsSelectable="true"
-            android:textSize="16sp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp" />
+            android:textSize="16sp" />
     </LinearLayout>
 </ScrollView>

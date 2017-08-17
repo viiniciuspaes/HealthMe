@@ -1,5 +1,6 @@
 package usuario.gui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CheckBox;
@@ -169,4 +170,7 @@ public class PerguntasActivity extends AppCompatActivity {
         });
     }
 
+    public void Finalizar(){
+        startActivity(new Intent(PerguntasActivity.this, ResultadosExamesActivity.class));
+    }
 }
