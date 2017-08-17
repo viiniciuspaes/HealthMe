@@ -72,7 +72,6 @@ public class MinhaRedeBayesiana {
         p_tudo_especialidade_porc = p_tudo_especialidade*100;
         String resultado = String.format("%.2f%%", p_tudo_especialidade_porc);
         return resultado;
-
     }
 
     public String na_e_b() {
@@ -97,8 +96,9 @@ public class MinhaRedeBayesiana {
         p_tudo_especialidade_porc = p_tudo_especialidade*100;
         String resultado = String.format("%.2f%%", p_tudo_especialidade_porc);
         return resultado;
+    }
 
-    }public String c_e_d() {
+    public String c_e_d() {
         double a = 0.50;
         double na = 0.50;
         double b = 0.50;
@@ -168,7 +168,6 @@ public class MinhaRedeBayesiana {
         p_tudo_especialidade_porc = p_tudo_especialidade*100;
         String resultado = String.format("%.2f%%", p_tudo_especialidade_porc);
         return resultado;
-
     }
 
     public String nc_e_d() {
@@ -193,8 +192,8 @@ public class MinhaRedeBayesiana {
         p_tudo_especialidade_porc = p_tudo_especialidade*100;
         String resultado = String.format("%.2f%%", p_tudo_especialidade_porc);
         return resultado;
-
     }
+
     public String e_e_f() {
         double a = 0.50;
         double na = 0.50;
@@ -265,7 +264,6 @@ public class MinhaRedeBayesiana {
         p_tudo_especialidade_porc = p_tudo_especialidade*100;
         String resultado = String.format("%.2f%%", p_tudo_especialidade_porc);
         return resultado;
-
     }
 
     public String ne_e_f() {

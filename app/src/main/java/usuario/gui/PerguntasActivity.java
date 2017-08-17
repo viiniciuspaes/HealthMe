@@ -31,7 +31,6 @@ public class PerguntasActivity extends AppCompatActivity {
 
     ArrayList<String> respostas = new ArrayList<String>(6);
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,9 +60,8 @@ public class PerguntasActivity extends AppCompatActivity {
         checkPergunta4();
         checkPergunta5();
         checkPergunta6();
-
-
     }
+
     public void checkPergunta1(){
         cbPergunta1Sim.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -74,7 +72,6 @@ public class PerguntasActivity extends AppCompatActivity {
                 }
             }
         });
-
         cbPergunta1nao.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -84,8 +81,8 @@ public class PerguntasActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
+
     public void checkPergunta2(){
         cbPergunta2Sim.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
