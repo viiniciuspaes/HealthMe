@@ -25,6 +25,7 @@ public class ResultadosExamesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_resultados_exames);
 
         arrayRespostas =getIntent().getExtras().getStringArrayList("lista");
+        redeBayesiana = new MinhaRedeBayesiana();
 
 
         ListView lista = (ListView) findViewById(R.id.lvResultados);

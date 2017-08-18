@@ -192,6 +192,7 @@ public class PerguntasActivity extends AppCompatActivity {
         Intent intent = new Intent(PerguntasActivity.this, ResultadosExamesActivity.class);
         intent.putStringArrayListExtra("lista",respostas);
         startActivity(intent);
+        finish();
         //respostas.clear();
     }
 }
