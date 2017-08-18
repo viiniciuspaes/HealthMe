@@ -129,10 +129,10 @@ public class TelaInicialNavActivity extends AppCompatActivity
         }
 
         if (isPermissionGranted()) {
-            call_action();
+            callAction();
         }
     }
-    public void call_action(){
+    public void callAction(){
         String phnum = "996556828";
         Intent callIntent = new Intent(Intent.ACTION_CALL).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -169,7 +169,7 @@ public class TelaInicialNavActivity extends AppCompatActivity
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(getApplicationContext(), "Permission granted", Toast.LENGTH_SHORT).show();
-                    call_action();
+                    callAction();
                 } else {
                     Toast.makeText(getApplicationContext(), "Permission denied", Toast.LENGTH_SHORT).show();
                 }

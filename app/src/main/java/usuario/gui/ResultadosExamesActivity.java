@@ -37,67 +37,67 @@ public class ResultadosExamesActivity extends AppCompatActivity {
         ArrayList<String> dados = new ArrayList<>();
         if(arrayRespostas.get(0).equals("sim") && arrayRespostas.get(1).equals("sim") && arrayRespostas.get(3).equals("sim")){
             dados.add("Cardiologia");
-            dados.add(redeBayesiana.a_e_b_e_d());
+            dados.add(redeBayesiana.perguntaAperguntaBperguntaD());
         }
         if(arrayRespostas.get(0).equals("sim") && arrayRespostas.get(1).equals("nao") && arrayRespostas.get(3).equals("sim")){
             dados.add("Cardiologia");
-            dados.add(redeBayesiana.a_e_nb_e_d());
+            dados.add(redeBayesiana.perguntaAperguntaNBperguntaD());
         }
         if(arrayRespostas.get(0).equals("nao") && arrayRespostas.get(1).equals("sim") && arrayRespostas.get(3).equals("sim")){
             dados.add("Cardiologia");
-            dados.add(redeBayesiana.na_e_b_e_d());
+            dados.add(redeBayesiana.perguntaNAperguntaBperguntaD());
         }
         if(arrayRespostas.get(0).equals("nao") && arrayRespostas.get(1).equals("nao") && arrayRespostas.get(3).equals("sim")){
             dados.add("Cardiologia");
-            dados.add(redeBayesiana.na_e_nb_e_d());
+            dados.add(redeBayesiana.perguntaNAperguntaNBperguntaD());
         }
         if(arrayRespostas.get(0).equals("nao") && arrayRespostas.get(1).equals("nao") && arrayRespostas.get(3).equals("nao")){
             dados.add("Cardiologia");
-            dados.add(redeBayesiana.na_e_nb_e_nd());
+            dados.add(redeBayesiana.perguntaNAperguntaNBperguntaND());
         }
         if(arrayRespostas.get(0).equals("sim") && arrayRespostas.get(1).equals("sim") && arrayRespostas.get(3).equals("nao")){
             dados.add("Cardiologia");
-            dados.add(redeBayesiana.a_e_b_e_nd());
+            dados.add(redeBayesiana.perguntaAperguntaBperguntaND());
         }
         if(arrayRespostas.get(0).equals("nao") && arrayRespostas.get(1).equals("sim") && arrayRespostas.get(3).equals("nao")){
             dados.add("Cardiologia");
-            dados.add(redeBayesiana.na_e_b_e_nd());
+            dados.add(redeBayesiana.perguntaNAperguntaBperguntaND());
         }
         if(arrayRespostas.get(0).equals("sim") && arrayRespostas.get(1).equals("nao") && arrayRespostas.get(3).equals("nao")){
             dados.add("Cardiologia");
-            dados.add(redeBayesiana.a_e_nb_e_nd());
+            dados.add(redeBayesiana.perguntaAperguntaNBperguntaND());
         }
         if(arrayRespostas.get(2).equals("sim") && arrayRespostas.get(3).equals("sim")){
             dados.add("Otorrinolaringologia");
-            dados.add(redeBayesiana.c_e_d());
+            dados.add(redeBayesiana.perguntaCperguntaD());
         }
         if(arrayRespostas.get(2).equals("sim") && arrayRespostas.get(3).equals("nao")){
             dados.add("Otorrinolaringologia");
-            dados.add(redeBayesiana.c_e_nd());
+            dados.add(redeBayesiana.perguntaCperguntaND());
         }
         if(arrayRespostas.get(2).equals("nao") && arrayRespostas.get(3).equals("sim")){
             dados.add("Otorrinolaringologia");
-            dados.add(redeBayesiana.nc_e_d());
+            dados.add(redeBayesiana.perguntaNCperguntaD());
         }
         if(arrayRespostas.get(2).equals("nao") && arrayRespostas.get(3).equals("nao")){
             dados.add("Otorrinolaringologia");
-            dados.add(redeBayesiana.nc_e_nd());
+            dados.add(redeBayesiana.perguntaNCpergundaND());
         }
         if(arrayRespostas.get(4).equals("sim") && arrayRespostas.get(5).equals("sim")){
             dados.add("Oftalmologia");
-            dados.add(redeBayesiana.e_e_f());
+            dados.add(redeBayesiana.perguntaEperguntaF());
         }
         if(arrayRespostas.get(4).equals("sim") && arrayRespostas.get(5).equals("nao")){
             dados.add("Oftalmologia");
-            dados.add(redeBayesiana.e_e_nf());
+            dados.add(redeBayesiana.perguntaEperguntaNF());
         }
         if(arrayRespostas.get(4).equals("nao") && arrayRespostas.get(5).equals("sim")){
             dados.add("Oftalmologia");
-            dados.add(redeBayesiana.ne_e_f());
+            dados.add(redeBayesiana.perguntaNEperguntaF());
         }
         if(arrayRespostas.get(4).equals("nao") && arrayRespostas.get(5).equals("nao")){
             dados.add("Oftalmologia");
-            dados.add(redeBayesiana.ne_e_nf());
+            dados.add(redeBayesiana.perguntaNEperguntaNF());
         }
         return dados;
     }

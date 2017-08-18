@@ -52,7 +52,7 @@
         android:layout_marginTop="8dp"
         android:background="@color/colorAccent"
         android:onClick="voltarParaHome"
-        android:text="@string/btn_voltarparahome"
+        android:text="@string/btn_voltarparatelainicial"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
