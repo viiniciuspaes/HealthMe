@@ -2,25 +2,25 @@ package usuario.negocio;
 
 public class MinhaRedeBayesiana {
 
-    public String a_e_b() {
+    public String a_e_b_e_d() {
         double a = 0.80;
         double na = 0.20;
         double b = 0.60;
         double nb = 0.40;
         double c = 0.50;
         double nc = 0.50;
-        double d = 0.50;
-        double nd = 0.50;
+        double d = 0.55;
+        double nd = 0.45;
         double e = 0.50;
         double ne = 0.50;
         double f = 0.50;
         double nf = 0.50;
-        double cardio_a_e_b = 0.95;
-        double cardio_na_e_nb = 0.05;
+        double cardio_a_e_b_e_d = 0.95;
+        double cardio_na_e_nb_e_nd = 0.05;
         double p_tudo_especialidade;
         double p_tudo_especialidade_porc;
 
-        p_tudo_especialidade = a*b*c*d*e*f*cardio_a_e_b/((a*b*c*d*e*f*cardio_a_e_b)+(na*nb*nc*nd*ne*nf*cardio_na_e_nb));
+        p_tudo_especialidade = a*b*c*d*e*f*cardio_a_e_b_e_d/((a*b*c*d*e*f*cardio_a_e_b_e_d)+(na*nb*nc*nd*ne*nf*cardio_na_e_nb_e_nd));
         p_tudo_especialidade_porc = p_tudo_especialidade*100;
         String resultado = String.format("%.2f%%", p_tudo_especialidade_porc);
         return resultado;

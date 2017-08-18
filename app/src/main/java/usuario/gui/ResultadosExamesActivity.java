@@ -24,7 +24,7 @@ public class ResultadosExamesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultados_exames);
 
-        arrayRespostas =getIntent().getExtras().getStringArrayList("lista");
+        arrayRespostas = getIntent().getExtras().getStringArrayList("lista");
         redeBayesiana = new MinhaRedeBayesiana();
 
         ListView lista = (ListView) findViewById(R.id.lvResultados);
@@ -37,7 +37,7 @@ public class ResultadosExamesActivity extends AppCompatActivity {
         ArrayList<String> dados = new ArrayList<>();
         if(arrayRespostas.get(0).equals("sim") && arrayRespostas.get(1).equals("sim")){
             dados.add("Cardiologia");
-            dados.add(redeBayesiana.a_e_b());
+            dados.add(redeBayesiana.a_e_b_e_d());
         }
         if(arrayRespostas.get(0).equals("sim") && arrayRespostas.get(1).equals("nao")){
             dados.add("Cardiologia");
