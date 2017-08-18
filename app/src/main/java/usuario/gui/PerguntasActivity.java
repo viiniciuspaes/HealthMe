@@ -29,7 +29,7 @@ public class PerguntasActivity extends AppCompatActivity {
     private CheckBox cbPergunta6Sim;
     private CheckBox cbPergunta6Nao;
 
-    ArrayList<String> respostas = new ArrayList<String>(6);
+    private ArrayList<String> respostas = new ArrayList<String>(6);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
