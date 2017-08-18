@@ -76,7 +76,7 @@ public class PerguntasActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    respostas.add(0,"não");
+                    respostas.add(0,"nao");
                     cbPergunta1Sim.setChecked(false);
                 }
             }
