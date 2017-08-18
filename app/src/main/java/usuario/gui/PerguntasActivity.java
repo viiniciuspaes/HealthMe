@@ -193,6 +193,5 @@ public class PerguntasActivity extends AppCompatActivity {
         intent.putStringArrayListExtra("lista",respostas);
         startActivity(intent);
         finish();
-        //respostas.clear();
     }
 }
