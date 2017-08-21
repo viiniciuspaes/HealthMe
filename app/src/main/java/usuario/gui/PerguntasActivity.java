@@ -60,37 +60,52 @@ public class PerguntasActivity extends AppCompatActivity {
         rbPergunta6Nao = (RadioButton) findViewById(R.id.rb_NaoPergunta6);
     }
 
-    public void verificarMarcacao(){
-        if (rbPergunta1Sim.isChecked()){
-            respostas.add(0,"sim");
+    public void verificarPergunta1() {
+        if (rbPergunta1Sim.isChecked()) {
+            respostas.add(0, "sim");
         }
-        if (rbPergunta1Nao.isChecked()){
+        if (rbPergunta1Nao.isChecked()) {
             respostas.add(0, "nao");
         }
-        if (rbPergunta2Sim.isChecked()){
-            respostas.add(1,"sim");
+    }
+
+    public void verificarPergunta2() {
+        if (rbPergunta2Sim.isChecked()) {
+            respostas.add(1, "sim");
         }
-        if (rbPergunta2Nao.isChecked()){
+        if (rbPergunta2Nao.isChecked()) {
             respostas.add(1, "nao");
         }
-        if (rbPergunta3Sim.isChecked()){
-            respostas.add(2,"sim");
+    }
+
+    public void verificarPergunta3() {
+        if (rbPergunta3Sim.isChecked()) {
+            respostas.add(2, "sim");
         }
-        if (rbPergunta3Nao.isChecked()){
+        if (rbPergunta3Nao.isChecked()) {
             respostas.add(2, "nao");
         }
-        if (rbPergunta4Sim.isChecked()){
-            respostas.add(3,"sim");
+    }
+
+    public void verificarPergunta4() {
+        if (rbPergunta4Sim.isChecked()) {
+            respostas.add(3, "sim");
         }
-        if (rbPergunta4Nao.isChecked()){
+        if (rbPergunta4Nao.isChecked()) {
             respostas.add(3, "nao");
         }
-        if (rbPergunta5Sim.isChecked()){
-            respostas.add(4,"sim");
+    }
+
+    public void verificarPergunta5() {
+        if (rbPergunta5Sim.isChecked()) {
+            respostas.add(4, "sim");
         }
-        if (rbPergunta5Nao.isChecked()){
+        if (rbPergunta5Nao.isChecked()) {
             respostas.add(4, "nao");
         }
+    }
+
+    public void verificarPergunta6(){
         if (rbPergunta6Sim.isChecked()){
             respostas.add(5,"sim");
         }
@@ -100,7 +115,12 @@ public class PerguntasActivity extends AppCompatActivity {
 
     }
     public void finalizar(View view) throws Exception{
-        verificarMarcacao();
+        verificarPergunta1();
+        verificarPergunta2();
+        verificarPergunta3();
+        verificarPergunta4();
+        verificarPergunta5();
+        verificarPergunta6();
         Intent intent = new Intent(PerguntasActivity.this, ResultadosExamesActivity.class);
         intent.putStringArrayListExtra("lista",respostas);
         startActivity(intent);
