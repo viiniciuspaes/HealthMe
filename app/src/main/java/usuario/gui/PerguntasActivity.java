@@ -32,7 +32,7 @@ public class PerguntasActivity extends AppCompatActivity {
     private RadioButton rbPergunta6Sim;
     private RadioButton rbPergunta6Nao;
 
-
+    private int contador = 0;
 
     private ArrayList<String> respostas = new ArrayList<String>(6);
 
@@ -60,67 +60,23 @@ public class PerguntasActivity extends AppCompatActivity {
         rbPergunta6Nao = (RadioButton) findViewById(R.id.rb_NaoPergunta6);
     }
 
-    public void verificarPergunta1() {
-        if (rbPergunta1Sim.isChecked()) {
-            respostas.add(0, "sim");
+    public int verificarPergunta(RadioButton rb1,RadioButton rb2, int cont) {
+        if (rb1.isChecked()) {
+            respostas.add(cont, "sim");
         }
-        if (rbPergunta1Nao.isChecked()) {
-            respostas.add(0, "nao");
+        if (rb2.isChecked()) {
+            respostas.add(cont, "nao");
         }
+        return contador = ++cont;
     }
 
-    public void verificarPergunta2() {
-        if (rbPergunta2Sim.isChecked()) {
-            respostas.add(1, "sim");
-        }
-        if (rbPergunta2Nao.isChecked()) {
-            respostas.add(1, "nao");
-        }
-    }
-
-    public void verificarPergunta3() {
-        if (rbPergunta3Sim.isChecked()) {
-            respostas.add(2, "sim");
-        }
-        if (rbPergunta3Nao.isChecked()) {
-            respostas.add(2, "nao");
-        }
-    }
-
-    public void verificarPergunta4() {
-        if (rbPergunta4Sim.isChecked()) {
-            respostas.add(3, "sim");
-        }
-        if (rbPergunta4Nao.isChecked()) {
-            respostas.add(3, "nao");
-        }
-    }
-
-    public void verificarPergunta5() {
-        if (rbPergunta5Sim.isChecked()) {
-            respostas.add(4, "sim");
-        }
-        if (rbPergunta5Nao.isChecked()) {
-            respostas.add(4, "nao");
-        }
-    }
-
-    public void verificarPergunta6(){
-        if (rbPergunta6Sim.isChecked()){
-            respostas.add(5,"sim");
-        }
-        if (rbPergunta6Nao.isChecked()){
-            respostas.add(5, "nao");
-        }
-
-    }
     public void finalizar(View view) throws Exception{
-        verificarPergunta1();
-        verificarPergunta2();
-        verificarPergunta3();
-        verificarPergunta4();
-        verificarPergunta5();
-        verificarPergunta6();
+        verificarPergunta(rbPergunta1Sim,rbPergunta1Nao,contador);
+        verificarPergunta(rbPergunta2Sim,rbPergunta2Nao,contador);
+        verificarPergunta(rbPergunta3Sim,rbPergunta3Nao,contador);
+        verificarPergunta(rbPergunta4Sim,rbPergunta4Nao,contador);
+        verificarPergunta(rbPergunta5Sim,rbPergunta5Nao,contador);
+        verificarPergunta(rbPergunta6Sim,rbPergunta6Nao,contador);
         Intent intent = new Intent(PerguntasActivity.this, ResultadosExamesActivity.class);
         intent.putStringArrayListExtra("lista",respostas);
         startActivity(intent);
