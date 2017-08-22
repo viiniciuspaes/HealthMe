@@ -153,7 +153,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     View v = getLayoutInflater().inflate(R.layout.infowindow_map,null);
 
                     TextView titulo = v.findViewById(R.id.tituloId);
-                    TextView infos = v.findViewById(R.id.endereçoId);
+                    TextView infos = v.findViewById(R.id.enderecoId);
 
                     titulo.setText(marker.getTitle());
                     infos.setText(marker.getSnippet());
