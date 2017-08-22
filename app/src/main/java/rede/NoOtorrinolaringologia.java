@@ -26,5 +26,4 @@ public class NoOtorrinolaringologia {
     public double getnF() {
         return nF;
     }
-
 }

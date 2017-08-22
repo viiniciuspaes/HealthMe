@@ -1,6 +1,5 @@
 package usuario.dao;
 
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -62,7 +61,6 @@ public class CentroSaudeDao {
         db.close();
         return centros;
     }
-
 
     public CentroSaude criarCentro(Cursor cursor) {
         CentroSaude centro = new CentroSaude();

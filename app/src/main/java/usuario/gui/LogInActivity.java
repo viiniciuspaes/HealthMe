@@ -14,7 +14,6 @@ import usuario.negocio.CriptografiaSenha;
 import usuario.negocio.SessaoUsuario;
 import usuario.negocio.UsuarioNegocio;
 
-
 public class LogInActivity extends AppCompatActivity {
     private EditText etLogin;
     private EditText etPassword;
@@ -33,7 +32,6 @@ public class LogInActivity extends AppCompatActivity {
         etPassword = (EditText) findViewById(R.id.user_password);
 
         initViews();
-
     }
 
     @Override

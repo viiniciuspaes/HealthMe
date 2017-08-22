@@ -15,7 +15,6 @@ import usuario.dominio.Evento;
 import usuario.negocio.EventoNegocio;
 import usuario.negocio.SessaoUsuario;
 
-
 public class EditarEventoActivity extends AppCompatActivity {
     private EditText etNome;
     private EditText etDescricao;
@@ -47,8 +46,6 @@ public class EditarEventoActivity extends AppCompatActivity {
 
         iniciarTextos();
         initViews();
-
-
     }
     public void initViews() {
         resources = getResources();

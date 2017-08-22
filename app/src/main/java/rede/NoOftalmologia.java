@@ -25,5 +25,4 @@ public class NoOftalmologia {
     public double getnD() {
         return nD;
     }
-
 }

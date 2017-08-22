@@ -1,6 +1,5 @@
 package usuario.dominio;
 
-
 public class Usuario {
     private String login;
     private String password;

@@ -1,6 +1,5 @@
 package usuario.dao;
 
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -23,8 +22,8 @@ public class EventoDao {
         this.context = context;
         dataBaseHelper = new DbHelper(context);
         script = new SqlScripts();
-
     }
+
     public void inserirregistro(Evento evento){
         ContentValues valor;
         db = dataBaseHelper.getWritableDatabase();
@@ -36,10 +35,10 @@ public class EventoDao {
         valor.put(DbHelper.DESCRICAO, evento.getDescricao());
         valor.put(DbHelper.DATA, evento.getDate());
 
-
         db.insert(DbHelper.TABELA_EVENTO, null, valor);
         db.close();
     }
+
     public void atualizarRegistro(Evento evento){
         ContentValues valor;
         String where = DbHelper.ID + "=" + evento.getId();
@@ -55,6 +54,7 @@ public class EventoDao {
         db.update(DbHelper.TABELA_EVENTO, valor, where, null);
         db.close();
     }
+
     public Evento buscarEvento(String data) {
         db = dataBaseHelper.getReadableDatabase();
 
@@ -72,6 +72,7 @@ public class EventoDao {
         db.close();
         return evento;
     }
+
     private Evento criarEvento(Cursor cursor){
         Evento evento = new Evento();
         evento.setId(cursor.getInt(0));
@@ -80,6 +81,7 @@ public class EventoDao {
         //evento.setDate(cursor.getString(4));
         return evento;
     }
+
     public Cursor buscarDados(String usuario){
 
         db = dataBaseHelper.getWritableDatabase();
@@ -93,6 +95,7 @@ public class EventoDao {
         db.close();
         return cursor;
     }
+
     public void delete(Evento evento){
         db = dataBaseHelper.getWritableDatabase();
         String where = DbHelper.ID + "=" + evento.getId();

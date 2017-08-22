@@ -41,7 +41,6 @@ public class CalendarioActivity extends AppCompatActivity {
                     startActivity(intentCalendario);
                     finish();
                 }
-
             }
         });
         sessaoUsuario = new SessaoUsuario(getApplicationContext());

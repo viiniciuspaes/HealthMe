@@ -26,5 +26,4 @@ public class NoCardiologia {
     public double getnD() {
         return nD;
     }
-
 }

@@ -16,7 +16,6 @@ import usuario.dominio.Evento;
 import usuario.negocio.EventoNegocio;
 import usuario.negocio.SessaoUsuario;
 
-
 public class EventoCalendarioActivity extends AppCompatActivity {
     private EditText etNome;
     private EditText etDescricao;
@@ -41,7 +40,6 @@ public class EventoCalendarioActivity extends AppCompatActivity {
         String data = intentCalendario.getStringExtra("data");
         etInicio.setText(data);
     }
-
     public void criarEvento(View view) throws ParseException {
         evento = new Evento();
         validacao = new EventoNegocio(getApplicationContext());
@@ -66,12 +64,10 @@ public class EventoCalendarioActivity extends AppCompatActivity {
             gui.toastShort(getApplicationContext(),"Erro ao inserir Evento");
         }
     }
-
     public void voltar(View view){
         startActivity(new Intent(EventoCalendarioActivity.this, CalendarioActivity.class));
         finish();
     }
-
     public boolean validarCampos(String nome){
         boolean verificador = false;
         if(!validacao.verEspacosBrancos(nome)){

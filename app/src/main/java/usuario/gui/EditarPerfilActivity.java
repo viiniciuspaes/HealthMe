@@ -22,7 +22,6 @@ import usuario.dominio.Usuario;
 import usuario.negocio.ContatoNegocio;
 import usuario.negocio.SessaoUsuario;
 
-
 public class EditarPerfilActivity extends AppCompatActivity {
     private EditText etEditarNome;
     private Spinner spPlanoSaude;

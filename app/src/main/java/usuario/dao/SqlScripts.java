@@ -13,6 +13,7 @@ public class SqlScripts {
         userBuilder.append(ATIVO+" boolean not null);");
         return userBuilder.toString();
     }
+
     protected String createTabelaPessoa(){
 
         StringBuilder pessoaBuilder = new StringBuilder();
@@ -25,6 +26,7 @@ public class SqlScripts {
         pessoaBuilder.append(PLANO_SAUDE +" text);");
         return pessoaBuilder.toString();
     }
+
     protected String createTabelaEvento(){
         StringBuilder eventoBuilder = new StringBuilder();
         eventoBuilder.append("CREATE TABLE "+ TABELA_EVENTO +" ( ");
@@ -58,7 +60,6 @@ public class SqlScripts {
         mapaBuilder.append(CENTRO_ESPECIALIZACAO +" text);");
         return mapaBuilder.toString();
     }
-
 
     protected String cmdWhere(String tabela, String a, String b){
         return "SELECT * FROM " + tabela + " WHERE " + a + " LIKE ? AND " + b + " LIKE ?";

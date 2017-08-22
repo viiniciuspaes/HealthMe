@@ -12,7 +12,6 @@ import java.util.List;
 
 import usuario.dominio.ContatoEmergencia;
 
-
 public class ContatoDao {
     private SQLiteDatabase db;
     private DbHelper dataBaseHelper;
@@ -37,7 +36,6 @@ public class ContatoDao {
         valor.put(DbHelper.CONTATO_NOME, contatoEmergencia.getNome());
         valor.put(DbHelper.CONTATO_TELEFONE, contatoEmergencia.getNumero());
 
-
         db.insert(DbHelper.TABELA_CONTATO, null, valor);
         db.close();
     }
@@ -46,7 +44,6 @@ public class ContatoDao {
         ContentValues valor;
         String where = DbHelper.ID + "=" + contatoEmergencia.getId();
         db = dataBaseHelper.getWritableDatabase();
-
 
         valor = new ContentValues();
         valor.put(DbHelper.USUARIO_CONTATO, contatoEmergencia.getUsuario().getLogin());
@@ -73,6 +70,7 @@ public class ContatoDao {
         db.close();
         return contato;
     }
+
     public List<ContatoEmergencia> buscarContatos(String usuario){
         db = dataBaseHelper.getReadableDatabase();
 
@@ -91,7 +89,6 @@ public class ContatoDao {
         db.close();
         return contatos;
     }
-
 
     public ContatoEmergencia criarContato(Cursor cursor) {
         ContatoEmergencia contatoEmergencia = new ContatoEmergencia();
@@ -114,5 +111,4 @@ public class ContatoDao {
         db.close();
         return cursor;
     }
-
 }

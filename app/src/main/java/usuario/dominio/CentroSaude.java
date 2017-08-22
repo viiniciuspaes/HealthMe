@@ -1,6 +1,5 @@
 package usuario.dominio;
 
-
 import com.google.android.gms.maps.model.LatLng;
 
 public class CentroSaude {

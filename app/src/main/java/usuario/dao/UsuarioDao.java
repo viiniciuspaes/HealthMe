@@ -37,10 +37,10 @@ public class UsuarioDao {
         valor.put(DbHelper.PESSOA_USER, pessoa.getUsuario().getLogin());
         valor.put(DbHelper.PLANO_SAUDE, pessoa.getPlanoSaude());
 
-
         db.insert(DbHelper.TABELA_PESSOA,null, valor);
         db.close();
     }
+
     public void atualizarRegistro(Pessoa pessoa){
         ContentValues valor;
         String where;
@@ -62,6 +62,7 @@ public class UsuarioDao {
         db.update(DbHelper.TABELA_USUARIO,valor, where, null);
         db.close();
     }
+
     public Usuario buscarUsuario(String user, String password) {
         db = dataBaseHelper.getReadableDatabase();
 
@@ -79,6 +80,7 @@ public class UsuarioDao {
         db.close();
         return usuario;
     }
+
     public Usuario buscarUsuario(String user) {
         db = dataBaseHelper.getReadableDatabase();
 
@@ -114,6 +116,7 @@ public class UsuarioDao {
         db.close();
         return pessoa;
     }
+
     private Usuario criarUsuario(Cursor cursor){
         Usuario usuario = new Usuario();
         usuario.setId(cursor.getInt(0));
@@ -122,6 +125,7 @@ public class UsuarioDao {
         usuario.setState(cursor.getString(3));
         return usuario;
     }
+
     private Pessoa criarPessoa(Cursor cursor){
 
         Pessoa pessoa = new Pessoa();
@@ -130,11 +134,12 @@ public class UsuarioDao {
         pessoa.setPlanoSaude(cursor.getString(5));
         return pessoa;
     }
+
     public boolean removerPessoa(int id){
         db = dataBaseHelper.getWritableDatabase();
         return db.delete(dataBaseHelper.TABELA_PESSOA, "_id = ?", new String[]{Integer.toString(id)}) > 0;
-
     }
+
     public void deletarPessoa(int id){
 
         String where = dataBaseHelper.ID + "=" + id;

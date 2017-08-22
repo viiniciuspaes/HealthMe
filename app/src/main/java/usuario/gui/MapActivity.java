@@ -172,6 +172,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         iniciarHospitais();
 
     }
+
    public void iniciarHospitais(){
        List<CentroSaude> centroSaudes = centroSaudeNegocio.getHospitais(getApplicationContext(),sessao.getPessoaLogada().getPlanoSaude());
        for (int x = 0; x<centroSaudes.size(); x++){

@@ -1,6 +1,5 @@
 package usuario.dominio;
 
-
 import java.util.Date;
 
 public class Evento {
@@ -9,7 +8,6 @@ public class Evento {
     private String nome;
     private String descricao;
     private String data;
-
 
     public Evento(){
         this.nome = null;

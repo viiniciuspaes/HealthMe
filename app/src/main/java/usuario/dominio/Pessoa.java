@@ -1,6 +1,5 @@
 package usuario.dominio;
 
-
 import java.util.Date;
 
 public class Pessoa {
