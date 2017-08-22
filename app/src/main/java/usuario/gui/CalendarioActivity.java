@@ -22,22 +22,31 @@ public class CalendarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendario);
 
         calendario=(CalendarView)findViewById(R.id.calendario);
-
+        eventoNegocio = new EventoNegocio(getApplicationContext());
         calendario.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
                 String data = i2 + "/" + (1+i1) + "/" + i;
 
-                Intent intentCalendario = new Intent(CalendarioActivity.this, EventoCalendarioActivity.class);
-                intentCalendario.putExtra("data",data);
-                startActivity(intentCalendario);
-                finish();
+                Boolean verificador = eventoNegocio.verificarEvento(data);
+
+                if (verificador){
+                    Intent intentCalendario = new Intent(CalendarioActivity.this, EditarEventoActivity.class);
+                    intentCalendario.putExtra("data",data);
+                    startActivity(intentCalendario);
+                    finish();
+                }else {
+                    Intent intentCalendario = new Intent(CalendarioActivity.this, EventoCalendarioActivity.class);
+                    intentCalendario.putExtra("data",data);
+                    startActivity(intentCalendario);
+                    finish();
+                }
+
             }
         });
         sessaoUsuario = new SessaoUsuario(getApplicationContext());
         sessaoUsuario.iniciarSessao();
         listViewEventos = (ListView) findViewById(R.id.listagem);
-        eventoNegocio = new EventoNegocio(getApplicationContext());
         listViewEventos.setAdapter(eventoNegocio.construtorAdapter(sessaoUsuario));
     }
 }

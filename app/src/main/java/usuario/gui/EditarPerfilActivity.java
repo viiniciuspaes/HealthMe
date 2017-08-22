@@ -18,6 +18,7 @@ import usuario.dao.ContatoDao;
 import usuario.dao.UsuarioDao;
 import usuario.dominio.ContatoEmergencia;
 import usuario.dominio.Pessoa;
+import usuario.dominio.Usuario;
 import usuario.negocio.ContatoNegocio;
 import usuario.negocio.SessaoUsuario;
 
@@ -107,6 +108,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
         adicionarContato(etEditarNomeContatoEmergencia1, etEditarTelefoneContatoEmergencia1,daoContato,contatosOriginais[0]);
         adicionarContato(etEditarNomeContatoEmergencia2, etEditarTelefoneContatoEmergencia2,daoContato,contatosOriginais[1]);
         adicionarContato(etEditarNomeContatoEmergencia3, etEditarTelefoneContatoEmergencia3,daoContato,contatosOriginais[2]);
+        pessoa.setUsuario(sessaoUsuario.getUsuarioLogado());
         daoUser.atualizarRegistro(pessoa);
         startActivity(new Intent(this, PerfilActivity.class));
         finish();
@@ -173,5 +175,16 @@ public class EditarPerfilActivity extends AppCompatActivity {
             verificador = true;
         }
         return  verificador;
+    }
+    public void desativar(View view){
+        Pessoa pessoa = sessaoUsuario.getPessoaLogada();
+        Usuario usuario = sessaoUsuario.getUsuarioLogado();
+        daoUser = new UsuarioDao(getApplicationContext());
+        usuario.setInativo();
+        pessoa.setUsuario(usuario);
+        daoUser.atualizarRegistro(pessoa);
+
+        startActivity(new Intent(this,LogInActivity.class));
+        finish();
     }
 }

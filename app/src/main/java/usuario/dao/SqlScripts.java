@@ -9,7 +9,8 @@ public class SqlScripts {
         userBuilder.append("CREATE TABLE "+ TABELA_USUARIO +" ( ");
         userBuilder.append(ID +" integer primary key autoincrement, ");
         userBuilder.append(USER+" text not null unique, ");
-        userBuilder.append(PASSWORD+" text not null);");
+        userBuilder.append(PASSWORD+" text not null, ");
+        userBuilder.append(ATIVO+" boolean not null);");
         return userBuilder.toString();
     }
     protected String createTabelaPessoa(){
@@ -31,7 +32,7 @@ public class SqlScripts {
         eventoBuilder.append(EVENTO_NOME +" text not null unique, ");
         eventoBuilder.append(USUARIO_EVENTO +" text not null, ");
         eventoBuilder.append(DESCRICAO +" text, ");
-        eventoBuilder.append(DATA +" text);");
+        eventoBuilder.append(DATA +" text not null);");
         return eventoBuilder.toString();
     }
 

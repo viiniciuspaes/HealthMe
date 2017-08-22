@@ -54,7 +54,8 @@
         <activity android:name=".PerfilActivity" />
         <activity android:name=".EditarPerfilActivity" />
         <activity android:name=".PerguntasActivity" />
-        <activity android:name=".ResultadosExamesActivity"></activity>
+        <activity android:name=".ResultadosExamesActivity" />
+        <activity android:name=".EditarEventoActivity"></activity>
     </application>
 
 </manifest>

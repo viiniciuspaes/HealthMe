@@ -44,24 +44,23 @@ public class EventoDao {
         ContentValues valor;
         String where = DbHelper.ID + "=" + evento.getId();
         db = dataBaseHelper.getWritableDatabase();
-        validacao = new EventoNegocio(this.context);
 
         valor = new ContentValues();
         valor.put(DbHelper.EVENTO_NOME, evento.getNome());
         valor.put(DbHelper.USUARIO_EVENTO, evento.getUsuario().getLogin());
         valor.put(DbHelper.DESCRICAO, evento.getDescricao());
-        valor.put(DbHelper.DATA, validacao.mudarData(evento.getDate()));
+        valor.put(DbHelper.DATA, evento.getDate());
 
 
         db.update(DbHelper.TABELA_EVENTO, valor, where, null);
         db.close();
     }
-    public Evento buscarEvento(String nome) {
+    public Evento buscarEvento(String data) {
         db = dataBaseHelper.getReadableDatabase();
 
-        String[] parametros = {nome};
+        String[] parametros = {data};
 
-        Cursor cursor = db.rawQuery(script.cmdWhere(dataBaseHelper.TABELA_EVENTO,dataBaseHelper.EVENTO_NOME),
+        Cursor cursor = db.rawQuery(script.cmdWhere(dataBaseHelper.TABELA_EVENTO,dataBaseHelper.DATA),
                 parametros);
 
         Evento evento = null;
@@ -93,5 +92,11 @@ public class EventoDao {
         }
         db.close();
         return cursor;
+    }
+    public void delete(Evento evento){
+        db = dataBaseHelper.getWritableDatabase();
+        String where = DbHelper.ID + "=" + evento.getId();
+        db.delete(DbHelper.TABELA_EVENTO, where, null) ;
+        db.close();
     }
 }

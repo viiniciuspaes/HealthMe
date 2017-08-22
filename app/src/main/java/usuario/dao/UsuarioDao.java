@@ -29,13 +29,14 @@ public class UsuarioDao {
         valor = new ContentValues();
         valor.put(DbHelper.USER, pessoa.getUsuario().getLogin());
         valor.put(DbHelper.PASSWORD, pessoa.getUsuario().getPassword());
-
+        valor.put(DbHelper.ATIVO, true);
         db.insert(DbHelper.TABELA_USUARIO, null, valor);
 
         valor = new ContentValues();
         valor.put(DbHelper.NOME, pessoa.getNome());
         valor.put(DbHelper.PESSOA_USER, pessoa.getUsuario().getLogin());
         valor.put(DbHelper.PLANO_SAUDE, pessoa.getPlanoSaude());
+
 
         db.insert(DbHelper.TABELA_PESSOA,null, valor);
         db.close();
@@ -52,6 +53,13 @@ public class UsuarioDao {
         valor.put(DbHelper.PLANO_SAUDE, pessoa.getPlanoSaude());
 
         db.update(DbHelper.TABELA_PESSOA, valor, where, null);
+
+        valor = new ContentValues();
+        valor.put(DbHelper.USER, pessoa.getUsuario().getLogin());
+        valor.put(DbHelper.PASSWORD, pessoa.getUsuario().getPassword());
+        valor.put(DbHelper.ATIVO, pessoa.getUsuario().getAtivo());
+
+        db.update(DbHelper.TABELA_USUARIO,valor, where, null);
         db.close();
     }
     public Usuario buscarUsuario(String user, String password) {
@@ -111,6 +119,7 @@ public class UsuarioDao {
         usuario.setId(cursor.getInt(0));
         usuario.setLogin(cursor.getString(1));
         usuario.setPassword(cursor.getString(2));
+        usuario.setState(cursor.getString(3));
         return usuario;
     }
     private Pessoa criarPessoa(Cursor cursor){

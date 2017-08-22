@@ -25,19 +25,31 @@ public class UsuarioNegocio {
     public Usuario login(String email, String senha){
         usuarioDao = new UsuarioDao(context);
         Usuario usuario = usuarioDao.buscarUsuario(email, senha);
+        if(usuario.getAtivo().equals("0"))
+            usuario = null;
         return usuario;
     }
 
     public void validarCadastro(Pessoa pessoa)  {
         usuarioDao = new UsuarioDao(context);
-
-        if (usuarioDao.buscarUsuario(pessoa.getUsuario().getLogin())==null){
+        Usuario verificar = usuarioDao.buscarUsuario(pessoa.getUsuario().getLogin());
+        if (verificar==null){
             usuarioDao.inserirRegistro(pessoa);
             GuiUtil gui = new GuiUtil();
             gui.toastShort(context,"Cadastro realizado");
         }else{
-            GuiUtil gui = new GuiUtil();
-            gui.toastShort(context,"Usuário já cadastrado");
+            if (verificar.getAtivo().equals("0")){
+                verificar.setAtivo();
+                pessoa = usuarioDao.buscarPessoa(verificar.getLogin());
+                pessoa.setUsuario(verificar);
+                usuarioDao.atualizarRegistro(pessoa);
+                GuiUtil gui = new GuiUtil();
+                gui.toastShort(context,"Bem Vindo De volta.");
+            }else {
+                GuiUtil gui = new GuiUtil();
+                gui.toastShort(context,"Usuário já cadastrado");
+            }
+
         }
 
     }

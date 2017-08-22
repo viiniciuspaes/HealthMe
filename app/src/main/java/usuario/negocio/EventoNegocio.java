@@ -10,6 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import usuario.dao.EventoDao;
+import usuario.dominio.Evento;
 import usuario.gui.R;
 
 public class EventoNegocio {
@@ -49,5 +50,13 @@ public class EventoNegocio {
         adapter = new SimpleCursorAdapter(this.context, R.layout.modelo_listview_eventos, c, from, to,0);
         adapter.notifyDataSetChanged();
         return adapter;
+    }
+    public Boolean verificarEvento(String data){
+        Evento verificador = daoEvento.buscarEvento(data);
+        if (verificador == null){
+            return false;
+        }else {
+            return true;
+        }
     }
 }

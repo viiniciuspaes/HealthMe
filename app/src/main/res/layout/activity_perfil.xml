@@ -13,21 +13,21 @@
         android:layout_height="43dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="186dp"
         android:text="@string/campo_nome"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="16pt"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintRight_toLeftOf="@+id/tv_planoSaude" />
 
     <TextView
         android:id="@+id/tv_planoSaude"
-        android:layout_width="0dp"
-        android:layout_height="39dp"
+        android:layout_width="247dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -41,9 +41,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.449" />
+        app:layout_constraintVertical_bias="0.348"
+        app:layout_constraintHorizontal_bias="1.0"
+        tools:layout_editor_absoluteX="129dp" />
 
-    <ImageButton
+   <!-- <ImageButton
         android:id="@+id/ibtn_editarPerfil"
         android:layout_width="56dp"
         android:layout_height="56dp"
@@ -60,7 +62,7 @@
         app:layout_constraintVertical_bias="0.103"
         app:srcCompat="@drawable/ic_menu_manage"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp" /> -->
 
     <ImageView
         android:id="@+id/imageView3"
@@ -78,22 +80,37 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
+    <Button
+        android:id="@+id/ibtn_editarPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="editar"
+        android:onClick="editar"
+        android:background="@color/colorAccent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.984"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.45" />
+
     <ListView
         android:id="@+id/listagem"
         android:layout_width="359dp"
         android:layout_height="221dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="86dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.876"
-        app:layout_constraintHorizontal_bias="0.0"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
     </ListView>
 
