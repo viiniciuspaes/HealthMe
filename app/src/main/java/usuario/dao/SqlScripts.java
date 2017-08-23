@@ -10,7 +10,7 @@ public class SqlScripts {
         userBuilder.append(ID +" integer primary key autoincrement, ");
         userBuilder.append(USER+" text not null unique, ");
         userBuilder.append(PASSWORD+" text not null, ");
-        userBuilder.append(ATIVO+" boolean not null);");
+        userBuilder.append(ATIVO+" text not null);");
         return userBuilder.toString();
     }
 

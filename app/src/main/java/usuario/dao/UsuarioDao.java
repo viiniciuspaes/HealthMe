@@ -29,7 +29,7 @@ public class UsuarioDao {
         valor = new ContentValues();
         valor.put(DbHelper.USER, pessoa.getUsuario().getLogin());
         valor.put(DbHelper.PASSWORD, pessoa.getUsuario().getPassword());
-        valor.put(DbHelper.ATIVO, true);
+        valor.put(DbHelper.ATIVO, pessoa.getUsuario().getAtivo());
         db.insert(DbHelper.TABELA_USUARIO, null, valor);
 
         valor = new ContentValues();
