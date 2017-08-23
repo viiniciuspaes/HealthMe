@@ -1,7 +1,5 @@
 package usuario.dominio;
 
-import java.util.Date;
-
 public class Evento {
     private int id;
     private Usuario usuario;

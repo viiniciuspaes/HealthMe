@@ -18,8 +18,6 @@ public class ContatoDao {
     private Context context;
     private SqlScripts script;
     Cursor cursor;
-    SimpleCursorAdapter adpter;
-    ListView listViewContatos;
 
     public ContatoDao(Context context) {
         this.context = context;

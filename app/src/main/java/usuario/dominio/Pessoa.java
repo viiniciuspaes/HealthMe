@@ -1,25 +1,15 @@
 package usuario.dominio;
 
-import java.util.Date;
-
 public class Pessoa {
     private int id;
     private Usuario usuario;
     private String nome;
-    private String enderecoCasa;
-    private String enderecoTrabalho;
     private String planoSaude;
-    private Date nascimento;
-    private  ContatoEmergencia[] contatoEmergencia;
 
     public Pessoa(){
         this.nome = null;
         this.usuario = null;
-        this.enderecoCasa = null;
-        this.enderecoTrabalho = null;
         this.planoSaude = "";
-        this.nascimento = null;
-        this.contatoEmergencia = null;
     }
     public int getId() {
         return id;
@@ -45,22 +35,6 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public String getEnderecoCasa() {
-        return enderecoCasa;
-    }
-
-    public void setEnderecoCasa(String enderecoCasa) {
-        this.enderecoCasa = enderecoCasa;
-    }
-
-    public String getEnderecoTrabalho() {
-        return enderecoTrabalho;
-    }
-
-    public void setEnderecoTrabalho(String enderecoTrabalho) {
-        this.enderecoTrabalho = enderecoTrabalho;
-    }
-
     public String getPlanoSaude() {
         return planoSaude;
     }
@@ -69,19 +43,4 @@ public class Pessoa {
         this.planoSaude = planoSaude;
     }
 
-    public Date getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(Date nascimento) {
-        this.nascimento = nascimento;
-    }
-
-    public ContatoEmergencia[] getContatoEmergencia() {
-        return contatoEmergencia;
-    }
-
-    public void setContatoEmergencia(ContatoEmergencia[] contatoEmergencia) {
-        this.contatoEmergencia = contatoEmergencia;
-    }
 }

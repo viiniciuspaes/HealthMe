@@ -14,9 +14,9 @@ import usuario.dominio.Usuario;
 public class UsuarioNegocio {
     private Context context;
     private UsuarioDao usuarioDao;
-    private Pattern p1 = Pattern.compile("\\S+");
-    private Pattern p2 = Pattern.compile("^[A-Za-z0-9]+$");
-    private Matcher m;
+    private Pattern patternUm = Pattern.compile("\\S+");
+    private Pattern patternDois = Pattern.compile("^[A-Za-z0-9]+$");
+    private Matcher matcher;
 
     public UsuarioNegocio(Context context) {
         this.context=context;
@@ -56,14 +56,14 @@ public class UsuarioNegocio {
 
     public boolean verEspacosBrancos(String campo){
         String texto = campo;
-        m = p1.matcher(texto);
-        return m.matches();
+        matcher = patternUm.matcher(texto);
+        return matcher.matches();
     }
 
     public boolean verAlfanumerico(String campo){
         String texto = campo;
-        m = p2.matcher(texto);
-        return m.matches();
+        matcher = patternDois.matcher(texto);
+        return matcher.matches();
     }
 
     public boolean verificarTamanho(String campo) {

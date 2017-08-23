@@ -135,16 +135,4 @@ public class UsuarioDao {
         return pessoa;
     }
 
-    public boolean removerPessoa(int id){
-        db = dataBaseHelper.getWritableDatabase();
-        return db.delete(dataBaseHelper.TABELA_PESSOA, "_id = ?", new String[]{Integer.toString(id)}) > 0;
-    }
-
-    public void deletarPessoa(int id){
-
-        String where = dataBaseHelper.ID + "=" + id;
-        db = dataBaseHelper.getReadableDatabase();
-        db.delete(dataBaseHelper.TABELA_PESSOA,where,null);
-        db.close();
-    }
 }
