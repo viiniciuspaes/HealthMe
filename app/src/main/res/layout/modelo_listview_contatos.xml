@@ -16,8 +16,9 @@
         android:id="@+id/txvContatoNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16pt"
-        android:textColor="#000000"
+        android:textSize="10pt"
+        android:textColor="@color/colorContato"
+        android:textStyle="bold"
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
@@ -34,9 +35,10 @@
         android:id="@+id/txvContatoNumero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14pt"
-        android:textColor="#000000"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:textSize="8pt"
+        android:textColor="@color/colorNumber"
+        android:textStyle="bold"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 </LinearLayout>

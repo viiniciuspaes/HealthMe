@@ -5,7 +5,7 @@
     <string name="campo_senha">Senha</string>
     <string name="campo_confirmar_senha">Confimar senha</string>
     <string name="error_telefone">Telefone ja existe</string>
-    <string name="campo_plano_saude">Plano de Saude</string>
+    <string name="campo_plano_saude">Plano de Saúde</string>
     <string name="text_login">Entrar</string>
     <string name="texto_registro">Registrar</string>
     <string name="error_menssagem_nome">Entre com nome completo</string>

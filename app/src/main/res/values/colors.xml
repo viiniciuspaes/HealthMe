@@ -5,4 +5,6 @@
     <color name="colorAccent">#C59DE4</color>
     <color name="colorwhite">#FFFFFF</color>
     <color name="colorPanic">#EE2C2C</color>
+    <color name="colorNumber">#9400D3</color>
+    <color name="colorContato">#4B0082</color>
 </resources>
