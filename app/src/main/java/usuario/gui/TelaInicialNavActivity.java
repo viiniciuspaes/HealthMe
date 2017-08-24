@@ -123,15 +123,38 @@ public class TelaInicialNavActivity extends AppCompatActivity
         negocioContato = new ContatoNegocio(getApplicationContext());
         sessao.iniciarSessao();
 
-        for(ContatoEmergencia x: negocioContato.smsContato(sessao)) {
-            SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage(x.getNumero(), null, "Socorro by HealthMe", null, null);
-        }
-
         if (isPermissionGranted()) {
             callAction();
         }
+
+        for (ContatoEmergencia x : negocioContato.smsContato(sessao)) {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(x.getNumero(), null, "Socorro by HealthMe", null, null);
+
+            boolean isWhatsappInstalled = whatsappInstalledOrNot("com.whatsapp");
+            if (isWhatsappInstalled) {
+                Uri uri = Uri.parse("smsto:" + x.getNumero());
+                Intent sendIntent = new Intent(Intent.ACTION_SEND, uri);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Socorro by HealthMe");
+                sendIntent.setType("text/plain");
+                sendIntent.setPackage("com.whatsapp");
+                startActivity(sendIntent);
+            }
+        }
+
     }
+    private boolean whatsappInstalledOrNot(String uri) {
+        PackageManager pm = getPackageManager();
+        boolean app_installed = false;
+        try {
+            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
+            app_installed = true;
+        } catch (PackageManager.NameNotFoundException e) {
+            app_installed = false;
+        }
+        return app_installed;
+    }
+
     public void callAction(){
         String phnum = "996556828";
         Intent callIntent = new Intent(Intent.ACTION_CALL).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
