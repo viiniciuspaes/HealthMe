@@ -19,7 +19,6 @@ public class ContatoNegocio {
     private Matcher m;
     private ContatoDao daoContato;
     private SimpleCursorAdapter adapter;
-    private SessaoUsuario sessaoUsuario;
 
     public ContatoNegocio(Context context) {
         this.context = context;

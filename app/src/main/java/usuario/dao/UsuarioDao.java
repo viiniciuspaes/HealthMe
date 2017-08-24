@@ -29,7 +29,7 @@ public class UsuarioDao {
         valor = new ContentValues();
         valor.put(DbHelper.USER, pessoa.getUsuario().getLogin());
         valor.put(DbHelper.PASSWORD, pessoa.getUsuario().getPassword());
-        valor.put(DbHelper.ATIVO, true);
+        valor.put(DbHelper.ATIVO, pessoa.getUsuario().getAtivo());
         db.insert(DbHelper.TABELA_USUARIO, null, valor);
 
         valor = new ContentValues();
@@ -135,16 +135,4 @@ public class UsuarioDao {
         return pessoa;
     }
 
-    public boolean removerPessoa(int id){
-        db = dataBaseHelper.getWritableDatabase();
-        return db.delete(dataBaseHelper.TABELA_PESSOA, "_id = ?", new String[]{Integer.toString(id)}) > 0;
-    }
-
-    public void deletarPessoa(int id){
-
-        String where = dataBaseHelper.ID + "=" + id;
-        db = dataBaseHelper.getReadableDatabase();
-        db.delete(dataBaseHelper.TABELA_PESSOA,where,null);
-        db.close();
-    }
 }

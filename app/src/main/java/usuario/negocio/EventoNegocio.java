@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.widget.SimpleCursorAdapter;
 
-import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,9 +14,9 @@ import usuario.gui.R;
 
 public class EventoNegocio {
     private Context context;
-    private Pattern p1 = Pattern.compile("\\S+");
-    private Pattern p2 = Pattern.compile("^[A-Za-z0-9]+$");
-    private Matcher m;
+    private Pattern patternUm = Pattern.compile("\\S+");
+    private Pattern patternDois = Pattern.compile("^[A-Za-z0-9]+$");
+    private Matcher matcher;
     private EventoDao daoEvento;
     private SimpleCursorAdapter adapter;
 
@@ -25,9 +24,6 @@ public class EventoNegocio {
         this.context=context;
         daoEvento = new EventoDao(context);
     }
-    public String mudarData(Date a){
-            return String.valueOf(a);
-        }
     public String mudarData(String a){
         String[] s = a.toString().split("/");
         String data = s[2]+"/"+s[1]+"/"+s[0];
@@ -35,13 +31,13 @@ public class EventoNegocio {
     }
     public boolean verEspacosBrancos(String campo){
         String texto = campo;
-        m = p1.matcher(texto);
-        return m.matches();
+        matcher = patternUm.matcher(texto);
+        return matcher.matches();
     }
     public boolean verAlfanumerico(String campo){
         String texto = campo;
-        m = p2.matcher(texto);
-        return m.matches();
+        matcher = patternDois.matcher(texto);
+        return matcher.matches();
     }
     public SimpleCursorAdapter construtorAdapter(SessaoUsuario sessaoUsuario){
         Cursor c = daoEvento.buscarDados(sessaoUsuario.getUsuarioLogado().getLogin());

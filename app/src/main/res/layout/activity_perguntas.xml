@@ -35,14 +35,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sim" />
+                android:text="Sim"
+                android:textColor="@color/colorContato" />
 
             <RadioButton
                 android:id="@+id/rb_NaoPergunta1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Não" />
+                android:text="Não"
+                android:textColor="@color/colorContato" />
         </RadioGroup>
 
         <RadioGroup
@@ -67,14 +69,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sim" />
+                android:text="Sim"
+                android:textColor="@color/colorContato" />
 
             <RadioButton
                 android:id="@+id/rb_NaoPergunta2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Não" />
+                android:text="Não"
+                android:textColor="@color/colorContato" />
         </RadioGroup>
 
         <RadioGroup
@@ -99,14 +103,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sim" />
+                android:text="Sim"
+                android:textColor="@color/colorContato" />
 
             <RadioButton
                 android:id="@+id/rb_NaoPergunta3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Não" />
+                android:text="Não"
+                android:textColor="@color/colorContato" />
         </RadioGroup>
 
         <RadioGroup
@@ -131,14 +137,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sim" />
+                android:text="Sim"
+                android:textColor="@color/colorContato" />
 
             <RadioButton
                 android:id="@+id/rb_NaoPergunta4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Não" />
+                android:text="Não"
+                android:textColor="@color/colorContato" />
         </RadioGroup>
 
         <RadioGroup
@@ -163,14 +171,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sim" />
+                android:text="Sim"
+                android:textColor="@color/colorContato" />
 
             <RadioButton
                 android:id="@+id/rb_NaoPergunta5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Não" />
+                android:text="Não"
+                android:textColor="@color/colorContato" />
         </RadioGroup>
 
         <RadioGroup
@@ -195,14 +205,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sim" />
+                android:text="Sim"
+                android:textColor="@color/colorContato" />
 
             <RadioButton
                 android:id="@+id/rb_NaoPergunta6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Não" />
+                android:text="Não"
+                android:textColor="@color/colorContato" />
 
         </RadioGroup>
 

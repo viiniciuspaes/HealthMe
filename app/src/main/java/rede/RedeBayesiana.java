@@ -96,8 +96,8 @@ public class RedeBayesiana {
     }
 
     public String respostasNCNDF() {
-        double respostaFFT = 0.12;
-        double negacaoTTF = 0.88;
+        double respostaFFT = 0.22;
+        double negacaoTTF = 0.78;
 
         double probabilidade = (noOtorrino.getnC()*noOtorrino.getnD()*noOtorrino.getF()*respostaFFT/((noOtorrino.getnC()*noOtorrino.getnD()*noOtorrino.getF()*respostaFFT)+(noOtorrino.getC()*noOtorrino.getD()*noOtorrino.getnF()*negacaoTTF))*100);
         String resultado = String.format("%.2f%%", probabilidade);
@@ -204,8 +204,8 @@ public class RedeBayesiana {
     }
 
     public String respostasNEFD() {
-        double respostaFTT = 0.61;
-        double negacaoTFF = 0.82;
+        double respostaFTT = 0.69;
+        double negacaoTFF = 0.58;
 
         double probabilidade = (noOftalmo.getnE()*noOftalmo.getF()*noOftalmo.getD()*respostaFTT/((noOftalmo.getnE()*noOftalmo.getF()*noOftalmo.getD()*respostaFTT)+(noOftalmo.getE()*noOftalmo.getnF()*noOftalmo.getnD()*negacaoTFF))*100);
         String resultado = String.format("%.2f%%", probabilidade);
