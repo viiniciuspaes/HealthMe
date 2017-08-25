@@ -123,10 +123,6 @@ public class TelaInicialNavActivity extends AppCompatActivity
         negocioContato = new ContatoNegocio(getApplicationContext());
         sessao.iniciarSessao();
 
-        if (isPermissionGranted()) {
-            callAction();
-        }
-
         for (ContatoEmergencia x : negocioContato.smsContato(sessao)) {
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(x.getNumero(), null, "Socorro by HealthMe", null, null);
@@ -141,7 +137,9 @@ public class TelaInicialNavActivity extends AppCompatActivity
                 startActivity(sendIntent);
             }
         }
-
+        if (isPermissionGranted()) {
+            callAction();
+        }
     }
     private boolean whatsappInstalledOrNot(String uri) {
         PackageManager pm = getPackageManager();
