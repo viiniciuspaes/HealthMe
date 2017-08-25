@@ -17,4 +17,9 @@ Agiliza o tempo do usuário, não deixando que ele esqueça seus compromissos m�
 
 Utilizando um banco de dados com informações de planos de saúde, hospitais e clínicas de forma a direcionar o usuário para a melhor escolha, além da utilização de Redes Bayseanas para  dar uma aproximação da causa dos seus sintomas e um sistema de calendário para não deixar o usuário esquecer os seus remédios e consultas.
 
+*Análise estática
+
+Todos os documentos das análises realizadas constão na pasta do drive:
+https://drive.google.com/drive/folders/0B2i-268pDeMuSUkwQkViSUdOcGs?usp=sharing
+
 
