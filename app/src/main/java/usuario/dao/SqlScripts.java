@@ -2,6 +2,12 @@ package usuario.dao;
 
 import static usuario.dao.DbHelper.*;
 
+/**
+ * <h1>SqlScripts</h1>
+ * Classe responsavel pelos metodos de criacao de cada tabela no banco de dados e selecao dos dados
+ * no banco de dados com operacoes SQL genericas.
+ */
+
 public class SqlScripts {
     protected String createTabelaUsuario(){
 
@@ -64,12 +70,15 @@ public class SqlScripts {
     protected String cmdWhere(String tabela, String a, String b){
         return "SELECT * FROM " + tabela + " WHERE " + a + " LIKE ? AND " + b + " LIKE ?";
     }
+
     protected String cmdWhere(String tabela, String a){
         return "SELECT * FROM " + tabela + " WHERE " + a + " LIKE ?";
     }
+
     protected String cmdWhereValues(String tabela, String coluna, String valor){
         return "SELECT * FROM" + tabela +" WHERE " + coluna + " LIKE " + valor;
     }
+
     public String povoar(){
 
         String hospitais = " INSERT INTO "+TABELA_CENTRO+" ("+CENTRO_NOME+","+CENTRO_TELEFONE+","+

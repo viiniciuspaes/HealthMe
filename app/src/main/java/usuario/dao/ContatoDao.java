@@ -12,6 +12,11 @@ import java.util.List;
 
 import usuario.dominio.ContatoEmergencia;
 
+/**
+ * <h1>ContatoDao</h1>
+ * Classe responsavel pelas chamadas e operacoes realizadas no banco de dados, mais especificamente
+ * na tabela correspondete aos contatos de emergencia.
+ */
 public class ContatoDao {
     private SQLiteDatabase db;
     private DbHelper dataBaseHelper;
@@ -52,6 +57,12 @@ public class ContatoDao {
         db.close();
     }
 
+    /**
+     * Metodo utilizado na verificacao do contato para insercao no perfil do usuario.
+     *
+     * @param nome String do nome da pessoa: busca realizada pelo nome da pessoa.
+     * @return Retorna o contato de emergencia encontrado.
+     */
     public ContatoEmergencia buscarContato( String nome) {
         db = dataBaseHelper.getReadableDatabase();
 
@@ -69,6 +80,12 @@ public class ContatoDao {
         return contato;
     }
 
+    /**
+     * Metodo utilizado na edicao dos contatos de emergencia do perfil.
+     *
+     * @param usuario String do nome do usuario: busca realizada pelo nome do usuario.
+     * @return Retorna uma lista com os contatos de emergencia.
+     */
     public List<ContatoEmergencia> buscarContatos(String usuario){
         db = dataBaseHelper.getReadableDatabase();
 
@@ -96,6 +113,13 @@ public class ContatoDao {
         return contatoEmergencia;
     }
 
+    /**
+     * Metodo utilizado na construcao da View do perfil para o usuario, buscando os dados de acordo
+     * com o cursor de dados do perfil do usuario.
+     *
+     * @param usuario String do nome do usuario: busca realizada pelo nome do usuario.
+     * @return Retorna a posicao do contato buscado.
+     */
     public Cursor buscarDados(String usuario){
 
         db = dataBaseHelper.getWritableDatabase();

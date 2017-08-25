@@ -4,6 +4,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * <h1>DbHelper</h1>
+ * Classe onde estao compostas todas as tabelas utilizadas pelo banco de dados de acordo com o
+ * utilizado pela aplicacao.
+ */
 
 public class DbHelper extends SQLiteOpenHelper {
     protected static final String NOME_DB = "banco.db";
@@ -52,6 +57,14 @@ public class DbHelper extends SQLiteOpenHelper {
         super(context, NOME_DB,null, VERSAO);
         this.context = context;
     }
+
+    /**
+     * O metodo onCreate realiza a chamada da criacao de acordo com as operacoes compostas na classe
+     * SqlScripts.
+     *
+     * @see SqlScripts
+     * @param db SQLiteDatabase: parametro para criacao do banco.
+     */
 
     @Override
     public void onCreate(SQLiteDatabase db) {

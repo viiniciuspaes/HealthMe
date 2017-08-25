@@ -10,6 +10,12 @@ import usuario.dominio.Pessoa;
 import usuario.dominio.Usuario;
 import usuario.negocio.UsuarioNegocio;
 
+/**
+ * <h1>UsuarioDao</h1>
+ *Classe responsavel pelas chamadas e operacoes realizadas no banco de dados, mais especificamente
+ * nas tabelas correspondetes a pessoa e usuario.
+ */
+
 public class UsuarioDao {
     private SQLiteDatabase db;
     private DbHelper dataBaseHelper;
@@ -22,6 +28,7 @@ public class UsuarioDao {
         dataBaseHelper = new DbHelper(context);
         script = new SqlScripts();
     }
+
     public void inserirRegistro(Pessoa pessoa){
         ContentValues valor;
         db = dataBaseHelper.getWritableDatabase();
@@ -63,6 +70,13 @@ public class UsuarioDao {
         db.close();
     }
 
+    /**
+     * Metodo utilizado na verificacao do usuario no login da aplicacao.
+     *
+     * @param user String do nome do usuario.
+     * @param password String da senha do usuario.
+     * @return
+     */
     public Usuario buscarUsuario(String user, String password) {
         db = dataBaseHelper.getReadableDatabase();
 
@@ -81,6 +95,14 @@ public class UsuarioDao {
         return usuario;
     }
 
+    /**
+     * Metodo utilizado na verificacao do usuario no cadastro da aplicação. Tambem usado
+     * na validacao da sessao do usuario.
+     *
+     * @param user String com os dados do usuario.
+     * @return Retorna o usuario encontrado no banco.
+     */
+
     public Usuario buscarUsuario(String user) {
         db = dataBaseHelper.getReadableDatabase();
 
@@ -98,6 +120,14 @@ public class UsuarioDao {
         db.close();
         return usuario;
     }
+
+    /**
+     * Metodo utilizado na verificacao da pessoa no cadastro da aplicação. Tambem usado
+     * na validacao da sessao do usuario.
+     *
+     * @param nome String do nome: usado para comparacao no banco.
+     * @return Retorna a pessoa encontrada no banco.
+     */
 
     public Pessoa buscarPessoa(String nome) {
         db = dataBaseHelper.getReadableDatabase();

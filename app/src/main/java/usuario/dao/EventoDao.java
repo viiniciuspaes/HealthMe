@@ -10,6 +10,12 @@ import java.text.ParseException;
 import usuario.dominio.Evento;
 import usuario.negocio.EventoNegocio;
 
+/**
+ * <h1>EventoDao</h1>
+ * Classe responsavel pelas chamadas e operacoes realizadas no banco de dados, mais especificamente
+ * na tabela correspondete aos eventos do calendario de cada usuario.
+ */
+
 public class EventoDao {
     private Context context;
     private DbHelper dataBaseHelper;
@@ -55,6 +61,13 @@ public class EventoDao {
         db.close();
     }
 
+    /**
+     * Metodo utilizado na verificacao do evento para as operacoes de insercao, edicao e remocao do
+     * evento no calendario.
+     * @param data
+     * @return
+     */
+
     public Evento buscarEvento(String data) {
         db = dataBaseHelper.getReadableDatabase();
 
@@ -81,6 +94,14 @@ public class EventoDao {
         //evento.setDate(cursor.getString(4));
         return evento;
     }
+
+    /**
+     * Metodo utilizado na construcao da View do perfil para o usuario, buscando os dados de acordo
+     * com o cursor de dados dos eventos do usuario.
+     *
+     * @param usuario String do nome do usuario: busca realizada pelo nome do usuario.
+     * @return Retorna a posicao do evento buscado.
+     */
 
     public Cursor buscarDados(String usuario){
 

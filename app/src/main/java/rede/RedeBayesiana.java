@@ -2,7 +2,13 @@ package rede;
 
 /**
  * <h1>RedeBayesiana</h1>
- * Classe responsavel pela rede bayesiana do aplicativo.
+ * Classe responsavel pelo calculo das probabilidades de acordo com a regra de bayes e
+ * usado na recomendacao do aplicativo. Cada metodo corresponde a uma linha de uma tabela verdade
+ * dos nos.
+ *
+ * @see NoCardiologia
+ * @see NoOftalmologia
+ * @see NoOtorrinolaringologia
  */
 
 public class RedeBayesiana {

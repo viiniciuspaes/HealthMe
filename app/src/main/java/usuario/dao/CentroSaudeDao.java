@@ -14,6 +14,11 @@ import java.util.List;
 import usuario.dominio.CentroSaude;
 import usuario.dominio.PlanoSaude;
 
+/**
+ *<h1>CentroSaudeDao</h1>
+ * Classe responsavel pelas chamadas e operacoes realizadas no banco de dados, mais especificamente
+ * na tabela correspondete aos centros de saude.
+ */
 public class CentroSaudeDao {
     private SQLiteDatabase db;
     private DbHelper dataBaseHelper;
@@ -25,6 +30,7 @@ public class CentroSaudeDao {
         dataBaseHelper = new DbHelper(context);
         script = new SqlScripts();
     }
+
     public void inserirCentro(CentroSaude centroSaude){
         ContentValues valor;
         db = dataBaseHelper.getWritableDatabase();
@@ -43,6 +49,12 @@ public class CentroSaudeDao {
         db.insert(DbHelper.TABELA_CENTRO,null, valor);
         db.close();
     }
+
+    /**
+     * @param plano String do plano: parametro para consulta pelo nome do plano.
+     * @return retorna uma List dos centros de saude de acordo com o plano.
+     */
+
     public List<CentroSaude> buscarCentros(String plano){
         db = dataBaseHelper.getReadableDatabase();
 

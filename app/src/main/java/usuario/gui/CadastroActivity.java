@@ -18,7 +18,7 @@ import usuario.negocio.UsuarioNegocio;
 
 /**
  * <h1>CadastroActivity</h1>
- * Activity responsavel por implementar as funcionalidade do cadastro do aplicativo
+ * Activity responsavel por implementar as funcionalidades do cadastro dos usuarios.
  */
 
 public class CadastroActivity extends AppCompatActivity {
@@ -32,7 +32,7 @@ public class CadastroActivity extends AppCompatActivity {
     private CriptografiaSenha cripto;
 
     /**
-     * O método onCreate() tem a funcionalidade de setar o layout: activity_cadastro e setar os
+     * O metodo onCreate() tem a funcionalidade de setar o layout: activity_cadastro e setar os
      * EditTexts do layout para cada atributo da classe e chamar o metodo initViews() da mesma
      * classe.
      *
