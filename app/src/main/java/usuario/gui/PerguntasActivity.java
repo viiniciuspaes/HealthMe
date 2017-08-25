@@ -12,6 +12,11 @@ import android.widget.RadioGroup;
 
 import java.util.ArrayList;
 
+/**
+ * <h1>PerguntasActivity</h1>
+ * Activity responsavel pelas funcionalidade das Perguntas do aplicativo.
+ */
+
 public class PerguntasActivity extends AppCompatActivity {
 
     private RadioButton rbPergunta1Sim;
@@ -36,6 +41,12 @@ public class PerguntasActivity extends AppCompatActivity {
 
     private ArrayList<String> respostas = new ArrayList<String>(6);
 
+    /**
+     * O metodo onCreate() tem a funcionalidade de setar a layout activity_perguntas e setar os
+     * RadioButtons da activity.
+     *
+     * @param savedInstanceState Objeto da classe Bundle que contem o estado anterior da activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +71,15 @@ public class PerguntasActivity extends AppCompatActivity {
         rbPergunta6Nao = (RadioButton) findViewById(R.id.rb_NaoPergunta6);
     }
 
+    /**
+     * O metodo verificarPergunta() tem a funcionalidade de verificar se a pergunta estar repondida
+     * com sim ou nao e adiciionar na ArrayList.
+     *
+     * @param rb1 RadioButton relacionado as caixas: sim.
+     * @param rb2 RadioButton relacionado as caixas: nao.
+     * @param cont Contador int para adicionar cada resposta em ordem na ArrayList.
+     * @return Retorna o contador int.
+     */
     public int verificarPergunta(RadioButton rb1,RadioButton rb2, int cont) {
         if (rb1.isChecked()) {
             respostas.add(cont, "sim");
@@ -69,6 +89,15 @@ public class PerguntasActivity extends AppCompatActivity {
         }
         return contador = ++cont;
     }
+
+    /**
+     * O metodo finalizar() tem a funcionalidade de verificar as perguntas e depois envia-las para
+     * a activity ResultadosExamesActivity().
+     *
+     * @see ResultadosExamesActivity
+     * @param view Contem o que foi observado na activity.
+     * @throws Exception Excecao de erro java.
+     */
 
     public void finalizar(View view) throws Exception{
         verificarPergunta(rbPergunta1Sim,rbPergunta1Nao,contador);

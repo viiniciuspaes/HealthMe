@@ -1,5 +1,10 @@
 package rede;
 
+/**
+ * <h1>NoOtorrinolaringologia</h1>
+ * Classe responsavel pela criacao do no relacionado a otorrinolaringologia.
+ */
+
 public class NoOtorrinolaringologia {
     private double c = 0.72;
     private double nC = 0.28;

@@ -10,11 +10,27 @@ import android.widget.ListView;
 import usuario.negocio.EventoNegocio;
 import usuario.negocio.SessaoUsuario;
 
+/**
+ * <h1>CalendarioActivity</h1>
+ * Acitivity responsavel pelas funcionalidades do Calendario.
+ */
+
 public class CalendarioActivity extends AppCompatActivity {
     private CalendarView calendario;
     private SessaoUsuario sessaoUsuario;
     private ListView listViewEventos;
     private EventoNegocio eventoNegocio;
+
+    /**
+     * O método onCreate() tem a funcionalidade de setar o layout: activity_calendario e setar o
+     * CalendarView e o ListView do layout e caso o usuario clicar em uma data ira verificar se
+     * existe evento em tal data usando o verificarEvento() da classe EventoNegocio() e depois ira
+     * transitar para a activity EditarEventoActivity().
+     *
+     * @see EventoNegocio#verificarEvento(String)
+     * @see EditarEventoActivity
+     * @param savedInstanceState Um objeto da classe Bundle que contem o estado anterior da activity.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

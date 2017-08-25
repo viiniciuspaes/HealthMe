@@ -27,6 +27,11 @@ import usuario.dominio.ContatoEmergencia;
 import usuario.negocio.ContatoNegocio;
 import usuario.negocio.SessaoUsuario;
 
+/**
+ * <h1>TelaInicialNavActivity</h1>
+ * Activity responsavel por implementar as funcionalidades da tela principal do aplicativo.
+ */
+
 public class TelaInicialNavActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -34,6 +39,14 @@ public class TelaInicialNavActivity extends AppCompatActivity
     private SessaoUsuario sessao;
     private TextView boasVindas;
     private ContatoNegocio negocioContato;
+
+    /**
+     * O método onCreate() tem a funcionalidade de setar o layout: activity_tela_inicial_nav, setar
+     * o menu lateral e chama o metodo: bemVindo().
+     *
+     * @see TelaInicialNavActivity
+     * @param savedInstanceState Objeto da classe Bundle que contem o estado anterior da activity.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +65,12 @@ public class TelaInicialNavActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         bemVindo();
     }
+
+    /**
+     * O metodo bemVindo() tem a funcionalidade de chamar metodo iniciarSessao() da classe
+     * SessaoUsuario para iniciar a sessao e mudar o TextView da activity e colocar o nome do usuario.
+     */
+
     public void bemVindo(){
         preferences = getSharedPreferences("user", Context.MODE_APPEND);
         sessao = new SessaoUsuario(getApplicationContext());
@@ -117,6 +136,18 @@ public class TelaInicialNavActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    /**
+     * No metodo panico ele ira pegar os contatos do nosso usuario logado e vai mandar mensagens
+     * para os contatos e chama o metodo isPermissionGranted() da mesma classe, se o metodo retornar
+     * a booleana True, chama o método callAction() da mesma classe.
+     *
+     * @see TelaInicialNavActivity#isPermissionGranted()
+     * @see TelaInicialNavActivity#callAction()
+     * @param v O que foi observado na activity.
+     * @throws Exception Exceção de erro java.
+     */
+
     public void panico(View v)throws Exception {
 
         sessao = new SessaoUsuario(getApplicationContext());
@@ -153,6 +184,10 @@ public class TelaInicialNavActivity extends AppCompatActivity
         return app_installed;
     }
 
+    /**
+     * O metodo callAction() tem a funcionalidade de fazer uma ligação automatica para o samu.
+     */
+
     public void callAction(){
         String phnum = "996556828";
         Intent callIntent = new Intent(Intent.ACTION_CALL).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -162,6 +197,13 @@ public class TelaInicialNavActivity extends AppCompatActivity
         callIntent.setData(Uri.parse("tel:" + phnum));
         startActivity(callIntent);
     }
+
+    /**
+     * O metodo isPermissionGranted() tem a funcionalidade de perguntar se o usuario da permissao
+     * para o aplicativo fazer uma ligacao.
+     *
+     * @return Retorna uma booleana.
+     */
     public  boolean isPermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkSelfPermission(android.Manifest.permission.CALL_PHONE)

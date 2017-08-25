@@ -16,6 +16,11 @@ import usuario.dominio.Usuario;
 import usuario.negocio.CriptografiaSenha;
 import usuario.negocio.UsuarioNegocio;
 
+/**
+ * <h1>CadastroActivity</h1>
+ * Activity responsavel por implementar as funcionalidade do cadastro do aplicativo
+ */
+
 public class CadastroActivity extends AppCompatActivity {
     private EditText etUser;
     private EditText etPassword;
@@ -25,6 +30,15 @@ public class CadastroActivity extends AppCompatActivity {
     private Resources resources;
     private UsuarioNegocio usuarioNegocio;
     private CriptografiaSenha cripto;
+
+    /**
+     * O método onCreate() tem a funcionalidade de setar o layout: activity_cadastro e setar os
+     * EditTexts do layout para cada atributo da classe e chamar o metodo initViews() da mesma
+     * classe.
+     *
+     * @see CadastroActivity#initViews()
+     * @param savedInstanceState Um objeto da classe Bundle que contem o estado anterior da activity
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +54,12 @@ public class CadastroActivity extends AppCompatActivity {
 
         initViews();
     }
+
+    /**
+     * O metodo initViews() tem a funcionalidade de observar as mudancas nos textos dos EditTexts da
+     * activity e se algum for mudado ira atualizar os atributos que estao relacionados com os
+     * EditTexts mudados.
+     */
 
     public void initViews() {
         resources = getResources();
@@ -63,6 +83,17 @@ public class CadastroActivity extends AppCompatActivity {
         etPassword2.addTextChangedListener(textWatcher);
     }
 
+    /**
+     * O metodo cadastrar tem a funcionalidade de ser responsavel pelo cadastro do usuario,
+     * criando um Objeto Usuario e um objeto Pessoa e chamando os metodos para auxilia-lo:
+     * validarCadastro() da classe UsuarioNegocio, criptoSenha() da classe CriptografiaSenha.
+     *
+     * @see UsuarioNegocio#validarCadastro(Pessoa)
+     * @see CriptografiaSenha#criptoSenha(String)
+     * @param v Contêm o que foi "observado" na nossa activity.
+     * @throws Exception Excecao de erro java.
+     */
+
     public void cadastrar(View v) throws Exception{
         boolean validar=validarCampos();
         if(validar){
@@ -82,10 +113,28 @@ public class CadastroActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * O metodo iniciarLoginActity() encerra a activity CadastroActivity e inicia a
+     * activity LogInActivity.
+     *
+     * @see LogInActivity
+     */
+
     public void iniciarLoginActivity(){
         startActivity(new Intent(this,LogInActivity.class));
         finish();
     }
+
+    /**
+     * O metodo validarCampos() tem a funcionalidade de verificar se os campos da activity foram
+     * validados com auxilio dos metodos: isCamposValidos(), isSenhasValidas e validarLoginSenha()
+     * da mesma classe.
+     *
+     * @see CadastroActivity#isCamposValidos(String, String, String, String)
+     * @see CadastroActivity#isSenhasValidas(String, String)
+     * @see CadastroActivity#validarLoginSenha(String, String)
+     * @return Retorna uma booleana.
+     */
 
     private boolean validarCampos(){
         String nome = etNome.getText().toString();
@@ -100,6 +149,16 @@ public class CadastroActivity extends AppCompatActivity {
         return false;
     }
 
+    /**
+     * O metodo isSenhasValidade() tem a funcionalidade de verificar se as senhas dos campos: Senha
+     * e Confirmar senha da activity estao identicos, se nao manda um aviso que as senhas nao
+     * conferem.
+     *
+     * @param campo_senha String do campo: Senha da activity.
+     * @param campo_senha_repetida String do campo: Confirmar senha da activity.
+     * @return Retorna uma booleana.
+     */
+
     public boolean isSenhasValidas(String campo_senha, String campo_senha_repetida) {
         if (campo_senha.equals(campo_senha_repetida)) {
         return true;
@@ -108,8 +167,18 @@ public class CadastroActivity extends AppCompatActivity {
             etPassword.setError(resources.getString(R.string.erro_senha_comparar));
             return false;
         }
-}
+    }
 
+    /**
+     *  O metodo isCamposValidos() tem a funcionalidade de verificar se o campos estao vazios,
+     *  caso algum esteja, emitira um sinal de erro.
+     *
+     * @param nome String do campo: Nome da activity.
+     * @param login String do campo: Login da activity.
+     * @param senha String do campo: Senha da activity.
+     * @param senhaConfirma String do campo: Confirmar Senhada activity.
+     * @return Retorna uma booleana.
+     */
     public boolean isCamposValidos(String nome, String login, String senha, String senhaConfirma) {
         boolean verificador = false;
         if (TextUtils.isEmpty(nome)) {
@@ -130,6 +199,16 @@ public class CadastroActivity extends AppCompatActivity {
         }
         return verificador;
     }
+
+    /**
+     * O metodo validarLoginSenha() tem a funcionalidade de verificar se existem espacos em branco
+     * no login e senha, caso houver emitira um sinal de erro.
+     *
+     * @param login String do campo: Login da activity.
+     * @param senha String do campo: Senha da activity.
+     * @return Retorna uma booleana.
+     */
+
     public boolean validarLoginSenha(String login, String senha){
         boolean verificador = false;
         if(!usuarioNegocio.verEspacosBrancos(login)){

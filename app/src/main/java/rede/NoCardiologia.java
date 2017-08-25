@@ -1,5 +1,10 @@
 package rede;
 
+/**
+ * <h1>NoCardiologia</h1>
+ * Classe responsavel pela criacao do no relacionado a cardiologia.
+ */
+
 public class NoCardiologia {
     private double a = 0.80;
     private double nA = 0.20;

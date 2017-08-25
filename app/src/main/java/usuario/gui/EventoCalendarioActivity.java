@@ -16,6 +16,10 @@ import usuario.dominio.Evento;
 import usuario.negocio.EventoNegocio;
 import usuario.negocio.SessaoUsuario;
 
+/**
+ * <h1>EventoCalendarioActivity</h1>
+ * Activity responsavel por implementar as funcionalidade de adcionar eventos no calendario.
+ */
 public class EventoCalendarioActivity extends AppCompatActivity {
     private EditText etNome;
     private EditText etDescricao;
@@ -25,6 +29,17 @@ public class EventoCalendarioActivity extends AppCompatActivity {
     private EventoDao dao;
     private SessaoUsuario sessao;
     private Resources resources;
+
+    /**
+     * O método onCreate() tem a funcionalidade de setar o layout: activity_evento_calendario e
+     * setar os EditTexts e TextView do layout para cada atributo da classe e chama o metodo
+     * getIntent() da classe Intent para resgatar Intent anterior para resgatar a data que esse
+     * Intent enviou usando o metodo getStringExtra().
+     *
+     * @see Intent#getIntent(String)
+     * @see Intent#getStringExtra(String)
+     * @param savedInstanceState Objeto da classe Bundle que contem o estado anterior da activity
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +55,19 @@ public class EventoCalendarioActivity extends AppCompatActivity {
         String data = intentCalendario.getStringExtra("data");
         etInicio.setText(data);
     }
+
+    /**
+     * O metodo criarEvento() tem a funcionalidade de criar o evento com auxilio dos metodos:
+     * iniciarSessao(), do SessaoUsuario, validarCampos() da mesma classe e inserirRegistro() do
+     * EventoDao(). Depois retorna para activity CalendarioActivity().
+     *
+     * @see SessaoUsuario#iniciarSessao()
+     * @see EventoCalendarioActivity#validarCampos(String)
+     * @see EventoDao#inserirRegistro(Evento)
+     * @param view Contem o que foi observado na activity.
+     * @throws ParseException
+     */
+
     public void criarEvento(View view) throws ParseException {
         evento = new Evento();
         validacao = new EventoNegocio(getApplicationContext());
@@ -56,7 +84,7 @@ public class EventoCalendarioActivity extends AppCompatActivity {
             String dataInvertida = s[2]+"/"+s[1]+"/"+s[0];
             evento.setDate(validacao.mudarData(dataInvertida));
 
-            dao.inserirregistro(evento);
+            dao.inserirRegistro(evento);
             startActivity(new Intent(this, CalendarioActivity.class));
             finish();
         }else {
@@ -64,10 +92,28 @@ public class EventoCalendarioActivity extends AppCompatActivity {
             gui.toastShort(getApplicationContext(),"Erro ao inserir Evento");
         }
     }
+
+    /**
+     * O método voltar() tem a funcionalidade de voltar para activity CalendarioActivity.
+     * @param view Contem o que foi observado na activity.
+     */
+
     public void voltar(View view){
         startActivity(new Intent(EventoCalendarioActivity.this, CalendarioActivity.class));
         finish();
     }
+
+    /**
+     * O método validarCampos() tem a funcionalidade de verificar se o campo esta seguindo as
+     * regras de negocio do app com auxilio dos metodos: verEspacosBrancos() e verAlfanumerico()
+     * da classe EventoNegocio().
+     *
+     * @see EventoNegocio#verAlfanumerico(String)
+     * @see EventoNegocio#verEspacosBrancos(String)
+     * @param nome EditText do campo: etNome.
+     * @return Retorna uma booleana
+     */
+
     public boolean validarCampos(String nome){
         boolean verificador = false;
         if(!validacao.verEspacosBrancos(nome)){

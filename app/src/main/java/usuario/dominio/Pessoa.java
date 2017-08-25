@@ -1,5 +1,10 @@
 package usuario.dominio;
 
+/**
+ * <h1>Pessoa</h1>
+ * Classe responsavel pela criacao dos objetos Pessoa com seus gets e sets.
+ */
+
 public class Pessoa {
     private int id;
     private Usuario usuario;

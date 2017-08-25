@@ -12,6 +12,8 @@ import java.util.List;
 
 import rede.RedeBayesiana;
 
+
+
 public class ResultadosExamesActivity extends AppCompatActivity {
 
     private RedeBayesiana redeBayesiana;

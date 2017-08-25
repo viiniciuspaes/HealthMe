@@ -1,5 +1,10 @@
 package usuario.dominio;
 
+/**
+ * <h1>ContatoEmergencia</h1>
+ * Classe responsavel pela criacao dos objetos ContatoEmergencia com seus gets e sets.
+ */
+
 public class ContatoEmergencia {
     private String nome;
     private String numero;

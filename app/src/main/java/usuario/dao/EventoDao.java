@@ -24,7 +24,7 @@ public class EventoDao {
         script = new SqlScripts();
     }
 
-    public void inserirregistro(Evento evento){
+    public void inserirRegistro(Evento evento){
         ContentValues valor;
         db = dataBaseHelper.getWritableDatabase();
         validacao = new EventoNegocio(this.context);

@@ -2,6 +2,11 @@ package usuario.dominio;
 
 import com.google.android.gms.maps.model.LatLng;
 
+/**
+ * <h1>CentroSaude</h1>
+ * Classe responsavel pela criacao dos objetos CentroSaude com gets e sets.
+ */
+
 public class CentroSaude {
 
     private int id;

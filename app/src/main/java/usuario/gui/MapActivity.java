@@ -1,6 +1,7 @@
 package usuario.gui;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -30,6 +31,11 @@ import usuario.dominio.CentroSaude;
 import usuario.negocio.CentroSaudeNegocio;
 import usuario.negocio.SessaoUsuario;
 
+/**
+ * <h1>MapActivity</h1>
+ * Activity responsavel pelas funcionalidade do mapa do aplicativo.
+ */
+
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private boolean local = true;
@@ -40,6 +46,14 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private CentroSaudeNegocio centroSaudeNegocio;
 
     LocationManager locationManager;
+
+    /**
+     * O metodo onCreate() tem a funcionalidade de setar o layout: activity_map, cria o fragmento
+     * para o mapa, pega permissao de gps do dispositivo e com isso mostra onde esta o usuario no
+     * mapa e inicia a sessao.
+     *
+     * @param savedInstanceState Objeto da classe Bundle que contem o estado anterior da activity.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +148,13 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         centroSaudeNegocio = new CentroSaudeNegocio();
     }
 
+    /**
+     * O metodo onMapReady() tem a funcionalidade de avisar quando o mapa está pronto para ser
+     * usado pelo aplicativo e depois inicia o metodo iniciarHospitais() da mesma classe.
+     *
+     * @param googleMap Objeto GoogleMap.
+     */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
@@ -170,16 +191,30 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             return;
         }
         iniciarHospitais();
-
     }
+
+    /**
+     * O metodo iniciarHospitais() tem a funcionalidade de criar uma List de objetos CentroSaudes
+     * achadas pelo metodo: getHospitais() da classe CentroSaudeNegocio() e chama o metodo:
+     * customizadorAddMarker() dessa mesma classe para povoar o mapa do aplicativo.
+     *
+     * @see CentroSaudeNegocio#getHospitais(Context, String)
+     * @see MapActivity#customizadoAddMarker(CentroSaude)
+     */
 
    public void iniciarHospitais(){
        List<CentroSaude> centroSaudes = centroSaudeNegocio.getHospitais(getApplicationContext(),sessao.getPessoaLogada().getPlanoSaude());
        for (int x = 0; x<centroSaudes.size(); x++){
            customizadoAddMarker(centroSaudes.get(x));
        }
-
    }
+
+    /**
+     * O metodo customizadorAddMarker() tem a funcionalidade de pegar as informacoes de um objeto
+     * CentroSaude e criar um marcador com as informacoes numa infoWindow no mapa do aplicativo.
+     *
+     * @param lugar Objeto CentroSaude.
+     */
 
     public void customizadoAddMarker(CentroSaude lugar){
         MarkerOptions options = new MarkerOptions();
@@ -191,6 +226,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         this.marker = this.mMap.addMarker(options);
     }
 
+    /**
+     * O metodo isLocal() tem a funcionalidade de ser uma flag.
+     * @return Retorna uma booleana.
+     */
     public boolean isLocal() {
         return local;
     }

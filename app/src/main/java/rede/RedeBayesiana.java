@@ -1,5 +1,10 @@
 package rede;
 
+/**
+ * <h1>RedeBayesiana</h1>
+ * Classe responsavel pela rede bayesiana do aplicativo.
+ */
+
 public class RedeBayesiana {
     NoCardiologia noCardio = new NoCardiologia();
     NoOtorrinolaringologia noOtorrino = new NoOtorrinolaringologia();

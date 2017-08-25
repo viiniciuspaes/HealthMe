@@ -22,6 +22,11 @@ import usuario.dominio.Usuario;
 import usuario.negocio.ContatoNegocio;
 import usuario.negocio.SessaoUsuario;
 
+/**
+ * <h1>EditarPerfilActivity</h1>
+ * Activity responsavel pelas funcionalidades de edicao nas informacoes do usuario.
+ */
+
 public class EditarPerfilActivity extends AppCompatActivity {
     private EditText etEditarNome;
     private Spinner spPlanoSaude;
@@ -38,6 +43,16 @@ public class EditarPerfilActivity extends AppCompatActivity {
     private List<ContatoEmergencia> contatoExistente;
     private String[] contatosOriginais;
     private ContatoNegocio validacao;
+
+    /**
+     * O método onCreate() tem a funcionalidade de setar o layout: activity_editar_perfil e setar
+     * os EditTexts do layout para cada atributo da classe, criar um spinner e chamar os metodos
+     * initViews() e setview().
+     *
+     * @see EditarPerfilActivity#initViews()
+     * @see EditarPerfilActivity#setview()
+     * @param savedInstanceState Objeto da classe Bundle que contêm o estado anterior da activity
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +85,12 @@ public class EditarPerfilActivity extends AppCompatActivity {
     @Override
     public void onResume(){super.onResume();}
 
+    /**
+     * O método initViews() tem a funcionalidade de observar as mudancas nos textos dos EditTexts
+     * da activity e se algum for mudado ira atualizar os atributos que estao relacionados com os
+     * EditTexts mudados.
+     */
+
     public void initViews() {
         resources = getResources();
         TextWatcher textWatcher = new TextWatcher() {
@@ -94,6 +115,18 @@ public class EditarPerfilActivity extends AppCompatActivity {
         etEditarNomeContatoEmergencia3.addTextChangedListener(textWatcher);
         etEditarTelefoneContatoEmergencia3.addTextChangedListener(textWatcher);
     }
+
+    /**
+     * O método editar() tem a funcionalidade de editar as informacoes do usuario, criando um
+     * objeto pessoa e setando com novas informacoes editadas pelo usuario, em seguida chama
+     * o metodo atualizarRegistro() da classe UsuarioDao() e inicia a activity PerfilActivity().
+     *
+     * @see UsuarioDao#atualizarRegistro(Pessoa)
+     * @see PerfilActivity
+     * @param v Contem o que foi observado na  activity.
+     * @throws Exception Excecao de erro java.
+     */
+
     public void editar(View v) throws Exception{
         daoUser = new UsuarioDao(getApplicationContext());
         Pessoa pessoa = sessaoUsuario.getPessoaLogada();
@@ -112,6 +145,15 @@ public class EditarPerfilActivity extends AppCompatActivity {
         startActivity(new Intent(this, PerfilActivity.class));
         finish();
     }
+
+    /**
+     * O metodo setview() tem a funcionalidade de setar os contatos que foram encontrados pelo
+     * metodo buscarContatos() da classe ContatoDao() nos EditTexts relacionado com os contatos
+     * e telefones da activity.
+     *
+     * @see ContatoDao#buscarContatos(String)
+     */
+
     public void setview(){
         etEditarNome.setText(sessaoUsuario.getPessoaLogada().getNome());
         contatoExistente = daoContato.buscarContatos(sessaoUsuario.getUsuarioLogado().getLogin());
@@ -144,6 +186,22 @@ public class EditarPerfilActivity extends AppCompatActivity {
             contatosOriginais[2] = etEditarNomeContatoEmergencia3.getText().toString();
         }
     }
+
+    /**
+     * O metodo adicionarContato() tem a funcionalidade de adicionar os contatos que foram
+     * colocados nos EditTexts da layout pelo usuario com auxilio dos metodos: validarCampos()
+     * dessa mesma classe, se ja existir algum contato de emergencia chama o atualizarRegistro()
+     * da classe ContatoDao, se nao chama o inserirRegistro() da classe ContatoDao.
+     *
+     * @see EditarPerfilActivity#validarCampos(EditText)
+     * @see ContatoDao#atualizarRegistro(ContatoEmergencia)
+     * @see ContatoDao#inserirRegistro(ContatoEmergencia)
+     * @param etNome EditText do campo: Nome contato da activity.
+     * @param etTelefone EditText do campo: Telefone da activity.
+     * @param daoContato Objeto ContatoDao.
+     * @param contatoOriginal Contato existente no banco de dados (sendo null inicialmente).
+     */
+
     public void adicionarContato(EditText etNome, EditText etTelefone, ContatoDao daoContato, String contatoOriginal){
         if (!TextUtils.isEmpty(etNome.getText().toString())) {
             Boolean validado = validarCampos(etNome);
@@ -164,6 +222,16 @@ public class EditarPerfilActivity extends AppCompatActivity {
             }
         }
     }
+
+    /**
+     * O método validarCampos() tem a funcionalidade de verificar se os campos de contatos nao
+     * contem caracteres especiais com auxilio do metodo verAlfanumerico() da classe ContatoNegocio.
+     *
+     * @see ContatoNegocio#verAlfanumerico(String)
+     * @param et_nome EditText dos campos relacionados com contato e telefone.
+     * @return Retorna uma booleana.
+     */
+
     public boolean validarCampos(EditText et_nome){
         boolean verificador = false;
         validacao = new ContatoNegocio(getApplicationContext());
@@ -175,6 +243,17 @@ public class EditarPerfilActivity extends AppCompatActivity {
         }
         return  verificador;
     }
+
+    /**
+     * O metodo desativar() tem a funcionalidade de desativar a conta do usuario e com auxilio
+     * dos metodos: setInativo() da classe Usuario() e atualizarRegistro() da classe UsuarioDao() e
+     * posteriormente inicia a activity LogInActivity.
+     *
+     * @see Usuario#setInativo()
+     * @see UsuarioDao#atualizarRegistro(Pessoa)
+     * @param view Contem o que foi observado na activity.
+     */
+
     public void desativar(View view){
         Pessoa pessoa = sessaoUsuario.getPessoaLogada();
         Usuario usuario = sessaoUsuario.getUsuarioLogado();

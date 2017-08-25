@@ -11,6 +11,11 @@ import usuario.dominio.Usuario;
 import usuario.gui.LogInActivity;
 import usuario.gui.TelaInicialNavActivity;
 
+/**
+ * <h1>SessaoUsuario</h1>
+ * Classe responsavel pela funcionalidade da sessao do aplicativo.
+ */
+
 public class SessaoUsuario {
     private Pessoa pessoaLogada;
     private Usuario usuarioLogado;
@@ -21,12 +26,20 @@ public class SessaoUsuario {
     private static final String NOME_USUARIO = "nome";
     private static final String PREFER_NOME = "preferencia";
 
-
+    /**
+     * Contrutor da SessaoUsuario.
+     * @param context O contexto da activity que esta chamando o SessaoUsuario.
+     */
     public SessaoUsuario(Context context){
         this.context = context;
         preferences = context.getSharedPreferences(PREFER_NOME, Context.MODE_PRIVATE);
         editor = preferences.edit();
     }
+
+    /**
+     * O metodo iniciarSessao() tem a funcionalidade de ver no contexto da activity qual usuario logou
+     * e seta os objetos Pessoa e Usuario que estao relacionados com esse usuario.
+     */
 
     public void iniciarSessao(){
         UsuarioDao dao = new UsuarioDao(this.context);
@@ -36,11 +49,21 @@ public class SessaoUsuario {
         setUsuarioLogado(dao.buscarUsuario(usuario));
     }
 
+    /**
+     * O metodo logarUsuario() tem a funcionalidade de logar o usuario.
+     * @param nome O nome do usuario logado.
+     */
+
     public void logarUsuario(String nome) {
         editor.putBoolean(USUARIO_LOGADO, true);
         editor.putString(NOME_USUARIO, nome);
         editor.apply();
     }
+
+    /**
+     * O metodo encessarSessao tem a funcionalidade de limpar a sessao e depois encerra-la e depois
+     * muda para tela de login.
+     */
 
     public void encerrarSessao() {
         editor.clear();

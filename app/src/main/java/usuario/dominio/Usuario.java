@@ -1,5 +1,10 @@
 package usuario.dominio;
 
+/**
+ * <h1>Usuario</h1>
+ * Classe responsavel pela criacao dos objetos Usuario com seus gets e sets.
+ */
+
 public class Usuario {
     private String login;
     private String password;

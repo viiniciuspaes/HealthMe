@@ -1,5 +1,10 @@
 package rede;
 
+/**
+ * <h1>NoOftalmologia</h1>
+ * Classe responsavel pela criacao do no relacionado a oftalmologia.
+ */
+
 public class NoOftalmologia {
     private double e = 0.83;
     private double nE = 0.17;

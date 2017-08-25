@@ -1,5 +1,10 @@
 package usuario.dominio;
 
+/**
+ * <h1>Evento</h1>
+ * Classe responsavel pela criacao dos objetos Evento com seus gets e sets.
+ */
+
 public class Evento {
     private int id;
     private Usuario usuario;
